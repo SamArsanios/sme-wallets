@@ -5,7 +5,7 @@ import { PaymentnoticeComponent } from './view/buyer/paymentnotice/paymentnotice
 
 
 const routes: Routes = [
- { path: 'paymentnotice', component: PaymentnoticeComponent},
+ { path: 'Payment Notice', component: PaymentnoticeComponent},
  { path: 'buyerdashboard', component: BuyersDashboardComponent} 
 ];
 

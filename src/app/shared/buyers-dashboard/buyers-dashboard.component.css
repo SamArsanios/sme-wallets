@@ -3,10 +3,23 @@ a{
     font-size: 120%;
  }
  .nav{
-    /* margin-bottom: 10%; */
+    margin-bottom: 10%;
    
  } 
  .spacer{
-     /* margin-bottom: 5%; */
-    /* padding-bottom: 20%; */
- }
+     margin-bottom: 5%; 
+
+ } 
+
+ .nav{
+    
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   
+   
+
+}
+
+
+
