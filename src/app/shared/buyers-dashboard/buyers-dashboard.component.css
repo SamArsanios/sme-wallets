@@ -20,6 +20,28 @@ a{
    
 
 }
+.container{
+   margin-top: 10%;
+}
+.row{
+}
+.currentOrders, .invoices, .totalorders, .invited-contacts{
+   background-color: blue;
+   color: white;
+   border-radius: 5%;
+   text-align: center;
+   height: 100%;
+
+
+}
+.mat-title{
+   margin-top: 20%;
+}
+
+.icon-display {
+   transform: scale(2);
+}
+
 
 
 

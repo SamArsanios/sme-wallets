@@ -1,3 +1,20 @@
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-payment-info',
+//   templateUrl: './payment-info.component.html',
+//   styleUrls: ['./payment-info.component.css']
+// })
+// export class PaymentInfoComponent implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit() {
+//   }
+
+// }
+
+
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
 export interface IApproveOrder {
@@ -84,11 +101,11 @@ const ELEMENT_DATA: IApproveOrder[] = [
 ];
 
 @Component({
-  selector: 'app-approved-invoices',
-  templateUrl: './approved-invoices.component.html',
-  styleUrls: ['./approved-invoices.component.css']
+  selector: 'app-payment-info',
+  templateUrl: './payment-info.component.html',
+  styleUrls: ['./payment-info.component.css']
 })
-export class ApprovedInvoicesComponent implements OnInit {
+export class PaymentInfoComponent implements OnInit {
   constructor() {}
 
   displayedColumns: string[] = [
@@ -116,6 +133,7 @@ export class ApprovedInvoicesComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
+
 
 
 
