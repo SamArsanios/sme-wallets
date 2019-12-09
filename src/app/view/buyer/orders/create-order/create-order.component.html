@@ -1,92 +1,93 @@
+
+<div class="spacer"></div>
 <div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      I am the first column
-      <mat-form-field
-        style="font-size: 13px;"
-        floatLabel="auto"
-        appearance="outline"
-      >
-        <!-- <mat-label>Name</mat-label>
-                    <input matInput /> -->
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-        <mat-label>Framework</mat-label>
-        <mat-select>
-          <mat-option>None</mat-option>
-          <mat-option value="Angular">Angular</mat-option>
-          <mat-option value="React">React</mat-option>
-          <mat-option value="Vue">Vue</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input matInput [matDatepicker]="myDatePicker" [formControl]="dateCtrl" />
-        <mat-datepicker-toggle
-          [for]="myDatePicker"
-          matPrefix
-        ></mat-datepicker-toggle>
-        <mat-datepicker #myDatePicker></mat-datepicker>
-        <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
-          A valid date mm/dd/yyyy is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Department</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Place of Delivery</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Terms of Payment</mat-label>
-        <textarea matInput></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Billing Address</mat-label>
-        <textarea matInput></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-    </div>
-    <div class="col-sm-6">
-      I am the second column
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Receiver Name</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Time of Delivery</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Method of Conveyance</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Time Period</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Terms of Delivery</mat-label>
-        <textarea matInput></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+    <div class="row">
+      <div class="col-sm-6">
+        
+        <mat-form-field
+          style="font-size: 13px;"
+          floatLabel="auto"
+          appearance="outline"
+        >
+          <!-- <mat-label>Name</mat-label>
+                      <input matInput /> -->
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+          <mat-label>Framework</mat-label>
+          <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option value="Angular">Angular</mat-option>
+            <mat-option value="React">React</mat-option>
+            <mat-option value="Vue">Vue</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <input matInput [matDatepicker]="myDatePicker" [formControl]="dateCtrl" />
+          <mat-datepicker-toggle
+            [for]="myDatePicker"
+            matPrefix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+          <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
+            A valid date mm/dd/yyyy is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Department</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Place of Delivery</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Terms of Payment</mat-label>
+          <textarea matInput></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Billing Address</mat-label>
+          <textarea matInput></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Receiver Name</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Time of Delivery</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Method of Conveyance</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Time Period</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Terms of Delivery</mat-label>
+          <textarea matInput></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </div>
     </div>
   </div>
-</div>

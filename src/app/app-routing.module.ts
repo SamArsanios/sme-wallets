@@ -2,11 +2,26 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BuyersDashboardComponent } from './shared/buyers-dashboard/buyers-dashboard.component';
 import { PaymentnoticeComponent } from './view/buyer/paymentnotice/paymentnotice.component';
+import { AllOrdersComponent } from './view/buyer/orders/all-orders/all-orders.component';
+import { InvoicesComponent } from './view/buyer/invoices/invoices.component';
+import { OrdersComponent } from './view/buyer/orders/orders/orders.component';
+import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
+import { VaultComponent } from './view/buyer/vault/vault.component';
+import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
 
 
 const routes: Routes = [
- { path: 'Payment Notice', component: PaymentnoticeComponent},
- { path: 'buyerdashboard', component: BuyersDashboardComponent} 
+ { path: 'Payment Notice', component: PaymentInfoComponent},
+ { path: 'buyerdashboard', component: BuyersDashboardComponent},
+ { path: 'Orders', component: OrdersComponent},
+ { path: 'Invite Contacts', component:  InviteContactsComponent},
+ { path: 'Invoices', component: InvoicesComponent},
+ { path: 'Vault', component: VaultComponent},
+
+ 
+
+ 
+  
 ];
 
 @NgModule({
