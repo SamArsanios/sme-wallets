@@ -1,0 +1,12 @@
+<app-header></app-header>
+<nav mat-tab-nav-bar class="nav">
+    <a mat-tab-link *ngFor="let link of links" [routerLink]="['/'+link]" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+        <b>{{link}}</b>
+    </a>
+</nav>
+<div class="spacer"></div>
+
+
+<!-- please add you component to the router, and uncomment in the ts file -->
+<!-- <div class="spacer"></div> -->

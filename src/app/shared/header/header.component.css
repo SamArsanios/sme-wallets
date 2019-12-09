@@ -1,0 +1,20 @@
+.filler {
+    flex: 1 1 auto;
+ }
+ .gap {
+    margin-right: 2%;
+ }
+
+ .head{
+    height: auto;
+    background-color: blue;
+    color: white;
+ }
+
+ .head img{
+    padding-bottom: 3%;
+    padding-top: 3%;
+ }
+.home{
+   margin-right: 2%;
+}
