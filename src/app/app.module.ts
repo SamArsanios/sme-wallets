@@ -11,6 +11,21 @@ import { BuyersDashboardComponent } from './shared/buyers-dashboard/buyers-dashb
 import { PaymentnoticeComponent } from './view/buyer/paymentnotice/paymentnotice.component';
 import { BuyernavComponent } from './shared/buyernav/buyernav.component';
 import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
+import { SupplierDashboardComponent } from './view/supplier/supplier-dashboard/supplier-dashboard.component';
+import { AllOrdersComponent } from './view/buyer/orders/all-orders/all-orders.component';
+import { InvoicesComponent } from './view/buyer/invoices/invoices.component';
+import { ApproveInvoicesComponent } from './view/buyer/invoices/approve-invoices/approve-invoices.component';
+import { AllInvoicesComponent } from './view/buyer/invoices/all-invoices/all-invoices.component';
+import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/approved-invoices.component';
+import { CompletedInvoicesComponent } from './view/buyer/vault/completed-invoices/completed-invoices.component';
+import { VaultComponent } from './view/buyer/vault/vault.component';
+import { OrdersComponent } from './view/buyer/orders/orders/orders.component';
+import { CreateOrderComponent } from './view/buyer/orders/create-order/create-order.component';
+import { ApproveOrdersComponent } from './view/buyer/orders/approve-orders/approve-orders.component';
+import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pending-orders.component';
+import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
+// forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,13 +34,29 @@ import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.com
     BuyersDashboardComponent,
     PaymentnoticeComponent,
     BuyernavComponent,
-    PaymentInfoComponent
+    PaymentInfoComponent,
+    SupplierDashboardComponent,
+    AllOrdersComponent,
+    InvoicesComponent,
+    ApproveInvoicesComponent,
+    AllInvoicesComponent,
+    ApprovedInvoicesComponent,
+    CompletedInvoicesComponent,
+    VaultComponent,
+    OrdersComponent,
+    CreateOrderComponent,
+    ApproveOrdersComponent,
+    PendingOrdersComponent,
+    InviteContactsComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
