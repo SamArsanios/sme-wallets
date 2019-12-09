@@ -26,6 +26,7 @@ import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pendi
 import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
 // forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ApproveOrdersComponent,
     PendingOrdersComponent,
     InviteContactsComponent,
+    SideAccountSettingsComponent
 
   ],
   imports: [
