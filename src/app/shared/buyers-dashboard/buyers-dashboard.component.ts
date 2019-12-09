@@ -23,7 +23,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyersDashboardComponent implements OnInit {
   // links = ['payment notice'];
-  links = ['Account Settings', 'Orders', 'Invoices', 'Invite Contacts', 'Vault', 'Payment Notice'];
 
 
   constructor() {}

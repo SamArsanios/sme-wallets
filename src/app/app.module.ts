@@ -9,7 +9,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { BuyersDashboardComponent } from './shared/buyers-dashboard/buyers-dashboard.component';
 import { PaymentnoticeComponent } from './view/buyer/paymentnotice/paymentnotice.component';
-import { ApprovedInvoicesComponent } from './view/buyer/approved-invoices/approved-invoices.component';
+import { BuyernavComponent } from './shared/buyernav/buyernav.component';
+import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ApprovedInvoicesComponent } from './view/buyer/approved-invoices/approv
     HeaderComponent,
     BuyersDashboardComponent,
     PaymentnoticeComponent,
-    ApprovedInvoicesComponent
+    BuyernavComponent,
+    PaymentInfoComponent
   ],
   imports: [
     BrowserModule,
