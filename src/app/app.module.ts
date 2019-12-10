@@ -35,6 +35,10 @@ import { SupplierApprovedInvoicesComponent } from "./view/supplier/supplier-vaul
 import { SupplierFinancedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-financed-invoices/supplier-financed-invoices.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,8 +68,10 @@ import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-
     SupplierDeclinedInvoicesComponent,
     SupplierApprovedInvoicesComponent,
     SupplierFinancedInvoicesComponent,
-    SupplierVaultComponent
+    SupplierVaultComponent,
+    SideAccountSettingsComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
