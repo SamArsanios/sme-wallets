@@ -21,7 +21,7 @@ const routes: Routes = [
  { path: 'Invite Contacts', component:  InviteContactsComponent},
  { path: 'Invoices', component: InvoicesComponent},
  { path: 'Vault', component: VaultComponent},
- {path: 'Account Settings', component:SideAccountSettingsComponent}
+ {path: 'Account Settings', component:SideAccountSettingsComponent},
   
  //suppliers
   {
