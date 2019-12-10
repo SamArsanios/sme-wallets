@@ -11,7 +11,6 @@ import { BuyersDashboardComponent } from './shared/buyers-dashboard/buyers-dashb
 import { PaymentnoticeComponent } from './view/buyer/paymentnotice/paymentnotice.component';
 import { BuyernavComponent } from './shared/buyernav/buyernav.component';
 import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
-import { SupplierDashboardComponent } from './view/supplier/supplier-dashboard/supplier-dashboard.component';
 import { AllOrdersComponent } from './view/buyer/orders/all-orders/all-orders.component';
 import { InvoicesComponent } from './view/buyer/invoices/invoices.component';
 import { ApproveInvoicesComponent } from './view/buyer/invoices/approve-invoices/approve-invoices.component';
@@ -26,6 +25,11 @@ import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pendi
 import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
 // forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuppliernavComponent } from './shared/suppliernav/suppliernav.component';
+import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-dash.component';
+import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
+import { BalanceComponent } from './view/supplier/balance/balance.component';
+import { TransactionalHistoryComponent } from './view/supplier/transactional-history/transactional-history.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PaymentnoticeComponent,
     BuyernavComponent,
     PaymentInfoComponent,
-    SupplierDashboardComponent,
+   
     AllOrdersComponent,
     InvoicesComponent,
     ApproveInvoicesComponent,
@@ -48,6 +52,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ApproveOrdersComponent,
     PendingOrdersComponent,
     InviteContactsComponent,
+    SuppliernavComponent,
+    SupplierDashComponent,
+    PaymentInformationComponent,
+    SupplierDashComponent,
+    BalanceComponent,
+    TransactionalHistoryComponent
 
   ],
   imports: [

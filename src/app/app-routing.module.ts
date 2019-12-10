@@ -8,6 +8,8 @@ import { OrdersComponent } from './view/buyer/orders/orders/orders.component';
 import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
 import { VaultComponent } from './view/buyer/vault/vault.component';
 import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
+import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-dash.component';
+import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
 
 
 const routes: Routes = [
@@ -17,11 +19,8 @@ const routes: Routes = [
  { path: 'Invite Contacts', component:  InviteContactsComponent},
  { path: 'Invoices', component: InvoicesComponent},
  { path: 'Vault', component: VaultComponent},
-
- 
-
- 
-  
+ { path: 'supplierdashboard', component:  SupplierDashComponent},
+ { path: 'Payment Information', component:  PaymentInformationComponent},  
 ];
 
 @NgModule({
