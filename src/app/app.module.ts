@@ -75,7 +75,7 @@ import { TransactionalHistoryComponent } from './view/supplier/transactional-his
 
 
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,

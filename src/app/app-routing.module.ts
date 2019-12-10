@@ -22,8 +22,21 @@ const routes: Routes = [
  { path: 'Invoices', component: InvoicesComponent},
  { path: 'Vault', component: VaultComponent},
  {path: 'Account Settings', component:SideAccountSettingsComponent},
+<<<<<<< HEAD
  { path: 'supplierdashboard', component:  SupplierDashComponent},
  { path: 'Payment Information', component:  PaymentInformationComponent},  
+=======
+  
+ //suppliers
+  {
+    path: "supplier-purchase-orders",
+    component: SupplierPurchaseOrdersComponent
+  },
+  {
+    path: "supplier-vault",
+    component: SupplierVaultComponent
+  }
+>>>>>>> 3ad14b0a37ca39300d830ece42b3aa324c036c94
 ];
 
 @NgModule({
