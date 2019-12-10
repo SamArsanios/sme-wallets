@@ -24,7 +24,7 @@ import { ApproveOrdersComponent } from './view/buyer/orders/approve-orders/appro
 import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pending-orders.component';
 import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
 // forms
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+// import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierPendingOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component";
 import { SupplierCurrentOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-current-orders/supplier-current-orders.component";
