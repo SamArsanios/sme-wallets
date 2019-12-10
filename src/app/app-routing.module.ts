@@ -11,6 +11,7 @@ import { PaymentInfoComponent } from "./view/buyer/payment-info/payment-info.com
 //Supplier Components
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
+//Sponsor
 
 const routes: Routes = [
   { path: "Payment Notice", component: PaymentInfoComponent },
