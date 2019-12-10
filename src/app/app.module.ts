@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,17 @@ import { ApproveOrdersComponent } from './view/buyer/orders/approve-orders/appro
 import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pending-orders.component';
 import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
 // forms
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
+import { SupplierPendingOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component";
+import { SupplierCurrentOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-current-orders/supplier-current-orders.component";
+import { SupplierInvoicedOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-invoiced-orders/supplier-invoiced-orders.component";
+import { SupplierAllOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-all-orders/supplier-all-orders.component";
+import { SupplierDeclinedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-declined-invoices/supplier-declined-invoices.component";
+import { SupplierApprovedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-approved-invoices/supplier-approved-invoices.component";
+import { SupplierFinancedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-financed-invoices/supplier-financed-invoices.component";
+import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
 import { SuppliernavComponent } from './shared/suppliernav/suppliernav.component';
@@ -31,6 +42,7 @@ import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-da
 import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
 import { BalanceComponent } from './view/supplier/balance/balance.component';
 import { TransactionalHistoryComponent } from './view/supplier/transactional-history/transactional-history.component';
+
 
 @NgModule({
   declarations: [
@@ -63,6 +75,7 @@ import { TransactionalHistoryComponent } from './view/supplier/transactional-his
 
 
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -75,4 +88,4 @@ import { TransactionalHistoryComponent } from './view/supplier/transactional-his
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
