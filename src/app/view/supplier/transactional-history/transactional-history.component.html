@@ -1,0 +1,79 @@
+
+<div class="container">
+  <mat-form-field>
+    <input
+      (keyup)="applyFilter($event.target.value)"
+      matInput
+      placeholder="Search"
+    />
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- Order Number Column -->
+      <ng-container matColumnDef="sNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >s.No.</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.sNo }}</mat-cell>
+      </ng-container>
+
+      <!-- Order Date Column -->
+      <ng-container matColumnDef="Description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Description</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.Description }}</mat-cell>
+      </ng-container>
+
+      <!-- Order Due Date Column -->
+      <ng-container matColumnDef="Debits">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Debits</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{
+          element.Debits
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Sender Name Column -->
+      <ng-container matColumnDef="Credits">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Credits</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.Credits }}</mat-cell>
+      </ng-container>
+
+      <!-- Order Status Column -->
+   
+      <ng-container matColumnDef="TotalBalance">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >TotalBalance</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.TotalBalance}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Date</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.Date}}</mat-cell>
+      </ng-container>
+
+      <!-- Action Column -->
+      <!-- <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Action</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element"
+          ><button class="btn-primary btn-sm">View</button></mat-cell
+        >
+      </ng-container> -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>
