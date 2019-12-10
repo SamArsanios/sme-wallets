@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -58,7 +58,8 @@ import { SideAccountSettingsComponent } from './view/buyer/side-account-settings
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2PageScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

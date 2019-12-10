@@ -1,23 +1,51 @@
+<div id ="header">
+<app-header></app-header>
+<app-buyernav></app-buyernav>
+</div>
+
+<div id = "nav">
+  <nav class="nav flex-column">
+    <!-- <a class="nav-link" >Personal Info</a>
+    <a class="nav-link" >Registered Address</a>
+    <a class="nav-link" >Correspodence Address</a
+    > -->
+    <a class="nav-link" pageScroll href="#header">Back to Header</a>
+
+    <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
+    <a class="nav-link" pageScroll href="#registered-address">registered-address</a>
+    <a class="nav-link" pageScroll href="#corresponsing-address">corresponsing-address</a>
+    <a class="nav-link" pageScroll href="#company-information">company-information</a>
+    <a class="nav-link" pageScroll href="#update-password">update-password</a>
+    <a class="nav-link" pageScroll href="#security-questions">security-questions</a>
+    <a class="nav-link" pageScroll href="#payment-details">payment details</a>
+    <a class="nav-link" pageScroll href="#quality">quality</a>
+    <a class="nav-link" pageScroll href="#bank-details">bank details</a>
+  </nav>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
+    <!-- <div class="col-md-3" id = "nav">
       <nav class="nav flex-column">
-        <a class="nav-link" >Personal Info</a>
+        <!-- <a class="nav-link" >Personal Info</a>
         <a class="nav-link" >Registered Address</a>
         <a class="nav-link" >Correspodence Address</a
-        >
-        <a class="nav-link" href="#">Company Info</a>
-        <a class="nav-link" href="#">Update Password</a>
-        <a class="nav-link" href="#">Update security questions</a>
-        <a class="nav-link" href="#">Payment details</a>
-        <a class="nav-link" href="#">Quality</a>
-        <a class="nav-link" href="#">Bank Details</a>
+        > -->
+        <!-- <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
+        <a class="nav-link" pageScroll href="#registered-address">registered-address</a>
+        <a class="nav-link" pageScroll href="#corresponsing-address">corresponsing-address</a>
+        <a class="nav-link" pageScroll href="#company-information">company-information</a>
+        <a class="nav-link" pageScroll href="#update-password">update-password</a>
+        <a class="nav-link" pageScroll href="#security-questions">security-questions</a>
+        <a class="nav-link" pageScroll href="#payment-details">payment details</a>
+        <a class="nav-link" pageScroll href="#quality">quality</a>
+        <a class="nav-link" pageScroll href="#bank-details">bank details</a>
       </nav>
-    </div>
+    </div> --> 
     <div class="col-md-9">
       <mat-card>
        
-        <mat-card-title>Personal Info</mat-card-title>
+        <mat-card-title  id = "personalInfo">Personal Info</mat-card-title>
         <mat-card-content>
           <div>
             <mat-form-field appearance="outline">
@@ -39,7 +67,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "registered-address">
        
         <mat-card-title>Registered Address</mat-card-title>
         <mat-card-content>
@@ -72,7 +100,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "corresponsing-address">
         <a href="#Correspodence Address">Correspodence Address</a>
         <mat-card-title>Correspodence Address</mat-card-title>
         <mat-card-content>
@@ -104,7 +132,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <mat-card>
+      <mat-card id = "company-information">
         <mat-card-title>
           Company Information
         </mat-card-title>
@@ -141,7 +169,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "update-password">
         <mat-card-title>
           Update Password
         </mat-card-title>
@@ -167,7 +195,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "security-questions">
         <mat-card-title>
           Update Security Questions
         </mat-card-title>
@@ -205,7 +233,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "payment-details">
         <mat-card-title>Payment Details</mat-card-title>
         <mat-card-content>
           <div>
@@ -231,7 +259,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "quality">
         <mat-card-title>Quality</mat-card-title>
         <mat-card-content>
           <div class="container">
@@ -253,7 +281,7 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-card>
+      <mat-card id = "bank-details">
         <mat-card-title>Bank Details</mat-card-title>
         <mat-card-content>
             <div class="container">
@@ -294,3 +322,4 @@
     </div>
   </div>
 </div>
+
