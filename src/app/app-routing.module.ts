@@ -9,7 +9,10 @@ import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-con
 import { VaultComponent } from './view/buyer/vault/vault.component';
 import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
 import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
-
+//Supplier Components
+import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
+import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
+//Sponsor
 
 const routes: Routes = [
  { path: 'Payment Notice', component: PaymentInfoComponent},
@@ -19,15 +22,20 @@ const routes: Routes = [
  { path: 'Invoices', component: InvoicesComponent},
  { path: 'Vault', component: VaultComponent},
  {path: 'Account Settings', component:SideAccountSettingsComponent}
-
- 
-
- 
   
+ //suppliers
+  {
+    path: "supplier-purchase-orders",
+    component: SupplierPurchaseOrdersComponent
+  },
+  {
+    path: "supplier-vault",
+    component: SupplierVaultComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

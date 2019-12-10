@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-tab-group #tabRef>
+    <!-- First Tab -->
+    <!-- View Declined Invoices -->
+    <mat-tab label="Declined Invoices">
+      <div class="container">
+        <app-supplier-approved-invoices> </app-supplier-approved-invoices>
+      </div>
+    </mat-tab>
+
+    <!-- Second Tab -->
+    <!-- View Approved Invoices-->
+    <mat-tab label="Approved Invoices">
+      <div class="container">
+        <app-supplier-approved-invoices></app-supplier-approved-invoices>
+      </div>
+    </mat-tab>
+
+    <!-- Third Tab -->
+    <!-- View Financed Invoices-->
+    <mat-tab label="Financed Invoices">
+      <div class="container">
+        <app-supplier-approved-invoices></app-supplier-approved-invoices>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
