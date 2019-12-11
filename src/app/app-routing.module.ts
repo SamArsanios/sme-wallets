@@ -35,6 +35,8 @@ const routes: Routes = [
  { path: 'Invoices', component: InvoicesComponent},
  { path: 'Vault', component: VaultComponent},
  {path: 'Account Settings', component:SideAccountSettingsComponent},
+ {path: 'Account settings', component:SideAccountSettingssComponent},
+
  { path: 'supplierdashboard', component:  SupplierDashComponent},
  { path: "Supplier Vault", component: SupplierVaultComponent },
  { path: 'Payment Information', component:  PaymentInformationComponent}, 
@@ -44,7 +46,6 @@ const routes: Routes = [
  { path: 'register', component:  RegisterComponent}, 
  { path: 'login', component: LoginComponent}, 
 
- 
   
   {
     path: "supplier-purchase-orders",
@@ -55,11 +56,11 @@ const routes: Routes = [
     component: SupplierVaultComponent
   },
   {
-    path: "sponsor-invoices",
+    path: "Sponsor Invoices",
     component: SponsorInvoicesComponent
   },
   {
-    path: "sponsor-vault",
+    path: "Sponsor Vault",
     component: SponsorVaultSponsorshipComponent
   }
 ];
