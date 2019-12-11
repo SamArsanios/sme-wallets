@@ -45,6 +45,7 @@ import { SupplierApprovedInvoicesComponent } from "./view/supplier/supplier-vaul
 import { SupplierFinancedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-financed-invoices/supplier-financed-invoices.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
 import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
+import { SponsornavComponent } from './shared/sponsornav/sponsornav.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordash
     SupplierFinancedInvoicesComponent,
     SupplierVaultComponent,
     SideAccountSettingsComponent,
-    SponsordashboardComponent
+    SponsordashboardComponent,
+    SponsornavComponent
   ],
 
   imports: [
