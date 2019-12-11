@@ -20,26 +20,26 @@ import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purcha
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
 
 //Sponsor
+import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
 import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component";
 import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
+
 const routes: Routes = [
-  { path: "Payment Notice", component: PaymentInfoComponent },
-  { path: "buyerdashboard", component: BuyersDashboardComponent },
-  { path: "Orders", component: OrdersComponent },
-  { path: "Invite Contacts", component: InviteContactsComponent },
-  { path: "Invoices", component: InvoicesComponent },
-  { path: "Vault", component: VaultComponent },
-  { path: "Account Settings", component: SideAccountSettingsComponent },
-
-  { path: "Account settings", component: SideAccountSettingssComponent },
-
-  { path: "supplierdashboard", component: SupplierDashComponent },
-  { path: "Payment Information", component: PaymentInformationComponent },
-  { path: "", component: HomeComponent },
-  { path: "Purchase Orders", component: SupplierPurchaseOrdersComponent },
-  { path: "Supplier Vault", component: SupplierVaultComponent },
-
   //suppliers
+ { path: 'Payment Notice', component: PaymentInfoComponent},
+ { path: 'buyerdashboard', component: BuyersDashboardComponent},
+ { path: 'Orders', component: OrdersComponent},
+ { path: 'Invite Contacts', component:  InviteContactsComponent},
+ { path: 'Invoices', component: InvoicesComponent},
+ { path: 'Vault', component: VaultComponent},
+ {path: 'Account Settings', component:SideAccountSettingsComponent},
+ { path: 'supplierdashboard', component:  SupplierDashComponent},
+ { path: "Supplier Vault", component: SupplierVaultComponent },
+ { path: 'Payment Information', component:  PaymentInformationComponent}, 
+ { path: '', component:  HomeComponent},
+ { path: 'Purchase Orders', component:  SupplierPurchaseOrdersComponent}, 
+ { path: 'sponsordashboard', component:  SponsordashboardComponent}, 
+  
   {
     path: "supplier-purchase-orders",
     component: SupplierPurchaseOrdersComponent
@@ -52,7 +52,6 @@ const routes: Routes = [
     path: "sponsor-invoices",
     component: SponsorInvoicesComponent
   },
-
   {
     path: "sponsor-vault",
     component: SponsorVaultSponsorshipComponent

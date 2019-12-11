@@ -44,6 +44,9 @@ import { SupplierDeclinedInvoicesComponent } from "./view/supplier/supplier-vaul
 import { SupplierApprovedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-approved-invoices/supplier-approved-invoices.component";
 import { SupplierFinancedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-financed-invoices/supplier-financed-invoices.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
+
+import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
+import { SponsornavComponent } from './shared/sponsornav/sponsornav.component';
 import { SponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/sponsor-invoices.component';
 import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component';
 
@@ -87,6 +90,8 @@ import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-s
     SupplierFinancedInvoicesComponent,
     SupplierVaultComponent,
     SideAccountSettingsComponent,
+    SponsordashboardComponent,
+    SponsornavComponent,
     SponsorInvoicesComponent,
     SponsorVaultSponsorshipComponent
   ],
