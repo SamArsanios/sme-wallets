@@ -1,5 +1,5 @@
 <app-header></app-header>
-<app-suppliernav></app-suppliernav>
+<app-suppliernav *ngIf="isBuyer"></app-suppliernav>
 <div class="spacer"></div>
  <div class="container">
     <mat-tab-group #tabRef> 

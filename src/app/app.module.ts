@@ -31,6 +31,8 @@ import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-da
 import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
 import { BalanceComponent } from './view/supplier/balance/balance.component';
 import { TransactionalHistoryComponent } from './view/supplier/transactional-history/transactional-history.component';
+import { HomeComponent } from './shared/home/home.component';
+import { SideAccountSettingssComponent } from './view/supplier/side-account-settingss/side-account-settingss.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { TransactionalHistoryComponent } from './view/supplier/transactional-his
     PaymentInformationComponent,
     SupplierDashComponent,
     BalanceComponent,
-    TransactionalHistoryComponent
+    TransactionalHistoryComponent,
+    HomeComponent,
+    SideAccountSettingssComponent
 
 
   ],

@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment-information.component.css']
 })
 export class PaymentInformationComponent implements OnInit {
-
+  // isBuyer = "false";
+  isBuyer: boolean = true;
   constructor() { }
 
   ngOnInit() {

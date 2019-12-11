@@ -11,6 +11,8 @@ import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.com
 import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
 import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-dash.component';
 import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
+import { HomeComponent } from './shared/home/home.component';
+import { SideAccountSettingssComponent } from './view/supplier/side-account-settingss/side-account-settingss.component';
 
 
 
@@ -22,8 +24,12 @@ const routes: Routes = [
  { path: 'Invoices', component: InvoicesComponent},
  { path: 'Vault', component: VaultComponent},
  {path: 'Account Settings', component:SideAccountSettingsComponent},
+ {path: 'Account settings', component:SideAccountSettingssComponent},
+
  { path: 'supplierdashboard', component:  SupplierDashComponent},
- { path: 'Payment Information', component:  PaymentInformationComponent},  
+ { path: 'Payment Information', component:  PaymentInformationComponent}, 
+ { path: '', component:  HomeComponent} 
+ 
 ];
 
 @NgModule({
