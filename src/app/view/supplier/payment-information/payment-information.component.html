@@ -1,0 +1,24 @@
+<app-header></app-header>
+<app-suppliernav *ngIf="isBuyer"></app-suppliernav>
+<div class="spacer"></div>
+ <div class="container">
+    <mat-tab-group #tabRef> 
+      <!-- First Tab -->
+      <!-- View Approve Invoices -->
+      <mat-tab label="My Balance">
+        <div class="container">
+
+          <app-balance></app-balance>
+        </div>
+      </mat-tab>
+
+
+      <mat-tab label="Transaction History">
+        <div class="container">
+          <app-transactional-history></app-transactional-history>
+        </div>
+      </mat-tab>  
+
+    </mat-tab-group>
+ </div>
+
