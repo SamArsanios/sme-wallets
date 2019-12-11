@@ -33,7 +33,12 @@ const routes: Routes = [
 
  { path: 'supplierdashboard', component:  SupplierDashComponent},
  { path: 'Payment Information', component:  PaymentInformationComponent}, 
- { path: '', component:  HomeComponent}, 
+ { path: '', component:  HomeComponent},
+ { path: 'Purchase Orders', component:  SupplierPurchaseOrdersComponent}, 
+ { path: 'Supplier Vault', component:  SupplierVaultComponent}, 
+
+ 
+  
   
  //suppliers
   {

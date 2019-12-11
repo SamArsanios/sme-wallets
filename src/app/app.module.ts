@@ -22,7 +22,6 @@ import { BuyersDashboardComponent } from "./shared/buyers-dashboard/buyers-dashb
 import { PaymentnoticeComponent } from "./view/buyer/paymentnotice/paymentnotice.component";
 import { BuyernavComponent } from "./shared/buyernav/buyernav.component";
 import { PaymentInfoComponent } from "./view/buyer/payment-info/payment-info.component";
-import { SupplierDashboardComponent } from "./view/supplier/supplier-dashboard/supplier-dashboard.component";
 import { AllOrdersComponent } from "./view/buyer/orders/all-orders/all-orders.component";
 import { InvoicesComponent } from "./view/buyer/invoices/invoices.component";
 import { ApproveInvoicesComponent } from "./view/buyer/invoices/approve-invoices/approve-invoices.component";
@@ -46,8 +45,6 @@ import { SupplierApprovedInvoicesComponent } from "./view/supplier/supplier-vaul
 import { SupplierFinancedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-financed-invoices/supplier-financed-invoices.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
 
-import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings/side-account-settings.component";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +66,6 @@ import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings
     ApproveOrdersComponent,
     PendingOrdersComponent,
     InviteContactsComponent,
-
     SideAccountSettingsComponent,
     SuppliernavComponent,
     SupplierDashComponent,
