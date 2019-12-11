@@ -1,29 +1,25 @@
-mat-form-field{
-    font-size: 14px;
-    width: 90%;
-    
+mat-form-field {
+  font-size: 14px;
+  width: 90%;
 }
-.container{
-    margin: auto;
-}
-
-mat-card{
-    margin: 40px;
-    border: 2px black;
-    background-color:rgb(240, 233, 233);
-}
-#nav{
-    /* margin-top: 10%; */
-    position: fixed;
-    margin-right: 0%;
-    background-color: cornsilk;
-    font-size: 120%;
-
+.container {
+  margin-left: 35%;
 }
 
-#personalInfo{
-
+mat-card {
+  margin: 40px;
+  border: 5px black;
+  background-color: rgb(236, 228, 228);
 }
+#nav {
+  /* margin-top: 10%; */
+  position: fixed;
+  margin-right: 5%;
+  background-color: cornsilk;
+  font-size: 120%;
+  margin-left: 10%;
+}
+
 /* app-header {
     position: fixed;
     width: 100%;
