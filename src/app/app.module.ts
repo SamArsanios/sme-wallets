@@ -51,6 +51,7 @@ import { RegisterComponent } from './view/register/register.component';
 import { LoginComponent } from './view/login/login.component';
 import { SponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/sponsor-invoices.component';
 import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component';
+import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponsor-settings.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-s
     RegisterComponent,
     LoginComponent,
     SponsorInvoicesComponent,
-    SponsorVaultSponsorshipComponent
+    SponsorVaultSponsorshipComponent,
+    SponsorSettingsComponent
   ],
 
   imports: [

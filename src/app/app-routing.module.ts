@@ -25,6 +25,7 @@ import { LoginComponent } from './view/login/login.component';
 import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
 import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component";
 import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
+import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponsor-settings.component';
 
 const routes: Routes = [
   //suppliers
@@ -62,7 +63,11 @@ const routes: Routes = [
   {
     path: "Sponsor Vault",
     component: SponsorVaultSponsorshipComponent
-  }
+  },
+  {path: "Sponsor Account settings",
+  component: SponsorSettingsComponent
+},
+  
 ];
 
 @NgModule({
