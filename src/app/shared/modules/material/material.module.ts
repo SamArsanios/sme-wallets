@@ -40,12 +40,10 @@ const material = [
   MatPaginatorModule,
   MatBadgeModule,
   MatDatepickerModule,
-  MatNativeDateModule,
   MatCardModule,
-  
-  
+  MatNativeDateModule
+];
 
-]
 
 @NgModule({
   imports: [material],

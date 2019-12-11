@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./suppliernav.component.css']
 })
 export class SuppliernavComponent implements OnInit {
-  links = ['Account Settings', 'Payment Information', 'Purchase Orders', 'Supplier Vault', 'Contact Support'];
+  links = ['Account settings', 'Payment Information', 'Purchase Orders', 'Supplier Vault', 'Contact Support'];
 
   constructor() { }
 
