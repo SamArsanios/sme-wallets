@@ -1,6 +1,18 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
+// forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
+import { SuppliernavComponent } from './shared/suppliernav/suppliernav.component';
+import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-dash.component';
+import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
+import { BalanceComponent } from './view/supplier/balance/balance.component';
+import { TransactionalHistoryComponent } from './view/supplier/transactional-history/transactional-history.component';
+import { HomeComponent } from './shared/home/home.component';
+import { SideAccountSettingssComponent } from './view/supplier/side-account-settingss/side-account-settingss.component';
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -24,7 +36,6 @@ import { ApproveOrdersComponent } from "./view/buyer/orders/approve-orders/appro
 import { PendingOrdersComponent } from "./view/buyer/orders/pending-orders/pending-orders.component";
 import { InviteContactsComponent } from "./view/buyer/invite-contacts/invite-contacts.component";
 // forms
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierPendingOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component";
 import { SupplierCurrentOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-current-orders/supplier-current-orders.component";
@@ -45,7 +56,7 @@ import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings
     PaymentnoticeComponent,
     BuyernavComponent,
     PaymentInfoComponent,
-    SupplierDashboardComponent,
+   
     AllOrdersComponent,
     InvoicesComponent,
     ApproveInvoicesComponent,
@@ -58,6 +69,16 @@ import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings
     ApproveOrdersComponent,
     PendingOrdersComponent,
     InviteContactsComponent,
+
+    SideAccountSettingsComponent,
+    SuppliernavComponent,
+    SupplierDashComponent,
+    PaymentInformationComponent,
+    SupplierDashComponent,
+    BalanceComponent,
+    TransactionalHistoryComponent,
+    HomeComponent,
+    SideAccountSettingssComponent,
     SupplierPurchaseOrdersComponent,
     SupplierPendingOrdersComponent,
     SupplierCurrentOrdersComponent,
@@ -76,7 +97,8 @@ import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2PageScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

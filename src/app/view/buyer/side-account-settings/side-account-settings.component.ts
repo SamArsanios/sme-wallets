@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-account-settings.component.css']
 })
 export class SideAccountSettingsComponent implements OnInit {
-
+  // myVar = 'personalInfo'
   constructor() { }
 
   ngOnInit() {
