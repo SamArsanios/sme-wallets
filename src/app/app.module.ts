@@ -52,6 +52,9 @@ import { LoginComponent } from './view/login/login.component';
 import { SponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/sponsor-invoices.component';
 import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component';
 import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponsor-settings.component';
+import { RecaptureComponent } from './view/recapture/recapture.component';
+//  recapture
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -99,7 +102,8 @@ import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponso
     LoginComponent,
     SponsorInvoicesComponent,
     SponsorVaultSponsorshipComponent,
-    SponsorSettingsComponent
+    SponsorSettingsComponent,
+    RecaptureComponent
   ],
 
   imports: [
@@ -109,7 +113,8 @@ import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponso
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    RecaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
