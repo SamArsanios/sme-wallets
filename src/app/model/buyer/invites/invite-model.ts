@@ -4,7 +4,7 @@
  * a model / entity class Invite.
  */
 
- import { User } from '../user/user-model';
+ import { User } from '../../../shared/model/user/user-model';
 
 
 export class Invite {

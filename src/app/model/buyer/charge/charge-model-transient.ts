@@ -4,8 +4,8 @@
  * a model / entity class ChargeTransient.
  */
 
-import { User } from '../user/user-model';
-import { Wallet } from '../wallet/wallet-model';
+import { User } from '../../../shared/model/user/user-model';
+import { Wallet } from '../../../shared/model/wallet/wallet-model';
 import { Charge } from './charge-model';
 
 export class ChargeTransient extends Charge {
