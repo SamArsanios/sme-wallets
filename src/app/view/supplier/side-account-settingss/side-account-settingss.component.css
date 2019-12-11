@@ -4,7 +4,7 @@ mat-form-field{
     
 }
 .container{
-    margin: auto;
+margin-left: 35%;
 }
 
 mat-card{
@@ -15,9 +15,10 @@ mat-card{
 #nav{
     /* margin-top: 10%; */
     position: fixed;
-    margin-right: 0%;
+    margin-right: 5%;
     background-color: cornsilk;
     font-size: 120%;
+    margin-left: 10%;
 
 }
 
