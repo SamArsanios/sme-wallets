@@ -1,17 +1,17 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
-import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import { Ng2PageScrollModule } from "ng2-page-scroll";
 // forms
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SideAccountSettingsComponent } from './view/buyer/side-account-settings/side-account-settings.component';
-import { SuppliernavComponent } from './shared/suppliernav/suppliernav.component';
-import { SupplierDashComponent } from './view/supplier/supplier-dash/supplier-dash.component';
-import { PaymentInformationComponent } from './view/supplier/payment-information/payment-information.component';
-import { BalanceComponent } from './view/supplier/balance/balance.component';
-import { TransactionalHistoryComponent } from './view/supplier/transactional-history/transactional-history.component';
-import { HomeComponent } from './shared/home/home.component';
-import { SideAccountSettingssComponent } from './view/supplier/side-account-settingss/side-account-settingss.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings/side-account-settings.component";
+import { SuppliernavComponent } from "./shared/suppliernav/suppliernav.component";
+import { SupplierDashComponent } from "./view/supplier/supplier-dash/supplier-dash.component";
+import { PaymentInformationComponent } from "./view/supplier/payment-information/payment-information.component";
+import { BalanceComponent } from "./view/supplier/balance/balance.component";
+import { TransactionalHistoryComponent } from "./view/supplier/transactional-history/transactional-history.component";
+import { HomeComponent } from "./shared/home/home.component";
+import { SideAccountSettingssComponent } from "./view/supplier/side-account-settingss/side-account-settingss.component";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -53,7 +53,7 @@ import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-
     PaymentnoticeComponent,
     BuyernavComponent,
     PaymentInfoComponent,
-   
+
     AllOrdersComponent,
     InvoicesComponent,
     ApproveInvoicesComponent,
