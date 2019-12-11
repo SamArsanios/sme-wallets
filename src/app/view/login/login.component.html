@@ -1,1 +1,113 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <!-- I am the first column -->
+        </div>
+        <div class="samu col-sm-8">
+          <h1>Member Sign In</h1>
+          <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <div class="form-group">
+              <label for="username">Username</label>
+
+              <input
+                id="user"
+                name="username"
+                class="form-control"
+                placeholder="Username"
+                [(ngModel)]="loginData.username"
+                #usernameField="ngModel"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                [hidden]="!form.submitted || usernameField.valid"
+              >
+                please enter a valid email address
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Password</label>
+              <input
+                id="pass"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+                [(ngModel)]="loginData.password"
+                #passwordField="ngModel"
+                required
+              />
+              <div
+                class="alert alert-danger"
+                [hidden]="!form.submitted || usernameField.valid"
+              >
+                please enter the correct password
+              </div>
+            </div>
+            <input
+              id="btnSignin"
+              type="submit"
+              value="Sign In"
+              class="btn btn-indigo btn-block"
+            />
+            <div id="forgotpass">
+              <p><a> Forgot Password?</a></p>
+              <p>Dont have an account?<a routerLink="/register">Sign Up</a></p>
+            </div>
+            <!-- Material input -->
+            <!-- <div class="md-form">
+                              <div class="md-form mb-4">
+                                <i class="fas fa-envelope prefix grey-text"></i>
+                                <input
+                                  type="text"
+                                  id="user"
+                                  class="form-control"
+                                  placeholder="Username"
+                                />
+                              </div>
+                              <div class="md-form mb-4">
+                                <i class="fas fa-lock prefix grey-text"></i>
+                                <input
+                                  type="text"
+                                  id="pass"
+                                  class="form-control"
+                                  placeholder="Password"
+                                />
+                              </div>
+                
+                              <label for="form1"></label>
+                              <input
+                                type="submit"
+                                value="Sign In"
+                                class="btn btn-deep-purple btn-block"
+                              />
+                            </div> -->
+
+            <!-- <mat-form-field>
+                              
+                               <i class="fas fa-envelope prefix grey-text"></i> 
+                              <input matInput placeholder="Input" />
+                            </mat-form-field> -->
+
+            <!-- <mat-form-field>
+                                <example-tel-input
+                                  placeholder="Phone number"
+                                  required
+                                ></example-tel-input>
+                                <mat-icon matSuffix>phone</mat-icon>
+                                <mat-hint>Include area code</mat-hint>
+                              </mat-form-field> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
