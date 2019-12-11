@@ -47,6 +47,8 @@ import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-
 
 import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
 import { SponsornavComponent } from './shared/sponsornav/sponsornav.component';
+import { RegisterComponent } from './view/register/register.component';
+import { LoginComponent } from './view/login/login.component';
 import { SponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/sponsor-invoices.component';
 import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component';
 
@@ -92,6 +94,8 @@ import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-s
     SideAccountSettingsComponent,
     SponsordashboardComponent,
     SponsornavComponent,
+    RegisterComponent,
+    LoginComponent,
     SponsorInvoicesComponent,
     SponsorVaultSponsorshipComponent
   ],

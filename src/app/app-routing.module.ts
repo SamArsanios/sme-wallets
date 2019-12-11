@@ -18,6 +18,8 @@ import { SideAccountSettingssComponent } from "./view/supplier/side-account-sett
 //Supplier Components
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
+import { RegisterComponent } from './view/register/register.component';
+import { LoginComponent } from './view/login/login.component';
 
 //Sponsor
 import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
@@ -39,6 +41,10 @@ const routes: Routes = [
  { path: '', component:  HomeComponent},
  { path: 'Purchase Orders', component:  SupplierPurchaseOrdersComponent}, 
  { path: 'sponsordashboard', component:  SponsordashboardComponent}, 
+ { path: 'register', component:  RegisterComponent}, 
+ { path: 'login', component: LoginComponent}, 
+
+ 
   
   {
     path: "supplier-purchase-orders",
