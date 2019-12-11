@@ -1,0 +1,93 @@
+<div class="container">
+  <mat-form-field>
+    <input
+      (keyup)="applyFilter($event.target.value)"
+      matInput
+      placeholder="Search"
+    />
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+      <!-- Inovice Number -->
+      <ng-container matColumnDef="invoiceNo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Invoice No.</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.invoiceNo }}</mat-cell>
+      </ng-container>
+
+      <!-- Account Debtor -->
+      <ng-container matColumnDef="accountDebtor">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Account Debtor</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{
+          element.accountDebtor
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Industry Type -->
+      <ng-container matColumnDef="industryType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Industry Type</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{
+          element.industryType
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Invoice Date Column -->
+      <ng-container matColumnDef="invoiceDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Invoice Date</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.invoiceDate }}</mat-cell>
+      </ng-container>
+
+      <!-- Due Date Column -->
+      <ng-container matColumnDef="invoiceDueDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Due Date</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{
+          element.invoiceDueDate
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Face Value Column -->
+      <ng-container matColumnDef="faceValue">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Face Value</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{ element.faceValue }}</mat-cell>
+      </ng-container>
+
+      <!-- Anticipated Settlement Date Column -->
+      <ng-container matColumnDef="anticipatedSettlementDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Anticipated Settlement Date</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element">{{
+          element.anticipatedSettlementDate
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Supplier Action Column -->
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Action</mat-header-cell
+        >
+        <mat-cell *matCellDef="let element"
+          ><button class="btn-primary btn-sm">View</button></mat-cell
+        >
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>
