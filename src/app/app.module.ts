@@ -55,6 +55,9 @@ import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponso
 import { RecaptureComponent } from './view/recapture/recapture.component';
 //  recapture
 import { RecaptchaModule } from 'ng-recaptcha';
+import { BargraphComponent } from './shared/bargraph/bargraph.component';
+import { HighpchartComponent } from './shared/highpchart/highpchart.component';
+// import { PiechartComponent } from './shared/piechart/piechart.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +106,10 @@ import { RecaptchaModule } from 'ng-recaptcha';
     SponsorInvoicesComponent,
     SponsorVaultSponsorshipComponent,
     SponsorSettingsComponent,
-    RecaptureComponent
+    RecaptureComponent,
+    BargraphComponent,
+    HighpchartComponent
+    // PiechartComponent
   ],
 
   imports: [

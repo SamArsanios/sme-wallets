@@ -1,9 +1,14 @@
 a{
     color: black;
     font-size: 120%;
+    /* padding: 5%; */
+   
  }
  .nav{
     margin-bottom: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0%;
    
  } 
  .spacer{
@@ -11,7 +16,7 @@ a{
 
  } 
 
- .nav{
+ /* .nav{
     
    position: absolute;
    left: 50%;
@@ -19,4 +24,4 @@ a{
    
    
 
-}
+} */

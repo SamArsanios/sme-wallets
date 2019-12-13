@@ -31,11 +31,11 @@ const routes: Routes = [
   //suppliers
  { path: 'Payment Notice', component: PaymentInfoComponent},
  { path: 'buyerdashboard', component: BuyersDashboardComponent},
- { path: 'Orders', component: OrdersComponent},
- { path: 'Invite Contacts', component:  InviteContactsComponent},
- { path: 'Invoices', component: InvoicesComponent},
- { path: 'Vault', component: VaultComponent},
- {path: 'Account Settings', component:SideAccountSettingsComponent},
+ { path: 'buyer/orders', component: OrdersComponent},
+ { path: 'buyer/Invitecontacts', component:  InviteContactsComponent},
+ { path: 'buyer/invoices', component: InvoicesComponent},
+ { path: 'buyer/Vault', component: VaultComponent},
+ {path: 'buyer/accountsettings', component:SideAccountSettingsComponent},
  {path: 'Account settings', component:SideAccountSettingssComponent},
 
  { path: 'supplierdashboard', component:  SupplierDashComponent},
