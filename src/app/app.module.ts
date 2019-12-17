@@ -45,15 +45,16 @@ import { SupplierApprovedInvoicesComponent } from "./view/supplier/supplier-vaul
 import { SupplierFinancedInvoicesComponent } from "./view/supplier/supplier-vault/supplier-financed-invoices/supplier-financed-invoices.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
 
-import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
-import { SponsornavComponent } from './shared/sponsornav/sponsornav.component';
-import { RegisterComponent } from './view/register/register.component';
-import { LoginComponent } from './view/login/login.component';
-import { SponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/sponsor-invoices.component';
-import { SponsorVaultSponsorshipComponent } from './view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component';
-import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponsor-settings.component';
-import { RecaptureComponent } from './view/recapture/recapture.component';
+import { SponsordashboardComponent } from "./shared/sponsordashboard/sponsordashboard.component";
+import { SponsornavComponent } from "./shared/sponsornav/sponsornav.component";
+import { RegisterComponent } from "./view/register/register.component";
+import { LoginComponent } from "./view/login/login.component";
+import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
+import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component";
+import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
+import { RecaptureComponent } from "./view/recapture/recapture.component";
 //  recapture
+
 import { RecaptchaModule } from 'ng-recaptcha';
 import { BargraphComponent } from './shared/bargraph/bargraph.component';
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
