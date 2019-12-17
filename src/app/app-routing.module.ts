@@ -30,41 +30,40 @@ import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponso
 const routes: Routes = [
   //suppliers
  { path: 'Payment Notice', component: PaymentInfoComponent},
- { path: 'buyerdashboard', component: BuyersDashboardComponent},
- { path: 'Orders', component: OrdersComponent},
- { path: 'Invite Contacts', component:  InviteContactsComponent},
- { path: 'Invoices', component: InvoicesComponent},
- { path: 'Vault', component: VaultComponent},
- {path: 'Account Settings', component:SideAccountSettingsComponent},
- {path: 'Account settings', component:SideAccountSettingssComponent},
+ { path: 'buyer/buyerdashboard', component: BuyersDashboardComponent},
+ { path: 'buyer/orders', component: OrdersComponent},
+ { path: 'buyer/Invitecontacts', component:  InviteContactsComponent},
+ { path: 'buyer/invoices', component: InvoicesComponent},
+ { path: 'buyer/Vault', component: VaultComponent},
+ {path: 'buyer/accountsettings', component:SideAccountSettingsComponent},
+ {path: 'supplier/accountsettings', component:SideAccountSettingssComponent},
 
- { path: 'supplierdashboard', component:  SupplierDashComponent},
- { path: "Supplier Vault", component: SupplierVaultComponent },
- { path: 'Payment Information', component:  PaymentInformationComponent}, 
+ { path: 'supplier/supplierdashboard', component:  SupplierDashComponent},
+ { path: "supplier/vault", component: SupplierVaultComponent },
+ { path: 'supplier/payment-information', component:  PaymentInformationComponent}, 
  { path: '', component:  HomeComponent},
- { path: 'Purchase Orders', component:  SupplierPurchaseOrdersComponent}, 
- { path: 'sponsordashboard', component:  SponsordashboardComponent}, 
+ { path: 'sponsor/sponsordashboard', component:  SponsordashboardComponent}, 
  { path: 'register', component:  RegisterComponent}, 
  { path: 'login', component: LoginComponent}, 
 
   
   {
-    path: "supplier-purchase-orders",
+    path: "supplier/orders",
     component: SupplierPurchaseOrdersComponent
   },
   {
-    path: "supplier-vault",
+    path: "supplier/vault",
     component: SupplierVaultComponent
   },
   {
-    path: "Sponsor Invoices",
+    path: "sponsor/invoices",
     component: SponsorInvoicesComponent
   },
   {
-    path: "Sponsor Vault",
+    path: "sponsor/vault",
     component: SponsorVaultSponsorshipComponent
   },
-  {path: "Sponsor Account settings",
+  {path: "sponsor/account-settings",
   component: SponsorSettingsComponent
 },
   

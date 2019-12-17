@@ -1,7 +1,9 @@
-<nav mat-tab-nav-bar class="nav">
-    <a mat-tab-link *ngFor="let link of links" [routerLink]="['/'+link]" routerLinkActive #rla="routerLinkActive"
-        [active]="rla.isActive">
-        <b>{{link}}</b>
-    </a>
+<nav class="nav">
+
+    <a routerLink="/supplier/accountsettings">Account Settings</a>
+    <a routerLink="/supplier/payment-information">Payment Information</a>
+    <a routerLink="/supplier/orders">Orders</a>
+    <a routerLink="/supplier/vault">Vault</a>  
+    <a>Support</a>   
 </nav>
 <div class="spacer"></div>
