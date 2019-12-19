@@ -39,8 +39,8 @@ export class PhoneNumberInputComponent
   public countries: Array<any> = countries;
   public examples = <any>examples;
   @Input() disabled = false;
-  @Input() defaultCountry = this.countries[0].iso2;
-  @Input() placeholderText = 'Exp';
+  @Input() defaultCountry = this.countries[226].iso2;
+  @Input() placeholderText = 'Enter number here';
   public selectedCountry;
   public phoneNumber = '';
   public selectedCountryIndex = 0;
