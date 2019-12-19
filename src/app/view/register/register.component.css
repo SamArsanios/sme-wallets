@@ -16,12 +16,15 @@
 }
 .recapture-image{
     margin-top: 7%;
-    border: 2px solid #1b1899;
+    border: 2px solid grey;
     /* min-height: 50px; */
     padding-left: 22%;
-    padding-bottom: 5%;
-    margin-bottom: 12%;
+    /* padding-bottom: 5%; */
+    margin-bottom: 4%;
 
+}
+.register{
+    padding-bottom: 5%;
 }
 .register-info{
     margin-top: 7%;

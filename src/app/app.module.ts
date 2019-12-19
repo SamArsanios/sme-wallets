@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { NgxPhoneNumberInputModule } from  'projects/phone-input/src/public_api';
 
 import { Ng2PageScrollModule } from "ng2-page-scroll";
 // forms
@@ -58,6 +59,7 @@ import { RecaptureComponent } from "./view/recapture/recapture.component";
 import { RecaptchaModule } from 'ng-recaptcha';
 import { BargraphComponent } from './shared/bargraph/bargraph.component';
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
+import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
 // import { PiechartComponent } from './shared/piechart/piechart.component';
 
 @NgModule({
@@ -109,7 +111,8 @@ import { HighpchartComponent } from './shared/highpchart/highpchart.component';
     SponsorSettingsComponent,
     RecaptureComponent,
     BargraphComponent,
-    HighpchartComponent
+    HighpchartComponent,
+    PhonenumberComponent
     // PiechartComponent
   ],
 
@@ -121,7 +124,8 @@ import { HighpchartComponent } from './shared/highpchart/highpchart.component';
     FormsModule,
     ReactiveFormsModule,
     Ng2PageScrollModule,
-    RecaptchaModule
+    RecaptchaModule,
+    NgxPhoneNumberInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,56 +1,74 @@
 <div class="register">
-        <img class="contents" src='../../assets/bg-4.jpg' />
-        <div class="register-info">
-            <div class="register-inner">
-                <p class="title">ACCOUNT DETAILS</p>
-                <hr class="detail">
-                <p class="subtitle">Tell us something more about you</p>
-                <div>
-                    <p class="register-title">Register as:</p><br>
-                    <mat-radio-group>
-                        <mat-radio-button color="primary" size="small">supplier</mat-radio-button>
-                        <mat-radio-button color="primary">buyer</mat-radio-button>
-                        <mat-radio-button color="primary">sponsor</mat-radio-button>
-                    </mat-radio-group>
-                </div>
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label class="label">Choose Wallet</mat-label>
-                        <mat-select disableOptionCentering>
-                            <mat-option *ngFor="let wallet of wallets" value={{wallets}}>{{wallet}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label class="label">Industry Type</mat-label>
-                        <mat-select class="labelinfo">
-    
-                            <mat-option *ngFor="let industry of industries" value={{industries}}>
-                                {{industry}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field appearance="outline">
-                        <mat-label class="label">enter phone number</mat-label>
-                        <mat-select disableOptionCentering>
-                            <!-- <mat-option *ngFor="let wallet of wallets" value={{wallets}}>{{wallet}} -->
-                            <!-- </mat-option> -->
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div>
-    
-                    <!-- <app-phone></app-phone> -->
-    
-                </div>
-                <div class="recapture-image">
-                    <app-recapture></app-recapture>
-                </div>
-    
+    <img class="contents" src='../../assets/bg-4.jpg' />
+    <div class="register-info">
+        <div class="register-inner">
+            <p class="title">ACCOUNT DETAILS</p>
+            <hr class="detail">
+            <p class="subtitle">Tell us something more about you</p>
+            <div>
+                <p class="register-title">Register as:</p><br>
+                <mat-radio-group>
+                    <mat-radio-button color="primary" size="small">supplier</mat-radio-button>
+                    <mat-radio-button color="primary">buyer</mat-radio-button>
+                    <mat-radio-button color="primary">sponsor</mat-radio-button>
+                </mat-radio-group>
             </div>
-    
+
+            <div>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="First Name">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Last Name">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Password">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Re-type Password">
+                </mat-form-field>
+
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label class="label">Choose Wallet</mat-label>
+                    <mat-select disableOptionCentering>
+                        <mat-option *ngFor="let wallet of wallets" value={{wallets}}>{{wallet}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label class="label">Industry Type</mat-label>
+                    <mat-select class="labelinfo">
+
+                        <mat-option *ngFor="let industry of industries" value={{industries}}>
+                            {{industry}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div>
+
+                <app-phonenumber></app-phonenumber>
+
+            </div>
+            <div class="recapture-image">
+                <app-recapture></app-recapture>
+            </div>
+            <input
+              id="btnregister"
+              class = "register"
+              type="submit"
+              value="Register"
+              class="btn btn-primary btn-block btn-lg"
+            />
+        </div>
