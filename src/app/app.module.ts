@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { NgxPhoneNumberInputModule } from  'projects/phone-input/src/public_api';
 
 import { Ng2PageScrollModule } from "ng2-page-scroll";
 // forms
@@ -123,7 +124,8 @@ import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.co
     FormsModule,
     ReactiveFormsModule,
     Ng2PageScrollModule,
-    RecaptchaModule
+    RecaptchaModule,
+    NgxPhoneNumberInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
