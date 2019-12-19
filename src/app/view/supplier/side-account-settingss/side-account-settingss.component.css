@@ -1,0 +1,39 @@
+mat-form-field{
+    font-size: 14px;
+    width: 90%;
+    
+}
+.container{
+margin-left: 35%;
+}
+
+mat-card{
+    margin: 40px;
+    border: 2px black;
+    background-color:rgb(240, 233, 233);
+}
+#nav{
+    /* margin-top: 10%; */
+    position: fixed;
+    margin-right: 5%;
+    background-color: cornsilk;
+    font-size: 120%;
+    margin-left: 10%;
+
+}
+
+#personalInfo{
+
+}
+/* app-header {
+    position: fixed;
+    width: 100%;
+    margin-bottom: 10%;
+}
+app-buyernav {
+    position: fixed;
+    width: 100%;
+    margin-bottom: 0%;
+} */
+/* <app-header></app-header>
+<app-buyernav></app-buyernav> */

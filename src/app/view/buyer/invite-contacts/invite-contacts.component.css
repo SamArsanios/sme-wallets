@@ -1,0 +1,32 @@
+/* email tab */
+.mat-card {
+  width: 600px;
+  margin: auto;
+}
+
+.mat-card .full-width {
+  width: 100%;
+}
+
+/* tabs */
+.mat-tab-group {
+  /* background-color: rebeccapurple; */
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mat-tab-label {
+  font-size: 18px;
+}
+
+/* supplier and contacts tab */
+table {
+  width: 100%;
+}
+
+mat-header-cell {
+  background-color: rebeccapurple;
+  color: beige;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
