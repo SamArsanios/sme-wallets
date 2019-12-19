@@ -58,6 +58,7 @@ import { RecaptureComponent } from "./view/recapture/recapture.component";
 import { RecaptchaModule } from 'ng-recaptcha';
 import { BargraphComponent } from './shared/bargraph/bargraph.component';
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
+import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
 // import { PiechartComponent } from './shared/piechart/piechart.component';
 
 @NgModule({
@@ -109,7 +110,8 @@ import { HighpchartComponent } from './shared/highpchart/highpchart.component';
     SponsorSettingsComponent,
     RecaptureComponent,
     BargraphComponent,
-    HighpchartComponent
+    HighpchartComponent,
+    PhonenumberComponent
     // PiechartComponent
   ],
 
