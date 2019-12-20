@@ -42,6 +42,19 @@ a{
    transform: scale(2);
 }
 
+h3{
+   font-family: 'Bowlby One SC', cursive;
+}
+p{
+   font-family: 'Bree Serif', serif;
+}
+.card-header{
+   min-height: 20px;
+}
+.card{
+   padding-bottom: 5%;
+}
+
 
 
 
