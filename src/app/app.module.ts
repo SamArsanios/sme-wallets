@@ -13,7 +13,6 @@ import { BalanceComponent } from "./view/supplier/balance/balance.component";
 import { TransactionalHistoryComponent } from "./view/supplier/transactional-history/transactional-history.component";
 import { HomeComponent } from "./shared/home/home.component";
 import { SideAccountSettingssComponent } from "./view/supplier/side-account-settingss/side-account-settingss.component";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -55,11 +54,12 @@ import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-s
 import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
 import { RecaptureComponent } from "./view/recapture/recapture.component";
 //  recapture
-
 import { RecaptchaModule } from 'ng-recaptcha';
 import { BargraphComponent } from './shared/bargraph/bargraph.component';
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
 import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
+import { ChartsComponent } from './shared/charts/charts.component';
+import { ChartsModule } from 'ng2-charts/public_api';
 // import { PiechartComponent } from './shared/piechart/piechart.component';
 
 @NgModule({
@@ -112,7 +112,8 @@ import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.co
     RecaptureComponent,
     BargraphComponent,
     HighpchartComponent,
-    PhonenumberComponent
+    PhonenumberComponent,
+    ChartsComponent
     // PiechartComponent
   ],
 
@@ -125,7 +126,9 @@ import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.co
     ReactiveFormsModule,
     Ng2PageScrollModule,
     RecaptchaModule,
-    NgxPhoneNumberInputModule
+    NgxPhoneNumberInputModule,
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
