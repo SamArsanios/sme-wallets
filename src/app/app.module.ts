@@ -56,11 +56,12 @@ import { RecaptureComponent } from "./view/recapture/recapture.component";
 //  recapture
 import { RecaptchaModule } from 'ng-recaptcha';
 import { BargraphComponent } from './shared/bargraph/bargraph.component';
+import { MyBarChartComponent } from './shared/my-bar-chart/my-bar-chart.component';
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
 import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
-import { ChartsComponent } from './shared/charts/charts.component';
-import { ChartsModule } from 'ng2-charts/public_api';
-// import { PiechartComponent } from './shared/piechart/piechart.component';
+import { ChartsModule } from 'ng2-charts';
+import { MyDoughnutChartComponent } from './shared/my-doughnut-chart/my-doughnut-chart.component';
+import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,9 @@ import { ChartsModule } from 'ng2-charts/public_api';
     BargraphComponent,
     HighpchartComponent,
     PhonenumberComponent,
-    ChartsComponent
+    MyBarChartComponent,
+    MyDoughnutChartComponent,
+    MyPieChartComponent,
     // PiechartComponent
   ],
 
@@ -128,7 +131,9 @@ import { ChartsModule } from 'ng2-charts/public_api';
     RecaptchaModule,
     NgxPhoneNumberInputModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
