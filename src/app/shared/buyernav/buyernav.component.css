@@ -1,5 +1,5 @@
 a{
-    color: black;
+    color: white;
     font-size: 120%;
     /* padding: 5%; */
    
@@ -8,7 +8,10 @@ a{
     /* margin-bottom: 10%; */
     display: flex;
     justify-content: space-evenly;
-    margin-top: 0%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: grey;
+    color: white;
    
  } 
  .spacer{

@@ -22,3 +22,8 @@ mat-icon{
    color: white;
    margin-right: 10%;
 }
+.navbar-brand{
+font-family: 'Eczar', serif;
+font-weight: 200%;
+color: rgb(145, 28, 28);
+}
