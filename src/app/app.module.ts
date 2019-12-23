@@ -35,6 +35,8 @@ import { ApproveOrdersComponent } from "./view/buyer/orders/approve-orders/appro
 import { PendingOrdersComponent } from "./view/buyer/orders/pending-orders/pending-orders.component";
 import { InviteContactsComponent } from "./view/buyer/invite-contacts/invite-contacts.component";
 // forms
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierPendingOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component";
 import { SupplierCurrentOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-current-orders/supplier-current-orders.component";
@@ -55,7 +57,6 @@ import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponso
 import { RecaptureComponent } from "./view/recapture/recapture.component";
 //  recapture
 import { RecaptchaModule } from 'ng-recaptcha';
-import { BargraphComponent } from './shared/bargraph/bargraph.component';
 import { MyBarChartComponent } from './shared/my-bar-chart/my-bar-chart.component';
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
 import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
@@ -111,7 +112,6 @@ import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.componen
     SponsorVaultSponsorshipComponent,
     SponsorSettingsComponent,
     RecaptureComponent,
-    BargraphComponent,
     HighpchartComponent,
     PhonenumberComponent,
     MyBarChartComponent,
@@ -132,6 +132,7 @@ import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.componen
     NgxPhoneNumberInputModule,
     BrowserAnimationsModule,
     ChartsModule,
+    MDBBootstrapModule.forRoot()
     
     
   ],
