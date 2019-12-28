@@ -1,8 +1,8 @@
-.spacer{
-    margin-top: 5%;
+.container-fluid{
+    padding-top: 230px;
 }
 mat-tab-group{
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     /* background-color: blueviolet; */
     /* position: absolute;

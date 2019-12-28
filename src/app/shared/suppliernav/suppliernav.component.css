@@ -89,5 +89,15 @@ color: white;
 a{
    padding: 20px;
    margin: 20px;
-   /* color: white; */
+   color: white;
+   font-weight: 500;
+   background-color: darkblue;
+   margin-left: 20px;
+}
+a:hover{
+   background-color: darkcyan;
+
+}
+.nav-link{
+   background-color: blue;
 }
