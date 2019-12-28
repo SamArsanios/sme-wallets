@@ -66,6 +66,10 @@ const routes: Routes = [
   {path: "sponsor/account-settings",
   component: SponsorSettingsComponent
 },
+{path: "buyer/accountsettings/#personalInfo",
+component: SponsorSettingsComponent
+},
+
   
 ];
 

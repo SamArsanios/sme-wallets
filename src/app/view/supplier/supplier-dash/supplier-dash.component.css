@@ -11,6 +11,11 @@ a{
 
  } 
 
+ .container-fluid{
+   /* margin-top: 40%; */
+
+ }
+
  .nav{
     
    position: absolute;

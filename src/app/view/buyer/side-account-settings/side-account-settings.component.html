@@ -1,38 +1,306 @@
-<div id ="header">
+<!-- <app-header></app-header>
+<app-buyernav></app-buyernav> -->
+<!-- <div class="heder"> -->
+<ul class="nav" snScrollSpy id="foo">
+    <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link" routerLink="/buyer/accountsettings/#personalInfo" href="#personalInfo">personalInfo</a></li>
+    <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link" href="#registered-address">registered-address</a></li>
+    <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link" href="#corresponsing-address">Correspodence Address</a></li>
+    <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link" href="#company-information">company-information</a></li>
+  </ul>
+  
+  <sn-scroll-spy-section id="personalInfo" for="foo">
+      <mat-card>
+       
+          <mat-card-title  id = "personalInfo">Personal Info</mat-card-title>
+          <mat-card-content>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput />
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Emails</mat-label>
+                <input matInput />
+              </mat-form-field>
+              <br />
+              <mat-radio-group label="Wallet">
+                <mat-radio-button value="Agric">Agric</mat-radio-button>
+                <mat-radio-button value="SMe">SME</mat-radio-button>
+                <mat-radio-button value="OGas">OGas</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  </sn-scroll-spy-section>
+  <sn-scroll-spy-section id="registered-address" for="foo">
+    <mat-card id = "registered-address">
+       
+        <mat-card-title>Registered Address</mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Contact</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>Country</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>Zip Code</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+  </sn-scroll-spy-section>
+  <sn-scroll-spy-section id="corresponsing-address" for="foo">
+    <mat-card id = "corresponsing-address">
+        <a href="#Correspodence Address">Correspodence Address</a>
+        <mat-card-title>Correspodence Address</mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Contact</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>Country</mat-label>
+              <input matInput />
+            </mat-form-field>
+            <br />
+            <mat-form-field appearance="outline">
+              <mat-label>Zip Code</mat-label>
+              <input matInput />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+  </sn-scroll-spy-section>
+  <sn-scroll-spy-section id="company-information" for="foo">
+    <section class="section">company-information</section>
+  </sn-scroll-spy-section>
+<!-- </div>   -->
+  
+<!-- <div class="container-fluid">
+  <div class="row" >
+<div id = "heder" class="col-md-12">
 <app-header></app-header>
 <app-buyernav></app-buyernav>
-<app-suppliernav *ngIf="isBuyer"></app-suppliernav>
+</div>
 </div>
 
+
+  <div class="row" class = "mein">
+     
+    <div class="col-md-4">
+      <ul class="nav" snScrollSpy id="foo" class="d-block">
+        <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link" href="#personalInfo">Personal Info</a></li>
+        <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link" href="#registered-address">registered-address</a></li>
+        <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link"
+            href="#corresponsing-address">corresponsing-address</a></li>
+        <li class="nav-item"><a snScrollSpyItem for="foo" class="nav-link"
+            href="#company-information">company-information</a></li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+   
+    <sn-scroll-spy-section id="personalInfo" for="foo">
+        <mat-card>
+       
+            <mat-card-title  id = "personalInfo">Personal Info</mat-card-title>
+            <mat-card-content>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline">
+                  <mat-label>Emails</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-radio-group label="Wallet">
+                  <mat-radio-button value="Agric">Agric</mat-radio-button>
+                  <mat-radio-button value="SMe">SME</mat-radio-button>
+                  <mat-radio-button value="OGas">OGas</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </mat-card-content>
+          </mat-card>
+    </sn-scroll-spy-section>
+    <sn-scroll-spy-section id="registered-address" for="foo">
+        <mat-card id = "registered-address">
+       
+            <mat-card-title>Registered Address</mat-card-title>
+            <mat-card-content>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contact</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>City</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip Code</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+          </mat-card>
+    
+    </sn-scroll-spy-section>
+    <sn-scroll-spy-section id="corresponsing-address" for="foo">
+        <mat-card id = "corresponsing-address">
+            <a href="#Correspodence Address">Correspodence Address</a>
+            <mat-card-title>Correspodence Address</mat-card-title>
+            <mat-card-content>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contact</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>City</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>State</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Country</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Zip Code</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <mat-card id = "company-information">
+            <mat-card-title>
+              Company Information
+            </mat-card-title>
+    
+            <mat-card-content>
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>Company Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Company Representative Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Company Email</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>CRB/BUNS Number</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <mat-form-field appearance="outline">
+                  <mat-label>Company Address</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <br />
+                <button mat-raised-button color="primary">Update</button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+    </sn-scroll-spy-section>
+    <sn-scroll-spy-section id="company-information" for="foo">
+      <section class="section">Section 4</section>
+    </sn-scroll-spy-section>
+  </div>
+</div>
+</div> -->
+
+
+
+
+
+<!-- <div class="free"></div>
 <div id = "nav">
-  <nav class="nav flex-column">
-    <!-- <a class="nav-link" >Personal Info</a>
+
+  <nav class="nav flex-column"> -->
+<!-- <a class="nav-link" >Personal Info</a>
     <a class="nav-link" >Registered Address</a>
     <a class="nav-link" >Correspodence Address</a
     > -->
-    <a class="nav-link" pageScroll href="#header">Back to Header</a>
+<!-- <a class="nav-link" pageScroll href="#header">Back to Header</a> -->
 
-    <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
-    <a class="nav-link" pageScroll href="#registered-address">registered-address</a>
+<!-- <a class="nav-link" pageScroll [pageScrollOffset]="400" href="#personalInfo">Personal Info</a>
+    <a class="nav-link" pageScroll [pageScrollOffset]="400" href="#registered-address">registered-address</a>
     <a class="nav-link" pageScroll href="#corresponsing-address">corresponsing-address</a>
     <a class="nav-link" pageScroll href="#company-information">company-information</a>
     <a class="nav-link" pageScroll href="#update-password">update-password</a>
     <a class="nav-link" pageScroll href="#security-questions">security-questions</a>
     <a class="nav-link" pageScroll href="#payment-details">payment details</a>
     <a class="nav-link" pageScroll href="#quality">quality</a>
-    <a class="nav-link" pageScroll href="#bank-details">bank details</a>
-  </nav>
+    <a class="nav-link" pageScroll href="#bank-details">bank details</a> -->
+<!-- </nav>
 </div>
 
 <div class="container">
-  <div class="row">
-    <!-- <div class="col-md-3" id = "nav">
+  <div class="row"> -->
+<!-- <div class="col-md-3" id = "nav">
       <nav class="nav flex-column">
         <!-- <a class="nav-link" >Personal Info</a>
         <a class="nav-link" >Registered Address</a>
         <a class="nav-link" >Correspodence Address</a
         > -->
-        <!-- <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
+<!-- <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
         <a class="nav-link" pageScroll href="#registered-address">registered-address</a>
         <a class="nav-link" pageScroll href="#corresponsing-address">corresponsing-address</a>
         <a class="nav-link" pageScroll href="#company-information">company-information</a>
@@ -42,8 +310,8 @@
         <a class="nav-link" pageScroll href="#quality">quality</a>
         <a class="nav-link" pageScroll href="#bank-details">bank details</a>
       </nav>
-    </div> --> 
-    <div class="col-md-9">
+    </div> -->
+<!-- <div class="col-md-9">
       <mat-card>
        
         <mat-card-title  id = "personalInfo">Personal Info</mat-card-title>
@@ -323,4 +591,4 @@
     </div>
   </div>
 </div>
-
+ -->

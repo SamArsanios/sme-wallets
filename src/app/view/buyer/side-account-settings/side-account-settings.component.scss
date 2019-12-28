@@ -1,0 +1,102 @@
+/* mat-form-field {
+  font-size: 14px;
+  width: 90%;
+}
+.container {
+  margin-left: 35%;
+}
+
+// mat-card {
+//   margin: 40px;
+//   border: 2px black;
+//   background-color: rgb(240, 233, 233);
+// }
+#nav {
+  /* margin-top: 10%; */
+  /* position: fixed;
+  margin-right: 5%;
+  background-color: cornsilk;
+  font-size: 120%;
+  margin-left: 10%;
+}
+app-buyernav{
+  position: fixed;
+}
+app-header{
+  position: fixed;
+}
+
+#personalInfo {
+}
+.free{
+  position:fixed;
+/* } */ 
+
+/* app-header {
+    position: fixed;
+    width: 100%;
+    margin-bottom: 10%;
+}
+app-buyernav {
+    position: fixed;
+    width: 100%;
+    margin-bottom: 0%;
+} */
+/* <app-header></app-header>
+<app-buyernav></app-buyernav> */
+
+
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  padding-top: 40px;
+}
+
+.section {
+  align-items: center;
+  color: black;
+  display: flex;
+  font-size: 4rem;
+  justify-content: center;
+  min-height: 101vh;
+}
+
+#section1 .section {
+  background-color: #fef65b;
+}
+
+#section2 .section {
+  background-color: #dfe134;
+}
+
+#section3 .section {
+  background-color: #3fac54;
+}
+
+#section4 .section {
+  background-color: #599346;
+}
+
+.nav {
+  background-color: #fff;
+  display: flex;
+  left: 0;
+  list-style: none;
+  margin-top: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9;
+
+  .nav-item > a {
+    display: inline-block;
+    padding: 1rem;
+    text-decoration: none;
+  }
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}
