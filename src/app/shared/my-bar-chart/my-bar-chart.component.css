@@ -1,4 +1,8 @@
 .bargraph{
-    margin-top: 10%;
+    margin-top: 20%;
     text-align: center;
+    min-height: 200%;
+}
+h3{
+    margin-bottom: 20%;
 }

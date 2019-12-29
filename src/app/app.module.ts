@@ -61,8 +61,11 @@ import { MyBarChartComponent } from './shared/my-bar-chart/my-bar-chart.componen
 import { HighpchartComponent } from './shared/highpchart/highpchart.component';
 import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
 import { ChartsModule } from 'ng2-charts';
+// import {duScroll} from '../../node_modules/angular-scroll'
 import { MyDoughnutChartComponent } from './shared/my-doughnut-chart/my-doughnut-chart.component';
 import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.component';
+import { ScrollSpyModule } from './shared/scroll-spy';
+import { InViewportModule } from '@thisissoon/angular-inviewport';
 
 @NgModule({
   declarations: [
@@ -122,6 +125,7 @@ import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.componen
 
   imports: [
     BrowserModule,
+    // duScroll,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -132,7 +136,12 @@ import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.componen
     NgxPhoneNumberInputModule,
     BrowserAnimationsModule,
     ChartsModule,
-    MDBBootstrapModule.forRoot()
+    InViewportModule, ScrollSpyModule.forRoot(),
+    // duScroll.scrollspy
+  
+
+    MDBBootstrapModule.forRoot(),
+    
     
     
   ],

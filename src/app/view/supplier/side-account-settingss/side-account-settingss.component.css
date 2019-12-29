@@ -1,39 +1,41 @@
-mat-form-field{
-    font-size: 14px;
-    width: 90%;
-    
-}
-.container{
-margin-left: 35%;
-}
 
-mat-card{
-    margin: 40px;
-    border: 2px black;
-    background-color:rgb(240, 233, 233);
+app-suppliernav{
+    padding-top: 40%;
 }
-#nav{
-    /* margin-top: 10%; */
+.container-fluid{
+    padding-top: 230px;
+}
+.navs{
     position: fixed;
-    margin-right: 5%;
-    background-color: cornsilk;
+    display: block;
+    min-height: 100%;
+    min-width: 50%;
+    background: rgb(197, 190, 190);
+    text-transform: uppercase;
+    font-weight: 500;   
+}
+.navs a:hover{
+    background-color: blue;
+    color:white;
+}
+mat-label{
     font-size: 120%;
-    margin-left: 10%;
-
+    font-weight: 500;
 }
-
-#personalInfo{
-
+a{ 
+    margin-bottom: 3%; 
+margin-top: 3%;
+/* margin-left: 15%; */
 }
-/* app-header {
-    position: fixed;
-    width: 100%;
-    margin-bottom: 10%;
+mat-form-field{
+    min-width: 100%;
 }
-app-buyernav {
-    position: fixed;
-    width: 100%;
-    margin-bottom: 0%;
-} */
-/* <app-header></app-header>
-<app-buyernav></app-buyernav> */
+mat-card-title{
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+mat-radio-group{
+    display: flex;
+    justify-content: space-evenly;
+} 
