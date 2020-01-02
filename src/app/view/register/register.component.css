@@ -13,6 +13,7 @@
 }
 .register img{
     width: 50%;
+    
 }
 .recapture-image{
     margin-top: 7%;
@@ -23,8 +24,8 @@
     margin-bottom: 4%;
 
 }
-.register{
-    padding-bottom: 5%;
+.register-inner{
+    margin-bottom: 5%;
 }
 .register-info{
     margin-top: 7%;
