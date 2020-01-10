@@ -10,8 +10,8 @@ export class UserTransient extends User {
 
     emailVerifiedAtStr: String;
 
-    constructor($id: number, $email: string, $emailVerifiedAt: String, $emailVerifiedAtStr: String, $password: String, $phoneNumber: String, $refUserId: number, $name: String) {
-        super($id, $email, $emailVerifiedAt, $password, $phoneNumber, $refUserId, $name);
+    constructor($id: number, $email: string,$emailVerifiedAtStr: string, $password: string, $phoneNumber: string, $refUserId: number, $name: string, $userType:string, $emailVerifiedAt: string) {
+        super($id, $email, $password, $phoneNumber, $refUserId, $name,$userType, $emailVerifiedAt);
         this.emailVerifiedAtStr = $emailVerifiedAtStr;
     }
 

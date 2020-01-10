@@ -2,9 +2,12 @@ a{
     text-decoration: none;
     color: white;
 }
-button{
+/* button{
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5%;
 
+} */
+button{
+    margin-bottom: 20%;
 }

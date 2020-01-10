@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/utils/http/http-service';
+import { User } from '../model/user/user-model';
+import { ObjectsUtil } from 'src/app/utils/objects/objects';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +13,12 @@ import { Component, OnInit } from '@angular/core';
 // };
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>) { }
 
   ngOnInit() {
+    this.httpService.getRequest('/users/findAll').subscribe(e =>{
+      console.log(`the result ${this.objectUtil.dataObjectToArray(e)} `)
+    });
   }
 
 }

@@ -1,74 +1,109 @@
-<div class="register">
+<form #form="ngForm" class="register" (ngSubmit)=onSubmit(form)>
     <img class="contents" src='../../assets/bg-4.jpg' />
-    <div class="register-info">register-inner
+    <div class="register-info">
         <div class="register-inner">
             <p class="title">ACCOUNT DETAILS</p>
             <hr class="detail">
             <p class="subtitle">Tell us something more about you</p>
             <div>
                 <p class="register-title">Register as:</p><br>
-                <mat-radio-group>
-                    <mat-radio-button color="primary" size="small">supplier</mat-radio-button>
-                    <mat-radio-button color="primary">buyer</mat-radio-button>
-                    <mat-radio-button color="primary">sponsor</mat-radio-button>
+                <mat-radio-group name="usertype" ngModel>
+                    <mat-radio-button color="primary" size="small" value="supplier">supplier</mat-radio-button>
+                    <mat-radio-button color="primary" value="buyer">buyer</mat-radio-button>
+                    <mat-radio-button color="primary" value="sponsor">sponsor</mat-radio-button>
                 </mat-radio-group>
             </div>
 
             <div>
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="First Name">
+                    <input matInput placeholder="First Name" name="firstname" [(ngModel)]="firstname" required
+                        #fname="ngModel" [class.ld-error]="form.submitted && fname.invalid">
+
                 </mat-form-field>
+                <div [hidden]="!form.submitted || fname.valid" class="alert alert-danger">
+                    Please Enter firstname
+                </div>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Last Name">
+                    <input matInput placeholder="Last Name" name="lastname" [(ngModel)]="lastname" required
+                        #lname="ngModel" [class.ld-error]="form.submitted && lname.invalid">
                 </mat-form-field>
+                <div [hidden]="!form.submitted || lname.valid" class="alert alert-danger">
+                    Please Enter lastname
+                </div>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Password">
+                    <input matInput placeholder="email" name="email" [(ngModel)]=email required #emal="ngModel"
+                        [class.ld-error]="form.submitted && emal.invalid">
                 </mat-form-field>
+                <div [hidden]="!form.submitted || emal.valid" class="alert alert-danger">
+                    Please Enter a valid email
+                </div>
 
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Re-type Password">
+                    <input matInput placeholder="Password" name="password" [(ngModel)]=password required #pass="ngModel"
+                        [class.ld-error]="form.submitted && pass.invalid">
                 </mat-form-field>
+                <div [hidden]="!form.submitted || pass.valid" class="alert alert-danger">
+                    Please Enter a valid email
+                </div>
 
-            </div>
-
-            <div>
-                <mat-form-field>
-                    <mat-label class="label">Choose Wallet</mat-label>
-                    <mat-select disableOptionCentering>
-                        <mat-option *ngFor="let wallet of wallets" value={{wallets}}>{{wallet}}
-                        </mat-option>
-                    </mat-select>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Re-type Password" name="passwordretype" [(ngModel)]=passwordretype
+                        required #repass="ngModel" [class.ld-error]="form.submitted && repass.invalid">
                 </mat-form-field>
-            </div>
+                <div [hidden]="!form.submitted || repass.valid" class="alert alert-danger">
+                    Please re-type password
+                </div>
+                <!-- <div [hidden]="notsame" class="alert alert-danger" ngModel>
+                    Please re-type password
+                </div> -->
 
-            <div>
                 <mat-form-field>
                     <mat-label class="label">Industry Type</mat-label>
-                    <mat-select class="labelinfo">
+                    <mat-select class="labelinfo" name="industrytype" [(ngModel)]=industrytype required #ind="ngModel"
+                        [class.ld-error]="form.submitted && ind.invalid">
 
-                        <mat-option *ngFor="let industry of industries" value={{industries}}>
+                        <mat-option *ngFor="let industry of industries" value={{industry}}>
                             {{industry}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+                <div [hidden]="!form.submitted || ind.valid" class="alert alert-danger">
+                    Please choose atleast one industry type
+                </div>
+
+                <mat-form-field>
+                    <mat-label class="label">Wallets</mat-label>
+                    <mat-select class="labelinfo" name="wallet" [(ngModel)]=wallet required #wal="ngModel"
+                        [class.ld-error]="form.submitted && wal.invalid">
+
+                        <mat-option *ngFor="let wallet of wallets" value={{wallets}}>
+                            {{wallet}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div [hidden]="!form.submitted || wal.valid" class="alert alert-danger">
+                    Please choose atleast one wallet type
+                </div>
             </div>
 
-
             <div>
+                <ngx-phone-number-input name="number" ngModel>
+                </ngx-phone-number-input>
 
-                <app-phonenumber></app-phonenumber>
 
             </div>
             <div class="recapture-image">
                 <app-recapture></app-recapture>
             </div>
-            <input
-              id="btnregister"
-              class = "registers"
-              type="submit"
-              value="Register"
-              class="btn btn-primary btn-block btn-lg"
-            />
+
+            <input id="btnregister" class="registers" type="submit" value="Register"
+                class="btn btn-primary btn-block btn-lg" />
         </div>
+    </div>
+
+
+</form>
+
+{{form.value | json}}
