@@ -55,8 +55,14 @@
                 <div [hidden]="!form.submitted || repass.valid" class="alert alert-danger">
                     Please re-type password
                 </div>
-                <!-- <div [hidden]="notsame" class="alert alert-danger" ngModel>
-                    Please re-type password
+                <div [hidden]="repassi" class="alert alert-danger">wrong password. please retype password.</div>
+                <!-- <div *ngIf="repassi" class="alert alert-danger">
+                    wrong password. please retype password.
+                  </div> -->
+                <!-- <div *ngIf="repass">jhkjk</div> -->
+                <!-- <div [hidden]="src" class="alert alert-danger">
+                    wrong password
+                    <p [src]='repass'></p>
                 </div> -->
 
                 <mat-form-field>

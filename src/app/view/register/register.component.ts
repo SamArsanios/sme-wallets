@@ -15,6 +15,9 @@ import { Registration } from 'src/app/shared/model/user/Registration';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  // repass:boolean=true;
+  repassi = true;
+
   firstname: null;
   wallets = ["SME", "AGRIC", "Test1", "Admin", "test_wallet", "ret", "test", 
   "test_new", "OGAS Wallet", "test", "asd", "ert", "demo"]
@@ -38,7 +41,7 @@ export class RegisterComponent implements OnInit {
      private httpRegister: HttpService<Registration>) { 
     
   }
-onSubmit(form: NgForm){
+onSubmit(form: NgForm, repass: string){
 
   
   // console.log("on sumit", form.valid)
@@ -48,6 +51,10 @@ onSubmit(form: NgForm){
   
   const object = form.value;
   console.log(object.password)
+  if(object.passwordretype!=object.password){
+    this.repassi = false;
+    console.log("wrong password")
+  }
   // if(object.password)
 
    const newUser = new User(0,object.email,object.password, object.number.formattedNumber,123,
