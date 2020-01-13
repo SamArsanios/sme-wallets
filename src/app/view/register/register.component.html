@@ -55,16 +55,9 @@
                 <div [hidden]="!form.submitted || repass.valid" class="alert alert-danger">
                     Please re-type password
                 </div>
-                <div [hidden]="repassi" class="alert alert-danger">wrong password. please retype password.</div>
-                <!-- <div *ngIf="repassi" class="alert alert-danger">
+                <div *ngIf="!repassi && form.submitted" class="alert alert-danger">
                     wrong password. please retype password.
-                  </div> -->
-                <!-- <div *ngIf="repass">jhkjk</div> -->
-                <!-- <div [hidden]="src" class="alert alert-danger">
-                    wrong password
-                    <p [src]='repass'></p>
-                </div> -->
-
+                </div>
                 <mat-form-field>
                     <mat-label class="label">Industry Type</mat-label>
                     <mat-select class="labelinfo" name="industrytype" [(ngModel)]=industrytype required #ind="ngModel"
