@@ -66,6 +66,7 @@ import { MyDoughnutChartComponent } from './shared/my-doughnut-chart/my-doughnut
 import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.component';
 import { ScrollSpyModule } from './shared/scroll-spy';
 import { InViewportModule } from '@thisissoon/angular-inviewport';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { InViewportModule } from '@thisissoon/angular-inviewport';
 
   imports: [
     BrowserModule,
+    HttpClientModule,
     // duScroll,
     AppRoutingModule,
     BrowserAnimationsModule,

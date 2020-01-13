@@ -63,12 +63,14 @@ const routes: Routes = [
     path: "sponsor/vault",
     component: SponsorVaultSponsorshipComponent
   },
+  { path: 'home', component: HomeComponent},
+
   {path: "sponsor/account-settings",
   component: SponsorSettingsComponent
-},
-{path: "buyer/accountsettings/#personalInfo",
-component: SponsorSettingsComponent
-},
+}
+// {path: "buyer/accountsettings/#personalInfo",
+// component: SponsorSettingsComponent
+// },
 
   
 ];

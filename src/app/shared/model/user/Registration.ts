@@ -1,3 +1,5 @@
+import { User } from './user-model';
+
 /**
  * @author Daniel Comboni
  * 
@@ -7,7 +9,7 @@
 export class Registration {
 
         id: number;
-        userId: number;
+        user: User;
         industryType: string;
         name: string;
         email: string;
@@ -28,9 +30,9 @@ export class Registration {
         companyAddress: string;
         timestamp: string;
 
-        constructor($id: number, $userId: number, $industryType: string, $name: string, $email: string, $address: string, $contactNumber: string, $city: string, $state: string, $country: string, $zip: string, $corAddress: string, $corCity: string, $corState: string, $corCountry: string, $corZipCode: string, $companyName: string, $crName: string, $companyEmail: string, $companyAddress: string, $timestamp: string) {
+        constructor($id: number, $user: User, $industryType: string, $name: string, $email: string, $address: string, $contactNumber: string, $city: string, $state: string, $country: string, $zip: string, $corAddress: string, $corCity: string, $corState: string, $corCountry: string, $corZipCode: string, $companyName: string, $crName: string, $companyEmail: string, $companyAddress: string, $timestamp: string) {
                 this.id = $id;
-                this.userId = $userId;
+                this.user = $user;
                 this.industryType = $industryType;
                 this.name = $name;
                 this.email = $email;
