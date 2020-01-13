@@ -2,12 +2,14 @@ a{
     text-decoration: none;
     color: white;
 }
-/* button{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5%;
 
-} */
 button{
-    margin-bottom: 20%;
+    margin: 10%;
+    font-weight: 500;
+}
+.row{
+    background-color: cornflowerblue;
+}
+.spacer{
+    margin-top: 10%;
 }

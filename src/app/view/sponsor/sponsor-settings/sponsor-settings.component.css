@@ -40,8 +40,8 @@ app-sponsornav{
   position: fixed;
   width: 100%;
 }
-.container-fluid{
-  padding-top: 230px;
+.container{
+  padding-top: 200px;
 }
 .navs{
   position: fixed;
