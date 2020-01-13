@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+$flag-icon-css-path: '~flag-icon-css/flags' !default;
+@import "~flag-icon-css/sass/flag-icon";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

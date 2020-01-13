@@ -1,0 +1,65 @@
+a{
+    color: black;
+    font-size: 120%;
+ }
+ .nav{
+    margin-bottom: 10%;
+   
+ } 
+ .spacer{
+     margin-bottom: 5%; 
+
+ } 
+ hr{
+    background-color: white;
+ }
+
+ .nav{
+    
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   
+   
+
+}
+.hok{
+   background-color: blueviolet;
+   width: 50%;
+   float: left;
+   position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+
+}
+.container{
+   margin-top: 10%;
+}
+.row{
+}
+.currentOrders, .invoices, .totalorders, .invited-contacts{
+   background-color: blue;
+   color: white;
+   border-radius: 5%;
+   text-align: center;
+   height: 100%;
+
+
+}
+.mat-title{
+   margin-top: 20%;
+}
+
+.icon-display {
+   transform: scale(2);
+}
+
+.spacer{
+    margin-top: 10%;
+}

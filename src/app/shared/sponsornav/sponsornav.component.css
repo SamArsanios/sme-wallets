@@ -1,0 +1,45 @@
+/* a{
+   color: white;
+   font-size: 120%; */
+   /* padding: 5%; */
+  
+/* } */
+/* .nav{ */
+   /* margin-bottom: 10%; */
+   /* display: flex;
+   justify-content: space-evenly;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   background-color: grey;
+   color: white;
+  
+} 
+.spacer{
+    margin-bottom: 5%; 
+
+}  */
+
+/* .nav{
+   
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  
+
+} */
+a{
+   padding: 20px;
+   margin: 20px;
+   color: white;
+   font-weight: 500;
+   background-color: darkblue;
+   margin-left: 20px;
+}
+a:hover{
+   background-color: darkcyan;
+
+}
+.nav-link{
+   background-color: blue;
+}

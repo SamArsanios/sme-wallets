@@ -1,7 +1,9 @@
+<app-header></app-header>
+<app-buyernav></app-buyernav>
 <div class="container">
   <mat-tab-group #tabRef>
     <mat-tab label="Invite Contacts">
-      <div class="container">
+      <div class="container-fluid">
         <mat-card>
           <mat-card-title>Invite</mat-card-title>
           <mat-card-content>
@@ -41,7 +43,7 @@
     <!-- Second Tab -->
     <!-- View All Suppliers -->
     <mat-tab label="View Suppliers">
-      <div class="container">
+      <div class="container-fluid">
         <mat-form-field>
           <input
             (keyup)="applySuppliersFilter($event.target.value)"
@@ -104,7 +106,7 @@
 
     <!-- View All Contacts -->
     <mat-tab label="View All Contacts">
-      <div class="container">
+      <div class="container-fluid">
         <mat-form-field>
           <input
             (keyup)="applyContactsFilter($event.target.value)"

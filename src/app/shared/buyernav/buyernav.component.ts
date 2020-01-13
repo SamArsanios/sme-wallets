@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buyernav.component.css']
 })
 export class BuyernavComponent implements OnInit {
-  links = ['Account Settings', 'Orders', 'Invoices', 'Invite Contacts', 'Vault', 'Payment Notice'];
-
+  // remove array for links since its nolonger necessary
   constructor() { }
 
   ngOnInit() {

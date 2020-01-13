@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-sort-header-button {
+  }
+  
+  mat-header-cell {
+    background-color: rebeccapurple;
+    color: beige;
+    font-size: 16px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .container-fluid{
+    padding-top: 110px;
+ }

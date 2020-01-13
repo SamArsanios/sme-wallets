@@ -1,0 +1,13 @@
+<!-- <div class="container pt-5" style="height: 100vh;">
+    <div class="row">
+      <div class="col-sm-12 col-md-6"> -->
+        <form #form="ngForm">
+          <ngx-phone-number-input  name="fone" ngModel>
+          </ngx-phone-number-input>
+        </form>
+   <!-- {{fone.value}} -->
+
+<!-- {{phoneNumber.value}} -->
+<!-- {{form.value.fone.dialCode + fone.dialCode | json}} -->
+{{form.value | json}}
+  

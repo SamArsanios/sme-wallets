@@ -8,21 +8,23 @@ export class User {
 
     id: number;
     email: string;
-    emailVerifiedAt: String;
-    password: String;
-    phoneNumber: String;
+    password: string;
+    phoneNumber: string;
     refUserId: number;
-    name: String;
+    name: string;
+    userType: string;
+    emailVerifiedAt: string;
 
 
-    constructor($id: number, $email: string, $emailVerifiedAt: String, $password: String, $phoneNumber: String, $refUserId: number, $name: String) {
+    constructor($id: number, $email: string, $password: string, $phoneNumber: string, $refUserId: number, $name: string, $userType:string, $emailVerifiedAt:string) {
         this.id = $id;
         this.email = $email;
-        this.emailVerifiedAt = $emailVerifiedAt;
         this.password = $password;
         this.phoneNumber = $phoneNumber;
         this.refUserId = $refUserId;
         this.name = $name;
+        this.userType = $userType;
+        this.emailVerifiedAt = $emailVerifiedAt;
     }
 
 }

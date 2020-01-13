@@ -1,0 +1,41 @@
+
+app-suppliernav{
+  padding-top: 40%;
+}
+.container-fluid{
+  padding-top: 230px;
+}
+.navs{
+  position: fixed;
+  display: block;
+  min-height: 100%;
+  min-width: 50%;
+  background: rgb(197, 190, 190);
+  text-transform: uppercase;
+  font-weight: 500;   
+}
+.navs a:hover{
+  background-color: blue;
+  color:white;
+}
+mat-label{
+  font-size: 120%;
+  font-weight: 500;
+}
+a{ 
+  margin-bottom: 3%; 
+margin-top: 3%;
+/* margin-left: 15%; */
+}
+mat-form-field{
+  min-width: 100%;
+}
+mat-card-title{
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+mat-radio-group{
+  display: flex;
+  justify-content: space-evenly;
+} 

@@ -1,0 +1,46 @@
+a{
+    color: black;
+    font-size: 120%;
+ }
+ .nav{
+    margin-bottom: 10%;
+   
+ } 
+ /* .spacer{
+     margin-bottom: 5%; 
+
+ }  */
+
+
+ .nav{
+    
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   
+   
+
+}
+.container{
+   margin-top: 10%;
+}
+
+.currentOrders, .invoices, .totalorders, .invited-contacts{
+   background-color: blue;
+   color: white;
+   border-radius: 5%;
+   text-align: center;
+   height: 100%;
+
+
+}
+.mat-title{
+   margin-top: 20%;
+}
+
+.icon-display {
+   transform: scale(2);
+}
+.container-fluid{
+   padding-top: 250px;
+}
