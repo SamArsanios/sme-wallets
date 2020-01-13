@@ -10,7 +10,7 @@
         <!-- <mat-label>Name</mat-label>
                     <input matInput /> -->
         <mat-hint align="end">Min 5 Characters</mat-hint>
-        <mat-label>Framework</mat-label>
+        <mat-label>Select Industry Type</mat-label>
         <mat-select>
           <mat-option>None</mat-option>
           <mat-option value="Angular">Angular</mat-option>
@@ -20,7 +20,11 @@
       </mat-form-field>
 
       <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input matInput [matDatepicker]="myDatePicker" [formControl]="dateCtrl" />
+        <input
+          matInput
+          [matDatepicker]="myDatePicker"
+          [formControl]="dateCtrl"
+        />
         <mat-datepicker-toggle
           [for]="myDatePicker"
           matPrefix
@@ -87,6 +91,129 @@
         <textarea matInput></textarea>
         <mat-hint align="end">Min 5 Characters</mat-hint>
       </mat-form-field>
+    </div>
+
+    <div>
+      <!-- <table>
+        <tr>
+          <thead>
+            REF/ISBN CAT.NO
+          </thead>
+          <thead>
+            Item Name
+          </thead>
+          <thead>
+            Description
+          </thead>
+          <thead>
+            Sale Unit(PCS/LTR)
+          </thead>
+          <thead>
+            Quantity
+          </thead>
+          <thead></thead>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field style="font-size: 13px;" appearance="outline">
+              <mat-label>Method of Conveyance</mat-label>
+              <input style="padding: 0px; margin: 0px;" matInput />
+              <mat-hint align="end">Min 5 Characters</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field style="font-size: 13px;" appearance="outline">
+              <mat-label>Method of Conveyance</mat-label>
+              <input style="padding: 0px; margin: 0px;" matInput />
+              <mat-hint align="end">Min 5 Characters</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field style="font-size: 13px;" appearance="outline">
+              <mat-label>Method of Conveyance</mat-label>
+              <input style="padding: 0px; margin: 0px;" matInput />
+              <mat-hint align="end">Min 5 Characters</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field style="font-size: 13px;" appearance="outline">
+              <mat-label>Method of Conveyance</mat-label>
+              <input style="padding: 0px; margin: 0px;" matInput />
+              <mat-hint align="end">Min 5 Characters</mat-hint>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field style="font-size: 13px;" appearance="outline">
+              <mat-label>Method of Conveyance</mat-label>
+              <textarea matInput></textarea>
+              <mat-hint align="end">Min 5 Characters</mat-hint>
+            </mat-form-field>
+          </td>
+          <td></td>
+        </tr>
+      </table> -->
+
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- REF/ISBN CAT.NO Column -->
+        <ng-container matColumnDef="orderNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >REF/ISBN CAT.NO</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            ><input style="padding: 0px; margin: 0px;" matInput
+          /></mat-cell>
+        </ng-container>
+
+        <!-- Item Name Column -->
+        <ng-container matColumnDef="orderDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Item Name</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            ><input style="padding: 0px; margin: 0px;" matInput
+          /></mat-cell>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="orderDueDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Description</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            ><input style="padding: 0px; margin: 0px;" matInput
+          /></mat-cell>
+        </ng-container>
+
+        <!-- Sale Unit(PCS/LTR) Column -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Sale Unit(PCS/LTR)</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            ><input style="padding: 0px; margin: 0px;" matInput
+          /></mat-cell>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="orderStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Quantity</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element"
+            ><input style="padding: 0px; margin: 0px;" matInput
+          /></mat-cell>
+        </ng-container>
+
+        <!-- Add New Row Column -->
+        <ng-container matColumnDef="empty">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let element"
+            ><button class="btn-primary btn-sm">Add New Row</button></mat-cell
+          >
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
     </div>
   </div>
 </div>
