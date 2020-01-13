@@ -11,6 +11,6 @@ table {
     font-size: 16px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
-  .container-fluid{
-    padding-top: 110px;
+  .container{
+    padding-top: 200px;
  }
