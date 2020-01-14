@@ -43,21 +43,31 @@ export class RegisterComponent implements OnInit {
 
   }
   onSubmit(form: NgForm, repass: string) {
+    // if(form.valid){
+    //   window.location.href = '/buyer/buyerdashboard';
+
+    // }
     console.log(form.value)
 
     const object = form.value;
     console.log(object.password)
     if (object.passwordretype != object.password) {
       this.repassi = false;
-
-      console.log("wrong password")
-    }
-    else {
-      this.repassi = true;
+      form.invalid;
+      console.log("wrong password");
     }
 
-    const newUser = new User(0, object.email, object.password, object.number.formattedNumber, 123,
-      object.firstname.concat(' ').concat(object.lastname), object.usertype, null);
+
+    // id: 1,
+    // email: "kalungi2k6@gmail.com",
+    // emailVerifiedAt: "Jan 9, 2020 9:35:38 AM",
+    // password: "cona",
+    // phoneNumber: "3333",
+    // refUserId: 123,
+    // name: "deb kaluni",
+    // userType: "supplier"
+    const newUser = new User(0, object.email, null, object.password,  object.number.formattedNumber, 123,
+      object.firstname.concat(' ').concat(object.lastname), object.usertype);
 
     console.log(`the user object ${JSON.stringify(newUser)}  `);
 

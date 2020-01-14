@@ -51,6 +51,7 @@ export class ObjectsUtil<T> {
         for (let keyAsProperty in fromObject) {
             receivedObjectPropertyNames.push(keyAsProperty);
         }
+    
 
         let receivingObjectPropertyNames = []
         for (let keyAsProperty in toObject) {
