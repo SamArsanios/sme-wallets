@@ -1,7 +1,13 @@
 <app-header></app-header>
 <app-buyernav></app-buyernav>
+<!-- <mat-tab-group (selectedTabChange)="letssee()">
+    <mat-tab label="Tab 1">Content 1</mat-tab>
+    <mat-tab label="Tab 2">Content 2</mat-tab>
+  </mat-tab-group> -->
+
 <div class="container">
-    <mat-tab-group #tabRef>
+ 
+    <mat-tab-group #tabRef (selectedTabChange)="letssee()">
       <!-- First Tab -->
       <!-- View Approve Invoices -->
       <mat-tab label="Approve Orders">
@@ -11,9 +17,9 @@
       </mat-tab>
 
 
-      <mat-tab label="Create Orders">
+      <mat-tab label="Create Orders" (click)="test()" >
         <div class="container-fluid">
-          <app-create-order></app-create-order>
+          <app-create-order id="test-id" >ttttttt...mmmm</app-create-order>
         </div>
       </mat-tab> 
 
