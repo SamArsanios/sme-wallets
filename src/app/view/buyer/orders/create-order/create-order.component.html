@@ -3,6 +3,7 @@
     <!-- <div class="spacer"></div> -->
 
     <div class="col-sm-6">
+      <button (click) = "letssee()">letssee</button>
       <mat-form-field
         style="font-size: 13px;"
         floatLabel="auto"
@@ -68,10 +69,16 @@
       </mat-form-field> -->
       <mat-form-field>
         <mat-label class="label">Receiver name</mat-label>
-        <mat-select class="labelinfo" name="receivername">
+<!-- 
+        <select [(ngModel)]="selectedItem" (ngModelChange)="onDropDownChange()">
+            <option [ngValue]="undefined" disabled selected>Select Item</option>
+            <option *ngFor="let item of dataArray" [ngValue]="item?.id">{{item?.name}}</option>
+        </select> -->
 
-            <mat-option *ngFor="let reci of receivers" value={{reci}}>
-                {{reci}}
+        <mat-select class="labelinfo" name="receivername" id="test-id" >
+
+            <mat-option *ngFor="let reci of supplierNames" value={{reci}}>
+                {{reci.name}}
             </mat-option>
         </mat-select>
     </mat-form-field>
