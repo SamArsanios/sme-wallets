@@ -1,0 +1,251 @@
+[
+{
+id: 1,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 9, 2020 9:35:38 AM",
+password: "cona",
+phoneNumber: "3333",
+refUserId: 123,
+name: "deb kaluni",
+userType: "supplier"
+},
+{
+id: 2,
+email: "kalungi2k6@yahoo.com",
+password: "cona",
+phoneNumber: "23424",
+refUserId: 123,
+name: "Samson Kibrom",
+userType: "supplier"
+},
+{
+id: 3,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 9, 2020 9:45:20 AM",
+password: "cona",
+phoneNumber: "23424",
+refUserId: 123,
+name: "Jacob Okia",
+userType: "supplier"
+},
+{
+id: 4,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 10, 2020 7:01:53 AM",
+password: "sdffds",
+phoneNumber: "+2563435",
+refUserId: 123,
+name: "kalungi deborah",
+userType: ""
+},
+{
+id: 5,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 10, 2020 7:02:35 AM",
+password: "sdffds",
+phoneNumber: "+2563435",
+refUserId: 123,
+name: "kalungi deborah",
+userType: ""
+},
+{
+id: 6,
+email: "kalungi2k6@yahoo.com",
+emailVerifiedAt: "Jan 10, 2020 7:49:32 AM",
+password: "sdfs",
+phoneNumber: "+25623423",
+refUserId: 123,
+name: "sdsfd sdfsf",
+userType: "supplier"
+},
+{
+id: 7,
+email: "kalungi2k6@yahoo.com",
+emailVerifiedAt: "Jan 10, 2020 9:33:32 AM",
+password: "sddfd",
+phoneNumber: "+256355445",
+refUserId: 123,
+name: "deb nsubuga",
+userType: "supplier"
+},
+{
+id: 8,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 10, 2020 9:39:13 AM",
+password: "dffdff",
+phoneNumber: "+256234234",
+refUserId: 123,
+name: "ddf ddf",
+userType: "supplier"
+},
+{
+id: 9,
+email: "kalungi2k6@yahoo.com",
+emailVerifiedAt: "Jan 10, 2020 9:45:05 AM",
+password: "sds",
+phoneNumber: "+256435345",
+refUserId: 123,
+name: "sdfsf sdfsd",
+userType: "supplier"
+},
+{
+id: 10,
+email: "dfgdf",
+emailVerifiedAt: "Jan 10, 2020 11:29:19 AM",
+password: "dfgdfg",
+phoneNumber: "+256345345",
+refUserId: 123,
+name: "etert dsdfg",
+userType: "supplier"
+},
+{
+id: 11,
+email: "kalungi2k6@yahoo.com",
+emailVerifiedAt: "Jan 10, 2020 11:35:53 AM",
+password: "rerer",
+phoneNumber: "+2564454545",
+refUserId: 123,
+name: "ertr eet",
+userType: "supplier"
+},
+{
+id: 12,
+email: "kalungi2k6@yahoo.com",
+emailVerifiedAt: "Jan 10, 2020 11:36:13 AM",
+password: "rerer",
+phoneNumber: "+2564454545",
+refUserId: 123,
+name: "ertr eet",
+userType: "supplier"
+},
+{
+id: 13,
+email: "frtyr",
+emailVerifiedAt: "Jan 10, 2020 12:35:07 PM",
+password: "rrytyt",
+phoneNumber: "+25612313242",
+refUserId: 123,
+name: "erter gerte",
+userType: "supplier"
+},
+{
+id: 14,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 10, 2020 12:41:17 PM",
+password: "dsdfd",
+phoneNumber: "+2562342342",
+refUserId: 123,
+name: "sdfsfsd dsgdfgs",
+userType: "supplier"
+},
+{
+id: 15,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 11, 2020 8:54:20 AM",
+password: "cona",
+phoneNumber: "+2563543453",
+refUserId: 123,
+name: "dfsfs fdsfds",
+userType: "supplier"
+},
+{
+id: 16,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 11, 2020 8:54:25 AM",
+password: "cona",
+phoneNumber: "+2563543453",
+refUserId: 123,
+name: "dfsfs fdsfds",
+userType: "supplier"
+},
+{
+id: 17,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 11, 2020 10:44:48 AM",
+password: "cona",
+phoneNumber: "+256243423",
+refUserId: 123,
+name: "sdfdf kaluni",
+userType: "supplier"
+},
+{
+id: 18,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 11, 2020 10:46:54 AM",
+password: "dfsfdd",
+phoneNumber: "+2567656",
+refUserId: 123,
+name: "dsf kaluni",
+userType: "supplier"
+},
+{
+id: 19,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 11, 2020 10:47:58 AM",
+password: "fdf",
+phoneNumber: "+2566556456",
+refUserId: 123,
+name: "deb kaluni",
+userType: ""
+},
+{
+id: 20,
+email: "kalungi2k6@gmail.com",
+emailVerifiedAt: "Jan 11, 2020 12:18:27 PM",
+password: "cona",
+phoneNumber: "+256112212",
+refUserId: 123,
+name: "deb kaluni",
+userType: "supplier"
+},
+{
+id: 21,
+email: "jaikens",
+emailVerifiedAt: "Jan 14, 2020 6:48:18 AM",
+password: "red",
+phoneNumber: "+256234234",
+refUserId: 123,
+name: "jacob comboni",
+userType: "supplier"
+},
+{
+id: 22,
+email: "jaikens",
+emailVerifiedAt: "Jan 14, 2020 6:48:54 AM",
+password: "red",
+phoneNumber: "+256234234",
+refUserId: 123,
+name: "jacob comboni",
+userType: "supplier"
+},
+{
+id: 23,
+email: "jaikens",
+emailVerifiedAt: "Jan 14, 2020 6:49:03 AM",
+password: "red",
+phoneNumber: "+256234234",
+refUserId: 123,
+name: "jacob comboni",
+userType: "supplier"
+},
+{
+id: 24,
+email: "ksdfklsfkdjf",
+emailVerifiedAt: "Jan 14, 2020 12:53:44 PM",
+password: "fre",
+phoneNumber: "+25623423423",
+refUserId: 123,
+name: "jacob Okia",
+userType: "buyer"
+},
+{
+id: 25,
+email: "jo@gmail.com",
+emailVerifiedAt: "Jan 15, 2020 7:54:06 AM",
+password: "jo",
+phoneNumber: "+256721",
+refUserId: 123,
+name: "Jotham Okia",
+userType: "sponsor"
+}
+]
