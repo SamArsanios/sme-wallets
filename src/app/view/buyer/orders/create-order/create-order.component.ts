@@ -5,6 +5,9 @@ import { SupplierData } from '../../../../service/supplier/supplier.data'
 import { OrdersComponent } from '../orders/orders.component';
 import { List } from 'src/app/utils/collections/list';
 import { User } from 'src/app/shared/model/user/user-model';
+import { HtpsService } from 'src/app/htps.service';
+import { HttpService } from 'src/app/utils/http/http-service';
+import { ObjectsUtil } from 'src/app/utils/objects/objects';
 
 @Component({
   selector: "app-create-order",
@@ -17,69 +20,27 @@ export class CreateOrderComponent implements OnInit {
   date = new Date();
   dateCtrl: FormControl;
 
-  constructor(private supplierService: SupplierService, private ordersComponent: OrdersComponent) {
+  constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>) { }
 
-  }
 
-  test(): List<User> {
-    return SupplierData.getAllSuppliers();
-  }
 
   ngOnInit() {
+    this.httpService.getRequest('/users/findAll').subscribe(e =>{
+      console.log(JSON.stringify(this.objectUtil.dataObjectToArray(e)));
+      this.receivers = this.objectUtil.dataObjectToArray(e.body);
 
-    console.log(`create order init`);
+    });
+   this.dateCtrl = new FormControl("", [Validators.required]);
+  }
 
+  receivers;
 
-    // if (SupplierData.getAllSuppliersPromise() == undefined) {
-
-    //   new Promise((resolve,reject)=>{
-    //     this.supplierService.getAllSuppliers();
-    //     console.log(`ttttttttttttt`)
-    //   }).then(e=>{
-    //     this.supplierNames = SupplierData.getAllSuppliers();
-
-    //     console.log(`ththththt ${this.supplierNames} `)
-
-    //   });
-
-    //    }
-
-    // let supplierData = new Promise((res, rej) => {
-    //   console.log(`first`)
-    //   if (SupplierData.getAllSuppliers() == null  || SupplierData.getAllSuppliers() == undefined || SupplierData.getAllSuppliers().isEmpty()) {
-
-    //     console.log(`second`)
-
-    //     this.supplierService.getAllSuppliers();
-
-    //   }
-
-    // })
-
-    //   .then(e => {
-    //     console.log(`hhh ${SupplierData.getAllSuppliers()} `);
-    //     console.log(`test again: ${e } `)
-    //   });
-
-    // supplierData.then(e => console.log(`the eeees`))
-
-    // this.supplierService.getAllSuppliers();
-    // console.log(`this is the list of all suppliers ${SupplierData.getAllSuppliers()} `)
-    // console.log(`this is the list of all suppliers: ${SupplierData.getAllSuppliers()} `);
-    this.dateCtrl = new FormControl("", [Validators.required]);
-
-    // receivers
-    //  = ["SME", "AGRIC", "Test1", "Admin", "test_wallet", "ret", "test",
-    // "test_new", "OGAS Wallet", "test", "asd", "ert", "demo"]
 
 
   }
-  // letssee() {
-  //   JSON.stringify(SupplierData.getAllSuppliers());
-  //   // return `this is the list of all suppliers: ${JSON.stringify(SupplierData.getAllSuppliers())} `;
-  //   // console.log(`this is the list of all suppliers: ${JSON.stringify(SupplierData.getAllSuppliers())} `);
-  //   // console.log("sdfgdgdfdsdfs")
-  // }
 
-}
+
+
+
+
 

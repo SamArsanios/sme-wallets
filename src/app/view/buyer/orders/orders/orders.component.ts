@@ -8,8 +8,6 @@ import { SupplierData } from 'src/app/service/supplier/supplier.data';
 })
 export class OrdersComponent implements OnInit {
 
-  sups: any = this.letssee();
-
   constructor() { }
 
   ngOnInit() {
