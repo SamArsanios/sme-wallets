@@ -30,6 +30,10 @@ mat-header-cell {
   font-size: 16px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.container{
+.container {
   padding-top: 230px;
+}
+
+.searchBox {
+  margin-left: 900px;
 }
