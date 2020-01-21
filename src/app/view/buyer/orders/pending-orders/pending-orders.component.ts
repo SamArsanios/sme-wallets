@@ -1,76 +1,29 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 //data source for filtering and Matsort for sorting
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
-export interface IPendingOrder {
-  orderNo: string;
-  orderDate: any;
-  orderDueDate: any;
-  orderStatus: string;
-  // action: any;
-}
+import { HttpService } from 'src/app/utils/http/http-service';
+import { User } from 'src/app/shared/model/user/user-model';
+import { Order } from 'src/app/model/buyer/order/order-model';
+import { ObjectsUtil } from 'src/app/utils/objects/objects';
 
-const ELEMENT_DATA: IPendingOrder[] = [
-  {
-    orderNo: "ORD-1",
-    orderDate: "12 - 12 - 2011",
-    orderDueDate: "1 - 1 - 2012",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-2",
-    orderDate: "10 - 1 - 2014",
-    orderDueDate: "2 - 2 - 2014",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-3",
-    orderDate: "12 - 12 - 2019",
-    orderDueDate: "20 - 12 - 2019",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-4",
-    orderDate: "10 - 11 - 1997",
-    orderDueDate: "10 - 11 - 1997",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-5",
-    orderDate: "10 - 5 - 2014",
-    orderDueDate: "15 - 5 - 2014",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-6",
-    orderDate: "10 - 12 - 2015",
-    orderDueDate: "11 - 12 - 2015",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-7",
-    orderDate: "1 - 5 - 2016",
-    orderDueDate: "1 - 6 - 2016",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-8",
-    orderDate: "1 - 2 - 1996",
-    orderDueDate: "10 - 2 - 1996",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-9",
-    orderDate: "10 - 12 - 1999",
-    orderDueDate: "15 - 12 - 1999",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-10",
-    orderDate: "10 - 1 - 2018",
-    orderDueDate: "1 - 1 - 2018",
-    orderStatus: "Approved"
-  }
-];
+// export interface IPendingOrder {
+//   orderNo: string;
+//   orderDate: any;
+//   orderDueDate: any;
+//   orderStatus: string;
+//   // action: any;
+// }
+
+
+// let ELEMENT_DATA: IPendingOrder[] = [
+//   {
+
+//     orderNo: "ORD-1",
+//     orderDate: "12 - 12 - 2011",
+//     orderDueDate: "1 - 1 - 2012",
+//     orderStatus: "Processing"
+//   }
+// ];
 
 @Component({
   selector: "app-pending-orders",
@@ -78,7 +31,11 @@ const ELEMENT_DATA: IPendingOrder[] = [
   styleUrls: ["./pending-orders.component.css"]
 })
 export class PendingOrdersComponent implements OnInit {
-  constructor() {}
+  constructor(private httpService: HttpService<Order>, private objectUtil: ObjectsUtil<Order>) {
+    this.httpService.getRequest('/orders/findAll').subscribe(e => {
+      console.log(`the orders retrieved ${JSON.stringify(this.objectUtil.dataObjectToArray(e), null, 2)} `);
+    });
+  }
   displayedColumns: string[] = [
     "orderNo",
     "orderDate",
@@ -86,13 +43,42 @@ export class PendingOrdersComponent implements OnInit {
     "orderStatus",
     "action"
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
+  orders: Array<Order>;
+  
   ngOnInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.httpService.getRequest('/orders/findAll').subscribe(e => {
+      this.orders = this.objectUtil.dataObjectToArray(e.body);
+      console.log(`order list`, this.orders)
+
+      const theItems = this.orders.map(t => {
+        
+        const theObj = {
+          orderNo: t.id,
+          orderDate: t.orderDueDate,
+          orderDueDate: t.orderDueDate,
+          orderStatus: t.supplier
+        }
+
+        return theObj;
+
+      })
+      console.log(theItems)
+
+      this.dataSource = new MatTableDataSource(theItems)
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+
+
+
+
+
+
+
+      // console.log(`the result ${JSON.stringify(this.objectUtil.dataObjectToArray(e))} `);
+    });
   }
 
   logData(row) {
