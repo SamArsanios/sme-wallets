@@ -10,7 +10,7 @@
   </mat-form-field>
 
   <div class="mat-elevation-z8">
-    <mat-table [dataSource]="pendingOrdersInfoTableDataSource" matSort>
+    <mat-table [dataSource]="dataSource" matSort>
       <!-- Order Number Column -->
       <ng-container matColumnDef="orderNo">
         <mat-header-cell *matHeaderCellDef mat-sort-header

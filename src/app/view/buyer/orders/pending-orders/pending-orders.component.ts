@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, ViewChild, OnInit } from "@angular/core";
 //data source for filtering and Matsort for sorting
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
@@ -24,25 +25,50 @@ import { ObjectsUtil } from 'src/app/utils/objects/objects';
 //     orderStatus: "Processing"
 //   }
 // ];
+=======
+import { Component, ViewChild, OnInit } from '@angular/core';
+// data source for filtering and Matsort for sorting
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import {HttpService} from '../../../../utils/http/http-service';
+import {Order} from '../../../../model/buyer/order/order-model';
+import {ObjectsUtil} from '../../../../utils/objects/objects';
+
+export interface IPendingOrder {
+  orderNo: any;
+  orderDate: any;
+  orderDueDate: any;
+  orderStatus: any;
+  // action: any;
+}
+
+>>>>>>> d16bef5e7d2ec5e0cb8fefe7fd9cba691ee0783a
 
 @Component({
-  selector: "app-pending-orders",
-  templateUrl: "./pending-orders.component.html",
-  styleUrls: ["./pending-orders.component.css"]
+  selector: 'app-pending-orders',
+  templateUrl: './pending-orders.component.html',
+  styleUrls: ['./pending-orders.component.css']
 })
 export class PendingOrdersComponent implements OnInit {
+<<<<<<< HEAD
   constructor(private httpService: HttpService<Order>, private objectUtil: ObjectsUtil<Order>) {
     this.httpService.getRequest('/orders/findAll').subscribe(e => {
       console.log(`the orders retrieved ${JSON.stringify(this.objectUtil.dataObjectToArray(e), null, 2)} `);
     });
   }
+=======
+
+  pendingOrdersInfoTable: IPendingOrder[] = [];
+  pendingOrdersInfoTableDataSource = new MatTableDataSource(this.pendingOrdersInfoTable);
+
+>>>>>>> d16bef5e7d2ec5e0cb8fefe7fd9cba691ee0783a
   displayedColumns: string[] = [
-    "orderNo",
-    "orderDate",
-    "orderDueDate",
-    "orderStatus",
-    "action"
+    'orderNo',
+    'orderDate',
+    'orderDueDate',
+    'orderStatus',
+    'action'
   ];
+<<<<<<< HEAD
   dataSource;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -79,6 +105,41 @@ export class PendingOrdersComponent implements OnInit {
 
       // console.log(`the result ${JSON.stringify(this.objectUtil.dataObjectToArray(e))} `);
     });
+=======
+  constructor(private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>) {}
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  populateTableOnInit(fromResponse: Order[]) {
+
+    return fromResponse.map(e => {
+
+        return  {
+          orderNo: e.id,
+          orderDate: e.timestamp,
+          orderDueDate: e.id,
+          orderStatus: e.id
+        };
+
+    });
+  }
+
+  ngOnInit() {
+
+    this.httpService.getRequest('/orders/findAll').subscribe(response => {
+
+      console.log(`the response is ${JSON.stringify(response.body, null, 2)} `);
+
+      this.pendingOrdersInfoTable = this.populateTableOnInit(this.objectsUtil.dataObjectToArray(response.body));
+      this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(this.pendingOrdersInfoTable);
+
+      console.log(`the test ${ JSON.stringify( this.populateTableOnInit(this.objectsUtil.dataObjectToArray(response.body))  )} `);
+    });
+
+    this.pendingOrdersInfoTableDataSource.sort = this.sort;
+    this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
+>>>>>>> d16bef5e7d2ec5e0cb8fefe7fd9cba691ee0783a
   }
 
   logData(row) {
@@ -86,6 +147,6 @@ export class PendingOrdersComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.pendingOrdersInfoTableDataSource.filter = filterValue.trim().toLowerCase();
   }
 }
