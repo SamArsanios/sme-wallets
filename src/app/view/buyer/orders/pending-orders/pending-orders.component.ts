@@ -1,98 +1,69 @@
-import { Component, ViewChild, OnInit } from "@angular/core";
-//data source for filtering and Matsort for sorting
-import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
+import { Component, ViewChild, OnInit } from '@angular/core';
+// data source for filtering and Matsort for sorting
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import {HttpService} from '../../../../utils/http/http-service';
+import {Order} from '../../../../model/buyer/order/order-model';
+import {ObjectsUtil} from '../../../../utils/objects/objects';
+
 export interface IPendingOrder {
-  orderNo: string;
+  orderNo: any;
   orderDate: any;
   orderDueDate: any;
-  orderStatus: string;
+  orderStatus: any;
   // action: any;
 }
 
-const ELEMENT_DATA: IPendingOrder[] = [
-  {
-    orderNo: "ORD-1",
-    orderDate: "12 - 12 - 2011",
-    orderDueDate: "1 - 1 - 2012",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-2",
-    orderDate: "10 - 1 - 2014",
-    orderDueDate: "2 - 2 - 2014",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-3",
-    orderDate: "12 - 12 - 2019",
-    orderDueDate: "20 - 12 - 2019",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-4",
-    orderDate: "10 - 11 - 1997",
-    orderDueDate: "10 - 11 - 1997",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-5",
-    orderDate: "10 - 5 - 2014",
-    orderDueDate: "15 - 5 - 2014",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-6",
-    orderDate: "10 - 12 - 2015",
-    orderDueDate: "11 - 12 - 2015",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-7",
-    orderDate: "1 - 5 - 2016",
-    orderDueDate: "1 - 6 - 2016",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-8",
-    orderDate: "1 - 2 - 1996",
-    orderDueDate: "10 - 2 - 1996",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-9",
-    orderDate: "10 - 12 - 1999",
-    orderDueDate: "15 - 12 - 1999",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-10",
-    orderDate: "10 - 1 - 2018",
-    orderDueDate: "1 - 1 - 2018",
-    orderStatus: "Approved"
-  }
-];
 
 @Component({
-  selector: "app-pending-orders",
-  templateUrl: "./pending-orders.component.html",
-  styleUrls: ["./pending-orders.component.css"]
+  selector: 'app-pending-orders',
+  templateUrl: './pending-orders.component.html',
+  styleUrls: ['./pending-orders.component.css']
 })
 export class PendingOrdersComponent implements OnInit {
-  constructor() {}
+
+  pendingOrdersInfoTable: IPendingOrder[] = [];
+  pendingOrdersInfoTableDataSource = new MatTableDataSource(this.pendingOrdersInfoTable);
+
   displayedColumns: string[] = [
-    "orderNo",
-    "orderDate",
-    "orderDueDate",
-    "orderStatus",
-    "action"
+    'orderNo',
+    'orderDate',
+    'orderDueDate',
+    'orderStatus',
+    'action'
   ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>) {}
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+  populateTableOnInit(fromResponse: Order[]) {
+
+    return fromResponse.map(e => {
+
+        return  {
+          orderNo: e.id,
+          orderDate: e.timestamp,
+          orderDueDate: e.id,
+          orderStatus: e.id
+        };
+
+    });
+  }
+
   ngOnInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+
+    this.httpService.getRequest('/orders/findAll').subscribe(response => {
+
+      console.log(`the response is ${JSON.stringify(response.body, null, 2)} `);
+
+      this.pendingOrdersInfoTable = this.populateTableOnInit(this.objectsUtil.dataObjectToArray(response.body));
+      this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(this.pendingOrdersInfoTable);
+
+      console.log(`the test ${ JSON.stringify( this.populateTableOnInit(this.objectsUtil.dataObjectToArray(response.body))  )} `);
+    });
+
+    this.pendingOrdersInfoTableDataSource.sort = this.sort;
+    this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
   }
 
   logData(row) {
@@ -100,6 +71,6 @@ export class PendingOrdersComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.pendingOrdersInfoTableDataSource.filter = filterValue.trim().toLowerCase();
   }
 }
