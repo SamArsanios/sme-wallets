@@ -10,63 +10,6 @@ import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 
 export class Order {
 
-<<<<<<< HEAD
-
-    id: number;
-    buyer: User;
-    supplier: User;
-    isbnNumber: string;
-    itemName: string;
-    itemDescription: string;
-    billingAddress: string;
-    saleUnit: string;
-    quantity: number;
-    department: string;
-    conveyanceMethod: string;
-    deliveryTerms: string;
-    paymentTerms: string;
-    placeOfDelivery: string;
-    deliveryTime: string;
-    orderDueDate: string;
-    time_period: string;
-    qrCode: string;
-    wallet: Wallet;
-    orderStatus: string;
-    raiseInvoice: string;
-    notificationStatus: string;
-    industryType: string;
-
-
-    constructor(id: number, buyer: User, supplier: User, isbnNumber: string, itemName: string, itemDescription: string, billingAddress: string, saleUnit: string, quantity: number, department: string, conveyanceMethod: string, deliveryTerms: string, paymentTerms: string, placeOfDelivery: string, deliveryTime: string, orderDueDate: string, time_period: string, qrCode: string, wallet: Wallet, orderStatus: string, raiseInvoice: string, notificationStatus: string, industryType: string) {
-        this.id = id;
-        this.buyer = buyer;
-        this.supplier = supplier;
-        this.isbnNumber = isbnNumber;
-        this.itemName = itemName;
-        this.itemDescription = itemDescription;
-        this.billingAddress = billingAddress;
-        this.saleUnit = saleUnit;
-        this.quantity = quantity;
-        this.department = department;
-        this.conveyanceMethod = conveyanceMethod;
-        this.deliveryTerms = deliveryTerms;
-        this.paymentTerms = paymentTerms;
-        this.placeOfDelivery = placeOfDelivery;
-        this.deliveryTime = deliveryTime;
-        this.orderDueDate = orderDueDate;
-        this.time_period = time_period;
-        this.qrCode = qrCode;
-        this.wallet = wallet;
-        this.orderStatus = orderStatus;
-        this.raiseInvoice = raiseInvoice;
-        this.notificationStatus = notificationStatus;
-        this.industryType = industryType;
-    }
-
-
-
-}
-=======
   id: number;
   user: User;
   isbnNumber: string;
@@ -122,4 +65,3 @@ export class Order {
 
 
 }
->>>>>>> d16bef5e7d2ec5e0cb8fefe7fd9cba691ee0783a

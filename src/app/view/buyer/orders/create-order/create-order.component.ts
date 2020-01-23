@@ -75,7 +75,7 @@ export class CreateOrderComponent implements OnInit {
     console.log(`ggggg ${userSupplier['emailVerifiedAtStr']} `);
     userSupplier.emailVerifiedAt = null;
     console.log(`ttttttt`, userSupplier.emailVerifiedAt)
-    const order = new Order(0, null, userSupplier, object.isbnNumber, object.itemName, object.itemDescription, object.billingAddress, object.saleUnit, object.quantity, object.department, object.conveyanceMethod, object.deliveryTerms, object.paymentTerms, object.placeOfDelivery, object.deliveryTime, object.orderDueDate, object.time_period, object.qrCode, null, null, null, null, object.industryType)
+    const order = new Order(0, null, null, object.isbnNumber, object.itemName, object.itemDescription, object.billingAddress, object.saleUnit, object.quantity, object.department, object.conveyanceMethod, object.deliveryTerms, object.paymentTerms, object.placeOfDelivery, object.deliveryTime, object.orderDueDate, object.time_period, object.qrCode, null, null, null, object.industryType)
     // const order = new Order(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
     this.httpService.postRequest('/orders/create', order).subscribe(e => {
       console.log(`the result ${JSON.stringify(e)} `);
