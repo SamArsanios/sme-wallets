@@ -40,7 +40,7 @@ export class PhoneNumberInputComponent
   public examples = <any>examples;
   @Input() disabled = false;
   @Input() defaultCountry = this.countries[226].iso2;
-  @Input() placeholderText = 'Enter number here';
+  @Input() placeholderText = '';
   public selectedCountry;
   public phoneNumber = '';
   public selectedCountryIndex = 0;

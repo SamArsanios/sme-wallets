@@ -57,15 +57,6 @@ export class RegisterComponent implements OnInit {
       console.log("wrong password");
     }
 
-
-    // id: 1,
-    // email: "kalungi2k6@gmail.com",
-    // emailVerifiedAt: "Jan 9, 2020 9:35:38 AM",
-    // password: "cona",
-    // phoneNumber: "3333",
-    // refUserId: 123,
-    // name: "deb kaluni",
-    // userType: "supplier"
     const newUser = new User(0, object.email, null, object.password,  object.number.formattedNumber, 123,
       object.firstname.concat(' ').concat(object.lastname), object.usertype);
 

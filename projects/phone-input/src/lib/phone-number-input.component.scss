@@ -13,7 +13,7 @@
   }
 
   .dial-code {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .arrow {
@@ -32,7 +32,7 @@
 .dropdown-menu {
   min-width: 14rem;
   padding: 0;
-  max-height: 224px;
+  // max-height: 224px;
   overflow-y: scroll;
 
   .dropdown-item {
@@ -76,3 +76,11 @@
   color: #BBBBBB;
   font-size: 12px;
 }
+.btn btn-selected{
+  min-width: 100px;
+  min-height: 100%;
+}
+
+// .gusi{
+//   min-height: 100%;
+// }
