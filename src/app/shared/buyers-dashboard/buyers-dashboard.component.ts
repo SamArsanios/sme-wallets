@@ -33,7 +33,7 @@ export class BuyersDashboardComponent implements OnInit, AfterViewInit {
   message:string;
 
   ngAfterViewInit() {
-    this.message = this.child.message
+    // this.message = this.child.message
   }
 
 }
