@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-
     <div class="col-sm-6">
-      <mat-form-field style="font-size: 13px;" floatLabel="auto" appearance="outline">
-
+      <mat-form-field
+        style="font-size: 13px;"
+        floatLabel="auto"
+        appearance="outline"
+      >
         <mat-hint align="end">Min 5 Characters</mat-hint>
         <mat-label>Industry Type</mat-label>
         <mat-select>
@@ -14,8 +16,15 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input matInput [matDatepicker]="myDatePicker" [formControl]="dateCtrl" />
-        <mat-datepicker-toggle [for]="myDatePicker" matPrefix></mat-datepicker-toggle>
+        <input
+          matInput
+          [matDatepicker]="myDatePicker"
+          [formControl]="dateCtrl"
+        />
+        <mat-datepicker-toggle
+          [for]="myDatePicker"
+          matPrefix
+        ></mat-datepicker-toggle>
         <mat-datepicker #myDatePicker></mat-datepicker>
         <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
           A valid date mm/dd/yyyy is required
@@ -51,9 +60,8 @@
         <mat-label class="label">Receiver name</mat-label>
 
         <mat-select class="labelinfo" name="receivername" id="test-id">
-
-          <mat-option *ngFor="let reci of receivers" value={{reci}}>
-            {{reci.name}}
+          <mat-option *ngFor="let reci of receivers" value="{{ reci }}">
+            {{ reci.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -81,6 +89,18 @@
         <textarea matInput></textarea>
         <mat-hint align="end">Min 5 Characters</mat-hint>
       </mat-form-field>
+
+      <input [ngxTimepicker]="picker" />
+      <ngx-material-timepicker #picker></ngx-material-timepicker>
+
+      <input
+        placeholder="24hr format"
+        aria-label="24hr format"
+        [ngxTimepicker]="fullTime"
+        [format]="24"
+        readonly
+      />
+      <ngx-material-timepicker #fullTime></ngx-material-timepicker>
     </div>
   </div>
 </div>
