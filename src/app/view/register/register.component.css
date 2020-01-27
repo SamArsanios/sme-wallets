@@ -1,6 +1,6 @@
 #bgimage{
     background-image: url("../../../assets/bg-4.jpg");
-    min-height:100%
+    height: 100vh;
 }
 .majorcontent{
     margin: 10%;
