@@ -9,11 +9,11 @@ export class HTTPBase {
      * @param concatenatedUrl the url to be `concatenated`
      */
     static getBaseURL(concatenatedUrl: string): string {
-        
+
         // http://localhost:8081/api/smewallets
         // https://jsonplaceholder.typicode.com/posts
         // http://dummy.restapiexample.com
-        return `http://cordamigrate.herokuapp.com/api/smewallets`.concat(concatenatedUrl);
+        return `https://cordamigrate.herokuapp.com/api/smewallets`.concat(concatenatedUrl);
     }
 
 

@@ -1,6 +1,6 @@
-import { BrowserModule } from "@angular/platform-browser";
+ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { NgxPhoneNumberInputModule } from  'projects/phone-input/src/public_api';
+import { NgxPhoneNumberInputModule } from "projects/phone-input/src/public_api";
 
 import { Ng2PageScrollModule } from "ng2-page-scroll";
 // forms
@@ -35,7 +35,7 @@ import { ApproveOrdersComponent } from "./view/buyer/orders/approve-orders/appro
 import { PendingOrdersComponent } from "./view/buyer/orders/pending-orders/pending-orders.component";
 import { InviteContactsComponent } from "./view/buyer/invite-contacts/invite-contacts.component";
 // forms
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule } from "angular-bootstrap-md";
 
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierPendingOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component";
@@ -56,19 +56,20 @@ import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-s
 import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
 import { RecaptureComponent } from "./view/recapture/recapture.component";
 //  recapture
-import { RecaptchaModule } from 'ng-recaptcha';
-import { MyBarChartComponent } from './shared/my-bar-chart/my-bar-chart.component';
-import { HighpchartComponent } from './shared/highpchart/highpchart.component';
-import { PhonenumberComponent } from './view/register/phonenumber/phonenumber.component';
-import { ChartsModule } from 'ng2-charts';
+import { RecaptchaModule } from "ng-recaptcha";
+import { MyBarChartComponent } from "./shared/my-bar-chart/my-bar-chart.component";
+import { HighpchartComponent } from "./shared/highpchart/highpchart.component";
+import { PhonenumberComponent } from "./view/register/phonenumber/phonenumber.component";
+import { ChartsModule } from "ng2-charts";
 // import {duScroll} from '../../node_modules/angular-scroll'
-import { MyDoughnutChartComponent } from './shared/my-doughnut-chart/my-doughnut-chart.component';
-import { MyPieChartComponent } from './shared/my-pie-chart/my-pie-chart.component';
-import { ScrollSpyModule } from './shared/scroll-spy';
-import { InViewportModule } from '@thisissoon/angular-inviewport';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HttttsComponent } from './htttts/htttts.component';
+import { MyDoughnutChartComponent } from "./shared/my-doughnut-chart/my-doughnut-chart.component";
+import { MyPieChartComponent } from "./shared/my-pie-chart/my-pie-chart.component";
+import { ScrollSpyModule } from "./shared/scroll-spy";
+import { InViewportModule } from "@thisissoon/angular-inviewport";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttttsComponent } from "./htttts/htttts.component";
 
+import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 @NgModule({
   declarations: [
     AppComponent,
@@ -140,14 +141,11 @@ import { HttttsComponent } from './htttts/htttts.component';
     NgxPhoneNumberInputModule,
     BrowserAnimationsModule,
     ChartsModule,
-    InViewportModule, ScrollSpyModule.forRoot(),
+    InViewportModule,
+    ScrollSpyModule.forRoot(),
     // duScroll.scrollspy
-  
-
     MDBBootstrapModule.forRoot(),
-    
-    
-    
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

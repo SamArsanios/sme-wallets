@@ -44,7 +44,7 @@
     <!-- View All Suppliers -->
     <mat-tab label="View Suppliers">
       <div class="container-fluid">
-        <mat-form-field>
+        <mat-form-field class="searchBox">
           <input
             (keyup)="applySuppliersFilter($event.target.value)"
             matInput
@@ -107,7 +107,7 @@
     <!-- View All Contacts -->
     <mat-tab label="View All Contacts">
       <div class="container-fluid">
-        <mat-form-field>
+        <mat-form-field class="searchBox">
           <input
             (keyup)="applyContactsFilter($event.target.value)"
             matInput
