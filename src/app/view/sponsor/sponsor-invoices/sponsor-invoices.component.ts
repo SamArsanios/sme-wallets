@@ -8,7 +8,7 @@ export interface ISponsorInvoices {
   invoiceDate: any;
   invoiceDueDate: any;
   faceValue: number;
-  anticipatedSettlementDate: any;
+  // anticipatedSettlementDate: any;
   // action: any;
 }
 
@@ -19,8 +19,8 @@ const ELEMENT_DATA: ISponsorInvoices[] = [
     industryType: "Software",
     invoiceDate: "10/12/2019",
     invoiceDueDate: "20/12/2019",
-    faceValue: 300000,
-    anticipatedSettlementDate: "30/12/2019"
+    faceValue: 300000
+    
   },
   {
     invoiceNo: "INV_2",
@@ -28,8 +28,7 @@ const ELEMENT_DATA: ISponsorInvoices[] = [
     industryType: "Maufacturing",
     invoiceDate: "1/1/2017",
     invoiceDueDate: "2/1/2019",
-    faceValue: 885254,
-    anticipatedSettlementDate: "3/2/2017"
+    faceValue: 885254
   },
   {
     invoiceNo: "INV_3",
@@ -37,8 +36,7 @@ const ELEMENT_DATA: ISponsorInvoices[] = [
     industryType: "Banking",
     invoiceDate: "2/5/2012",
     invoiceDueDate: "2/6/2012",
-    faceValue: 457845,
-    anticipatedSettlementDate: "15/6/2012"
+    faceValue: 457845
   }
 ];
 @Component({
@@ -56,7 +54,6 @@ export class SponsorInvoicesComponent implements OnInit {
     "invoiceDate",
     "invoiceDueDate",
     "faceValue",
-    "anticipatedSettlementDate",
     "action"
   ];
 
