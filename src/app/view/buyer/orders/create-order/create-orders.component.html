@@ -2,15 +2,11 @@
 
 <div class="container">
   <div class="row">
-
     <!-- const order = new Order(0, null, supplierInfo, , object.qrCode)  -->
-    
+
     <div class="col-sm-6">
-      <mat-form-field
-        style="font-size: 13px;"
-        floatLabel="auto"
-        appearance="outline"
-      >
+      <mat-form-field style="font-size: 13px;" floatLabel="auto" appearance="outline">
+
         <mat-hint align="end">Min 5 Characters</mat-hint>
         <mat-label>Industry Type</mat-label>
         <mat-select  name="industryType" ngModel>
@@ -56,7 +52,10 @@
     <div class="col-sm-6">
       <mat-form-field>
         <mat-label class="label">Receiver name</mat-label>
+
         <mat-select class="labelinfo" name="receivername" ngModel id="test-id">
+
+
           <mat-option *ngFor="let reci of receivers" value={{reci.id}}>
             {{reci.name}}
           </mat-option>
@@ -87,17 +86,6 @@
         <mat-hint align="end">Min 5 Characters</mat-hint>
       </mat-form-field>
 
-      <input [ngxTimepicker]="picker" />
-      <ngx-material-timepicker #picker></ngx-material-timepicker>
-
-      <input
-        placeholder="24hr format"
-        aria-label="24hr format"
-        [ngxTimepicker]="fullTime"
-        [format]="24"
-        readonly
-      />
-      <ngx-material-timepicker #fullTime></ngx-material-timepicker>
     </div>
   </div>
 </div>
@@ -160,4 +148,3 @@
 <button class="btn-primary btn-sm" type = "submit">Save Order</button>
 </form>
 {{form.value | json}}
-
