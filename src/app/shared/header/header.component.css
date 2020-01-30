@@ -36,3 +36,9 @@ margin-top: 0%;
 a{
    font-weight: 500;
 }
+
+/* @media screen and (max-width: 800px) {
+   mdb-navbar{
+      display: none;
+   }
+ } */
