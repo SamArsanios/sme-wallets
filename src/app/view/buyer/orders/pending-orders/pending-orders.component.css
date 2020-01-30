@@ -8,3 +8,7 @@ mat-header-cell {
   font-size: 16px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.mat-form-field {
+  margin-left: 870px;
+}

@@ -1,13 +1,15 @@
 table {
-    width: 100%;
-  }
-  
-  .mat-sort-header-button {
-  }
-  
-  mat-header-cell {
-    background-color: rebeccapurple;
-    color: beige;
-    font-size: 16px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
+  width: 100%;
+}
+
+mat-header-cell {
+  background-color: rebeccapurple;
+  color: beige;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mat-form-field {
+  margin-left: 920px;
+}
+

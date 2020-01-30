@@ -6,8 +6,10 @@
 
 import { User } from '../../../shared/model/user/user-model';
 import { Wallet } from '../../../shared/model/wallet/wallet-model';
+import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 
 export class Order {
+  message = 'Hola Mundo!';
 
   id: number;
   user: User;
