@@ -70,7 +70,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { HttttsComponent } from "./htttts/htttts.component";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
-import { ViewOrdersComponent } from './view/buyer/orders/pending-orders/view-orders/view-orders.component';
+import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
