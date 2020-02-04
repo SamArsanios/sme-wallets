@@ -123,7 +123,6 @@ import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders
     MyBarChartComponent,
     MyDoughnutChartComponent,
     MyPieChartComponent,
-    HttttsComponent,
     ViewOrdersComponent
 
     // PiechartComponent
