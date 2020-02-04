@@ -18,20 +18,22 @@ import { SideAccountSettingssComponent } from "./view/supplier/side-account-sett
 //Supplier Components
 import { SupplierPurchaseOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-purchase-orders.component";
 import { SupplierVaultComponent } from "./view/supplier/supplier-vault/supplier-vault.component";
-import { RegisterComponent } from './view/register/register.component';
-import { LoginComponent } from './view/login/login.component';
+import { RegisterComponent } from "./view/register/register.component";
+import { LoginComponent } from "./view/login/login.component";
 
 //Sponsor
-import { SponsordashboardComponent } from './shared/sponsordashboard/sponsordashboard.component';
+import { SponsordashboardComponent } from "./shared/sponsordashboard/sponsordashboard.component";
 import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component";
 import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
-import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponsor-settings.component';
+import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
+import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
 
 const routes: Routes = [
   //suppliers
  { path: 'Payment Notice', component: PaymentInfoComponent},
  { path: 'home/buyer/buyerdashboard', component: BuyersDashboardComponent},
  { path: 'buyer/orders', component: OrdersComponent},
+  { path: "buyer/orders/view-orders", component: ViewOrdersComponent },
  { path: 'buyer/Invitecontacts', component:  InviteContactsComponent},
  { path: 'buyer/invoices', component: InvoicesComponent},
  { path: 'buyer/Vault', component: VaultComponent},
@@ -46,7 +48,6 @@ const routes: Routes = [
  { path: 'register', component:  RegisterComponent}, 
  { path: 'login', component: LoginComponent}, 
 
-  
   {
     path: "supplier/orders",
     component: SupplierPurchaseOrdersComponent
@@ -63,16 +64,12 @@ const routes: Routes = [
     path: "sponsor/vault",
     component: SponsorVaultSponsorshipComponent
   },
-  { path: 'home', component: HomeComponent},
+  { path: "home", component: HomeComponent },
 
-  {path: "sponsor/account-settings",
-  component: SponsorSettingsComponent
-}
-// {path: "buyer/accountsettings/#personalInfo",
-// component: SponsorSettingsComponent
-// },
-
-  
+  { path: "sponsor/account-settings", component: SponsorSettingsComponent }
+  // {path: "buyer/accountsettings/#personalInfo",
+  // component: SponsorSettingsComponent
+  // },
 ];
 
 @NgModule({

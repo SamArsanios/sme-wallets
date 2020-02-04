@@ -69,6 +69,7 @@ import { InViewportModule } from "@thisissoon/angular-inviewport";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
+import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -121,7 +122,10 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
     PhonenumberComponent,
     MyBarChartComponent,
     MyDoughnutChartComponent,
-    MyPieChartComponent
+    MyPieChartComponent,
+    HttttsComponent,
+    ViewOrdersComponent
+
     // PiechartComponent
   ],
 
