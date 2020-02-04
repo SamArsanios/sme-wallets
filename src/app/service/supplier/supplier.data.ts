@@ -1,5 +1,5 @@
-import { List } from '../../utils/collections/list'
-import { User } from '../../shared/model/user/user-model'
+import { List } from '../../utils/collections/list';
+import { User } from '../../shared/model/user/user-model';
 import { Observable } from 'rxjs';
 import { Mapp } from 'src/app/utils/collections/map';
 
@@ -9,17 +9,15 @@ export class SupplierData {
     private static allSuppliersPromise: Promise<List<User>>;
     private static allSuppliers: List<User>;
 
-    private static mapOfIdToSupplier: Mapp<Number,User> ;
+    private static mapOfIdToSupplier: Mapp<number, User> ;
 
-    static setMapOfIdToSupplier(mapOfIdToSupplier: Mapp<Number,User>){
+    static setMapOfIdToSupplier(mapOfIdToSupplier: Mapp<number, User>) {
         SupplierData.mapOfIdToSupplier = mapOfIdToSupplier;
     }
 
-    static getMapOfIdToSupplier(): Mapp<Number,User> {
+    static getMapOfIdToSupplier(): Mapp<number, User> {
         return SupplierData.mapOfIdToSupplier;
     }
-
-
 
     static setAllSuppliersPromise(allSuppliersPromise: Promise<List<User>>): void {
         SupplierData.allSuppliersPromise = allSuppliersPromise;
@@ -39,17 +37,15 @@ export class SupplierData {
 
     static addASupplier(aSupplier: User): void {
 
-        if (aSupplier.userType == "supplier") {
+        if (aSupplier.userType === 'supplier') {
 
             if (SupplierData.getAllSuppliers() == null || SupplierData.getAllSuppliers().isEmpty()) {
 
-                let newList = new List<User>();
+                const newList = new List<User>();
                 newList.add(aSupplier);
                 SupplierData.setAllSuppliers(newList);
 
-            }
-
-            else {
+            } else {
 
                 SupplierData.getAllSuppliers().add(aSupplier);
 
@@ -60,24 +56,21 @@ export class SupplierData {
 
     static addASupplierToMap(aSupplier: User, id: number): void {
 
-        if (aSupplier.userType == "supplier") {
+        if (aSupplier.userType === 'supplier') {
 
             if (SupplierData.getMapOfIdToSupplier() == null || SupplierData.getMapOfIdToSupplier().isEmpty()) {
 
-                let newMap = new Mapp<Number,User>();
-                newMap.put(id,aSupplier);
+                const newMap = new Mapp<number, User>();
+                newMap.put(id, aSupplier);
                 SupplierData.setMapOfIdToSupplier(newMap);
 
-            }
+            } else {
 
-            else {
-
-                SupplierData.getMapOfIdToSupplier().put(id,aSupplier);
+                SupplierData.getMapOfIdToSupplier().put(id, aSupplier);
 
             }
         }
 
     }
-
 
 }
