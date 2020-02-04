@@ -79,3 +79,9 @@ mat-radio-group{
 .contain{
   padding-top: 110px;
 }
+
+@media screen and (max-width: 800px) {
+  .container{
+    padding-top: 15%;
+  }
+  }

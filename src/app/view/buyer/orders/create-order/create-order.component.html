@@ -1,163 +1,150 @@
 <form #form="ngForm" class="createorder" (ngSubmit)=onSubmit(form)>
 
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
 
-    <!-- const order = new Order(0, null, supplierInfo, , object.qrCode)  -->
-    
-    <div class="col-sm-6">
-      <mat-form-field
-        style="font-size: 13px;"
-        floatLabel="auto"
-        appearance="outline"
-      >
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-        <mat-label>Industry Type</mat-label>
-        <mat-select  name="industryType" ngModel>
-          <mat-option>None</mat-option>
-          <mat-option value="Manufacturing">Manufacturing</mat-option>
-          <mat-option value="Oil and Gas">Oil and Gas</mat-option>
-          <mat-option value="Construction">Construction</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input matInput [matDatepicker]="myDatePicker" [formControl]="dateCtrl"  name="date" ngModel />
-        <mat-datepicker-toggle [for]="myDatePicker" matPrefix></mat-datepicker-toggle>
-        <mat-datepicker #myDatePicker></mat-datepicker>
-        <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
-          A valid date mm/dd/yyyy is required
-        </mat-error>
-      </mat-form-field>
+      <div class="col-sm-6">
+        <mat-form-field style="font-size: 13px;" floatLabel="auto" appearance="outline">
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+          <mat-label>Industry Type</mat-label>
+          <mat-select name="industryType" ngModel>
+            <mat-option>None</mat-option>
+            <mat-option value="Manufacturing">Manufacturing</mat-option>
+            <mat-option value="Oil and Gas">Oil and Gas</mat-option>
+            <mat-option value="Construction">Construction</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <input matInput [matDatepicker]="myDatePicker" [formControl]="dateCtrl" name="date" ngModel />
+          <mat-datepicker-toggle [for]="myDatePicker" matPrefix></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+          <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
+            A valid date mm/dd/yyyy is required
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Department</mat-label>
-        <input style="padding: 0px; margin: 0px;"name="department" matInput ngModel />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Department</mat-label>
+          <input style="padding: 0px; margin: 0px;" name="department" matInput ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Place of Delivery</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput  name="placeOfDelivery" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Place of Delivery</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput name="placeOfDelivery" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Terms of Payment</mat-label>
-        <textarea matInput  name="paymentTerms" ngModel></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Terms of Payment</mat-label>
+          <textarea matInput name="paymentTerms" ngModel></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Billing Address</mat-label>
-        <textarea matInput  name="billingAddress" ngModel></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-    </div>
-    <div class="col-sm-6">
-      <mat-form-field>
-        <mat-label class="label">Receiver name</mat-label>
-        <mat-select class="labelinfo" name="receivername" ngModel id="test-id">
-          <mat-option *ngFor="let reci of receivers" value={{reci.id}}>
-            {{reci.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Billing Address</mat-label>
+          <textarea matInput name="billingAddress" ngModel></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field>
+          <mat-label class="label">Receiver name</mat-label>
+          <mat-select class="labelinfo" name="receivername" ngModel id="test-id">
+            <mat-option *ngFor="let reci of receivers" value={{reci.id}}>
+              {{reci.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Time of Delivery</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput  name="deliveryTime" ngModel />
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Time of Delivery</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput name="deliveryTime" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Method of Conveyance</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput  name="conveyanceMethod" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Method of Conveyance</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput name="conveyanceMethod" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Time Period</mat-label>
-        <input style="padding: 0px; margin: 0px;" matInput  name="time_period" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Time Period</mat-label>
+          <input style="padding: 0px; margin: 0px;" matInput name="time_period" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <mat-label>Terms of Delivery</mat-label>
-        <textarea matInput  name="deliveryTerms" ngModel></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <mat-label>Terms of Delivery</mat-label>
+          <textarea matInput name="deliveryTerms" ngModel></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-      <input [ngxTimepicker]="picker" />
-      <ngx-material-timepicker #picker></ngx-material-timepicker>
+        <input [ngxTimepicker]="picker" />
+        <ngx-material-timepicker #picker></ngx-material-timepicker>
 
-      <input
-        placeholder="24hr format"
-        aria-label="24hr format"
-        [ngxTimepicker]="fullTime"
-        [format]="24"
-        readonly
-      />
-      <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+        <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24" readonly />
+        <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+      </div>
     </div>
   </div>
-</div>
-<table>
-  <tr>
-    <th>
-      REF/ISBN CAT.NO
-    </th>
-    <th>
-      Item Name
-    </th>
-    <th>
-      Description
-    </th>
-    <th>
-      Sale Unit(PCS/LTR)
-    </th>
-    <th>
-      Quantity
-    </th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input style="padding: 0px; margin: 0px;" matInput  name="isbnNumber" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
+  <table>
+    <tr>
+      <th>
+        REF/ISBN CAT.NO
+      </th>
+      <th>
+        Item Name
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Sale Unit(PCS/LTR)
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <input style="padding: 0px; margin: 0px;" matInput name="isbnNumber" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
 
-    </td>
-    <td>
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input style="padding: 0px; margin: 0px;" matInput  name="itemName" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-    </td>
-    <td>
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input style="padding: 0px; margin: 0px;" matInput  name="itemDescription" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-    </td>
-    <td>
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <input style="padding: 0px; margin: 0px;" matInput  name="saleUnit" ngModel/>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-    </td>
+      </td>
+      <td>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <input style="padding: 0px; margin: 0px;" matInput name="itemName" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <input style="padding: 0px; margin: 0px;" matInput name="itemDescription" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <input style="padding: 0px; margin: 0px;" matInput name="saleUnit" ngModel />
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </td>
 
-    <td>
-      <mat-form-field style="font-size: 13px;" appearance="outline">
-        <textarea matInput  name="quantity" ngModel></textarea>
-        <mat-hint align="end">Min 5 Characters</mat-hint>
-      </mat-form-field>
-    </td>
-    <td><button class="btn-primary btn-sm">+</button></td>
-  </tr>
-</table>
+      <td>
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+          <textarea matInput name="quantity" ngModel></textarea>
+          <mat-hint align="end">Min 5 Characters</mat-hint>
+        </mat-form-field>
+      </td>
+      <td><button class="btn-primary btn-sm">+</button></td>
+    </tr>
+  </table>
 
-<button class="btn-primary btn-sm" type = "submit">Save Order</button>
+  <button class="btn-primary btn-sm" type="submit">Save Order</button>
 </form>
 {{form.value | json}}
-

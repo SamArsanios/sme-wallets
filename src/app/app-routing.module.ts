@@ -30,7 +30,7 @@ import { SponsorSettingsComponent } from './view/sponsor/sponsor-settings/sponso
 const routes: Routes = [
   //suppliers
  { path: 'Payment Notice', component: PaymentInfoComponent},
- { path: 'buyer/buyerdashboard', component: BuyersDashboardComponent},
+ { path: 'home/buyer/buyerdashboard', component: BuyersDashboardComponent},
  { path: 'buyer/orders', component: OrdersComponent},
  { path: 'buyer/Invitecontacts', component:  InviteContactsComponent},
  { path: 'buyer/invoices', component: InvoicesComponent},
@@ -38,11 +38,11 @@ const routes: Routes = [
  {path: 'buyer/accountsettings', component:SideAccountSettingsComponent},
  {path: 'supplier/accountsettings', component:SideAccountSettingssComponent},
 
- { path: 'supplier/supplierdashboard', component:  SupplierDashComponent},
+ { path: 'home/supplier/supplierdashboard', component:  SupplierDashComponent},
  { path: "supplier/vault", component: SupplierVaultComponent },
  { path: 'supplier/payment-information', component:  PaymentInformationComponent}, 
  { path: '', component:  HomeComponent},
- { path: 'sponsor/sponsordashboard', component:  SponsordashboardComponent}, 
+ { path: 'home/sponsor/sponsordashboard', component:  SponsordashboardComponent}, 
  { path: 'register', component:  RegisterComponent}, 
  { path: 'login', component: LoginComponent}, 
 

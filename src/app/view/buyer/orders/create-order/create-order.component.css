@@ -5,3 +5,8 @@
 mat-form-field {
   width: 95%;
 }
+ @media screen and (max-width: 800px) {
+  .container{
+    /* font-size: 200%; */
+  }
+  } 
