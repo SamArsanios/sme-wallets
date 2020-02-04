@@ -20,9 +20,9 @@ a{
    
 
 }
-.container{
-   margin-top: 10%;
-}
+/* .container{
+   margin-top: 20%;
+} */
 .row{
 }
 .currentOrders, .invoices, .totalorders, .invited-contacts{
@@ -30,13 +30,13 @@ a{
    color: white;
    border-radius: 5%;
    text-align: center;
-   height: 100%;
+   height: 50%;
 
 
 }
-.mat-title{
+/* .mat-title{
    margin-top: 20%;
-}
+} */
 
 .icon-display {
    transform: scale(2);
@@ -49,14 +49,58 @@ p{
    font-family: 'Bree Serif', serif;
 }
 .card-header{
-   min-height: 20px;
+   /* min-height: 20px; */
 }
 .card{
    padding-bottom: 5%;
 }
 .container-fluid{
-   padding-top: 250px;
+   padding-top: 5%;
+   margin-top: 7%;
 }
+.hiddenstaff{
+   display: none;
+}
+
+@media screen and (max-width: 989px) {
+   app-header{
+      display: none;
+   }
+   .container-fluid{
+      display: none;
+   }
+   .row{
+      max-height: 5%;
+      /* margin-bottom: 30%; */
+   }
+   .hiddenstaff{
+      display: block;
+      padding-top: 5%;
+      margin-top: 7%;
+      color: white;
+   }
+   corders{
+      padding: 50%;
+   }
+   .torders{
+      display: block;
+      text-align: center;
+   }
+   .icontacts{
+      display: block;
+   }
+   .col-sm-6{
+padding: 20%;
+   }
+   /* .container{
+   margin-top: 20%;
+} */
+
+   /* .container-fluid{
+      padding-top: 250px;
+   } */
+
+ }
 
 
 

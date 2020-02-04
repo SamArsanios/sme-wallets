@@ -67,7 +67,6 @@ import { MyPieChartComponent } from "./shared/my-pie-chart/my-pie-chart.componen
 import { ScrollSpyModule } from "./shared/scroll-spy";
 import { InViewportModule } from "@thisissoon/angular-inviewport";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { HttttsComponent } from "./htttts/htttts.component";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
@@ -126,6 +125,7 @@ import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders
     MyPieChartComponent,
     HttttsComponent,
     ViewOrdersComponent
+
     // PiechartComponent
   ],
 

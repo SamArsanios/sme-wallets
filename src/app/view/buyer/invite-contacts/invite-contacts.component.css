@@ -31,9 +31,19 @@ mat-header-cell {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .container {
-  padding-top: 230px;
+  padding-top: 15%;
+  
+   /* margin-top: 7%; */
 }
 
 .searchBox {
   margin-left: 900px;
+}
+
+@media screen and (max-width: 989px) {
+  .container {
+    padding-top: 35%;
+    
+     /* margin-top: 7%; */
+  }
 }

@@ -30,29 +30,23 @@ import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders
 
 const routes: Routes = [
   //suppliers
-  { path: "Payment Notice", component: PaymentInfoComponent },
-  { path: "buyer/buyerdashboard", component: BuyersDashboardComponent },
-  { path: "buyer/orders", component: OrdersComponent },
+ { path: 'Payment Notice', component: PaymentInfoComponent},
+ { path: 'home/buyer/buyerdashboard', component: BuyersDashboardComponent},
+ { path: 'buyer/orders', component: OrdersComponent},
   { path: "buyer/orders/view-orders", component: ViewOrdersComponent },
-  { path: "buyer/Invitecontacts", component: InviteContactsComponent },
-  { path: "buyer/invoices", component: InvoicesComponent },
-  { path: "buyer/Vault", component: VaultComponent },
-  { path: "buyer/accountsettings", component: SideAccountSettingsComponent },
-  {
-    path: "supplier/accountsettings",
-    component: SideAccountSettingssComponent
-  },
+ { path: 'buyer/Invitecontacts', component:  InviteContactsComponent},
+ { path: 'buyer/invoices', component: InvoicesComponent},
+ { path: 'buyer/Vault', component: VaultComponent},
+ {path: 'buyer/accountsettings', component:SideAccountSettingsComponent},
+ {path: 'supplier/accountsettings', component:SideAccountSettingssComponent},
 
-  { path: "supplier/supplierdashboard", component: SupplierDashComponent },
-  { path: "supplier/vault", component: SupplierVaultComponent },
-  {
-    path: "supplier/payment-information",
-    component: PaymentInformationComponent
-  },
-  { path: "", component: HomeComponent },
-  { path: "sponsor/sponsordashboard", component: SponsordashboardComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "login", component: LoginComponent },
+ { path: 'home/supplier/supplierdashboard', component:  SupplierDashComponent},
+ { path: "supplier/vault", component: SupplierVaultComponent },
+ { path: 'supplier/payment-information', component:  PaymentInformationComponent}, 
+ { path: '', component:  HomeComponent},
+ { path: 'home/sponsor/sponsordashboard', component:  SponsordashboardComponent}, 
+ { path: 'register', component:  RegisterComponent}, 
+ { path: 'login', component: LoginComponent}, 
 
   {
     path: "supplier/orders",

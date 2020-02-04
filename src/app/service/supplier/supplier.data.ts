@@ -9,13 +9,13 @@ export class SupplierData {
     private static allSuppliersPromise: Promise<List<User>>;
     private static allSuppliers: List<User>;
 
-    private static mapOfIdToSupplier: Mapp<Number,User> ;
+    private static mapOfIdToSupplier: Mapp<number,User> ;
 
-    static setMapOfIdToSupplier(mapOfIdToSupplier: Mapp<Number,User>){
+    static setMapOfIdToSupplier(mapOfIdToSupplier: Mapp<number,User>){
         SupplierData.mapOfIdToSupplier = mapOfIdToSupplier;
     }
 
-    static getMapOfIdToSupplier(): Mapp<Number,User> {
+    static getMapOfIdToSupplier(): Mapp<number,User> {
         return SupplierData.mapOfIdToSupplier;
     }
 
@@ -64,7 +64,7 @@ export class SupplierData {
 
             if (SupplierData.getMapOfIdToSupplier() == null || SupplierData.getMapOfIdToSupplier().isEmpty()) {
 
-                let newMap = new Mapp<Number,User>();
+                let newMap = new Mapp<number,User>();
                 newMap.put(id,aSupplier);
                 SupplierData.setMapOfIdToSupplier(newMap);
 

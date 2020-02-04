@@ -13,11 +13,11 @@ export class Wallet {
         timestamp: string;
         user: User;
 
-        constructor($id: number, $name: string, $timestamp: string, $user: User) {
-                this.id = $id;
-                this.name = $name;
-                this.timestamp = $timestamp;
-                this.user = $user;
+        constructor(id: number, name: string, timestamp: string, user: User) {
+                this.id = id;
+                this.name = name;
+                this.timestamp = timestamp;
+                this.user = user;
         }
 
 }
