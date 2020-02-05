@@ -39,3 +39,11 @@ mat-radio-group{
   display: flex;
   justify-content: space-evenly;
 } 
+
+
+@media screen and (max-width: 800px) {
+  .container-fluid{
+    padding-top: 15%;
+  }
+  }
+

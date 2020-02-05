@@ -1,32 +1,33 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-primary bg-info" [containerInside]="false">
-
-    <div class="sizing">
-        <links>
-
-            <!-- Links -->
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a routerLink="/buyer/accountsettings" class="nav-link waves-light" mdbWavesEffect>Account
-                        Settings<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/buyer/orders" class="nav-link waves-light" mdbWavesEffect>Orders</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/buyer/invoices" class="nav-link waves-light" mdbWavesEffect>Invoices</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/buyer/Invitecontacts" class="nav-link waves-light" mdbWavesEffect>Invite
-                        Contacts</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/buyer/Vault" class="nav-link waves-light" mdbWavesEffect>Vault</a>
-                </li>
-            </ul>
-            <!-- Links -->
-        </links>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <div class="extras">
+    <a class="navbar-brand" routerLink="/home"><i class="fas fa-home fa-x"></i></a>
+    <a class="navbar-brand" href="#"><i class="fas fa-notifications fa-x"></i>Notifications</a>
+    <a class="navbar-brand" href="#"> <i class="fas fa-address-book fa-x"></i>
+        Deborah</a>
     </div>
-    <!-- Collapsible content -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/buyer/accountsettings">Account Settings<span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/buyer/orders">Orders<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/buyer/invoices">Invoices</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/buyer/Invitecontacts">Invite Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/buyer/Vault">Vault</a>
+            </li>
 
-</mdb-navbar>
-<!--/.Navbar-->
+        </ul>
+    </div>
+</nav>

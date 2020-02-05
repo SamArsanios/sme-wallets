@@ -1,13 +1,6 @@
-/**
- * @author Daniel Comboni
- *
- *  a model / entity class Order
- */
-
 import { User } from '../../../shared/model/user/user-model';
 import { Wallet } from '../../../shared/model/wallet/wallet-model';
 import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
-
 export class Order {
 
   id: number;
@@ -34,13 +27,15 @@ export class Order {
   notificationStatus: string;
   timestamp: string;
 
+
+  industryType: string;
   // tslint:disable-next-line:max-line-length
   constructor(id: number, buyer: User, supplier: User, isbnNumber: string, itemName: string, itemDescription: string, billingAddress: string, saleUnit:
                 // tslint:disable-next-line:max-line-length align
                 string, quantity: number, department: string, conveyanceMethod: string, deliveryTerms: string, paymentTerms: string, placeOfDelivery: string,
               // tslint:disable-next-line:max-line-length
               deliveryTime: string, orderDueDate: string, timePeriod: string, qrCode: string, wallet: Wallet, orderStatus: string, raiseInvoice: string,
-              notificationStatus: string, timestamp: string) {
+              notificationStatus: string, timestamp: string, industryType: string) {
     this.id = id;
     this.buyer = buyer;
     this.supplier = supplier;
@@ -64,7 +59,6 @@ export class Order {
     this.raiseInvoice = raiseInvoice;
     this.notificationStatus = notificationStatus;
     this.timestamp = timestamp;
+    this.industryType = industryType;
   }
-
-
 }

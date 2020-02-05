@@ -5,7 +5,6 @@ import { Mapp } from 'src/app/utils/collections/map';
 
 export class SupplierData {
 
-
     private static allSuppliersPromise: Promise<List<User>>;
     private static allSuppliers: List<User>;
 
@@ -62,6 +61,7 @@ export class SupplierData {
 
                 const newMap = new Mapp<number, User>();
                 newMap.put(id, aSupplier);
+
                 SupplierData.setMapOfIdToSupplier(newMap);
 
             } else {
