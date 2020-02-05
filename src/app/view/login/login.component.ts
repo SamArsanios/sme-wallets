@@ -22,6 +22,7 @@ const loginData: ILoginData = {
 export class LoginComponent implements OnInit {
 
   currentUser: User;
+  wrongCredentials: boolean;
 
   constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>) { }
 
@@ -48,6 +49,11 @@ export class LoginComponent implements OnInit {
     
             }
         
+      }
+      else{
+        this.wrongCredentials = false
+        console.log("wrong credentials")
+      
       }
 
     });
