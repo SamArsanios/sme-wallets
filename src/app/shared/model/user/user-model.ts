@@ -1,13 +1,13 @@
 /**
  * @author Daniel Comboni
- * 
+ *
  * a model / entity class User.
  */
 
 export class User {
 
     id: number;
-    email: string; 
+    email: string;
     emailVerifiedAt: string;
     password: string;
     phoneNumber: string;
@@ -15,6 +15,7 @@ export class User {
     name: string;
     userType: string;
 
+  // tslint:disable-next-line:max-line-length
     constructor(id: number, email: string, emailVerifiedAt: string, password: string, phoneNumber: string, refUserId: number, name: string, userType: string) {
         this.id = id;
         this.email = email;

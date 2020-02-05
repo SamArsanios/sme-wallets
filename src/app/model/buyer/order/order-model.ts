@@ -2,6 +2,7 @@ import { User } from '../../../shared/model/user/user-model';
 import { Wallet } from '../../../shared/model/wallet/wallet-model';
 import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 export class Order {
+
   id: number;
   buyer: User;
   supplier: User;
@@ -25,6 +26,8 @@ export class Order {
   raiseInvoice: string;
   notificationStatus: string;
   timestamp: string;
+
+
   industryType: string;
   // tslint:disable-next-line:max-line-length
   constructor(id: number, buyer: User, supplier: User, isbnNumber: string, itemName: string, itemDescription: string, billingAddress: string, saleUnit:
