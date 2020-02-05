@@ -42,4 +42,9 @@ export class ChargeTransient extends Charge {
     );
     this.timestampStr = $timestampStr;
   }
+
+  static createInstance(): ChargeTransient {
+    return new ChargeTransient(null, null, null, null, null, null, null, null, null,
+      null, null, null, null);
+  }
 }

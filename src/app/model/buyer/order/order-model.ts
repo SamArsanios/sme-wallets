@@ -61,4 +61,11 @@ export class Order {
     this.timestamp = timestamp;
     this.industryType = industryType;
   }
+
+  static createInstance(): Order {
+    return new Order(null, null, null, null, null, null, null, null, null,
+      null, null, null, null, null, null, null, null,
+      null, null, null, null, null, null,null);
+  }
+
 }

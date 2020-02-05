@@ -21,6 +21,9 @@ export class InvoiceTransient extends Invoice {
         this.invoiceDateStr = $invoiceDateStr;
     }
 
-
+    static createInstance(): InvoiceTransient {
+        return new InvoiceTransient(null, null, null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null, null, null, null, null, null, null);
+    }
 
 }

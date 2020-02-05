@@ -17,6 +17,11 @@ export class OrderTransient extends Order {
 
     this.timestampStr = timestampStr;
   }
+
+  static createInstance(): OrderTransient {
+    return new OrderTransient(null, null, null, null, null, null, null, null, null,
+        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+}
 }
 
 
