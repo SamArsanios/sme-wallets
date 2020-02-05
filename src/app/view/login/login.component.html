@@ -22,13 +22,13 @@
             <div class="row">
 
               <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Enter Username</mat-label>
-                <input matInput placeholder="Username" name="username" [(ngModel)]="username" required #fname="ngModel"
-                  [class.ld-error]="form.submitted && fname.invalid">
+                <mat-label>Enter Your Email</mat-label>
+                <input matInput placeholder="Enter Email" name="email" [(ngModel)]="email" required #emails="ngModel"
+                  [class.ld-error]="form.submitted && emails.invalid">
               </mat-form-field>
 
-              <div [hidden]="!form.submitted || fname.valid" class="alert alert-danger">
-                Please Enter a valid username
+              <div [hidden]="!form.submitted || emails.valid" class="alert alert-danger">
+                Please Enter a valid email Address
               </div>
             </div>
 
