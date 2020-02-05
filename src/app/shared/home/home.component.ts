@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>) { }
 
   ngOnInit() {
-    this.httpService.getRequest('/users/findAll').subscribe(e =>{
+    this.httpService.getRequest('/users/findAll').subscribe(e => {
       console.log(`the result ${JSON.stringify(this.objectUtil.dataObjectToArray(e))} `);
     });
   }
