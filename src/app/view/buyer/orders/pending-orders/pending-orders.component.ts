@@ -5,6 +5,7 @@ import {HttpService} from '../../../../utils/http/http-service';
 import {Order} from '../../../../model/buyer/order/order-model';
 import {ObjectsUtil} from '../../../../utils/objects/objects';
 import {IPendingOrder, PopulatePendingOrderTable} from './pending.order.model.interface';
+import {PopulateTable} from '../../../../utils/tables/populate.table';
 
 @Component({
   selector: 'app-pending-orders',
@@ -19,21 +20,30 @@ export class PendingOrdersComponent implements OnInit {
 
   displayedColumns: string[] = PopulatePendingOrderTable.displayedColumns;
 
-  constructor(private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>) {}
+  // tslint:disable-next-line:max-line-length
+  constructor(private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>, private populateTable: PopulateTable<Order, IPendingOrder>) {}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  ngOnInit() {
+  private populateTheTable() {
 
     this.httpService.getRequest('/orders/findAll').subscribe(response => {
-      // tslint:disable-next-line:max-line-length
-      const result = PopulatePendingOrderTable.populateTable(this.objectsUtil.dataObjectToArray(response.body), this.pendingOrdersInfoTable, this.pendingOrdersInfoTableDataSource);
+
+      const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(response.body), this.pendingOrdersInfoTable,
+        this.pendingOrdersInfoTableDataSource, PopulatePendingOrderTable.populateTableOnInit);
+
       this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(result);
+
     });
 
     this.pendingOrdersInfoTableDataSource.sort = this.sort;
     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
+
+  }
+
+  ngOnInit() {
+    this.populateTheTable();
   }
 
   applyFilter(filterValue: string) {

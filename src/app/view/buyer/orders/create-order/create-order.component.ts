@@ -54,7 +54,7 @@ export class CreateOrderComponent implements OnInit {
 
   } // end ngOninit()
 
-  tempporaryBuyer(): User {
+  temporaryBuyer(): User {
 
     const user = new User(2, 'deb@gmail.com', 'Feb 4, 2020 1:22:44 PM', 'deb', '+256704', 123.00, 'Deb Kalungi',
       'buyer');
@@ -71,7 +71,8 @@ export class CreateOrderComponent implements OnInit {
   }
 
   temporaryWallet(): Wallet {
-    const wallet = new Wallet(1, 'Manufacturing', 'null', this.tempporaryBuyer());
+
+    const wallet = new Wallet(1, 'Manufacturing', 'null', this.temporaryBuyer());
 
     wallet.timestamp = null;
 
@@ -116,7 +117,7 @@ export class CreateOrderComponent implements OnInit {
 
     order.wallet = this.temporaryWallet();
     order.supplier = userSupplier;
-    order.buyer = this.tempporaryBuyer();
+    order.buyer = this.temporaryBuyer();
 
     const newOrder = this.objectUtilOrder.objectToInstance(order, object);
 

@@ -1,6 +1,4 @@
 import {Order} from '../../../../model/buyer/order/order-model';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {ViewChild} from '@angular/core';
 
 export interface IPendingOrder {
   orderNo: any;
@@ -21,21 +19,15 @@ export class PopulatePendingOrderTable {
   ];
 
 
-  // tslint:disable-next-line:max-line-length
-  public static populateTable(values: Order[], pendingOrdersInfoTable: IPendingOrder[], pendingOrdersInfoTableDataSource: MatTableDataSource<IPendingOrder>): IPendingOrder[] {
-    pendingOrdersInfoTable = PopulatePendingOrderTable.populateTableOnInit(values);
-    return pendingOrdersInfoTable;
-  }
-
-  private  static populateTableOnInit(fromResponse: Order[]) {
+  public  static populateTableOnInit(fromResponse: Order[]) {
 
     return fromResponse.map(e => {
 
       return  {
-        orderNo: e.id,
+        orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
-        orderDueDate: e.id,
-        orderStatus: e.id
+        orderDueDate: e.orderDueDate,
+        orderStatus: 'pending'
       };
 
     });
