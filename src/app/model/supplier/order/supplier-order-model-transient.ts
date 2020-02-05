@@ -16,4 +16,8 @@ export class SupplierOrderTransient extends SupplierOrder {
         this.timestampStr = $timestampStr;
     }
 
+    static createInstance(): SupplierOrderTransient {
+        return new SupplierOrderTransient(null, null, null, null, null, null);
+    }
+
 }

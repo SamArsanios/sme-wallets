@@ -26,6 +26,8 @@ export class Invite {
 		this.timestamp = $timestamp;
 	}
       
-       
+	static createInstance(): Invite {
+		return new Invite(null, null, null, null, null, null);
+	  }      
 }
 

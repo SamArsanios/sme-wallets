@@ -54,5 +54,8 @@ export class Invoice {
                 this.sponsorStatus = $sponsorStatus;
                 this.theTimestamp = $theTimestamp;
         }
-
+        static createInstance(): Invoice{
+                return new Invoice(null, null, null, null, null, null, null, null, null,
+                    null, null, null, null, null, null, null, null, null, null, null);
+            }
 }

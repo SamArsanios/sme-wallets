@@ -26,31 +26,11 @@ export class CreateOrderComponent implements OnInit {
   constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>, private objectUtilOrder: ObjectsUtil<Order>) { }
 
   public supplierNames: List<User>;
+  successPost:string;
   date = new Date();
   dateCtrl: FormControl;
 
   receivers: Array<User> = new Array<User>();
-
-  findAllSuppliersMap(): Mapp<number, User> {
-    // check if the suppliers map is empty
-
-    if (SupplierData.getMapOfIdToSupplier() == null || SupplierData.getMapOfIdToSupplier().isEmpty()) {
-
-      this.httpService.getRequest('/users/findAll').subscribe(e => {
-
-        this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
-
-            SupplierData.addASupplier(aSupplier);
-
-            SupplierData.addASupplierToMap(aSupplier, aSupplier.id);
-
-        });
-      });
-    }
-
-    return SupplierData.getMapOfIdToSupplier();
-
-  }
 
   ngOnInit() {
 
@@ -132,9 +112,7 @@ export class CreateOrderComponent implements OnInit {
 
     console.log(`form object ${JSON.stringify(object, null, 2)} `);
 
-    const order = new Order(null, null, null, null, null, null, null, null, null,
-      null, null, null, null, null, null, null, null,
-      null, null, null, null, null, null, null);
+    const order = Order.createInstance();
 
     order.wallet = this.temporaryWallet();
     order.supplier = userSupplier;

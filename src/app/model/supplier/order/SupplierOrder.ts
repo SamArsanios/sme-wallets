@@ -22,4 +22,8 @@ export class SupplierOrder {
                 this.email = $email;
                 this.timestamp = $timestamp;
         }
+
+        static createInstance(): SupplierOrder {
+                return new SupplierOrder(null, null, null, null, null);
+              }
 }
