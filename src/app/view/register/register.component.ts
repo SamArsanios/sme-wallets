@@ -43,10 +43,12 @@ export class RegisterComponent implements OnInit {
 
   }
   onSubmit(form: NgForm, repass: string) {
+    
     // if(form.valid){
     //   window.location.href = '/buyer/buyerdashboard';
 
     // }
+   
     console.log(form.value)
 
     const object = form.value;
@@ -56,15 +58,16 @@ export class RegisterComponent implements OnInit {
       form.invalid;
       console.log("wrong password");
     }
-
-    const newUser = new User(0, object.email, null, object.password,  object.number.formattedNumber, 123,
+    
+    const newUser = new User(0, object.email, null, object.password, object.number.formattedNumber, 123,
       object.firstname.concat(' ').concat(object.lastname), object.usertype);
-
+    
     console.log(`the user object ${JSON.stringify(newUser)}  `);
 
 
 
 
+   
     this.httpServicee.postRequest('/users/create', newUser).subscribe(e => {
       console.log(`the result ${JSON.stringify(e)} `)
       if (e.status == 200) {

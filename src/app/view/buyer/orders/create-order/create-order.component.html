@@ -146,5 +146,9 @@
   </table>
 
   <button class="btn-primary btn-sm" type="submit">Save Order</button>
+ 
+  <div [hidden]="!form.submitted" class="alert alert-success">
+    {{successPost}}
+</div>
 </form>
 {{form.value | json}}

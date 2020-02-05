@@ -21,6 +21,7 @@ import {Wallet} from '../../../../shared/model/wallet/wallet-model';
 export class CreateOrderComponent implements OnInit {
   constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>) { }
   public supplierNames: List<User>;
+  successPost:string;
   date = new Date();
   dateCtrl: FormControl;
   receivers: Array<User> = new Array<User>();
@@ -76,11 +77,6 @@ export class CreateOrderComponent implements OnInit {
     
     userSupplier.emailVerifiedAt = null;
     console.log(`ttttttt`, userSupplier [emailVerifiedAtStr]);
-
-    // const order = new Order(0, null, null, object.isbnNumber, object.itemName, object.itemDescription, object.billingAddress,
-    //   // tslint:disable-next-line:max-line-length
-    //   object.saleUnit, object.quantity, object.department, object.conveyanceMethod, object.deliveryTerms, object.paymentTerms, object.placeOfDelivery,
-    //   object.deliveryTime, object.orderDueDate, object.time_period, object.qrCode, null, null, null, object.industryType);
   
     console.log(`the buyer details`, supplierInfo)
 
@@ -90,15 +86,18 @@ export class CreateOrderComponent implements OnInit {
     wallet[timestampStr] = wallet.timestamp;
     wallet[timestampStr] = DateUtils.convertDateFormatToParsable('Jan 30, 2020 8:59:14 AM');
     
-    const order = new Order(0, supplierInfo, supplierInfo, 'isbn-001', 'item to buy', 'item desc', 'muyenga', 'the sale unit',
-      2, 'sales dept', 'car', 'delivery terms', 'cash as payment terms', 'delivery place',
-      'delivery time', 'due date', '4hrs', 'qrcode', wallet, 'order status', 'raise invoice',
-      'notification status', null, 'industry type');
+  
+    const order = new Order(0, supplierInfo, supplierInfo, object.isbnNumber, object.itemName, object.itemDescription, object.billingAddress, object.saleUnit,
+      object.quantity, object.department, object.conveyanceMethod, object.deliveryTerms, object.paymentTerms, object.placeOfDelivery,
+      object.deliveryTime, object.orderDueDate, object.time_period, object.qrCode, wallet, 'order status', 'raise invoice',
+      'notification status', null, object.industryType);
     console.log(`the order: ${JSON.stringify(order, null, 2)} `);
-    // tslint:disable-next-line:max-line-length
-    // const order = new Order(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+    
     this.httpService.postRequest('/orders/create', order).subscribe(e => {
         console.log(`the result ${JSON.stringify(e)} `);
+        let name = JSON.stringify(e.body.name);
+        this.successPost = "you have successfully posted an order to buyer. please check you pending orders for notices"
+
       }
     );
   }
