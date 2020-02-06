@@ -5,7 +5,7 @@ export interface IPendingOrder {
   orderDate: any;
   orderDueDate: any;
   orderStatus: any;
-  // action: any;
+  action: any;
 }
 
 export class PopulatePendingOrderTable {
@@ -27,7 +27,8 @@ export class PopulatePendingOrderTable {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
-        orderStatus: 'pending'
+        orderStatus: 'pending',
+        action: e.id
       };
 
     });
