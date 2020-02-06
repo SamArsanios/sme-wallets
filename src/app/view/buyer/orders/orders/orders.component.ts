@@ -11,6 +11,8 @@ export class OrdersComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let currentLoggedin = localStorage.getItem('loggedinUser')
+    console.log(`the current logged persn in ${currentLoggedin}`)
   }
 
 test(){

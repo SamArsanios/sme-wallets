@@ -23,12 +23,13 @@ import {OrdersComponent} from '../../view/buyer/orders/orders/orders.component'
   styleUrls: ['./buyers-dashboard.component.css']
 })
 export class BuyersDashboardComponent implements OnInit, AfterViewInit {
-  // links = ['payment notice'];
-
-  // @ViewChild(OrdersComponent) child;
+  currentUser: string;
   constructor() {}
 
   ngOnInit() {
+    let currentLoggedin = localStorage.getItem('loggedinUser')
+    let currentUserr = JSON.parse(currentLoggedin)
+    this.currentUser = JSON.stringify(currentUserr[0].name)
   }
   message:string;
 
