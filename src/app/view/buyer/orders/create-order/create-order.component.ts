@@ -26,7 +26,7 @@ export class CreateOrderComponent implements OnInit {
   constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>, private objectUtilOrder: ObjectsUtil<Order>) { }
 
   public supplierNames: List<User>;
-  successPost:string;
+  successPost: string;
   date = new Date();
   dateCtrl: FormControl;
 

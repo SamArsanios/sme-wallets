@@ -9,7 +9,7 @@
   </mat-form-field>
 
   <li class="nav-item">
-      <a routerLink="/buyer/orders/view-orders" class="nav-link waves-light" mdbWavesEffect>View Orders</a>
+      <a routerLink="/buyer/orders/view-orders" class="nav-link waves-light" mdbWavesEffect (click)="handleViewOrderClick($event)" >View Orders</a>
   </li>
 
   <div class="mat-elevation-z8">
@@ -53,7 +53,7 @@
           >Action</mat-header-cell
         >
         <mat-cell *matCellDef="let element"
-          ><button class="btn-primary btn-sm">View</button></mat-cell
+          ><button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)" >  View</button></mat-cell
         >
       </ng-container>
 
