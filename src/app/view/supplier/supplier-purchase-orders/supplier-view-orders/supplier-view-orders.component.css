@@ -1,0 +1,50 @@
+.container {
+  margin: auto;
+  padding-top: 100px;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+}
+
+li {
+  list-style: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+table {
+  margin: 70px 0;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  padding: 15px;
+}
+
+tr:nth-child(1) {
+  background-color: #dddddd;
+}
+
+.btns {
+  float: right;
+}
+
+.btn {
+  height: 45px;
+  width: 120px;
+  font-size: 20px;
+}
+
+#btn1 {
+  margin-right: 30px;
+}

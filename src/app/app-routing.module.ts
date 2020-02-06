@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { BuyersDashboardComponent } from "./shared/buyers-dashboard/buyers-dashboard.component";
 import { PaymentnoticeComponent } from "./view/buyer/paymentnotice/paymentnotice.component";
@@ -27,30 +27,44 @@ import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-s
 import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
 import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
 import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
+import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component";
 
 const routes: Routes = [
   //suppliers
- { path: 'Payment Notice', component: PaymentInfoComponent},
- { path: 'home/buyer/buyerdashboard', component: BuyersDashboardComponent},
- { path: 'buyer/orders', component: OrdersComponent},
+  { path: "Payment Notice", component: PaymentInfoComponent },
+  { path: "home/buyer/buyerdashboard", component: BuyersDashboardComponent },
+  { path: "buyer/orders", component: OrdersComponent },
   { path: "buyer/orders/view-orders", component: ViewOrdersComponent },
- { path: 'buyer/Invitecontacts', component:  InviteContactsComponent},
- { path: 'buyer/invoices', component: InvoicesComponent},
- { path: 'buyer/Vault', component: VaultComponent},
- {path: 'buyer/accountsettings', component:SideAccountSettingsComponent},
- {path: 'supplier/accountsettings', component:SideAccountSettingssComponent},
+  { path: "buyer/Invitecontacts", component: InviteContactsComponent },
+  { path: "buyer/invoices", component: InvoicesComponent },
+  { path: "buyer/Vault", component: VaultComponent },
+  { path: "buyer/accountsettings", component: SideAccountSettingsComponent },
+  {
+    path: "supplier/accountsettings",
+    component: SideAccountSettingssComponent
+  },
 
- { path: 'home/supplier/supplierdashboard', component:  SupplierDashComponent},
- { path: "supplier/vault", component: SupplierVaultComponent },
- { path: 'supplier/payment-information', component:  PaymentInformationComponent}, 
- { path: '', component:  HomeComponent},
- { path: 'home/sponsor/sponsordashboard', component:  SponsordashboardComponent}, 
- { path: 'register', component:  RegisterComponent}, 
- { path: 'login', component: LoginComponent}, 
+  { path: "home/supplier/supplierdashboard", component: SupplierDashComponent },
+  { path: "supplier/vault", component: SupplierVaultComponent },
+  {
+    path: "supplier/payment-information",
+    component: PaymentInformationComponent
+  },
+  { path: "", component: HomeComponent },
+  {
+    path: "home/sponsor/sponsordashboard",
+    component: SponsordashboardComponent
+  },
+  { path: "register", component: RegisterComponent },
+  { path: "login", component: LoginComponent },
 
   {
     path: "supplier/orders",
     component: SupplierPurchaseOrdersComponent
+  },
+  {
+    path: "supplier/supplier-purchase-orders/supplier-view-orders",
+    component: SupplierViewOrdersComponent
   },
   {
     path: "supplier/vault",
