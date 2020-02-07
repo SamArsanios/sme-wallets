@@ -1,5 +1,4 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-// data source for filtering and Matsort for sorting
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import {HttpService} from '../../../../utils/http/http-service';
 import {Order} from '../../../../model/buyer/order/order-model';
@@ -41,6 +40,7 @@ export class PendingOrdersComponent implements OnInit {
 
         PendingOrderData.addAPendingOrder(e);
         PendingOrderData.addAPendingOrderToMap(e, e.id);
+       
 
       });
 
@@ -64,6 +64,8 @@ export class PendingOrdersComponent implements OnInit {
       console.log(`the order to view again: ${JSON.stringify(PendingOrderData.getAllPendingOrderMap().get(id), null, 2)} `);
       PendingOrderData.setIdOfOrderToView(id);
     });
+
+    
 
   }
 
