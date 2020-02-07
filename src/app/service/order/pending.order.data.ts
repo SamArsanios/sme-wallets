@@ -24,6 +24,7 @@ export class PendingOrderData {
     return PendingOrderData.allPendingOrderMap;
   }
 
+
   public static setIdOfOrderToView(id: number): void {
     PendingOrderData.idOfOrderToView = id;
   }
