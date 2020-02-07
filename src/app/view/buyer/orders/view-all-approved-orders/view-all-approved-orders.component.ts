@@ -1,12 +1,29 @@
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-view-all-approved-orders',
+//   templateUrl: './view-all-approved-orders.component.html',
+//   styleUrls: ['./view-all-approved-orders.component.css']
+// })
+// export class ViewAllApprovedOrdersComponent implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit() {
+//   }
+
+// }
+
 import { Component, OnInit } from '@angular/core';
-import {AllOrderData} from '../../../../service/order/all.order.data';
+import {ApproveOrderData} from '../../../../service/order/approve.order.data';
 
 @Component({
-  selector: 'app-view-allorders',
-  templateUrl: './view-allorders.component.html',
+  selector: 'app-view-all-approved-orders',
+  templateUrl: './view-all-approved-orders.component.html',
   styleUrls: ['../view-orders/view-orders.component.css']
 })
-export class ViewAllordersComponent implements OnInit {
+export class ViewAllApprovedOrdersComponent implements OnInit {
+
 
   buyerName: string;
   buyerPhone: string;
@@ -42,7 +59,7 @@ export class ViewAllordersComponent implements OnInit {
 
   private populateOrderView(): void {
 
-    const order = AllOrderData.getAllAllOrderMap().get(AllOrderData.getIdOfOrderToView());
+    const order = ApproveOrderData.getApproveOrderMap().get(ApproveOrderData.getIdOfOrderToView());
 
     if ( order !== undefined && order != null ) {
 
@@ -88,4 +105,5 @@ export class ViewAllordersComponent implements OnInit {
   }
 
 }
+
 

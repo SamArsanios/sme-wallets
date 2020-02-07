@@ -2,11 +2,15 @@ import { List } from 'src/app/utils/collections/list';
 import { Order } from 'src/app/model/buyer/order/order-model';
 import { Mapp } from 'src/app/utils/collections/map';
 
+
+
+
 export class ApproveOrderData {
 
     private static approveOrderLists: List<Order>;
     private static approveOrderMap: Mapp<number, Order>;
     private static idOfOrderToView: number;
+
 
     public static setApproveOrderLists(approveOrders: List<Order>): void {
         ApproveOrderData.approveOrderLists = approveOrders;
@@ -15,14 +19,16 @@ export class ApproveOrderData {
     public static getApproveOrderLists(): List<Order> {
         return ApproveOrderData.approveOrderLists;
     }
-
+    
     public static setApproveOrderMap(approveOrders: Mapp<number, Order>): void {
         ApproveOrderData.approveOrderMap = approveOrders;
     }
+  
 
     public static getApproveOrderMap(): Mapp<number, Order> {
         return ApproveOrderData.approveOrderMap;
     }
+
 
     public static setIdOfOrderToView(id: number): void {
         ApproveOrderData.idOfOrderToView = id;
