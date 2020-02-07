@@ -1,6 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import {PageScrollConfig} from 'ng2-page-scroll';
+import { NgForm } from '@angular/forms';
+import { ObjectsUtil } from 'src/app/utils/objects/objects';
+import { User } from 'src/app/shared/model/user/user-model';
 
 
 @Component({
@@ -8,10 +11,14 @@ import {PageScrollConfig} from 'ng2-page-scroll';
   templateUrl: './side-account-settings.component.html',
   styleUrls: ['./side-account-settings.component.scss']
 })
-export class SideAccountSettingsComponent{
+export class SideAccountSettingsComponent implements OnInit{
 
-  constructor() { 
-    
+  wallet: string;
+  options:string[]=["Agric","SME", "Ogas"];
+  
+ 
+  constructor(private objectsUtils: ObjectsUtil<User>) { 
+
       PageScrollConfig.defaultScrollOffset = 260;
       PageScrollConfig.defaultEasingLogic = {
           ease: (t: number, b: number, c: number, d: number): number => {
@@ -23,6 +30,22 @@ export class SideAccountSettingsComponent{
           }
       };
   }
+  onSubmit(form:NgForm ){
+  console.log(form.value);
+  
+  }
+
+
+  ngOnInit() {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedinUser'));
+    
+    User
+
+    console.log(`the trick: ${ JSON.stringify(loggedInUser[0]) } `);
+
+    
+  }
+
   }
 
 

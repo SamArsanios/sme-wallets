@@ -10,9 +10,9 @@ export class SecurityQuestionTransient extends SecurityQuestion {
 
     timestampStr: string;
 
-    constructor($id: number, $question: string, $timestamp: string, $timestampStr: string) {
-        super($id, $question, $timestamp);
-        this.timestampStr = $timestampStr;
+    constructor(id: number, question: string, timestamp: string, timestampStr: string) {
+        super(id, question, timestamp);
+        this.timestampStr = timestampStr;
     }
 
 }

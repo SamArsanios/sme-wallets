@@ -1,320 +1,431 @@
 <!-- <app-header></app-header>
 <app-buyernav></app-buyernav> -->
 <nav>
-    <app-header></app-header>
-    <app-buyernav></app-buyernav>
-    
-  </nav>
-  
-  <div class="container-fluid" >
-    <div class="row">
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-3">
-            <div class = "navs">
-                <!-- <nav class="nav flex-column" data-spy="scroll" data-target=".navbar" pageScrollOffset="100px"> -->
-              
-                  <a class="nav-link" pageScroll PageScrollConfig.defaultScrollOffset="500" href="#personalInfo">Personal Info</a>
-                  <a class="nav-link" pageScroll href="#registered-address">registered address</a>
-                  <a class="nav-link" pageScroll href="#corresponsing-address">corresponsing address</a>
-                  <a class="nav-link" pageScroll href="#company-information">company information</a>
-                  <a class="nav-link" pageScroll href="#update-password">update-password</a>
-                  <a class="nav-link" pageScroll href="#security-questions">security questions</a>
-                  <a class="nav-link" pageScroll href="#payment-details">payment details</a>
-                  <a class="nav-link" pageScroll href="#quality">quality</a>
-                  <a class="nav-link" pageScroll href="#bank-details">bank details</a>
-                <!-- </nav> -->
-              </div>
-        </div>
-        <div class="col-sm-5">
-            <!-- <div class="col-md-9"> -->
-                <mat-card>
-          
-                  <mat-card-title id="personalInfo">Personal Information</mat-card-title>
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>Name</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-          
-                      <mat-form-field appearance="outline">
-                        <mat-label>Emails</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-radio-group label="Wallet">
-                        <mat-radio-button value="Agric">Agric</mat-radio-button>
-                        <mat-radio-button value="SMe">SME</mat-radio-button>
-                        <mat-radio-button value="OGas">OGas</mat-radio-button>
-                      </mat-radio-group>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="registered-address">
-          
-                  <mat-card-title>Registered Address</mat-card-title>
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>Contact</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>City</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>State</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Country</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Zip Code</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="corresponsing-address">
-                  <mat-card-title>Correspodence Address</mat-card-title>
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>Contact</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>City</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>State</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Country</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Zip Code</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-                <mat-card id="company-information">
-                  <mat-card-title>
-                    Company Information
-                  </mat-card-title>
-          
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>Company Name</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Company Representative Name</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Company Email</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>CRB/BUNS Number</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Company Address</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <button mat-raised-button color="primary">Update</button>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="update-password">
-                  <mat-card-title>
-                    Update Password
-                  </mat-card-title>
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>Current Email</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>New Password</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Confirm Password</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <button mat-raised-button color="primary">Update</button>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="security-questions">
-                  <mat-card-title>
-                    Update Security Questions
-                  </mat-card-title>
-          
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>
-                          In what city or town did your mother and father meet?
-                        </mat-label>
-          
-                        <input matInput />
-                      </mat-form-field>
-                      <mat-form-field appearance="outline">
-                        <mat-label>In what town was your first job?</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <mat-form-field appearance="outline">
-                        <mat-label>What was the name of the company where you had your first job?
-                        </mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <mat-form-field appearance="outline">
-                        <mat-label>What was your favorite food as a child?</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <mat-form-field appearance="outline">
-                        <mat-label>What is the name of your favorite childhood friend?</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="payment-details">
-                  <mat-card-title>Payment Details</mat-card-title>
-                  <mat-card-content>
-                    <div>
-                      <mat-form-field appearance="outline">
-                        <mat-label>Order Currency</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>IncoTerms</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-radio-group>
-                        <mat-radio-button value="Agric">Telegraphic Transfer</mat-radio-button>
-                        <mat-radio-button value="SMe">Cheque Credit Period</mat-radio-button>
-                      </mat-radio-group>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="quality">
-                  <mat-card-title>Quality</mat-card-title>
-                  <mat-card-content>
-                    <div class="container">
-                      <mat-radio-group label="Wallet">
-                        <label label>Is your company ISO 9001 certified?</label>
-                        <mat-radio-button value="Yes">Yes</mat-radio-button>
-                        <mat-radio-button value="No">No</mat-radio-button>
-                        <br />
-                      </mat-radio-group>
-                      <mat-label>
-                        If your company is not ISO 9001 certified,<br />
-                        what other quality assurance program/process is in place in your
-                        company?
-                      </mat-label>
-                      <mat-form-field appearance="outline">
-                        <textarea matInput></textarea>
-                      </mat-form-field>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-          
-                <mat-card id="bank-details">
-                  <mat-card-title>Bank Details</mat-card-title>
-                  <mat-card-content>
-                    <div class="container">
-                      <mat-form-field appearance="outline">
-                        <mat-label>Bank Name</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Branch</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Swift Code</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Bank Code</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Beneficiary's Name</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <mat-form-field appearance="outline">
-                        <mat-label>Account Number</mat-label>
-                        <input matInput />
-                      </mat-form-field>
-                      <br />
-                      <button mat-raised-button color="primary">Update</button>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-              <!-- </div> -->
-        </div>
-        <div class="col-sm-2">
-  
-        </div>
-        
+  <app-header></app-header>
+  <app-buyernav></app-buyernav>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+
+    <div class="col-sm-3">
+      <div class="navs">
+        <!-- <nav class="nav flex-column" data-spy="scroll" data-target=".navbar" pageScrollOffset="100px"> -->
+
+        <a
+          class="nav-link"
+          pageScroll
+          PageScrollConfig.defaultScrollOffset="500"
+          href="#personalInfo"
+          >Personal Info</a
+        >
+
+        <a class="nav-link" pageScroll href="#registered-address"
+          >registered address</a
+        >
+
+        <a class="nav-link" pageScroll href="#corresponsing-address"
+          >corresponsing address</a
+        >
+
+        <a class="nav-link" pageScroll href="#company-information"
+          >company information</a
+        >
+
+        <a class="nav-link" pageScroll href="#update-password"
+          >update-password</a
+        >
+
+        <a class="nav-link" pageScroll href="#security-questions"
+          >security questions</a
+        >
+
+        <a class="nav-link" pageScroll href="#payment-details"
+          >payment details</a
+        >
+
+        <a class="nav-link" pageScroll href="#quality">quality</a>
+
+        <a class="nav-link" pageScroll href="#bank-details">bank details</a>
+        <!-- </nav> -->
+      </div>
     </div>
+
+    <div class="col-sm-5">
+      <!-- <div class="col-md-9"> -->
+
+      <mat-card>
+        <mat-card-title id="personalInfo">Personal Information</mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+
+                <input matInput name="name" ngModel />
+              </mat-form-field>
+              
+
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+
+                <input matInput name="email" ngModel/>
+              </mat-form-field>
+
+              <br />
+
+              
+              <label for="">Wallet</label>
+              <mat-radio-group label="Wallet" name="wallet" ngModel>
+                <!-- <mat-radio-button name="wallet" value="Agric"
+                  >Agric</mat-radio-button
+                >
+
+                <mat-radio-button name="wallet" value="SMe"
+                  >SME</mat-radio-button
+                >
+
+                <mat-radio-button name="wallet" value="OGas"
+                  >OGas</mat-radio-button
+                > -->
+                <mat-radio-button  *ngFor="let option of options" [value]="option" >
+                  {{option}}
+                </mat-radio-button>
+              </mat-radio-group>
+              {{form.value|json}}
+
+              <button mat-raised-button color="primary" type="submit">Update</button>
+            </form>
+            
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="registered-address">
+        <mat-card-title>Registered Address</mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Contact</mat-label>
+
+                <input matInput name="contact" />
+              </mat-form-field>
+
+              <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+
+                <input matInput name="city" />
+              </mat-form-field>
+
+              <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+
+                <input matInput name="state" />
+              </mat-form-field>
+
+              <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+
+                <input matInput name="country" />
+              </mat-form-field>
+
+              <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>Zip Code</mat-label>
+
+                <input matInput name="zipcode" />
+              </mat-form-field>
+
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="corresponsing-address">
+        <mat-card-title>Correspodence Address</mat-card-title>
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Contact</mat-label>
+                <input matInput name="contact" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput name="city" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <input matInput name="state" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Country</mat-label>
+                <input matInput name="country" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Zip Code</mat-label>
+                <input matInput name="zipcode" />
+              </mat-form-field>
+
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card id="company-information">
+        <mat-card-title>
+          Company Information
+        </mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input matInput name="companyName" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Company Representative Name</mat-label>
+                <input matInput name="companyrepresentativename" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Company Email</mat-label>
+                <input matInput name="companyemail" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>CRB/BUNS Number</mat-label>
+                <input matInput name="crbnumber" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Company Address</mat-label>
+                <input matInput name="companyaddress" />
+              </mat-form-field>
+              <br />
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="update-password">
+        <mat-card-title>
+          Update Password
+        </mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Current Email</mat-label>
+                <input matInput name="currentemail" />
+              </mat-form-field>
+              <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input matInput name="newpassword" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput name="confirmpassword" />
+              </mat-form-field>
+              <br />
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="security-questions">
+        <mat-card-title>
+          Update Security Questions
+        </mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>
+                  In what city or town did your mother and father meet?
+                </mat-label>
+
+                <input matInput name="question" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>In what town was your first job?</mat-label>
+                <input matInput name="question" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label
+                  >What was the name of the company where you had your first
+                  job?
+                </mat-label>
+                <input matInput name="question" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>What was your favorite food as a child?</mat-label>
+                <input matInput name="question" />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label
+                  >What is the name of your favorite childhood
+                  friend?</mat-label
+                >
+                <input matInput name="question" />
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="payment-details">
+        <mat-card-title>Payment Details</mat-card-title>
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Order Currency</mat-label>
+                <input matInput name="ordercurrency" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>IncoTerms</mat-label>
+                <input matInput name="incoterms" />
+              </mat-form-field>
+              <br />
+              <mat-radio-group>
+                <mat-radio-button value="Agric"
+                  >Telegraphic Transfer</mat-radio-button
+                >
+                <mat-radio-button value="SMe"
+                  >Cheque Credit Period</mat-radio-button
+                >
+              </mat-radio-group>
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="quality">
+        <mat-card-title>Quality</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <form action="">
+              <mat-radio-group label="Wallet">
+                <label label>Is your company ISO 9001 certified?</label>
+                <mat-radio-button value="Yes">Yes</mat-radio-button>
+                <mat-radio-button value="No">No</mat-radio-button>
+                <br />
+              </mat-radio-group>
+              <mat-label>
+                If your company is not ISO 9001 certified,<br />
+                what other quality assurance program/process is in place in your
+                company?
+              </mat-label>
+              <mat-form-field appearance="outline">
+                <textarea matInput></textarea>
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="bank-details">
+        <mat-card-title>Bank Details</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Bank Name</mat-label>
+                <input matInput name="bankname" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Branch</mat-label>
+                <input matInput name="branch" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Swift Code</mat-label>
+                <input matInput name="swiftcode" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Bank Code</mat-label>
+                <input matInput name="bankcode" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Beneficiary's Name</mat-label>
+                <input matInput name="beneficiaryname" />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Account Number</mat-label>
+                <input matInput name="accountnumber" />
+              </mat-form-field>
+              <br />
+              <button mat-raised-button color="primary" type="submit">
+                Update
+              </button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <!-- </div> -->
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  
-  
-  <!-- <div class="container" id = "mein">
+</div>
+
+<!-- <div class="container" id = "mein">
     <div class="row"> -->
-      <!-- <div class="col-md-3" id = "nav">
+<!-- <div class="col-md-3" id = "nav">
             <nav class="nav flex-column">
               <!-- <a class="nav-link" >Personal Info</a>
               <a class="nav-link" >Registered Address</a>
               <a class="nav-link" >Correspodence Address</a
               > -->
-      <!-- <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
+<!-- <a class="nav-link" pageScroll href="#personalInfo">Personal Info</a>
               <a class="nav-link" pageScroll href="#registered-address">registered-address</a>
               <a class="nav-link" pageScroll href="#corresponsing-address">corresponsing-address</a>
               <a class="nav-link" pageScroll href="#company-information">company-information</a>
@@ -325,6 +436,6 @@
               <a class="nav-link" pageScroll href="#bank-details">bank details</a>
             </nav>
           </div> -->
-  
-    <!-- </div>
+
+<!-- </div>
   </div> -->
