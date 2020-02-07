@@ -176,7 +176,7 @@ export class SupplierPendingOrdersComponent implements OnInit {
     // tslint:disable-next-line:radix
     const id = parseInt($event.target.closest('button').id);
 
-    this.router.navigate(['/buyer/orders/view-orders']).then(e => {
+    this.router.navigate(['/supplier/view-supplier-pendingorder-orders']).then(e => {
       console.log(`the order to view again: ${JSON.stringify(SupplierPendingOrderData.getSupplierPendingOrderMap().get(id), null, 2)} `);
       SupplierPendingOrderData.setIdOfOrderToView(id);
     });
