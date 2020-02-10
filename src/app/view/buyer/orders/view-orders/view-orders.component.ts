@@ -58,14 +58,16 @@ export class ViewOrdersComponent implements OnInit {
         {
           style: "table1",
           table: {
+            widths: ["*", 150, "*", "*", "*", "*"],
+            heights: [40, 25],
             body: [
               [
-                "Column 1",
-                "Column 2",
-                "Column 3",
-                "Column 4",
-                "Column 5",
-                "Column 6"
+                "DEPARTMENT",
+                "TERMS OF DELIVERY",
+                "METHOD OF CONVEYANCE",
+                "PLACE OF DELIVERY",
+                "TIME OF DELIVERY",
+                "TERMS OF PAYMENT"
               ],
               [
                 "One value goes here",
@@ -83,14 +85,15 @@ export class ViewOrdersComponent implements OnInit {
         {
           style: "table2",
           table: {
+            heights: [40, 25],
             body: [
               [
-                "Column 1",
-                "Column 2",
-                "Column 3",
-                "Column 4",
-                "Column 5",
-                "Column 6"
+                "REF/ISBN CAT NO.",
+                "DESCRIPTION",
+                "UNIT OF SALE(PCS/LTR)",
+                "QUANTITY",
+                "UNIT PRICE",
+                "TOTAL PRICE"
               ],
               [
                 "One value goes here",
@@ -113,11 +116,14 @@ export class ViewOrdersComponent implements OnInit {
             {
               style: "table3",
               table: {
+                widths: [100, 100],
+                heights: [30, 30, 30, 30],
+                alignment: "right",
                 body: [
-                  ["row 1", "Column A"],
-                  ["row 2", "Column A"],
-                  ["row 3", "Column A"],
-                  ["row 4", "Column A"]
+                  ["SUBTOTAL", "1,000"],
+                  ["TAX", "1,000"],
+                  ["SHIPPING", "1,000"],
+                  ["TOTAL PRICE", "1,000"]
                   // {
                   //   border: [false, false, false, false],
                   //   widths: [100, 100]
@@ -126,20 +132,21 @@ export class ViewOrdersComponent implements OnInit {
               }
             }
           ]
-        }
+        },
+        {}
       ],
       // Styles for the Pdf Document Begins Here
       styles: {
         header: {
-          fontSize: 24,
+          fontSize: 20,
           alignment: "center",
           bold: true,
           margin: [0, 20, 0, 0]
         },
         subheader: { fontSize: 10, margin: [0, 25, 0, 0] },
-        table1: { margin: [0, 40, 0, 15], fontSize: 10 },
-        table2: { margin: [0, 40, 0, 15], fontSize: 10 },
-        table3: { margin: [150, 40, 0, 0], fontSize: 10 }
+        table1: { margin: [0, 30, 0, 15], fontSize: 9 },
+        table2: { margin: [0, 30, 0, 15], fontSize: 9 },
+        table3: { margin: [10, 30, 0, 0], fontSize: 9 }
       },
       defaultStyle: {
         columnGap: 50
