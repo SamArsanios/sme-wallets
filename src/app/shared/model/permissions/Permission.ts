@@ -21,8 +21,8 @@ import { PermissionTransient } from './permissions-model-transient';
                 this.timestamp = $timestamp;
         }
 
-        static createInstance(): PermissionTransient{
-                return new PermissionTransient(null, null, null, null, null);
+        static createInstance(): Permission{
+                return new Permission(null, null, null, null);
               }
 
         public getId(): number {

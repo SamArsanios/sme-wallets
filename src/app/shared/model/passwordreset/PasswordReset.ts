@@ -20,8 +20,8 @@ export class PasswordReset {
         this.createAt = $createAt;
     }
 
-    static createInstance(): PasswordResetTransient {
-        return new PasswordResetTransient(null, null, null, null, null);
+    static createInstance(): PasswordReset {
+        return new PasswordReset(null, null, null, null);
       }
 
 }

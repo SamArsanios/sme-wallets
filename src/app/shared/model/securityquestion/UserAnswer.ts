@@ -22,8 +22,8 @@ export class UserAnswer {
         this.timestamp = $timestamp;
 
     }
-    static createInstance(): UserAnswerTransient{
-        return new UserAnswerTransient(null, null, null, null,null, null);
+    static createInstance(): UserAnswer{
+        return new UserAnswer(null, null, null, null,null);
       }
 
     public getId(): number {

@@ -28,7 +28,7 @@ export class User {
         this.name = name;
         this.userType = userType;
     }
-    static createInstance(): UserTransient{
-      return new UserTransient(null, null, null, null,null, null, null, null, null);
+    static createInstance(): User{
+      return new User(null, null, null, null,null, null, null, null);
     }
 }

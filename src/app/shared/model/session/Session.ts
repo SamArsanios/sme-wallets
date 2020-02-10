@@ -26,8 +26,8 @@ export class Session {
                 this.timestamp = $timestamp;
         }
 
-        static createInstance(): SessionTransient{
-                return new SessionTransient(null, null, null, null,null, null, null);
+        static createInstance(): Session{
+                return new Session(null, null, null, null,null, null);
               }
 
 }

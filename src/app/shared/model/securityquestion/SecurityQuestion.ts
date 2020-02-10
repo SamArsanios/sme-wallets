@@ -19,8 +19,8 @@ import { SecurityQuestionTransient } from './secuirty-question-model-transient';
         this.timestamp = $timestamp;
     }
 
-    static createInstance(): SecurityQuestionTransient{
-        return new SecurityQuestionTransient(null, null, null, null);
+    static createInstance(): SecurityQuestion{
+        return new SecurityQuestion(null, null, null);
       }
 
 }

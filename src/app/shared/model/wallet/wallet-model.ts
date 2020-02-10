@@ -21,8 +21,8 @@ export class Wallet {
                 this.user = user;
         }
 
-        static createInstance(): WalletTransient{
-                return new WalletTransient(null, null, null, null,null);
+        static createInstance(): Wallet{
+                return new Wallet(null, null, null, null);
               }
 
 }

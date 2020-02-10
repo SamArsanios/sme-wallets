@@ -55,8 +55,8 @@ export class Registration {
                 this.timestamp = $timestamp;
         }
 
-        static createInstance(): RegistrationTransient{
-                return new RegistrationTransient(null, null, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        static createInstance(): Registration{
+                return new Registration(null, null, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
               }
 }
 
