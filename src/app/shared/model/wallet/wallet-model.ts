@@ -5,6 +5,7 @@
  */
 
 import { User } from '../user/user-model';
+import { WalletTransient } from './wallet-model-transient';
 
 export class Wallet {
 
@@ -19,5 +20,9 @@ export class Wallet {
                 this.timestamp = timestamp;
                 this.user = user;
         }
+
+        static createInstance(): WalletTransient{
+                return new WalletTransient(null, null, null, null,null);
+              }
 
 }

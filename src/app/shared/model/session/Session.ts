@@ -5,6 +5,7 @@
  */
 
 import { User } from '../user/user-model'
+import { SessionTransient } from './session-model-transient';
 
 export class Session {
 
@@ -24,5 +25,9 @@ export class Session {
                 this.payload = $payload;
                 this.timestamp = $timestamp;
         }
+
+        static createInstance(): SessionTransient{
+                return new SessionTransient(null, null, null, null,null, null, null);
+              }
 
 }

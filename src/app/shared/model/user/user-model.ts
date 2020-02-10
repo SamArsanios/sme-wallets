@@ -1,3 +1,5 @@
+import { UserTransient } from './user-model-transient';
+
 /**
  * @author Daniel Comboni
  *
@@ -26,5 +28,7 @@ export class User {
         this.name = name;
         this.userType = userType;
     }
-
+    static createInstance(): UserTransient{
+      return new UserTransient(null, null, null, null,null, null, null, null, null);
+    }
 }

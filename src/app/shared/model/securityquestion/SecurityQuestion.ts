@@ -1,3 +1,5 @@
+import { SecurityQuestionTransient } from './secuirty-question-model-transient';
+
 /**
  * @author Daniel Comboni
  * 
@@ -17,5 +19,8 @@
         this.timestamp = $timestamp;
     }
 
+    static createInstance(): SecurityQuestionTransient{
+        return new SecurityQuestionTransient(null, null, null, null);
+      }
 
 }
