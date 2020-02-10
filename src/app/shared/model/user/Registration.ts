@@ -53,5 +53,8 @@ export class Registration {
                 this.companyAddress = companyAddress;
                 this.timestamp = timestamp;
         }
+
+        
+
 }
 

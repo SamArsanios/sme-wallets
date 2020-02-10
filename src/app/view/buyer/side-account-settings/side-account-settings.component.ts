@@ -4,6 +4,7 @@ import {PageScrollConfig} from 'ng2-page-scroll';
 import { NgForm } from '@angular/forms';
 import { ObjectsUtil } from 'src/app/utils/objects/objects';
 import { User } from 'src/app/shared/model/user/user-model';
+import { Registration } from 'src/app/shared/model/user/Registration';
 
 
 @Component({
@@ -30,9 +31,32 @@ export class SideAccountSettingsComponent implements OnInit{
           }
       };
   }
+  
   onSubmit(form:NgForm ){
   console.log(form.value);
   
+  }
+
+  updatePersonalInfo(){
+
+    const reg = Registration.i
+
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "email": "samson@gmail.com",
+        "emailVerifiedAt": "Feb 4, 2020 1:21:52 PM",
+        "password": "samson",
+        "phoneNumber": "+256756",
+        "refUserId": 123.00,
+        "name": "Samson Kibrom",
+        "userType": "supplier"
+      },
+      "industryType": "Manufacturing",
+      "name": "Samson Kibrom",
+      "timestamp": "Feb 4, 2020 1:21:53 PM"
+    }
   }
 
 
