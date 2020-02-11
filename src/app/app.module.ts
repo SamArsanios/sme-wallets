@@ -71,6 +71,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
 import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component';
+import { ViewInvoicesComponent } from './view/buyer/invoices/view-invoices/view-invoices.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,7 +126,8 @@ import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-o
     MyDoughnutChartComponent,
     MyPieChartComponent,
     ViewOrdersComponent,
-    SupplierViewOrdersComponent
+    SupplierViewOrdersComponent,
+    ViewInvoicesComponent
 
     // PiechartComponent
   ],
