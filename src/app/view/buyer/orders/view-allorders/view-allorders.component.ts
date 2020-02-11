@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {AllOrderData} from '../../../../service/order/all.order.data';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-allorders',
   templateUrl: './view-allorders.component.html',
-  styleUrls: ['../view-orders/view-orders.component.css']
+  styleUrls: ['./view-allorders.component.css']
 })
 export class ViewAllordersComponent implements OnInit {
 
@@ -34,9 +35,9 @@ export class ViewAllordersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  constructor() {
+  constructor(private location: Location) {
 
-      this.populateOrderView();
+    this.populateOrderView();
 
 }
 
@@ -80,6 +81,10 @@ export class ViewAllordersComponent implements OnInit {
     }
 
   }
+
+cancel() {
+  this.location.back(); // <-- go back to previous location on cancel
+}
 
   ngOnInit() {
 

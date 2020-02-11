@@ -1,21 +1,6 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-view-supplier-pending-orders',
-//   templateUrl: './view-supplier-pending-orders.component.html',
-//   styleUrls: ['./view-supplier-pending-orders.component.css']
-// })
-// export class ViewSupplierPendingOrdersComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, OnInit } from '@angular/core';
 import { SupplierPendingOrderData } from 'src/app/service/order/supplier.pending.order.data';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-supplier-pending-orders',
@@ -50,10 +35,14 @@ export class ViewSupplierPendingOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  constructor() {
+  constructor(private location: Location) {
 
       this.populateOrderView();
 
+}
+
+cancel() {
+  this.location.back();
 }
 
   private populateOrderView(): void {

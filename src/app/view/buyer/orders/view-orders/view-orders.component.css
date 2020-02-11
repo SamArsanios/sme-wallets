@@ -1,44 +1,64 @@
 body{
-  background-color: rgb(236, 240, 245);
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  background-color: rgb(193, 193, 223);
+  padding: 5%;
+  height: auto;
 
 }
-.container {
-  margin: auto;
-  padding-top: 150px;
+.container{
+  padding: 1%;
+  margin-left: 10%;
+
   background-color: white;
 }
-
-img {
-  height: 50px;
-  width: 50px;
+h3{
+  color: maroon;
+margin-left: 40%;
 }
 
-li {
-  list-style: none;
-  font-weight: bold;
-  font-size: 16px;
+.col-sm-6 ul{
+  color: blue;
+}
+h4{
+  color: green;
+}
+hr{
+  background-color: black;
+}
+ul {
+  list-style-type: none;
+ }
+
+.backbutton{
+  /* margin-left: 15%; */
+  padding: 1%;
+  /* margin-top: 6%; */
+  border-radius: 10%;
+  font-weight: 500;
+}
+.details{
+  color: maroon;
+  margin-bottom: 5%;
+}
+.buyerinfo ul{
+
+  color: green;
 }
 
-table {
-  margin: 100px 0;
-  width: 100%;
+.buyerinfo{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(232, 232, 255);
 }
 
-table,
-th,
-td {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+.orderDate{
+  text-align: right;
 }
-
-th {
-  padding: 15px;
+.pdfbutton{
+  float: right;
+  font-weight: 700;
 }
-
-tr:nth-child(1) {
-  background-color: #dddddd;
+hr{
+  border: 2px solid;
+  border-radius: 5px;   background-color: black;
 }
