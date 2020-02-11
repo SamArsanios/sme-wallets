@@ -16,6 +16,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {ApproveOrderData} from '../../../../service/order/approve.order.data';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-all-approved-orders',
@@ -51,10 +52,14 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  constructor() {
+  constructor(private location: Location) {
 
       this.populateOrderView();
 
+}
+
+cancel() {
+  this.location.back(); // <-- go back to previous location on cancel
 }
 
   private populateOrderView(): void {

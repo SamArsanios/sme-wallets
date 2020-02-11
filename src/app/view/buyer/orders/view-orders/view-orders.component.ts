@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PendingOrderData} from '../../../../service/order/pending.order.data';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-orders',
@@ -34,10 +35,13 @@ export class ViewOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  constructor() {
+  constructor(private location: Location) {
 
       this.populateOrderView();
 
+}
+cancel() {
+  this.location.back();
 }
 
   private populateOrderView(): void {
