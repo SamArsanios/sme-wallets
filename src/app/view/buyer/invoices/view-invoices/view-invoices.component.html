@@ -1,1 +1,109 @@
-<p>view-invoices works!</p>
+<div class="container">
+  <div style="display: block;">
+    <img
+      src="../../../../../assets/purchase-order-2.png"
+      alt="purchase order icon"
+    />
+  </div>
+  <h3>Purchase Order</h3>
+  <hr />
+  <div class="row">
+    <div class="col-sm-4">
+      <div>
+        <li>From :</li>
+        <li>Phone :</li>
+        <li>Email :</li>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <li>To :</li>
+        <li>Phone :</li>
+        <li>Email :</li>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <li>Invoice ID :</li>
+        <li>Order ID :</li>
+        <li>Payment Due :</li>
+        <li>Delivery Place :</li>
+        <li>Payment Terms :</li>
+        <li>Delivery Terms :</li>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th>
+        Sr No.
+      </th>
+      <th>
+        Item Name
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Sale Unit(PCS/LTR)
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <td>Number</td>
+      <td>Some Text</td>
+      <td>Some Text</td>
+      <td>Some Text</td>
+      <td>Some Text</td>
+      <td>Some Text</td>
+      <td>Some Text</td>
+    </tr>
+  </table>
+
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6">
+      <h3>Order Due</h3>
+      <table>
+        <tr>
+          <th>Subtotal :</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Tax :</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Shipping :</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Total :</th>
+          <td>0</td>
+        </tr>
+      </table>
+
+      <div class="btns">
+        <button
+          (click)="generatePdf()"
+          id="btn0"
+          class="btn btn-primary btn-sm"
+          type="submit"
+        >
+          Generate PDF
+        </button>
+        <button id="btn1" class="btn btn-success btn-sm" type="submit">
+          Accept
+        </button>
+        <button id="btn2" class="btn btn-danger btn-sm" type="submit">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
