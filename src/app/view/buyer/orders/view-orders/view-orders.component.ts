@@ -58,27 +58,28 @@ export class ViewOrdersComponent implements OnInit {
         {
           style: "table1",
           table: {
-            widths: ["*", 150, "*", "*", "*", "*"],
+            headerRows: 1,
+            widths: ["*", 130, "*", "*", "*", "*"],
             heights: [40, 25],
             body: [
               [
-                "DEPARTMENT",
-                "TERMS OF DELIVERY",
-                "METHOD OF CONVEYANCE",
-                "PLACE OF DELIVERY",
-                "TIME OF DELIVERY",
-                "TERMS OF PAYMENT"
+                { text: "DEPARTMENT", style: "tableHeader" },
+                { text: "TERMS OF DELIVERY", style: "tableHeader" },
+                { text: "METHOD OF CONVEYANCE", style: "tableHeader" },
+                { text: "PLACE OF DELIVERY", style: "tableHeader" },
+                { text: "TIME OF DELIVERY", style: "tableHeader" },
+                { text: "TERMS OF PAYMENT", style: "tableHeader" }
               ],
+
               [
-                "One value goes here",
-                "Another one here",
-                "OK?",
-                "Information goes here",
-                "Information goes here",
-                "Information goes here"
+                { text: "One value goes here", style: "tableContent" },
+                { text: "Another one here", style: "tableContent" },
+                { text: "OK?", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" }
               ]
-            ],
-            fillColor: "#eeeeee"
+            ]
           }
         },
 
@@ -86,22 +87,23 @@ export class ViewOrdersComponent implements OnInit {
           style: "table2",
           table: {
             heights: [40, 25],
+            widths: ["*", 130, "*", "*", "*", "*"],
             body: [
               [
-                "REF/ISBN CAT NO.",
-                "DESCRIPTION",
-                "UNIT OF SALE(PCS/LTR)",
-                "QUANTITY",
-                "UNIT PRICE",
-                "TOTAL PRICE"
+                { text: "REF/ISBN CAT NO.", style: "tableHeader" },
+                { text: "DESCRIPTION", style: "tableHeader" },
+                { text: "UNIT OF SALE(PCS/LTR)", style: "tableHeader" },
+                { text: "QUANTITY", style: "tableHeader" },
+                { text: "UNIT PRICE", style: "tableHeader" },
+                { text: "TOTAL PRICE", style: "tableHeader" }
               ],
               [
-                "One value goes here",
-                "Another one here",
-                "OK?",
-                "Information goes here",
-                "Information goes here",
-                "Information goes here"
+                { text: "One value goes here", style: "tableContent" },
+                { text: "Another one here", style: "tableContent" },
+                { text: "OK?", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" }
               ]
             ]
           }
@@ -118,22 +120,62 @@ export class ViewOrdersComponent implements OnInit {
               table: {
                 widths: [100, 100],
                 heights: [30, 30, 30, 30],
-                alignment: "right",
                 body: [
-                  ["SUBTOTAL", "1,000"],
-                  ["TAX", "1,000"],
-                  ["SHIPPING", "1,000"],
-                  ["TOTAL PRICE", "1,000"]
-                  // {
-                  //   border: [false, false, false, false],
-                  //   widths: [100, 100]
-                  // }
+                  [
+                    {
+                      text: "SUBTOTAL",
+                      style: "tableHeader",
+                      border: [false, false, false, false],
+                      alignment: "right"
+                    },
+                    {
+                      text: "1,000",
+                      style: "tableContent"
+                    } // to be popoulated from db
+                  ],
+                  [
+                    {
+                      text: "TAX",
+                      style: "tableHeader",
+                      border: [false, false, false, false],
+                      alignment: "right"
+                    },
+                    {
+                      text: "1,000",
+                      style: "tableContent"
+                    } // to be popoulated from db
+                  ],
+                  [
+                    {
+                      text: "SHIPPING",
+                      style: "tableHeader",
+                      border: [false, false, false, false],
+                      alignment: "right"
+                    },
+                    {
+                      text: "1,000",
+                      style: "tableContent"
+                    } // to be popoulated from db
+                  ],
+                  [
+                    {
+                      text: "TOTAL PRICE",
+                      style: "tableHeader",
+                      border: [false, false, false, false],
+                      alignment: "right"
+                    },
+
+                    {
+                      text: "1,000",
+                      style: "tableContent"
+                    } // to be popoulated from db
+                  ]
                 ]
               }
             }
           ]
         },
-        {}
+        { columns: [] }
       ],
       // Styles for the Pdf Document Begins Here
       styles: {
@@ -141,9 +183,16 @@ export class ViewOrdersComponent implements OnInit {
           fontSize: 20,
           alignment: "center",
           bold: true,
-          margin: [0, 20, 0, 0]
+          margin: [0, 15, 0, 0]
         },
-        subheader: { fontSize: 10, margin: [0, 25, 0, 0] },
+        subheader: { bold: true, fontSize: 10, margin: [0, 25, 0, 0] },
+        tableHeader: {
+          bold: true,
+          fontSize: 10,
+          margin: [0, 14, 0, 0]
+          // fillColor: "#dddddd"
+        },
+        tableContent: { margin: [0, 14, 0, 0] },
         table1: { margin: [0, 30, 0, 15], fontSize: 9 },
         table2: { margin: [0, 30, 0, 15], fontSize: 9 },
         table3: { margin: [10, 30, 0, 0], fontSize: 9 }
