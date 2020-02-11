@@ -28,6 +28,7 @@ import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponso
 import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
 import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
 import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component";
+import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
 
 const routes: Routes = [
   //suppliers
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: "home/buyer/buyerdashboard", component: BuyersDashboardComponent },
   { path: "buyer/orders", component: OrdersComponent },
   { path: "buyer/orders/view-orders", component: ViewOrdersComponent },
+  { path: "buyer/invoices/view-invoices", component: ViewInvoicesComponent },
   { path: "buyer/Invitecontacts", component: InviteContactsComponent },
   { path: "buyer/invoices", component: InvoicesComponent },
   { path: "buyer/Vault", component: VaultComponent },
