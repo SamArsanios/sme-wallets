@@ -1,5 +1,4 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-// data source for filtering and Matsort for sorting
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import {HttpService} from '../../../../utils/http/http-service';
 import {Order} from '../../../../model/buyer/order/order-model';
@@ -8,6 +7,8 @@ import {IPendingOrder, PopulatePendingOrderTable} from './pending.order.model.in
 import {PopulateTable} from '../../../../utils/tables/populate.table';
 import {PendingOrderData} from '../../../../service/order/pending.order.data';
 import {Router} from '@angular/router';
+import {WebsocketService} from '../../../../utils/websocket/websocket.service';
+
 
 @Component({
   selector: 'app-pending-orders',
@@ -23,7 +24,7 @@ export class PendingOrdersComponent implements OnInit {
   displayedColumns: string[] = PopulatePendingOrderTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>, private populateTable: PopulateTable<Order, IPendingOrder>, private router: Router) {}
+  constructor(private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>, private populateTable: PopulateTable<Order, IPendingOrder>, private router: Router, private webSocketService: WebsocketService) {}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -48,6 +49,7 @@ export class PendingOrdersComponent implements OnInit {
 
     this.pendingOrdersInfoTableDataSource.sort = this.sort;
     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
+    this.notifyUponFetchingOrders();
 
   }
 
@@ -55,14 +57,31 @@ export class PendingOrdersComponent implements OnInit {
     this.populateTheTable();
   }
 
+  private notifyUponFetchingOrders(): void {
+
+    const stompClient = this.webSocketService.connect();
+
+    stompClient.connect({}, frame => {
+
+      stompClient.subscribe('/topic/orders/findAll', notifications => {
+
+        console.log(`the nots: ${JSON.stringify(notifications.body, null, 2)} `);
+        // this.notifications = JSON.parse(notifications.body).count;
+
+      });
+
+    });
+  }
+
   handleViewOrderClick($event): void {
 
     // tslint:disable-next-line:radix
     const id = parseInt($event.target.closest('button').id);
 
-    this.router.navigate(['/buyer/orders/view-orders']).then(e => {
-      console.log(`the order to view again: ${JSON.stringify(PendingOrderData.getAllPendingOrderMap().get(id), null, 2)} `);
+    this.router.navigate(['/buyer/orders/view-orders']).then( () => {
+
       PendingOrderData.setIdOfOrderToView(id);
+
     });
 
   }
