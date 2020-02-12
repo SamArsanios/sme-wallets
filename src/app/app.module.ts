@@ -132,8 +132,7 @@ import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-sup
     MyPieChartComponent,
     ViewOrdersComponent,
     SupplierViewOrdersComponent,
-    ViewInvoicesComponent
-
+    ViewInvoicesComponent,
     ViewAllordersComponent,
     ViewAllApprovedOrdersComponent,
     ViewSupplierPendingOrdersComponent

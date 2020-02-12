@@ -2,9 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { Component, OnInit } from '@angular/core';
-import {PendingOrderData} from '../../../../service/order/pending.order.data';
-import { Location } from '@angular/common';
+import { PendingOrderData } from "../../../../service/order/pending.order.data";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-view-orders",
@@ -17,10 +16,6 @@ export class ViewOrdersComponent implements OnInit {
   ngOnInit() {}
 
   generatePdf() {
-    // const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };
-    // pdfMake.createPdf(documentDefinition).open();
-    //  }
-
     const documentDefinition = {
       content: [
         {
@@ -86,88 +81,6 @@ export class ViewOrdersComponent implements OnInit {
             ]
           }
         },
-
-  buyerName: string;
-  buyerPhone: string;
-  buyerEmail: string;
-
-  supplierName: string;
-  supplierPhone: string;
-  supplierEmail: string;
-
-  orderId: string;
-  placeOfDelivery: string;
-  termsOfPayment: string;
-  termsOfDelivery: string;
-
-  srNo: string;
-  itemName: string;
-  itemDescription: string;
-  salesUnit: string;
-  quantity: number;
-  price: number;
-  totalBeforeTax: number;
-
-  subTotal: number;
-  tax: number;
-  shipping: number;
-  totalAfterTax: number;
-
-  constructor(private location: Location) {
-
-      this.populateOrderView();
-
-}
-cancel() {
-  this.location.back();
-}
-
-  private populateOrderView(): void {
-
-    const order = PendingOrderData.getAllPendingOrderMap().get(PendingOrderData.getIdOfOrderToView());
-
-    if ( order !== undefined && order != null ) {
-
-      this.buyerName = order.buyer.name;
-      this.buyerPhone = order.buyer.phoneNumber;
-      this.buyerEmail = order.buyer.email;
-
-      this.supplierName = order.supplier.name;
-      this.supplierPhone = order.supplier.phoneNumber;
-      this.supplierEmail = order.supplier.email;
-
-      this.orderId = `ord-${order.id}`;
-      this.placeOfDelivery = order.placeOfDelivery;
-      this.termsOfPayment = order.paymentTerms;
-      this.termsOfDelivery = order.deliveryTerms;
-
-      this.srNo = `ord-${order.id}`;
-      this.itemName = order.itemName;
-      this.itemDescription = order.itemDescription;
-      this.salesUnit = order.saleUnit;
-      this.price = 0;
-      this.totalBeforeTax = 0;
-
-      this.subTotal = 0;
-      this.tax = 0;
-      this.shipping = 0;
-      this.quantity = order.quantity;
-      this.totalBeforeTax = 0;
-      this.totalAfterTax = 0;
-
-    } else {
-
-      // fetch the order direct from the db basing on the ID provided
-
-    }
-
-  }
-
-  ngOnInit() {
-
-    this.populateOrderView();
-
-  }
 
         {
           style: "table2",
@@ -289,4 +202,86 @@ cancel() {
     };
     pdfMake.createPdf(documentDefinition).open();
   }
+
+  //   buyerName: string;
+  //   buyerPhone: string;
+  //   buyerEmail: string;
+
+  //   supplierName: string;
+  //   supplierPhone: string;
+  //   supplierEmail: string;
+
+  //   orderId: string;
+  //   placeOfDelivery: string;
+  //   termsOfPayment: string;
+  //   termsOfDelivery: string;
+
+  //   srNo: string;
+  //   itemName: string;
+  //   itemDescription: string;
+  //   salesUnit: string;
+  //   quantity: number;
+  //   price: number;
+  //   totalBeforeTax: number;
+
+  //   subTotal: number;
+  //   tax: number;
+  //   shipping: number;
+  //   totalAfterTax: number;
+
+  //   constructor(private location: Location) {
+
+  //       this.populateOrderView();
+
+  // }
+  // cancel() {
+  //   this.location.back();
+  // }
+
+  //   private populateOrderView(): void {
+
+  //     const order = PendingOrderData.getAllPendingOrderMap().get(PendingOrderData.getIdOfOrderToView());
+
+  //     if ( order !== undefined && order != null ) {
+
+  //       this.buyerName = order.buyer.name;
+  //       this.buyerPhone = order.buyer.phoneNumber;
+  //       this.buyerEmail = order.buyer.email;
+
+  //       this.supplierName = order.supplier.name;
+  //       this.supplierPhone = order.supplier.phoneNumber;
+  //       this.supplierEmail = order.supplier.email;
+
+  //       this.orderId = `ord-${order.id}`;
+  //       this.placeOfDelivery = order.placeOfDelivery;
+  //       this.termsOfPayment = order.paymentTerms;
+  //       this.termsOfDelivery = order.deliveryTerms;
+
+  //       this.srNo = `ord-${order.id}`;
+  //       this.itemName = order.itemName;
+  //       this.itemDescription = order.itemDescription;
+  //       this.salesUnit = order.saleUnit;
+  //       this.price = 0;
+  //       this.totalBeforeTax = 0;
+
+  //       this.subTotal = 0;
+  //       this.tax = 0;
+  //       this.shipping = 0;
+  //       this.quantity = order.quantity;
+  //       this.totalBeforeTax = 0;
+  //       this.totalAfterTax = 0;
+
+  //     } else {
+
+  //       // fetch the order direct from the db basing on the ID provided
+
+  //     }
+
+  //   }
+
+  //   ngOnInit() {
+
+  //     this.populateOrderView();
+
+  //   }
 }
