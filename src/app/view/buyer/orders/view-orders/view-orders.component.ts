@@ -1,91 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { Component, OnInit } from '@angular/core';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 import {PendingOrderData} from '../../../../service/order/pending.order.data';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: "app-view-orders",
-  templateUrl: "./view-orders.component.html",
-  styleUrls: ["./view-orders.component.css"]
+  selector: 'app-view-orders',
+  templateUrl: './view-orders.component.html',
+  styleUrls: ['./view-orders.component.css']
 })
 export class ViewOrdersComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
-
-  generatePdf() {
-    // const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };
-    // pdfMake.createPdf(documentDefinition).open();
-    //  }
-
-    const documentDefinition = {
-      content: [
-        {
-          text: "PURCHASE ORDER",
-          style: "header"
-        },
-        {
-          alignment: "justify",
-          columns: [
-            {
-              text: ""
-            },
-            {
-              text: "ORDER NO - \n ORDER DUE DATE : \n\n\n",
-              alignment: "right",
-              margin: [0, 30, 0, 0],
-              fontSize: 12
-            }
-          ]
-        },
-        {
-          columns: [
-            {
-              text: "From :\n Name :\n Address : \n Phone :",
-              style: "subheader"
-            },
-            {
-              text:
-                "To :\n Recipient Name :\n Company Name :\n Address :\n Phone : \n",
-              style: "subheader"
-            },
-            {
-              text:
-                "Order Details : \n Order Id : \n Delivery Place : \n Payment Terms \n Delivery Terms : ",
-              style: "subheader"
-            }
-          ]
-        },
-        {
-          style: "table1",
-          table: {
-            headerRows: 1,
-            widths: ["*", 130, "*", "*", "*", "*"],
-            heights: [40, 25],
-            body: [
-              [
-                { text: "DEPARTMENT", style: "tableHeader" },
-                { text: "TERMS OF DELIVERY", style: "tableHeader" },
-                { text: "METHOD OF CONVEYANCE", style: "tableHeader" },
-                { text: "PLACE OF DELIVERY", style: "tableHeader" },
-                { text: "TIME OF DELIVERY", style: "tableHeader" },
-                { text: "TERMS OF PAYMENT", style: "tableHeader" }
-              ],
-
-              [
-                { text: "One value goes here", style: "tableContent" },
-                { text: "Another one here", style: "tableContent" },
-                { text: "OK?", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" }
-              ]
-            ]
-          }
-        },
 
   buyerName: string;
   buyerPhone: string;
@@ -115,12 +42,12 @@ export class ViewOrdersComponent implements OnInit {
 
   constructor(private location: Location) {
 
-      this.populateOrderView();
+    this.populateOrderView();
 
-}
-cancel() {
-  this.location.back();
-}
+  }
+  cancel() {
+    this.location.back();
+  }
 
   private populateOrderView(): void {
 
@@ -169,91 +96,162 @@ cancel() {
 
   }
 
+
+  generatePdf() {
+    // const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };
+    // pdfMake.createPdf(documentDefinition).open();
+    //  }
+
+    const documentDefinition = {
+      content: [
         {
-          style: "table2",
+          text: 'PURCHASE ORDER',
+          style: 'header'
+        },
+        {
+          alignment: 'justify',
+          columns: [
+            {
+              text: ''
+            },
+            {
+              text: 'ORDER NO - \n ORDER DUE DATE : \n\n\n',
+              alignment: 'right',
+              margin: [0, 30, 0, 0],
+              fontSize: 12
+            }
+          ]
+        },
+        {
+          columns: [
+            {
+              text: 'From :\n Name :\n Address : \n Phone :',
+              style: 'subheader'
+            },
+            {
+              text:
+                'To :\n Recipient Name :\n Company Name :\n Address :\n Phone : \n',
+              style: 'subheader'
+            },
+            {
+              text: 'Order Details : \n Order Id : \n Delivery Place : \n Payment Terms \n Delivery Terms : ',
+              style: 'subheader'
+            }
+          ]
+        },
+        {
+          style: 'table1',
           table: {
+            headerRows: 1,
+            widths: ['*', 130, '*', '*', '*', '*'],
             heights: [40, 25],
-            widths: ["*", 130, "*", "*", "*", "*"],
             body: [
               [
-                { text: "REF/ISBN CAT NO.", style: "tableHeader" },
-                { text: "DESCRIPTION", style: "tableHeader" },
-                { text: "UNIT OF SALE(PCS/LTR)", style: "tableHeader" },
-                { text: "QUANTITY", style: "tableHeader" },
-                { text: "UNIT PRICE", style: "tableHeader" },
-                { text: "TOTAL PRICE", style: "tableHeader" }
+                { text: 'DEPARTMENT', style: 'tableHeader' },
+                { text: 'TERMS OF DELIVERY', style: 'tableHeader' },
+                { text: 'METHOD OF CONVEYANCE', style: 'tableHeader' },
+                { text: 'PLACE OF DELIVERY', style: 'tableHeader' },
+                { text: 'TIME OF DELIVERY', style: 'tableHeader' },
+                { text: 'TERMS OF PAYMENT', style: 'tableHeader' }
+              ],
+
+              [
+                { text: 'One value goes here', style: 'tableContent' },
+                { text: 'Another one here', style: 'tableContent' },
+                { text: 'OK?', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' }
+              ]
+            ]
+          }
+        },
+
+        {
+          style: 'table2',
+          table: {
+            heights: [40, 25],
+            widths: ['*', 130, '*', '*', '*', '*'],
+            body: [
+              [
+                { text: 'REF/ISBN CAT NO.', style: 'tableHeader' },
+                { text: 'DESCRIPTION', style: 'tableHeader' },
+                { text: 'UNIT OF SALE(PCS/LTR)', style: 'tableHeader' },
+                { text: 'QUANTITY', style: 'tableHeader' },
+                { text: 'UNIT PRICE', style: 'tableHeader' },
+                { text: 'TOTAL PRICE', style: 'tableHeader' }
               ],
               [
-                { text: "One value goes here", style: "tableContent" },
-                { text: "Another one here", style: "tableContent" },
-                { text: "OK?", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" }
+                { text: 'One value goes here', style: 'tableContent' },
+                { text: 'Another one here', style: 'tableContent' },
+                { text: 'OK?', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' }
               ]
             ]
           }
         },
         {
-          alignment: "justify",
+          alignment: 'justify',
           columns: [
             {
-              text: ""
+              text: ''
             },
 
             {
-              style: "table3",
+              style: 'table3',
               table: {
                 widths: [100, 100],
                 heights: [30, 30, 30, 30],
                 body: [
                   [
                     {
-                      text: "SUBTOTAL",
-                      style: "tableHeader",
+                      text: 'SUBTOTAL',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ],
                   [
                     {
-                      text: "TAX",
-                      style: "tableHeader",
+                      text: 'TAX',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ],
                   [
                     {
-                      text: "SHIPPING",
-                      style: "tableHeader",
+                      text: 'SHIPPING',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ],
                   [
                     {
-                      text: "TOTAL PRICE",
-                      style: "tableHeader",
+                      text: 'TOTAL PRICE',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
 
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ]
                 ]
@@ -267,7 +265,7 @@ cancel() {
       styles: {
         header: {
           fontSize: 20,
-          alignment: "center",
+          alignment: 'center',
           bold: true,
           margin: [0, 15, 0, 0]
         },

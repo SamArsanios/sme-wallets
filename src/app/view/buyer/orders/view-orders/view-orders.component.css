@@ -2,6 +2,7 @@
 .container {
   margin: auto;
   padding-top: 70px;
+}
 
 body{
   background-color: rgb(193, 193, 223);
@@ -36,6 +37,7 @@ ul {
 table {
   margin: 50px 0;
   width: 100%;
+}
 
 .backbutton{
   /* margin-left: 15%; */
