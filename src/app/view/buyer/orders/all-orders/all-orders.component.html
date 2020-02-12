@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-buyernav></app-buyernav>
+<!-- <app-header></app-header> -->
+<!-- <app-buyernav></app-buyernav> -->
 <div class="container">
   <mat-form-field>
     <input
@@ -59,7 +59,12 @@
           >Action</mat-header-cell
         >
         <mat-cell *matCellDef="let element"
-          ><button class="btn-primary btn-sm">View</button></mat-cell
+          ><button
+            class="btn-primary btn-sm"
+            routerLink="/buyer/orders/view-orders"
+          >
+            View
+          </button></mat-cell
         >
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -70,3 +75,4 @@
     </mat-paginator>
   </div>
 </div>
+
