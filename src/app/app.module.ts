@@ -1,4 +1,4 @@
- import { BrowserModule } from "@angular/platform-browser";
+import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgxPhoneNumberInputModule } from "projects/phone-input/src/public_api";
 
@@ -71,6 +71,12 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
 import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component';
+
+import { ViewInvoicesComponent } from './view/buyer/invoices/view-invoices/view-invoices.component';
+import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-allorders.component';
+import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-approved-orders/view-all-approved-orders.component';
+import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,7 +131,12 @@ import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-o
     MyDoughnutChartComponent,
     MyPieChartComponent,
     ViewOrdersComponent,
-    SupplierViewOrdersComponent
+    SupplierViewOrdersComponent,
+    ViewInvoicesComponent
+
+    ViewAllordersComponent,
+    ViewAllApprovedOrdersComponent,
+    ViewSupplierPendingOrdersComponent
 
     // PiechartComponent
   ],

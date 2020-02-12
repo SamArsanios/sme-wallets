@@ -1,3 +1,5 @@
+import { UserAnswerTransient } from './user-answer-model-transient';
+
 /**
  * @author Daniel Comboni
  * 
@@ -20,7 +22,9 @@ export class UserAnswer {
         this.timestamp = $timestamp;
 
     }
-
+    static createInstance(): UserAnswer{
+        return new UserAnswer(null, null, null, null,null);
+      }
 
     public getId(): number {
         return this.id;

@@ -42,6 +42,7 @@ export class PendingOrdersComponent implements OnInit {
 
         PendingOrderData.addAPendingOrder(e);
         PendingOrderData.addAPendingOrderToMap(e, e.id);
+       
 
       });
 
@@ -68,6 +69,8 @@ export class PendingOrdersComponent implements OnInit {
       PendingOrderData.setIdOfOrderToView(id);
 
     });
+
+    
 
   }
 
