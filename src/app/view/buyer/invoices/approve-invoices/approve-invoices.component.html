@@ -63,7 +63,12 @@
           >Action</mat-header-cell
         >
         <mat-cell *matCellDef="let element"
-          ><button class="btn-primary btn-sm">View</button></mat-cell
+          ><button
+            class="btn-primary btn-sm"
+            routerLink="/buyer/invoices/view-invoices"
+          >
+            View
+          </button></mat-cell
         >
       </ng-container>
 
