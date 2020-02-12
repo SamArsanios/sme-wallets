@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import pdfMake from 'pdfmake/build/pdfmake';
-import pdfFonts from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-import {PendingOrderData} from '../../../../service/order/pending.order.data';
-import { Location } from '@angular/common';
+import { Component, OnInit } from "@angular/core";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { PendingOrderData } from "../../../../service/order/pending.order.data";
+import { Location } from "@angular/common";
+
 
 @Component({
   selector: 'app-view-orders',
@@ -13,110 +14,24 @@ import { Location } from '@angular/common';
 })
 export class ViewOrdersComponent implements OnInit {
 
-
-  buyerName: string;
-  buyerPhone: string;
-  buyerEmail: string;
-
-  supplierName: string;
-  supplierPhone: string;
-  supplierEmail: string;
-
-  orderId: string;
-  placeOfDelivery: string;
-  termsOfPayment: string;
-  termsOfDelivery: string;
-
-  srNo: string;
-  itemName: string;
-  itemDescription: string;
-  salesUnit: string;
-  quantity: number;
-  price: number;
-  totalBeforeTax: number;
-
-  subTotal: number;
-  tax: number;
-  shipping: number;
-  totalAfterTax: number;
-
-  constructor(private location: Location) {
-
-    this.populateOrderView();
-
-  }
-  cancel() {
-    this.location.back();
-  }
-
-  private populateOrderView(): void {
-
-    const order = PendingOrderData.getAllPendingOrderMap().get(PendingOrderData.getIdOfOrderToView());
-
-    if ( order !== undefined && order != null ) {
-
-      this.buyerName = order.buyer.name;
-      this.buyerPhone = order.buyer.phoneNumber;
-      this.buyerEmail = order.buyer.email;
-
-      this.supplierName = order.supplier.name;
-      this.supplierPhone = order.supplier.phoneNumber;
-      this.supplierEmail = order.supplier.email;
-
-      this.orderId = `ord-${order.id}`;
-      this.placeOfDelivery = order.placeOfDelivery;
-      this.termsOfPayment = order.paymentTerms;
-      this.termsOfDelivery = order.deliveryTerms;
-
-      this.srNo = `ord-${order.id}`;
-      this.itemName = order.itemName;
-      this.itemDescription = order.itemDescription;
-      this.salesUnit = order.saleUnit;
-      this.price = 0;
-      this.totalBeforeTax = 0;
-
-      this.subTotal = 0;
-      this.tax = 0;
-      this.shipping = 0;
-      this.quantity = order.quantity;
-      this.totalBeforeTax = 0;
-      this.totalAfterTax = 0;
-
-    } else {
-
-      // fetch the order direct from the db basing on the ID provided
-
-    }
-
-  }
-
-  ngOnInit() {
-
-    this.populateOrderView();
-
-  }
-
+  ngOnInit() {}
 
   generatePdf() {
-    // const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };
-    // pdfMake.createPdf(documentDefinition).open();
-    //  }
-
     const documentDefinition = {
       content: [
         {
-          text: 'PURCHASE ORDER',
-          style: 'header'
+          text: "PURCHASE ORDER",
+          style: "header"
         },
         {
-          alignment: 'justify',
+          alignment: "justify",
           columns: [
             {
-              text: ''
+              text: ""
             },
             {
-              text: 'ORDER NO - \n ORDER DUE DATE : \n\n\n',
-              alignment: 'right',
+              text: "ORDER NO - \n ORDER DUE DATE : \n\n\n",
+              alignment: "right",
               margin: [0, 30, 0, 0],
               fontSize: 12
             }
@@ -125,43 +40,44 @@ export class ViewOrdersComponent implements OnInit {
         {
           columns: [
             {
-              text: 'From :\n Name :\n Address : \n Phone :',
-              style: 'subheader'
+              text: "From :\n Name :\n Address : \n Phone :",
+              style: "subheader"
             },
             {
               text:
-                'To :\n Recipient Name :\n Company Name :\n Address :\n Phone : \n',
-              style: 'subheader'
+                "To :\n Recipient Name :\n Company Name :\n Address :\n Phone : \n",
+              style: "subheader"
             },
             {
-              text: 'Order Details : \n Order Id : \n Delivery Place : \n Payment Terms \n Delivery Terms : ',
-              style: 'subheader'
+              text:
+                "Order Details : \n Order Id : \n Delivery Place : \n Payment Terms \n Delivery Terms : ",
+              style: "subheader"
             }
           ]
         },
         {
-          style: 'table1',
+          style: "table1",
           table: {
             headerRows: 1,
-            widths: ['*', 130, '*', '*', '*', '*'],
+            widths: ["*", 130, "*", "*", "*", "*"],
             heights: [40, 25],
             body: [
               [
-                { text: 'DEPARTMENT', style: 'tableHeader' },
-                { text: 'TERMS OF DELIVERY', style: 'tableHeader' },
-                { text: 'METHOD OF CONVEYANCE', style: 'tableHeader' },
-                { text: 'PLACE OF DELIVERY', style: 'tableHeader' },
-                { text: 'TIME OF DELIVERY', style: 'tableHeader' },
-                { text: 'TERMS OF PAYMENT', style: 'tableHeader' }
+                { text: "DEPARTMENT", style: "tableHeader" },
+                { text: "TERMS OF DELIVERY", style: "tableHeader" },
+                { text: "METHOD OF CONVEYANCE", style: "tableHeader" },
+                { text: "PLACE OF DELIVERY", style: "tableHeader" },
+                { text: "TIME OF DELIVERY", style: "tableHeader" },
+                { text: "TERMS OF PAYMENT", style: "tableHeader" }
               ],
 
               [
-                { text: 'One value goes here', style: 'tableContent' },
-                { text: 'Another one here', style: 'tableContent' },
-                { text: 'OK?', style: 'tableContent' },
-                { text: 'Information goes here', style: 'tableContent' },
-                { text: 'Information goes here', style: 'tableContent' },
-                { text: 'Information goes here', style: 'tableContent' }
+                { text: "One value goes here", style: "tableContent" },
+                { text: "Another one here", style: "tableContent" },
+                { text: "OK?", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" },
+                { text: "Information goes here", style: "tableContent" }
               ]
             ]
           }
@@ -287,4 +203,86 @@ export class ViewOrdersComponent implements OnInit {
     };
     pdfMake.createPdf(documentDefinition).open();
   }
+
+  //   buyerName: string;
+  //   buyerPhone: string;
+  //   buyerEmail: string;
+
+  //   supplierName: string;
+  //   supplierPhone: string;
+  //   supplierEmail: string;
+
+  //   orderId: string;
+  //   placeOfDelivery: string;
+  //   termsOfPayment: string;
+  //   termsOfDelivery: string;
+
+  //   srNo: string;
+  //   itemName: string;
+  //   itemDescription: string;
+  //   salesUnit: string;
+  //   quantity: number;
+  //   price: number;
+  //   totalBeforeTax: number;
+
+  //   subTotal: number;
+  //   tax: number;
+  //   shipping: number;
+  //   totalAfterTax: number;
+
+  //   constructor(private location: Location) {
+
+  //       this.populateOrderView();
+
+  // }
+  // cancel() {
+  //   this.location.back();
+  // }
+
+  //   private populateOrderView(): void {
+
+  //     const order = PendingOrderData.getAllPendingOrderMap().get(PendingOrderData.getIdOfOrderToView());
+
+  //     if ( order !== undefined && order != null ) {
+
+  //       this.buyerName = order.buyer.name;
+  //       this.buyerPhone = order.buyer.phoneNumber;
+  //       this.buyerEmail = order.buyer.email;
+
+  //       this.supplierName = order.supplier.name;
+  //       this.supplierPhone = order.supplier.phoneNumber;
+  //       this.supplierEmail = order.supplier.email;
+
+  //       this.orderId = `ord-${order.id}`;
+  //       this.placeOfDelivery = order.placeOfDelivery;
+  //       this.termsOfPayment = order.paymentTerms;
+  //       this.termsOfDelivery = order.deliveryTerms;
+
+  //       this.srNo = `ord-${order.id}`;
+  //       this.itemName = order.itemName;
+  //       this.itemDescription = order.itemDescription;
+  //       this.salesUnit = order.saleUnit;
+  //       this.price = 0;
+  //       this.totalBeforeTax = 0;
+
+  //       this.subTotal = 0;
+  //       this.tax = 0;
+  //       this.shipping = 0;
+  //       this.quantity = order.quantity;
+  //       this.totalBeforeTax = 0;
+  //       this.totalAfterTax = 0;
+
+  //     } else {
+
+  //       // fetch the order direct from the db basing on the ID provided
+
+  //     }
+
+  //   }
+
+  //   ngOnInit() {
+
+  //     this.populateOrderView();
+
+  //   }
 }

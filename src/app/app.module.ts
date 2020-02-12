@@ -140,7 +140,6 @@ import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-sup
     ViewOrdersComponent,
     SupplierViewOrdersComponent,
     ViewInvoicesComponent,
-
     ViewAllordersComponent,
     ViewAllApprovedOrdersComponent,
     ViewSupplierPendingOrdersComponent
