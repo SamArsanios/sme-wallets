@@ -49,29 +49,14 @@ export class PendingOrdersComponent implements OnInit {
 
     this.pendingOrdersInfoTableDataSource.sort = this.sort;
     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
-    this.notifyUponFetchingOrders();
+
 
   }
 
   ngOnInit() {
-    this.populateTheTable();
+
   }
 
-  private notifyUponFetchingOrders(): void {
-
-    const stompClient = this.webSocketService.connect();
-
-    stompClient.connect({}, frame => {
-
-      stompClient.subscribe('/topic/orders/findAll', notifications => {
-
-        console.log(`the nots: ${JSON.stringify(notifications.body, null, 2)} `);
-        // this.notifications = JSON.parse(notifications.body).count;
-
-      });
-
-    });
-  }
 
   handleViewOrderClick($event): void {
 

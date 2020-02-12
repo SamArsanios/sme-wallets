@@ -28,13 +28,7 @@ export class WebsocketService {
 
       stompClient.subscribe(subscriptionURL, notificationResult => {
 
-        new Promise((resolve, reject) => {
-
-          resolve( actionTaken(notificationResult));
-
-        })
-
-          .then(stompClient.close());
+        actionTaken(notificationResult);
 
       });
 
