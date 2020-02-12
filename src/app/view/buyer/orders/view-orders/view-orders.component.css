@@ -2,7 +2,9 @@
   margin: auto;
   padding-top: 70px;
 }
-body {
+
+
+body{
   background-color: rgb(193, 193, 223);
   padding: 5%;
   height: auto;
@@ -35,7 +37,9 @@ table {
   margin: 50px 0;
   width: 100%;
 }
-.backbutton {
+
+
+.backbutton{
   /* margin-left: 15%; */
   padding: 1%;
   /* margin-top: 6%; */

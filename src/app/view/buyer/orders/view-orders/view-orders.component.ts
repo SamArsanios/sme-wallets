@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from "@angular/core";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -5,13 +6,13 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { PendingOrderData } from "../../../../service/order/pending.order.data";
 import { Location } from "@angular/common";
 
+
 @Component({
-  selector: "app-view-orders",
-  templateUrl: "./view-orders.component.html",
-  styleUrls: ["./view-orders.component.css"]
+  selector: 'app-view-orders',
+  templateUrl: './view-orders.component.html',
+  styleUrls: ['./view-orders.component.css']
 })
 export class ViewOrdersComponent implements OnInit {
-  constructor() {}
 
   ngOnInit() {}
 
@@ -83,90 +84,90 @@ export class ViewOrdersComponent implements OnInit {
         },
 
         {
-          style: "table2",
+          style: 'table2',
           table: {
             heights: [40, 25],
-            widths: ["*", 130, "*", "*", "*", "*"],
+            widths: ['*', 130, '*', '*', '*', '*'],
             body: [
               [
-                { text: "REF/ISBN CAT NO.", style: "tableHeader" },
-                { text: "DESCRIPTION", style: "tableHeader" },
-                { text: "UNIT OF SALE(PCS/LTR)", style: "tableHeader" },
-                { text: "QUANTITY", style: "tableHeader" },
-                { text: "UNIT PRICE", style: "tableHeader" },
-                { text: "TOTAL PRICE", style: "tableHeader" }
+                { text: 'REF/ISBN CAT NO.', style: 'tableHeader' },
+                { text: 'DESCRIPTION', style: 'tableHeader' },
+                { text: 'UNIT OF SALE(PCS/LTR)', style: 'tableHeader' },
+                { text: 'QUANTITY', style: 'tableHeader' },
+                { text: 'UNIT PRICE', style: 'tableHeader' },
+                { text: 'TOTAL PRICE', style: 'tableHeader' }
               ],
               [
-                { text: "One value goes here", style: "tableContent" },
-                { text: "Another one here", style: "tableContent" },
-                { text: "OK?", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" },
-                { text: "Information goes here", style: "tableContent" }
+                { text: 'One value goes here', style: 'tableContent' },
+                { text: 'Another one here', style: 'tableContent' },
+                { text: 'OK?', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' },
+                { text: 'Information goes here', style: 'tableContent' }
               ]
             ]
           }
         },
         {
-          alignment: "justify",
+          alignment: 'justify',
           columns: [
             {
-              text: ""
+              text: ''
             },
 
             {
-              style: "table3",
+              style: 'table3',
               table: {
                 widths: [100, 100],
                 heights: [30, 30, 30, 30],
                 body: [
                   [
                     {
-                      text: "SUBTOTAL",
-                      style: "tableHeader",
+                      text: 'SUBTOTAL',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ],
                   [
                     {
-                      text: "TAX",
-                      style: "tableHeader",
+                      text: 'TAX',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ],
                   [
                     {
-                      text: "SHIPPING",
-                      style: "tableHeader",
+                      text: 'SHIPPING',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ],
                   [
                     {
-                      text: "TOTAL PRICE",
-                      style: "tableHeader",
+                      text: 'TOTAL PRICE',
+                      style: 'tableHeader',
                       border: [false, false, false, false],
-                      alignment: "right"
+                      alignment: 'right'
                     },
 
                     {
-                      text: "1,000",
-                      style: "tableContent"
+                      text: '1,000',
+                      style: 'tableContent'
                     } // to be popoulated from db
                   ]
                 ]
@@ -180,7 +181,7 @@ export class ViewOrdersComponent implements OnInit {
       styles: {
         header: {
           fontSize: 20,
-          alignment: "center",
+          alignment: 'center',
           bold: true,
           margin: [0, 15, 0, 0]
         },
