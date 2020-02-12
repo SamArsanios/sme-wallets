@@ -10,7 +10,6 @@ import { ObjectsUtil } from 'src/app/utils/objects/objects';
 import { Order } from 'src/app/model/buyer/order/order-model';
 import { DateUtils } from 'src/app/utils/date/date-utils';
 import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
-
 import { Mapp } from '../../../../utils/collections/map';
 import { SupplierData } from '../../../../service/supplier/supplier.data';
 import { Wallet } from '../../../../shared/model/wallet/wallet-model';
@@ -26,7 +25,7 @@ export class CreateOrderComponent implements OnInit {
   constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>, private objectUtilOrder: ObjectsUtil<Order>) { }
 
   public supplierNames: List<User>;
-  successPost:string;
+  successPost: string;
   date = new Date();
   dateCtrl: FormControl;
 

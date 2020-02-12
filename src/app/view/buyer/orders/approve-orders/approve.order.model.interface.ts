@@ -1,21 +1,24 @@
 import {Order} from '../../../../model/buyer/order/order-model';
 
-export interface IPendingOrder {
-  orderNo: any;
-  orderDate: any;
-  orderDueDate: any;
-  orderStatus: any;
-  action: any;
-}
+export interface IApproveOrder {
+    orderNo: string;
+    orderDate: any;
+    orderDueDate: any;
+    orderStatus: any;
+    // action: any;
+  }
 
-export class PopulatePendingOrderTable {
+
+export class PopulateApproveOrderTable {
 
   public static displayedColumns: string[] = [
-    'orderNo',
-    'orderDate',
-    'orderDueDate',
-    'orderStatus',
-    'action'
+        "orderNo",
+        "orderDate",
+        "orderDueDate",
+        "action",
+        "orderStatus",
+        "empty"
+  
   ];
 
 

@@ -1,22 +1,25 @@
 import {Order} from '../../../../model/buyer/order/order-model';
 
-export interface IPendingOrder {
-  orderNo: any;
-  orderDate: any;
-  orderDueDate: any;
-  orderStatus: any;
-  action: any;
-}
+export interface ISupplierPendingOrders {
+    orderNo: string;
+    orderDate: any;
+    orderDueDate: any;
+    senderName: string;
+    orderStatus: string;
+    action: any;
+  }
 
-export class PopulatePendingOrderTable {
+
+export class PopulateSupplierPendingOrderTable {
 
   public static displayedColumns: string[] = [
-    'orderNo',
-    'orderDate',
-    'orderDueDate',
-    'orderStatus',
-    'action'
-  ];
+        "orderNo",
+        "orderDate",
+        "orderDueDate",
+        "senderName",
+        "orderStatus",
+        "action"
+      ];
 
 
   public  static populateTableOnInit(fromResponse: Order[]) {
@@ -27,6 +30,7 @@ export class PopulatePendingOrderTable {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
+        senderName: e.buyer.name,
         orderStatus: 'pending',
         action: e.id
       };
