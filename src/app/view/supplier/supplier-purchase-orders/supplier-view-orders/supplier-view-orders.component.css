@@ -1,6 +1,6 @@
 .container {
   margin: auto;
-  padding-top: 100px;
+  padding-top: 70px;
 }
 
 img {
@@ -33,6 +33,13 @@ th {
 
 tr:nth-child(1) {
   background-color: #dddddd;
+}
+
+input {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 35px;
 }
 
 .btns {
