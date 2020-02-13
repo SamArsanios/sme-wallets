@@ -20,13 +20,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.notifyUponFetchingOrders();
   }
 
   theNotice(): void {
-    this.httpService.getRequest(`/orders/findAll/`).subscribe(e => {
-      this.websocketService.notify("/topic/orders/findAll", this.test);
-    });
+    
+          this.websocketService.notify("/topic/orders/findAll", this.test);
+
   }
 
   test(result): void {
