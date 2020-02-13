@@ -1,4 +1,4 @@
- import { BrowserModule } from "@angular/platform-browser";
+import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgxPhoneNumberInputModule } from "projects/phone-input/src/public_api";
 
@@ -69,9 +69,10 @@ import { InViewportModule } from "@thisissoon/angular-inviewport";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
-import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
-import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component';
-import { ViewInvoicesComponent } from './view/buyer/invoices/view-invoices/view-invoices.component';
+import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
+import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component";
+import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
+import { invoicePdfComponent } from "./view/buyer/orders/view-orders/invoicePdf.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,7 +128,8 @@ import { ViewInvoicesComponent } from './view/buyer/invoices/view-invoices/view-
     MyPieChartComponent,
     ViewOrdersComponent,
     SupplierViewOrdersComponent,
-    ViewInvoicesComponent
+    ViewInvoicesComponent,
+    invoicePdfComponent
 
     // PiechartComponent
   ],
