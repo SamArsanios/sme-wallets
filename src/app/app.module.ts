@@ -72,7 +72,7 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
 import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component";
 import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
-import { invoicePdfComponent } from "./view/buyer/orders/view-orders/invoicePdf.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,8 +128,7 @@ import { invoicePdfComponent } from "./view/buyer/orders/view-orders/invoicePdf.
     MyPieChartComponent,
     ViewOrdersComponent,
     SupplierViewOrdersComponent,
-    ViewInvoicesComponent,
-    invoicePdfComponent
+    ViewInvoicesComponent
 
     // PiechartComponent
   ],
