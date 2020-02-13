@@ -18,10 +18,6 @@ export class ViewOrdersComponent implements OnInit {
   }
 
   invoicePdf() {
-    // const documentDefinition = { content: 'This is an sample PDF printed with pdfMake' };
-    // pdfMake.createPdf(documentDefinition).open();
-    //  }
-
     const documentDefinition = {
       content: [
         {
