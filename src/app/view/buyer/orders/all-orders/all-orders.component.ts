@@ -1,7 +1,4 @@
-
-
 import { Component, ViewChild, OnInit } from '@angular/core';
-// data source for filtering and Matsort for sorting
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import {HttpService} from '../../../../utils/http/http-service';
 import {Order} from '../../../../model/buyer/order/order-model';
@@ -17,7 +14,7 @@ import {Router} from '@angular/router';
   styleUrls: ["./all-orders.component.css"]
 })
 export class AllOrdersComponent implements OnInit {
-
+numberOfOrders;
   allOrdersInfoTable: IAllOrders[] = [];
   allOrdersInfoTableDataSource = new MatTableDataSource(this.allOrdersInfoTable);
 
@@ -32,7 +29,8 @@ export class AllOrdersComponent implements OnInit {
   private populateTheTable(): void {
 
     this.httpService.getRequest('/orders/findAll').subscribe(response => {
-
+        console.log(`the total number of orders is ${Object.keys(response.body).length}`)
+    this.numberOfOrders = Object.keys(response.body).length;
       const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(response.body), this.allOrdersInfoTable,
         this.allOrdersInfoTableDataSource, PopulateAllOrderTable.populateTableOnInit);
 

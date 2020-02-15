@@ -13,6 +13,7 @@ import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 import { Mapp } from '../../../../utils/collections/map';
 import { SupplierData } from '../../../../service/supplier/supplier.data';
 import { Wallet } from '../../../../shared/model/wallet/wallet-model';
+import { WebsocketService } from 'src/app/utils/websocket/websocket.service';
 
 @Component({
   selector: 'app-create-order',
@@ -22,7 +23,7 @@ import { Wallet } from '../../../../shared/model/wallet/wallet-model';
 export class CreateOrderComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
-  constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>, private objectUtilOrder: ObjectsUtil<Order>) { }
+  constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>, private objectUtilOrder: ObjectsUtil<Order>, private websocket: WebsocketService) { }
 
   public supplierNames: List<User>;
   successPost: string;
@@ -55,7 +56,7 @@ export class CreateOrderComponent implements OnInit {
 
   temporaryBuyer(): User {
 
-    const user = new User(2, 'deb@gmail.com', 'Feb 4, 2020 1:22:44 PM', 'deb', '+256704', 123.00, 'Deb Kalungi',
+    const user = new User(6, 'rachel@gmail', 'Feb 13, 2020 6:00:59 AM', 'rec', '+25624534534', 123, 'rachel suubi',
       'buyer');
 
     const emailVerifiedAtStr = 'emailVerifiedAtStr';
@@ -71,7 +72,8 @@ export class CreateOrderComponent implements OnInit {
 
   temporaryWallet(): Wallet {
 
-    const wallet = new Wallet(1, 'Manufacturing', 'null', this.temporaryBuyer());
+
+    const wallet = new Wallet(1, 'SME', 'Feb 13, 2020 6:00:59 AM', this.temporaryBuyer());
 
     wallet.timestamp = null;
 
@@ -93,6 +95,10 @@ export class CreateOrderComponent implements OnInit {
     const supplierInfo = SupplierData.getMapOfIdToSupplier().get(Number(idOfSupplier));
 
     console.log('supplier infrmation', supplierInfo);
+    localStorage.setItem('supplierinfo', JSON.stringify(supplierInfo))
+
+    // localStorage.setItem('selectedSupplier', JSON.stringify(this.currentUser))
+
 
     const object = form.value;
 
@@ -123,14 +129,19 @@ export class CreateOrderComponent implements OnInit {
     console.log(`the order: ${JSON.stringify(newOrder, null, 2)} `);
 
     this.httpService.postRequest('/orders/create', order).subscribe(e => {
-
+      this.websocket.notify("/topic/orders/create", this.showNotification)
         console.log(`the result ${JSON.stringify(e)} `);
 
       }
 
     );
 
+
   } // end onSubmit()
+
+showNotification(result: any){
+console.log("result show to the suplier",result)
+}
 
   onOptionsSelected() {
     console.log(`hhhhhhh`);
