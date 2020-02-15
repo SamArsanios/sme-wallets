@@ -1,9 +1,10 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { Order } from "src/app/model/buyer/order/order-model";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class GeneratePurchaseOrderPDF {
-  static generatePdf() {
+  static generatePdf(order: Order) {
     const documentDefinition = {
       content: [
         {
@@ -17,7 +18,7 @@ export class GeneratePurchaseOrderPDF {
               text: ``
             },
             {
-              text: `ORDER NO - \n ORDER DUE DATE : \n\n\n`,
+              text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.orderDueDate} \n\n\n`,
               alignment: `right`,
               margin: [0, 30, 0, 0],
               fontSize: 12
@@ -27,15 +28,15 @@ export class GeneratePurchaseOrderPDF {
         {
           columns: [
             {
-              text: `From :\n Name :\n Address : \n Phone :`,
+              text: `Sender/Buyer \n Name :${order.buyer.name}\n Address : \n Phone :${order.buyer.phoneNumber}`,
               style: `subheader`
             },
             {
-              text: `To :\n Recipient Name :\n Company Name :\n Address :\n Phone : \n`,
+              text: `Recepient/Supplier \n Recipient Name :${order.supplier.name}\n Company Name :\n Address :\n Phone :${order.supplier.phoneNumber} \n`,
               style: `subheader`
             },
             {
-              text: `Order Details : \n Order Id : \n Delivery Place : \n Payment Terms \n Delivery Terms : `,
+              text: `Order Details  \n Order Id : ${order.id}\n Delivery Place :${order.placeOfDelivery}\n Payment Terms : ${order.paymentTerms} \n Delivery Terms : ${order.deliveryTerms}`,
               style: `subheader`
             }
           ]
@@ -57,12 +58,12 @@ export class GeneratePurchaseOrderPDF {
               ],
 
               [
-                { text: `One value goes here`, style: `tableContent` },
-                { text: `Another one here`, style: `tableContent` },
-                { text: `OK?`, style: `tableContent` },
-                { text: `Information goes here`, style: `tableContent` },
-                { text: `Information goes here`, style: `tableContent` },
-                { text: `Information goes here`, style: `tableContent` }
+                { text: `${order.department}`, style: `tableContent` },
+                { text: `${order.deliveryTerms}`, style: `tableContent` },
+                { text: `${order.conveyanceMethod}`, style: `tableContent` },
+                { text: `${order.placeOfDelivery}`, style: `tableContent` },
+                { text: `${order.deliveryTerms}`, style: `tableContent` },
+                { text: `${order.paymentTerms}`, style: `tableContent` }
               ]
             ]
           }
@@ -83,12 +84,12 @@ export class GeneratePurchaseOrderPDF {
                 { text: `TOTAL PRICE`, style: `tableHeader` }
               ],
               [
-                { text: `One value goes here`, style: `tableContent` },
-                { text: `Another one here`, style: `tableContent` },
-                { text: `OK?`, style: `tableContent` },
-                { text: `Information goes here`, style: `tableContent` },
-                { text: `Information goes here`, style: `tableContent` },
-                { text: `Information goes here`, style: `tableContent` }
+                { text: `${order.isbnNumber}`, style: `tableContent` },
+                { text: `${order.itemDescription}`, style: `tableContent` },
+                { text: `${order.saleUnit}`, style: `tableContent` },
+                { text: `${order.quantity}`, style: `tableContent` },
+                { text: `0`, style: `tableContent` },
+                { text: `0`, style: `tableContent` }
               ]
             ]
           }
@@ -114,7 +115,7 @@ export class GeneratePurchaseOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `1,000`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -126,7 +127,7 @@ export class GeneratePurchaseOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `1,000`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -138,7 +139,7 @@ export class GeneratePurchaseOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `1,000`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -151,7 +152,7 @@ export class GeneratePurchaseOrderPDF {
                     },
 
                     {
-                      text: `1,000`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]

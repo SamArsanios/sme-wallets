@@ -4,6 +4,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { PendingOrderData } from "../../../../service/order/pending.order.data";
 import { Location } from "@angular/common";
+import { GeneratePurchaseOrderPDF } from "./generatePurchaseOrderPDF";
 
 @Component({
   selector: "app-view-orders",
@@ -11,10 +12,6 @@ import { Location } from "@angular/common";
   styleUrls: ["./view-orders.component.css"]
 })
 export class ViewOrdersComponent implements OnInit {
-  ngOnInit() {
-    this.populateOrderView();
-  }
-
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -44,6 +41,11 @@ export class ViewOrdersComponent implements OnInit {
   constructor(private location: Location) {
     this.populateOrderView();
   }
+
+  ngOnInit() {
+    this.populateOrderView();
+  }
+
   cancel() {
     this.location.back();
   }
@@ -83,5 +85,14 @@ export class ViewOrdersComponent implements OnInit {
     } else {
       // fetch the order direct from the db basing on the ID provided
     }
+  }
+
+  generatePdf() {
+    const id = PendingOrderData.getIdOfOrderToView();
+    const orderToViewPdf = PendingOrderData.getAllPendingOrderMap().get(id);
+
+    console.log(orderToViewPdf);
+
+    GeneratePurchaseOrderPDF.generatePdf(orderToViewPdf);
   }
 }
