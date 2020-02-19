@@ -1,29 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, NgForm } from '@angular/forms';
-import { SupplierService } from '../../../../service/supplier/supplier.service';
-import { OrdersComponent } from '../orders/orders.component';
-import { List } from 'src/app/utils/collections/list';
-import { User } from 'src/app/shared/model/user/user-model';
-import { HtpsService } from 'src/app/htps.service';
-import { HttpService } from 'src/app/utils/http/http-service';
-import { ObjectsUtil } from 'src/app/utils/objects/objects';
-import { Order } from 'src/app/model/buyer/order/order-model';
-import { DateUtils } from 'src/app/utils/date/date-utils';
-import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
-import { Mapp } from '../../../../utils/collections/map';
-import { SupplierData } from '../../../../service/supplier/supplier.data';
-import { Wallet } from '../../../../shared/model/wallet/wallet-model';
-import { WebsocketService } from 'src/app/utils/websocket/websocket.service';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, Validators, NgForm } from "@angular/forms";
+import { SupplierService } from "../../../../service/supplier/supplier.service";
+import { OrdersComponent } from "../orders/orders.component";
+import { List } from "src/app/utils/collections/list";
+import { User } from "src/app/shared/model/user/user-model";
+import { HtpsService } from "src/app/htps.service";
+import { HttpService } from "src/app/utils/http/http-service";
+import { ObjectsUtil } from "src/app/utils/objects/objects";
+import { Order } from "src/app/model/buyer/order/order-model";
+import { DateUtils } from "src/app/utils/date/date-utils";
+import { UserTransient } from "src/app/shared/model/user/user-model-transient";
+import { Mapp } from "../../../../utils/collections/map";
+import { SupplierData } from "../../../../service/supplier/supplier.data";
+import { Wallet } from "../../../../shared/model/wallet/wallet-model";
+import { WebsocketService } from "src/app/utils/websocket/websocket.service";
 
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.component.html',
-  styleUrls: ['./create-order.component.css']
+  selector: "app-create-order",
+  templateUrl: "./create-order.component.html",
+  styleUrls: ["./create-order.component.css"]
 })
 export class CreateOrderComponent implements OnInit {
-
   // tslint:disable-next-line:max-line-length
-  constructor(private httpService: HttpService<User>, private objectUtil: ObjectsUtil<User>, private objectUtilOrder: ObjectsUtil<Order>, private websocket: WebsocketService) { }
+  constructor(
+    private httpService: HttpService<User>,
+    private objectUtil: ObjectsUtil<User>,
+    private objectUtilOrder: ObjectsUtil<Order>,
+    private websocket: WebsocketService
+  ) {}
 
   public supplierNames: List<User>;
   successPost: string;
@@ -33,37 +37,40 @@ export class CreateOrderComponent implements OnInit {
   receivers: Array<User> = new Array<User>();
 
   ngOnInit() {
-
-    this.httpService.getRequest('/users/findAll').subscribe(e => {
-
-      this.objectUtil.dataObjectToArray(e.body).map( aSupplier => {
-
-        if (aSupplier.userType === 'supplier') {
-
+    this.httpService.getRequest("/users/findAll").subscribe(e => {
+      this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
+        if (aSupplier.userType === "supplier") {
           this.receivers.push(aSupplier);
 
           SupplierData.addASupplier(aSupplier);
 
           SupplierData.addASupplierToMap(aSupplier, aSupplier.id);
-
         }
       });
     });
 
-    this.dateCtrl = new FormControl('', [Validators.required]);
-
+    this.dateCtrl = new FormControl("", [Validators.required]);
   } // end ngOninit()
 
   temporaryBuyer(): User {
+    const user = new User(
+      6,
+      "rachel@gmail",
+      "Feb 13, 2020 6:00:59 AM",
+      "rec",
+      "+25624534534",
+      123,
+      "rachel suubi",
+      "buyer"
+    );
 
-    const user = new User(6, 'rachel@gmail', 'Feb 13, 2020 6:00:59 AM', 'rec', '+25624534534', 123, 'rachel suubi',
-      'buyer');
-
-    const emailVerifiedAtStr = 'emailVerifiedAtStr';
+    const emailVerifiedAtStr = "emailVerifiedAtStr";
 
     user[emailVerifiedAtStr] = user.emailVerifiedAt;
 
-    user[emailVerifiedAtStr] = DateUtils.convertDateFormatToParsable(user.emailVerifiedAt);
+    user[emailVerifiedAtStr] = DateUtils.convertDateFormatToParsable(
+      user.emailVerifiedAt
+    );
 
     user.emailVerifiedAt = null;
 
@@ -71,17 +78,22 @@ export class CreateOrderComponent implements OnInit {
   }
 
   temporaryWallet(): Wallet {
-
-
-    const wallet = new Wallet(1, 'SME', 'Feb 13, 2020 6:00:59 AM', this.temporaryBuyer());
+    const wallet = new Wallet(
+      1,
+      "SME",
+      "Feb 13, 2020 6:00:59 AM",
+      this.temporaryBuyer()
+    );
 
     wallet.timestamp = null;
 
-    const timestampStr = 'timestampStr';
+    const timestampStr = "timestampStr";
 
     wallet[timestampStr] = wallet.timestamp;
 
-    wallet[timestampStr] = DateUtils.convertDateFormatToParsable(wallet.timestamp);
+    wallet[timestampStr] = DateUtils.convertDateFormatToParsable(
+      wallet.timestamp
+    );
 
     wallet.timestamp = null;
 
@@ -89,16 +101,16 @@ export class CreateOrderComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-
     const idOfSupplier = form.value.receivername;
 
-    const supplierInfo = SupplierData.getMapOfIdToSupplier().get(Number(idOfSupplier));
+    const supplierInfo = SupplierData.getMapOfIdToSupplier().get(
+      Number(idOfSupplier)
+    );
 
-    console.log('supplier infrmation', supplierInfo);
-    localStorage.setItem('supplierinfo', JSON.stringify(supplierInfo))
+    console.log("supplier infrmation", supplierInfo);
+    localStorage.setItem("supplierinfo", JSON.stringify(supplierInfo));
 
     // localStorage.setItem('selectedSupplier', JSON.stringify(this.currentUser))
-
 
     const object = form.value;
 
@@ -106,13 +118,15 @@ export class CreateOrderComponent implements OnInit {
 
     userSupplier = supplierInfo;
 
-    const emailVerifiedAtStr = 'emailVerifiedAtStr';
+    const emailVerifiedAtStr = "emailVerifiedAtStr";
 
     userSupplier[emailVerifiedAtStr] = userSupplier.emailVerifiedAt;
 
     console.log(`ggggg ${userSupplier[emailVerifiedAtStr]} `);
 
-    userSupplier[emailVerifiedAtStr] = DateUtils.convertDateFormatToParsable(supplierInfo.emailVerifiedAt);
+    userSupplier[emailVerifiedAtStr] = DateUtils.convertDateFormatToParsable(
+      supplierInfo.emailVerifiedAt
+    );
 
     userSupplier.emailVerifiedAt = null;
 
@@ -128,20 +142,15 @@ export class CreateOrderComponent implements OnInit {
 
     console.log(`the order: ${JSON.stringify(newOrder, null, 2)} `);
 
-    this.httpService.postRequest('/orders/create', order).subscribe(e => {
-      this.websocket.notify("/topic/orders/create", this.showNotification)
-        console.log(`the result ${JSON.stringify(e)} `);
-
-      }
-
-    );
-
-
+    this.httpService.postRequest("/orders/create", order).subscribe(e => {
+      this.websocket.notify("/topic/orders/create", this.showNotification);
+      console.log(`the result ${JSON.stringify(e)} `);
+    });
   } // end onSubmit()
 
-showNotification(result: any){
-console.log("result show to the suplier",result)
-}
+  showNotification(result: any) {
+    console.log("result show to the suplier", result);
+  }
 
   onOptionsSelected() {
     console.log(`hhhhhhh`);

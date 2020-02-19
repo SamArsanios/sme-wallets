@@ -63,9 +63,10 @@ export class Order {
   }
 
   static createInstance(): Order {
-    return new Order(null, null, null, null, null, null, null, null, null,
+    const instance =  new Order(null, null, null, null, null, null, null, null, null,
       null, null, null, null, null, null, null, null,
       null, null, null, null, null, null, null);
+      return instance;
   }
 
 }
