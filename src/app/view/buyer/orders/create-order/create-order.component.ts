@@ -54,13 +54,13 @@ export class CreateOrderComponent implements OnInit {
 
   temporaryBuyer(): User {
     const user = new User(
-      6,
-      "rachel@gmail",
+      2,
+      "cobs399@gmail.com",
       "Feb 13, 2020 6:00:59 AM",
       "rec",
       "+25624534534",
       123,
-      "rachel suubi",
+      "jacob okia ",
       "buyer"
     );
 
@@ -81,7 +81,7 @@ export class CreateOrderComponent implements OnInit {
     const wallet = new Wallet(
       1,
       "SME",
-      "Feb 13, 2020 6:00:59 AM",
+      "Feb 21, 2020 5:13:45 AM",
       this.temporaryBuyer()
     );
 
