@@ -1,7 +1,7 @@
 import { User } from '../../../shared/model/user/user-model';
 import { Wallet } from '../../../shared/model/wallet/wallet-model';
 import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
-export class Order {
+export class  Order {
 
   id: number;
   buyer: User;
@@ -63,9 +63,10 @@ export class Order {
   }
 
   static createInstance(): Order {
-    return new Order(null, null, null, null, null, null, null, null, null,
+    const instance =  new Order(null, null, null, null, null, null, null, null, null,
       null, null, null, null, null, null, null, null,
       null, null, null, null, null, null, null);
+      return instance;
   }
 
 }
