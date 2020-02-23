@@ -28,7 +28,9 @@ export class User {
         this.name = name;
         this.userType = userType;
     }
-    static createInstance(): User{
-      return new User(null, null, null, null,null, null, null, null);
+ 
+    static createInstance(): User {
+      let newUser = new User(null, null, null, null,null, null, null, null); 
+      return newUser;
     }
 }

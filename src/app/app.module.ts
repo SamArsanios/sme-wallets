@@ -165,7 +165,8 @@ import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-sup
     ScrollSpyModule.forRoot(),
     // duScroll.scrollspy
     MDBBootstrapModule.forRoot(),
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

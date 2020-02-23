@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
     const object = form.value;
     if (form.valid) {
 
-
       this.httpService.getRequest(`/users/findUserByEmail/${object.email}`).subscribe(e => {
         if(e.body[0].email === object.email && e.body[0].password === object.password ){
             console.log("you have logged in successfully")

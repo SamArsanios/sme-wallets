@@ -19,8 +19,9 @@ export class OrderTransient extends Order {
   }
 
   static createInstance(): OrderTransient {
-    return new OrderTransient(null, null, null, null, null, null, null, null, null,
-        null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    let newOrder = new OrderTransient(null, null, null, null, null, null, null, null, null,
+      null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+    return newOrder;
 }
 }
 
