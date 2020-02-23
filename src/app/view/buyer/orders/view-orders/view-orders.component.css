@@ -1,6 +1,14 @@
+body{
+  background-color: rgb(236, 240, 245);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
 .container {
   margin: auto;
   padding-top: 150px;
+  background-color: white;
 }
 
 img {

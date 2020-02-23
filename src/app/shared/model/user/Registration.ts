@@ -1,4 +1,5 @@
 import { User } from './user-model';
+import { RegistrationTransient } from './registration-model-transient';
 
 /**
  * @author Daniel Comboni
@@ -54,7 +55,9 @@ export class Registration {
                 this.timestamp = timestamp;
         }
 
-        
-
+        static createInstance(): Registration{
+                let newRegistration = new Registration(null, null, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+                return newRegistration ;
+              }
 }
 

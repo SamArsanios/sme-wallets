@@ -73,6 +73,7 @@ import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders
 import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component';
 import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-allorders.component';
 import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-approved-orders/view-all-approved-orders.component';
+import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -129,7 +130,8 @@ import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-app
     ViewOrdersComponent,
     SupplierViewOrdersComponent,
     ViewAllordersComponent,
-    ViewAllApprovedOrdersComponent
+    ViewAllApprovedOrdersComponent,
+    ViewSupplierPendingOrdersComponent
 
     // PiechartComponent
   ],
@@ -152,7 +154,8 @@ import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-app
     ScrollSpyModule.forRoot(),
     // duScroll.scrollspy
     MDBBootstrapModule.forRoot(),
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

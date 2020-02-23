@@ -1,3 +1,5 @@
+import { PasswordResetTransient } from './password-reset-model-transient';
+
 /**
  * @author Daniel Comboni
  * 
@@ -17,5 +19,9 @@ export class PasswordReset {
         this.token = token;
         this.createAt = createAt;
     }
+
+    static createInstance(): PasswordReset {
+        return new PasswordReset(null, null, null, null);
+      }
 
 }

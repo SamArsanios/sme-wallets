@@ -22,8 +22,9 @@ export class InvoiceTransient extends Invoice {
     }
 
     static createInstance(): InvoiceTransient {
-        return new InvoiceTransient(null, null, null, null, null, null, null, null, null,
+        let newInvoice = new InvoiceTransient(null, null, null, null, null, null, null, null, null,
             null, null, null, null, null, null, null, null, null, null, null, null, null);
+        return newInvoice
     }
 
 }
