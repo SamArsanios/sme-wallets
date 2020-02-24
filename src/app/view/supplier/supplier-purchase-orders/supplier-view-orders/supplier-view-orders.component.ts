@@ -1,6 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { SupplierPendingOrderData } from "src/app/service/order/supplier.pending.order.data";
 import { Location } from "@angular/common";
+import { Order } from "src/app/model/buyer/order/order-model";
+import { ObjectsUtil } from "src/app/utils/objects/objects";
+import { NgForm } from "@angular/forms";
+import { SupplierOrder } from "src/app/model/supplier/order/SupplierOrder";
+import { DateUtils } from "src/app/utils/date/date-utils";
+import { User } from "src/app/shared/model/user/user-model";
+import { Wallet } from "src/app/shared/model/wallet/wallet-model";
+import { HttpService } from "src/app/utils/http/http-service";
 
 @Component({
   selector: "app-supplier-view-orders",
@@ -34,7 +42,12 @@ export class SupplierViewOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  constructor(private location: Location) {
+  constructor(
+    private objectUtilOrder: ObjectsUtil<Order>,
+    private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
+    private httpService: HttpService<SupplierOrder>,
+    private location: Location
+  ) {
     this.populateOrderView();
   }
 
@@ -150,5 +163,108 @@ export class SupplierViewOrdersComponent implements OnInit {
   // but this is how I solved my problem.
   pasreNumber(value: number): number {
     return Number.parseFloat(value.toString());
+  }
+
+  parseStringToNumber(value: string): number {
+    return Number.parseFloat(value);
+  }
+
+  temporaryWallet(buyer: User): Wallet {
+    const wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
+
+    wallet.timestamp = null;
+
+    const timestampStr = "timestampStr";
+
+    wallet[timestampStr] = DateUtils.convertDateFormatToParsable(
+      wallet.timestamp
+    );
+
+    wallet.timestamp = null;
+
+    return wallet;
+  }
+
+  onSubmit(form: NgForm) {
+    // get the order
+    const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
+      SupplierPendingOrderData.getIdOfOrderToView()
+    );
+
+    // create a transient timestampStr
+    const timestampStrOrder = "timestampStr";
+    order[timestampStrOrder] = DateUtils.convertDateFormatToParsable(
+      order.timestamp
+    );
+    order.timestamp = null;
+
+    // create a transient emailVerifiedAtStr
+    const emailVerifiedAtStrBuyer = "emailVerifiedAtStr";
+    const buyer = order.buyer;
+    buyer[emailVerifiedAtStrBuyer] = DateUtils.convertDateFormatToParsable(
+      buyer.emailVerifiedAt
+    );
+    buyer.emailVerifiedAt = null;
+
+    const supplier = order.supplier;
+    const emailVerifiedAtStrSupplier = "emailVerifiedAtStr";
+    supplier[
+      emailVerifiedAtStrSupplier
+    ] = DateUtils.convertDateFormatToParsable(supplier.emailVerifiedAt);
+    supplier.emailVerifiedAt = null;
+
+    order.wallet = this.temporaryWallet(buyer);
+
+    // order.supplier = supplier;
+    // order.buyer = buyer;
+
+    console.log(`The Order: ${JSON.stringify(order, null, 2)} `);
+    let supplierOrder = SupplierOrder.createInstance();
+    console.log(`what is wrong ${JSON.stringify(form.value, null, 2)} `);
+    supplierOrder = this.objectUtilSupplierOrder.objectToInstance(
+      supplierOrder,
+      form.value
+    );
+
+
+    supplierOrder.id = 0;
+    // supplierOrder.order = order;
+    supplierOrder.totalPrice = this.parseStringToNumber(this.totalBeforeTax.toString());
+    supplierOrder.subTotal = this.parseStringToNumber(this.subTotal.toString());
+    supplierOrder.finalTotal = this.parseStringToNumber(this.totalAfterTax.toString());
+    supplierOrder.shippingCharges = this.parseStringToNumber(this.shipping.toString())
+    supplierOrder.taxRate = this.parseStringToNumber(this.tax.toString());
+    supplierOrder.pricePerItem = this.parseStringToNumber(this.price.toString());
+
+    console.log(
+      `The Supplier Order: ${JSON.stringify(supplierOrder, null, 2)} `
+    );
+
+      console.log(`total before tax: ${this.totalBeforeTax} `);
+      console.log(`total after tax: ${this.totalAfterTax} `);
+      console.log(`sub tot: ${this.subTotal} `);
+
+    console.log(
+      `The Supplier.Order: ${JSON.stringify(supplierOrder.order, null, 2)} `
+    );
+    // (<HTMLInputElement>document.getElementById('totalAfterTax')).value
+    supplierOrder.subTotal = this.pasreNumber(
+      Number((<HTMLInputElement>document.getElementById("subtotal")).value)
+    );
+
+    supplierOrder.finalTotal = this.pasreNumber(
+      Number((<HTMLInputElement>document.getElementById("totalAfterTax")).value)
+    );
+    supplierOrder.totalPrice = this.pasreNumber(
+      Number(
+        (<HTMLInputElement>document.getElementById("totalBeforeTax")).value
+      )
+    );
+
+    this.httpService
+      .postRequest("/supplierOrders/create", supplierOrder)
+      .subscribe(e => {
+        console.log(`that: ${JSON.stringify(e, null, 2)} `);
+      });
   }
 }

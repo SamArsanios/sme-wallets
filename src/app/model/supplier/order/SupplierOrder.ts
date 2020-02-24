@@ -1,35 +1,62 @@
 /**
- * @author Daniel Comboni
+ * @author Samson Kibrom
  *
  * a model / entity class SupplierOrder.
  */
 
 import { User } from "../../../shared/model/user/user-model";
+import { Order } from "../../buyer/order/order-model";
+// import { stat } from "fs";
 
 export class SupplierOrder {
   id: number;
-  user: User;
-  inviteCode: string;
-  name: string;
-  email: string;
+  order: Order;
+  pricePerItem: number;
+  totalPrice: number;
+  taxRate: number;
+  shippingCharges: number;
+  subTotal: number;
+  finalTotal: number;
+  status: string;
   timestamp: string;
 
   constructor(
     id: number,
-    user: User,
-    inviteCode: string,
-    email: string,
+    order: Order,
+    pricePerItem: number,
+    totalPrice: number,
+    taxRate: number,
+    shippingCharges: number,
+    subTotal: number,
+    finalTotal: number,
+    status: string,
     timestamp: string
   ) {
     this.id = id;
-    this.user = user;
-    this.inviteCode = inviteCode;
-    this.email = email;
+    this.order = order;
+    this.pricePerItem = pricePerItem;
+    this.totalPrice = totalPrice;
+    this.taxRate = taxRate;
+    this.shippingCharges = shippingCharges;
+    this.subTotal = subTotal;
+    this.finalTotal = finalTotal;
+    this.status = status;
     this.timestamp = timestamp;
   }
 
   static createInstance(): SupplierOrder {
-    const inst = new SupplierOrder(null, null, null, null, null);
-    return inst;
+    const instance = new SupplierOrder(
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
+    return instance;
   }
 }
