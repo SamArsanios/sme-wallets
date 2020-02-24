@@ -27,7 +27,8 @@ export class Session {
         }
 
         static createInstance(): Session{
-                return new Session(null, null, null, null,null, null);
+                let newSession =new Session(null, null, null, null,null, null) 
+                return newSession;
               }
 
 }

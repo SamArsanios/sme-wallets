@@ -14,16 +14,17 @@ export class UserAnswer {
      answer: number;
      timestamp: string
 
-    constructor($id: number, $userId: number, $questionId: number, $answer: number, $timestamp: string) {
-        this.id = $id;
-        this.userId = $userId;
-        this.questionId = $questionId;
-        this.answer = $answer;
-        this.timestamp = $timestamp;
+    constructor(id: number, userId: number, questionId: number, answer: number, timestamp: string) {
+        this.id = id;
+        this.userId = userId;
+        this.questionId = questionId;
+        this.answer = answer;
+        this.timestamp = timestamp;
 
     }
     static createInstance(): UserAnswer{
-        return new UserAnswer(null, null, null, null,null);
+        let newAnswer = new UserAnswer(null, null, null, null,null) 
+        return newAnswer ;
       }
 
     public getId(): number {
