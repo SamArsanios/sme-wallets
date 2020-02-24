@@ -1,6 +1,6 @@
 
 /**
- * @author Daniel Comboni
+
  * Provides the http `CRUD ` operations with the `base URL` already in place.
  * The consumer only `concatenates` the URL of choice as appropriately dictated by the `http method` of choice
  */
