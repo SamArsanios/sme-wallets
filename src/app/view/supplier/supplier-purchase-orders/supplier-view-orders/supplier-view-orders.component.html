@@ -31,116 +31,117 @@
       </div>
     </div>
   </div>
+  <form #form="ngForm" class="supplierorder" (ngSubmit)="onSubmit(form)">
+    <table>
+      <tr>
+        <th>
+          Sr No.
+        </th>
+        <th>
+          Item Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Sale Unit(PCS/LTR)
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>Number</td>
+        <td>{{ itemName }}</td>
+        <td>{{ itemDescription }}</td>
+        <td>{{ salesUnit }}</td>
+        <td>{{ quantity }}</td>
+        <td>
+          <input
+            (keyup)="onKeyPrice($event)"
+            id="price"
+            name="pricePerItem"
+            ngModel
+          />
+        </td>
+        <td>
+          <input
+            id="totalBeforeTax"
+            name="totalPrice"
+            value="{{ totalBeforeTax }}"
+            
+            ngModel
+          />
+        </td>
+      </tr>
+    </table>
 
-  <table>
-    <tr>
-      <th>
-        Sr No.
-      </th>
-      <th>
-        Item Name
-      </th>
-      <th>
-        Description
-      </th>
-      <th>
-        Sale Unit(PCS/LTR)
-      </th>
-      <th>
-        Quantity
-      </th>
-      <th>Price</th>
-      <th>Total</th>
-    </tr>
-    <tr>
-      <td>Number</td>
-      <td>{{ itemName }}</td>
-      <td>{{ itemDescription }}</td>
-      <td>{{ salesUnit }}</td>
-      <td>{{ quantity }}</td>
-      <td>
-        <input
-          (keyup)="onKeyPrice($event)"
-          id="price"
-          name="itemName"
-          ngModel
-        />
-      </td>
-      <td>
-        <input
-          id="totalBeforeTax"
-          name="itemName"
-          value="{{ totalBeforeTax }}"
-          disabled
-          ngModel
-        />
-      </td>
-    </tr>
-  </table>
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <h3>Order Due</h3>
+        <table>
+          <tr>
+            <th>Subtotal :</th>
+            <td>
+              <input
+                id="subtotal"
+                name="subTotal"
+                value="{{ subTotal }}"
+                
+                ngModel
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Tax :</th>
+            <td>
+              <input
+                (keyup)="onKeyTax($event)"
+                id="tax"
+                name="taxRate"
+                value="{{ tax }}"
+                ngModel
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Shipping :</th>
+            <td>
+              <input
+                (keyup)="onKeyShipping($event)"
+                id="shipping"
+                name="shippingCharges"
+                value="{{ shipping }}"
+                ngModel
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Total :</th>
+            <td>
+              <input
+                id="totalAfterTax"
+                name="finalTotal"
+                value="{{ totalAfterTax }}"
+                ngModel
+                
+              />
+            </td>
+          </tr>
+        </table>
 
-  <div class="row">
-    <div class="col-sm-6"></div>
-    <div class="col-sm-6">
-      <h3>Order Due</h3>
-      <table>
-        <tr>
-          <th>Subtotal :</th>
-          <td>
-            <input
-              id="subtotal"
-              name="itemName"
-              value="{{ subTotal }}"
-              disabled
-              ngModel
-            />
-          </td>
-        </tr>
-        <tr>
-          <th>Tax :</th>
-          <td>
-            <input
-              (keyup)="onKeyTax($event)"
-              id="tax"
-              name="itemName"
-              value="{{ tax }}"
-              ngModel
-            />
-          </td>
-        </tr>
-        <tr>
-          <th>Shipping :</th>
-          <td>
-            <input
-              (keyup)="onKeyShipping($event)"
-              id="shipping"
-              name="itemName"
-              value="{{shipping}}"
-              ngModel
-            />
-          </td>
-        </tr>
-        <tr>
-          <th>Total :</th>
-          <td>
-            <input
-              id="totalAfterTax"
-              name="itemName"
-              value="{{ totalAfterTax }}"
-              ngModel
-              disabled
-            />
-          </td>
-        </tr>
-      </table>
-
-      <div class="btns">
-        <button id="btn1" class="btn btn-success btn-sm" type="submit">
-          Accept
-        </button>
-        <button id="btn2" class="btn btn-danger btn-sm" type="submit">
-          Decline
-        </button>
+        <div class="btns">
+          <button id="btn1" class="btn btn-success btn-sm" type="submit">
+            Accept
+          </button>
+          <button id="btn2" class="btn btn-danger btn-sm">
+            Decline
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
