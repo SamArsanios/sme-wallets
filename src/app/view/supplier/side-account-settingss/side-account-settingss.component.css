@@ -38,3 +38,8 @@ mat-radio-group{
     display: flex;
     justify-content: space-evenly;
 } 
+
+.active {
+    background-color: rgb(208, 208, 235);
+    color: white;
+  }

@@ -11,6 +11,13 @@ export class BuyernavComponent implements OnInit {
   // remove array for links since its nolonger necessary
   constructor() { }
 
+  HeaderController($scope, $location) 
+{ 
+    $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+}
+
   ngOnInit() {
     let currentLoggedin = localStorage.getItem('loggedinUser')
     let currentUserr = JSON.parse(currentLoggedin)

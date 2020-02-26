@@ -45,6 +45,11 @@
    padding-top: 250px;
 }
 
+.active {
+   background-color: rgb(208, 208, 235);
+   color: white;
+ }
+
 @media screen and (max-width: 800px) {
    .container-fluid{
      /* font-size: 200%; */

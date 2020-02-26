@@ -14,3 +14,8 @@ mat-tab-group {
 .mat-form-field {
   margin-left: 870px;
 }
+
+.active {
+  background-color: rgb(208, 208, 235);
+  color: white;
+}

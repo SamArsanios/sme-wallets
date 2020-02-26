@@ -14,6 +14,10 @@ mat-header-cell {
 .container {
   padding-top: 200px;
 }
+.active {
+  background-color: rgb(208, 208, 235);
+  color: white;
+}
 
 .mat-form-field {
   margin-left: 930px;
