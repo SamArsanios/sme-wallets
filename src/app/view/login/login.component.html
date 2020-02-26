@@ -35,7 +35,7 @@
             <div class="row">
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Your password</mat-label>
-                <input matInput placeholder="password" name="password" [(ngModel)]=password required #emal="ngModel"
+                <input matInput placeholder="password" name="password" type="password" [(ngModel)]=password required #emal="ngModel"
                   [class.ld-error]="form.submitted && emal.invalid">
               </mat-form-field>
               
