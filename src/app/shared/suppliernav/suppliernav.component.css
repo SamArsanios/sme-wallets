@@ -68,7 +68,10 @@ font-weight: 500;
 color: white;
 
 }
-
+.active {
+   background-color: rgb(208, 208, 235);
+   color: white;
+ }
 /* navbar-nav ml-auto{
    display: flex;
    justify-content: space-evenly;

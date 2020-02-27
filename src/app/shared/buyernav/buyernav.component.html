@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="extras">
-    <a class="navbar-brand" routerLink="/home"><i class="fas fa-home fa-x"></i></a>
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="active"><i class="fas fa-home fa-x"></i></a>
     <a class="navbar-brand" href="#"><i class="fas fa-notifications fa-x"></i>Notifications</a>
     <a class="navbar-brand" href="#"> <i class="fas fa-address-book fa-x"></i>
         {{currentUser}}</a>
@@ -11,21 +11,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="/buyer/accountsettings">Account Settings<span
-                        class="sr-only">(current)</span></a>
+            <!-- <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="[is-active]">Home</a>                  
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/buyer/orders" routerLinkActive="active">Orders<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/buyer/orders">Orders<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/buyer/invoices" routerLinkActive="active">Invoices</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/buyer/invoices">Invoices</a>
+                <a class="nav-link" routerLink="/buyer/Invitecontacts" routerLinkActive="active">Invite Contacts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/buyer/Invitecontacts">Invite Contacts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/buyer/Vault">Vault</a>
+                <a class="nav-link" routerLink="/buyer/Vault" routerLinkActive="active">Vault</a>
             </li>
 
         </ul>

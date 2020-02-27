@@ -10,7 +10,10 @@
    background-color: blue;
    color: white;
 }
-
+.active {
+   background-color: rgb(208, 208, 235);
+   color: white;
+ }
 .head img{
    padding-bottom: 3%;
    padding-top: 3%;
