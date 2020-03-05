@@ -62,6 +62,8 @@ export class PendingOrdersComponent implements OnInit {
     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
   }
 
+  
+
   ngOnInit() {
     this.populateTheTable();
   }
