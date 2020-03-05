@@ -72,7 +72,7 @@
                         <div class="col-sm-6">
                             <mat-form-field class="example-full-width" appearance="outline">
                                 <mat-label>Enter your password</mat-label>
-                                <input matInput placeholder="Password" name="password" [(ngModel)]=password required
+                                <input matInput placeholder="Password" name="password" type="password" [(ngModel)]=password required
                                     #pass="ngModel" [class.ld-error]="form.submitted && pass.invalid">
                             </mat-form-field>
                             <div [hidden]="!form.submitted || pass.valid" class="alert alert-danger">
@@ -84,7 +84,7 @@
                         <div class="col-sm-6">
                             <mat-form-field class="example-full-width" appearance="outline">
                                 <mat-label>Retype password</mat-label>
-                                <input matInput placeholder="Re-type Password" name="passwordretype"
+                                <input matInput placeholder="Re-type Password" name="passwordretype" type="password"
                                     [(ngModel)]=passwordretype required #repass="ngModel"
                                     [class.ld-error]="form.submitted && repass.invalid">
                             </mat-form-field>

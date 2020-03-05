@@ -1,6 +1,39 @@
 <body>
-
     <div class="container">
+        <div style="display: block;">
+          <img
+            src="../../../../../assets/purchase-order-2.png"
+            alt="purchase order icon"
+          />
+        </div>
+        <h3>Purchase Order</h3>
+        <hr />
+        <div class="row">
+          <div class="col-sm-4">
+            <div>
+              <li>From :{{ buyerName }}</li>
+              <li>Phone : {{ buyerPhone }}</li>
+              <li>Email : {{ buyerEmail }}</li>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div>
+              <li>To : {{ supplierName }}</li>
+              <li>Phone : {{ supplierPhone }}</li>
+              <li>Email : {{ supplierEmail }}</li>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div>
+              <li>Order ID : {{ orderId }}</li>
+              <li>Delivery Place : {{ placeOfDelivery }}</li>
+              <li>Payment Terms :{{ termsOfPayment }}</li>
+              <li>Delivery Terms :{{ termsOfPayment }}</li>
+            </div>
+          </div>
+        </div>
+
+    <!-- <div class="container">
       <button class="btn btn-primary btn-sm backbutton" (click)="cancel()">Back</button>
   
       <div class="row center">
@@ -45,7 +78,7 @@
             <li>Email : {{supplierEmail}} </li>
           </ul>
         </div>
-      </div>
+      </div> -->
   
       <div class="row">
         <div class="col-sm-12">
