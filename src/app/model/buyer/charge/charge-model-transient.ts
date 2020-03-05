@@ -44,7 +44,8 @@ export class ChargeTransient extends Charge {
   }
 
   static createInstance(): ChargeTransient {
-    return new ChargeTransient(null, null, null, null, null, null, null, null, null,
+    let newCharge = new ChargeTransient(null, null, null, null, null, null, null, null, null,
       null, null, null, null);
+    return newCharge;
   }
 }
