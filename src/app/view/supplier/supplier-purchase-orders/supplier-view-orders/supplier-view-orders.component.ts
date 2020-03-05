@@ -9,6 +9,7 @@ import { DateUtils } from "src/app/utils/date/date-utils";
 import { User } from "src/app/shared/model/user/user-model";
 import { Wallet } from "src/app/shared/model/wallet/wallet-model";
 import { HttpService } from "src/app/utils/http/http-service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-supplier-view-orders",
@@ -16,6 +17,7 @@ import { HttpService } from "src/app/utils/http/http-service";
   styleUrls: ["./supplier-view-orders.component.css"]
 })
 export class SupplierViewOrdersComponent implements OnInit {
+  invoiceStatus;
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -43,6 +45,7 @@ export class SupplierViewOrdersComponent implements OnInit {
   totalAfterTax: number;
 
   constructor(
+    private router: Router,
     private objectUtilOrder: ObjectsUtil<Order>,
     private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
     private httpService: HttpService<SupplierOrder>,
@@ -278,6 +281,10 @@ export class SupplierViewOrdersComponent implements OnInit {
       .postRequest("/supplierOrders/create", supplierOrder)
       .subscribe(e => {
         console.log(`that: ${JSON.stringify(e, null, 2)} `);
+        this.invoiceStatus = true;
+        setTimeout(() => {
+          this.router.navigate(['/supplier/pendingorder-orders']);
+        }, 2000);
       });
   }
 }

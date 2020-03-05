@@ -1,5 +1,7 @@
 <form #form="ngForm" class="register" (ngSubmit)=onSubmit(form)>
-
+        <div *ngIf="registrationStatus" class="alert alert-success statusmessage"> 
+                <strong>Congratulations!</strong> Your have successfully registered with sme wallets
+              </div> 
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6" id="bgimage">

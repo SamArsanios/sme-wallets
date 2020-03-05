@@ -118,7 +118,8 @@ export class AllInvoicesComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
-    this.httpService.getRequest("/orders/findAll").subscribe(response => {
+    this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
+      console.log(`the response from raised invoices is ${JSON.stringify(response)}`)
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(response.body),
         this.supplierPendingOrdersInfoTable,
@@ -149,7 +150,7 @@ export class AllInvoicesComponent implements OnInit {
     const id = parseInt($event.target.closest("button").id);
 
     this.router
-      .navigate(["/supplier/supplier-purchase-orders/supplier-view-orders"])
+      .navigate(["/buyer/viewRaisedInvoices"])
       .then(e => {
         console.log(
           `the order to view again: ${JSON.stringify(

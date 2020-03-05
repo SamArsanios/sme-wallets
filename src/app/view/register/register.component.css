@@ -5,6 +5,10 @@
 .majorcontent{
     margin: 10%;
 }
+.statusmessage{
+    text-align: center;
+    font-weight: 500;
+}
 .title {
     min-width: 100%;
     text-align: center;

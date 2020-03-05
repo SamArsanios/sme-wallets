@@ -29,11 +29,11 @@ export class PopulateSupplierPendingOrderTable {
 
       return  {
         invoiceNo: `ORD-${e.id}`,
-        invoiceDate: e.timestamp,
-        invoiceDueDate: e.orderDueDate,
-        supplierName: e.buyer.name,
-        invoiceStatus: 'pending',
-        action: e.id
+        // invoiceDate: e.timestamp,
+        // invoiceDueDate: e.orderDueDate,
+        // supplierName: e.buyer.name,
+        // invoiceStatus: 'pending',
+        // action: e.id
       };
 
     });
