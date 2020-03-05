@@ -25,7 +25,7 @@ import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.com
 import { AllOrdersComponent } from './view/buyer/orders/all-orders/all-orders.component';
 import { InvoicesComponent } from './view/buyer/invoices/invoices.component';
 import { ApproveInvoicesComponent } from './view/buyer/invoices/approve-invoices/approve-invoices.component';
-import { AllInvoicesComponent } from './view/buyer/invoices/all-invoices/all-invoices.component';
+// import { AllInvoicesComponent } from './view/buyer/orders/all-orders/all-orders.component';
 import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/approved-invoices.component';
 import { CompletedInvoicesComponent } from './view/buyer/vault/completed-invoices/completed-invoices.component';
 import { VaultComponent } from './view/buyer/vault/vault.component';
@@ -83,6 +83,9 @@ import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-
 import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-approved-orders/view-all-approved-orders.component';
 // tslint:disable-next-line:max-line-length
 import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
+import { ViewApprovedInvoiceComponent } from './view/supplier/view-approved-invoice/view-approved-invoice.component';
+import { ViewRaisedInvoicesComponent } from './view/buyer/view-raised-invoices/view-raised-invoices.component';
+import { AllInvoicesComponent } from './view/buyer/invoices/all-invoices/all-invoices.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +145,9 @@ import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-sup
     ViewInvoicesComponent,
     ViewAllordersComponent,
     ViewAllApprovedOrdersComponent,
-    ViewSupplierPendingOrdersComponent
+    ViewSupplierPendingOrdersComponent,
+    ViewApprovedInvoiceComponent,
+    ViewRaisedInvoicesComponent
 
     // PiechartComponent
   ],
