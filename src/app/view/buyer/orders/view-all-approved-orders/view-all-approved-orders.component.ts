@@ -1,19 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-view-all-approved-orders',
-//   templateUrl: './view-all-approved-orders.component.html',
-//   styleUrls: ['./view-all-approved-orders.component.css']
-// })
-// export class ViewAllApprovedOrdersComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ApproveOrderData } from "../../../../service/order/approve.order.data";
 import { Location } from "@angular/common";
@@ -77,13 +61,10 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     private router: Router,
     private webSocketService: WebsocketService
   ) {
-
     this.populateOrderView();
     this.populateTheTableApprovedOrders();
-    const x = ApproveOrdersComponent.returnId()
-    console.log(`teh value returned as id is ${x}`)
-
-    
+    const x = ApproveOrdersComponent.returnId();
+    console.log(`teh value returned as id is ${x}`);
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -96,11 +77,11 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
         console.log(`Response is ${JSON.stringify(response.body, null, 2)}`);
 
         this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
-          console.log(`the selected id ${localStorage.getItem("viewid")}`)
+          console.log(`the selected id ${localStorage.getItem("viewid")}`);
 
           ApproveSupplierQotData.addApproveOrder(e);
           ApproveSupplierQotData.addApproveOrderToMap(e, e.id);
-          console.log(`Responsessss ${e.finalTotal}`);
+          console.log(`Supplier Order Quotation that comes: ${JSON.stringify(e,null,2)}`);
           // this.price = e.pricePerItem;
           // this.subTotal = e.subTotal;
           // this.tax = e.taxRate;
