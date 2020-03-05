@@ -170,17 +170,18 @@ export class SupplierViewOrdersComponent implements OnInit {
   }
 
   temporaryWallet(buyer: User): Wallet {
-    const wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
+    let wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
 
     wallet.timestamp = null;
 
-    const timestampStr = "timestampStr";
+    let timestampStr = "timestampStr";
 
     wallet[timestampStr] = DateUtils.convertDateFormatToParsable(
       wallet.timestamp
     );
 
     wallet.timestamp = null;
+    wallet["timestampStr"] = buyer["emailVerifiedAtStr"];
 
     return wallet;
   }
@@ -226,23 +227,31 @@ export class SupplierViewOrdersComponent implements OnInit {
       form.value
     );
 
-
     supplierOrder.id = 0;
-    // supplierOrder.order = order;
-    supplierOrder.totalPrice = this.parseStringToNumber(this.totalBeforeTax.toString());
+    supplierOrder.order = order;
+    console.log(`the orrrrrrrrder: ${JSON.stringify(order.wallet, null, 2)} `);
+    supplierOrder.totalPrice = this.parseStringToNumber(
+      this.totalBeforeTax.toString()
+    );
     supplierOrder.subTotal = this.parseStringToNumber(this.subTotal.toString());
-    supplierOrder.finalTotal = this.parseStringToNumber(this.totalAfterTax.toString());
-    supplierOrder.shippingCharges = this.parseStringToNumber(this.shipping.toString())
+    supplierOrder.finalTotal = this.parseStringToNumber(
+      this.totalAfterTax.toString()
+    );
+    supplierOrder.shippingCharges = this.parseStringToNumber(
+      this.shipping.toString()
+    );
     supplierOrder.taxRate = this.parseStringToNumber(this.tax.toString());
-    supplierOrder.pricePerItem = this.parseStringToNumber(this.price.toString());
+    supplierOrder.pricePerItem = this.parseStringToNumber(
+      this.price.toString()
+    );
 
     console.log(
       `The Supplier Order: ${JSON.stringify(supplierOrder, null, 2)} `
     );
 
-      console.log(`total before tax: ${this.totalBeforeTax} `);
-      console.log(`total after tax: ${this.totalAfterTax} `);
-      console.log(`sub tot: ${this.subTotal} `);
+    console.log(`total before tax: ${this.totalBeforeTax} `);
+    console.log(`total after tax: ${this.totalAfterTax} `);
+    console.log(`sub tot: ${this.subTotal} `);
 
     console.log(
       `The Supplier.Order: ${JSON.stringify(supplierOrder.order, null, 2)} `
@@ -259,6 +268,11 @@ export class SupplierViewOrdersComponent implements OnInit {
       Number(
         (<HTMLInputElement>document.getElementById("totalBeforeTax")).value
       )
+    );
+
+
+    console.log(
+      `The SupplierOrder: ${JSON.stringify(supplierOrder, null, 2)} `
     );
 
     this.httpService
