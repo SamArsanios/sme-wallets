@@ -16,6 +16,7 @@ import { ApproveOrderData } from "src/app/service/order/approve.order.data";
 })
 export class ApproveOrdersComponent implements OnInit {
   identity: number;
+
   approvedOrdersInfoTable: IApproveOrder[] = [];
   approveOrdersInfoTableDataSource = new MatTableDataSource(
     this.approvedOrdersInfoTable
@@ -59,6 +60,7 @@ export class ApproveOrdersComponent implements OnInit {
 
   ngOnInit() {
     this.populateTheTable();
+    console.log(`1fffffffffffffffff${this.approvedOrdersInfoTable}`)
   }
 
   handleViewOrderClick($event): void {

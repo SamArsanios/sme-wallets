@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
+import { Router } from '@angular/router';
+import { AllOrderData } from 'src/app/service/order/all.order.data';
 
 export interface IApproveInvoices {
   invoiceNo: string;
@@ -40,7 +42,7 @@ const ELEMENT_DATA: IApproveInvoices[] = [
   styleUrls: ["./approve-invoices.component.css"]
 })
 export class ApproveInvoicesComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   displayedColumns: string[] = [
     "invoiceNo",
     "invoiceDate",
@@ -59,7 +61,22 @@ export class ApproveInvoicesComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  handleViewOrderClick($event): void {
+
+    // tslint:disable-next-line:radix
+    const id = parseInt($event.target.closest('button').id);
+console.log(`teh idddddddddd is ${id}`)
+    // this.router.navigate(['buyer/orders/view-allorders']).then(e => {
+    //   console.log(`the order to view again: ${JSON.stringify(AllOrderData.getAllAllOrderMap().get(id), null, 2)} `);
+    //   AllOrderData.setIdOfOrderToView(id);
+    // });
+
+  }
+
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  
 }

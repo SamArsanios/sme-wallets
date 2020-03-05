@@ -47,6 +47,7 @@ export class PendingOrdersComponent implements OnInit {
         this.pendingOrdersInfoTableDataSource,
         PopulatePendingOrderTable.populateTableOnInit
       );
+      console.log(`seeeeeerching ${JSON.stringify(this.objectsUtil.dataObjectToArray(response.body))}`)
 
       this.pendingOrdersInfoTableDataSource = new MatTableDataSource<
         IPendingOrder

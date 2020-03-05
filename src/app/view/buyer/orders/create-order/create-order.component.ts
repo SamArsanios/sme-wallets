@@ -21,6 +21,7 @@ import { WebsocketService } from "src/app/utils/websocket/websocket.service";
   styleUrls: ["./create-order.component.css"]
 })
 export class CreateOrderComponent implements OnInit {
+  OrderStatus = false;
   // tslint:disable-next-line:max-line-length
   constructor(
     private httpService: HttpService<User>,
@@ -145,11 +146,15 @@ export class CreateOrderComponent implements OnInit {
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
       this.websocket.notify("/topic/orders/create", this.showNotification);
       console.log(`the result ${JSON.stringify(e)} `);
+      this.OrderStatus = true
     });
   } // end onSubmit()
 
   showNotification(result: any) {
     console.log("result show to the suplier", result);
+    if(result){
+      this.OrderStatus = true
+    }
   }
 
   onOptionsSelected() {

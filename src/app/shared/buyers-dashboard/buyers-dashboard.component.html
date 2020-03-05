@@ -1,51 +1,19 @@
 <app-header></app-header>
 <app-buyernav></app-buyernav>
-<!-- <app-buyernav></app-buyernav> -->
 <div class="spacer"></div>
-Message: {{ message }}
-
-<div class="hiddenstaff">
-        <div class="container">
-            <div class="row">
-        <div class="col-sm-6 bg-primary d-flex justify-content-center ">
-            <h4>current orders</h4> 
-            <i class="fas fa-cart-arrow-down fa-5x"></i>
-        </div>
-        <div class="col-sm-6 bg-danger d-flex justify-content-center">
-            <h4> invoices to approve</h4>
-            <i class="fas fa-file-invoice-dollar fa-5x"></i>
-    
-        </div>
-    </div>
-    <div class="row">
-            <div class="col-sm-6 bg-info d-flex justify-content-center">
-             <h4>Total Orders</h4> 
-            <i class="fas fa-shopping-cart fa-5x"></i>
-    
-        </div>
-        <div class="col-sm-6 bg-warning d-flex justify-content-center">
-                <h4>invited contacts</h4> 
-               
-            <i class="fas fa-address-book fa-5x"></i>
-    
-        </div>
-    </div>
-    </div>
-    </div>
 <div class="container-fluid">
-
   <div class="row">
     <div class="col-sm-3">
       <div class="card bg-success text-white text-center">
         <div class="card-header">
-          <h3> Current Orders</h3></div>
+          <h3>current orders</h3></div>
         <div class="card-body" class="container">
           <div class="row">
             <div class="col-sm-8">
                 <i class="fas fa-cart-arrow-down fa-5x"></i>
             </div>
             <div class="col-sm-4">
-              <p>New Orders</p>
+              <p>invoices to approve</p>
               <p>5</p>
             </div>
           </div>
@@ -55,38 +23,39 @@ Message: {{ message }}
         <!-- <div class="card-footer">Footer</div> -->
       </div>
     </div>
-    <div class="col-sm-3">
-        <div class="card bg-primary text-white text-center">
-          <div class="card-header">
-            <h3> Invoices To Approve</h3></div>
-          <div class="card-body" class="container">
-            <div class="row">
-              <div class="col-sm-5">
-                  <i class="fas fa-file-invoice-dollar fa-5x"></i>
+
+      <div class="col-sm-3">
+          <div class="card bg-info text-white text-center">
+            <div class="card-header">
+              <h3>Total Orders</h3></div>
+            <div class="card-body" class="container">
+              <div class="row">
+                <div class="col-sm-7">
+                    <i class="fas fa-cart-arrow-down fa-5x"></i>
+                </div>
+                <div class="col-sm-5">
+                  <p>total invoiced orders</p>
+                  <p>51</p>
+                </div>
               </div>
-              <div class="col-sm-7">
-                <p><b> Incoming Invoices</b></p>
-                <p>16</p>
-              </div>
+    
+              <!-- <a href="#" class="card-link">Card link</a> -->
             </div>
-  
-            <!-- <a href="#" class="card-link">Card link</a> -->
+            <!-- <div class="card-footer">Footer</div> -->
           </div>
-          <!-- <div class="card-footer">Footer</div> -->
         </div>
-      </div>
 
       <div class="col-sm-3">
           <div class="card bg-danger text-white text-center">
             <div class="card-header">
-              <h3> Total Orders</h3></div>
+              <h3> invited contacts</h3></div>
             <div class="card-body" class="container">
               <div class="row">
                 <div class="col-sm-8">
                     <i class="fas fa-shopping-cart fa-5x"></i>
                 </div>
                 <div class="col-sm-4">
-                  <p>Total Orders</p>
+                  <p>Current Orders</p>
                   <p>16</p>
                 </div>
               </div>
@@ -98,6 +67,27 @@ Message: {{ message }}
         </div>
 
         <div class="col-sm-3">
+          <div class="card bg-success text-white text-center">
+            <div class="card-header">
+              <h3> New Orders</h3></div>
+            <div class="card-body" class="container">
+              <div class="row">
+                <div class="col-sm-8">
+                    <i class="fas fa-shopping-cart fa-5x"></i>
+                </div>
+                <div class="col-sm-4">
+                  <p>Total Earnings</p>
+                  <p>16</p>
+                </div>
+              </div>
+    
+              <!-- <a href="#" class="card-link">Card link</a> -->
+            </div>
+            <!-- <div class="card-footer">Footer</div> -->
+          </div>
+        </div>
+
+        <!-- <div class="col-sm-3">
             <div class="card bg-info text-white text-center">
               <div class="card-header">
                 <h3> Invited Contacts</h3></div>
@@ -113,14 +103,14 @@ Message: {{ message }}
                 </div>
       
                 <!-- <a href="#" class="card-link">Card link</a> -->
-              </div>
+              <!-- </div> -->
               <!-- <div class="card-footer">Footer</div> -->
-            </div>
-          </div>
+            <!-- </div> -->
+          <!-- </div> -->
   </div>
   <div class="row">
       <div class="col-sm-4">       
-          <app-my-bar-chart></app-my-bar-chart>
+          <app-my-bar-chart></app-my-bar-chart> Current Orders
       </div>
       <div class="col-sm-4">       
           <app-my-doughnut-chart></app-my-doughnut-chart>
@@ -129,12 +119,64 @@ Message: {{ message }}
       <div class="col-sm-4">       
           <app-my-pie-chart></app-my-pie-chart>
       </div>
-      
 
-  </div>
-</div>
 
-<!-- <app-bargraph></app-bargraph> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="spacer"></div> -->
+<!-- <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <mat-card class="currentOrders">
+          <mat-card-title class = "mat-title"> New Orders</mat-card-title>
+          <br>
+          <br> -->
+          <!-- <span class="gap"><mat-icon class = "notification" matBadge="50" matBadgeColor="warn">shopping_basket</mat-icon>
+          </span> -->
+          <!-- <mat-icon  class="icon-display" matBadge="50" matBadgeColor="primary">shopping_basket</mat-icon>
+        </mat-card>
+      </div>
+      <div class="col-md-3">
+        <mat-card class="invoices">
+          <mat-card-title class = "mat-title"> Invoiced Orders</mat-card-title>
+          <br>
+          <br>
+          <mat-icon  class="icon-display" matBadge="50" matBadgeColor="primary">list_alt</mat-icon>
+
+          
+        </mat-card>
+      </div>
+      <div class="col-md-3">
+        <mat-card class="totalorders">
+          <mat-card-title class = "mat-title"> Total Orders </mat-card-title>
+          <br>
+          <br>
+          <mat-icon class="icon-display" matBadge="50"> business</mat-icon>
+        </mat-card>
+      </div>
+  
+      <div class="col-md-3">
+        <mat-card class="invited-contacts">
+          
+            <mat-card-title class = "mat-title">Total Earnings</mat-card-title>
+            <br>
+            <br>
+            <mat-icon class="icon-display" matBadge="50"> contact_phone</mat-icon>
+        </mat-card>
+      </div>
+    </div>
+  </div> -->
+<!-- 
+  <app-piechart></app-piechart> -->
 
 
 
