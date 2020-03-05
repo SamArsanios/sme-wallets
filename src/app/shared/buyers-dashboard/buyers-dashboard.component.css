@@ -1,107 +1,43 @@
-a{
-    color: black;
-    font-size: 120%;
- }
- .nav{
-    margin-bottom: 10%;
-   
- } 
- /* .spacer{
-     margin-bottom: 5%; 
-
- }  */
-
- .nav{
+.nav{
     
-   position: absolute;
-   left: 50%;
-   transform: translateX(-50%);
-   
-   
-
-}
-/* .container{
-   margin-top: 20%;
-} */
-.row{
-}
-.currentOrders, .invoices, .totalorders, .invited-contacts{
-   background-color: blue;
-   color: white;
-   border-radius: 5%;
-   text-align: center;
-   height: 50%;
-
-
-}
-/* .mat-title{
-   margin-top: 20%;
-} */
-
-.icon-display {
-   transform: scale(2);
-}
-
-h3{
-   font-family: 'Bowlby One SC', cursive;
-}
-p{
-   font-family: 'Bree Serif', serif;
-}
-.card-header{
-   /* min-height: 20px; */
-}
-.card{
-   padding-bottom: 5%;
-}
-.container-fluid{
-   padding-top: 5%;
-   margin-top: 7%;
-}
-.hiddenstaff{
-   display: none;
-}
-
-@media screen and (max-width: 989px) {
-   app-header{
-      display: none;
-   }
-   .container-fluid{
-      display: none;
-   }
-   .row{
-      max-height: 5%;
-      /* margin-bottom: 30%; */
-   }
-   .hiddenstaff{
-      display: block;
-      padding-top: 5%;
-      margin-top: 7%;
-      color: white;
-   }
-   corders{
-      padding: 50%;
-   }
-   .torders{
-      display: block;
-      text-align: center;
-   }
-   .icontacts{
-      display: block;
-   }
-   .col-sm-6{
-padding: 20%;
-   }
-   /* .container{
-   margin-top: 20%;
-} */
-
-   /* .container-fluid{
-      padding-top: 250px;
-   } */
-
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    
+ 
  }
-
-
-
-
+ .container{
+    margin-top: 10%;
+ }
+ 
+ .currentOrders, .invoices, .totalorders, .invited-contacts{
+    background-color: blue;
+    color: white;
+    border-radius: 5%;
+    text-align: center;
+    height: 100%;
+ 
+ 
+ }
+ .mat-title{
+    margin-top: 20%;
+ }
+ 
+ .icon-display {
+    transform: scale(2);
+ }
+ .container-fluid{
+    padding-top: 220px;
+ }
+ 
+ .active {
+    background-color: rgb(208, 208, 235);
+    color: white;
+  }
+ 
+ @media screen and (max-width: 800px) {
+   .container-fluid{
+      padding-top: 100px;
+   }
+    } 

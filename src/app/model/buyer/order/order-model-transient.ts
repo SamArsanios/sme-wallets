@@ -95,9 +95,9 @@ export class OrderTransient extends Order {
     );
   }
 
-    let newOrder = new OrderTransient(null, null, null, null, null, null, null, null, null,
-      null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
-    return newOrder;
-}
+//     let newOrder = new OrderTransient(null, null, null, null, null, null, null, null, null,
+//       null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+//     return newOrder;
+// }
 
 }

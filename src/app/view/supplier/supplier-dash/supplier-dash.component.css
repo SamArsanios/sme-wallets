@@ -1,16 +1,3 @@
-/* a{
-    color: black;
-    font-size: 120%;
- }
- .nav{
-    margin-bottom: 10%;
-   
- }  */
- /* .spacer{
-     margin-bottom: 5%; 
-
- }  */
-
 
  .nav{
     
@@ -44,6 +31,11 @@
 .container-fluid{
    padding-top: 250px;
 }
+
+.active {
+   background-color: rgb(208, 208, 235);
+   color: white;
+ }
 
 @media screen and (max-width: 800px) {
    .container-fluid{

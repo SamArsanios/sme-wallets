@@ -13,6 +13,10 @@ a{
  hr{
     background-color: white;
  }
+ .active {
+   background-color: rgb(208, 208, 235);
+   color: white;
+ }
 
  .nav{
     

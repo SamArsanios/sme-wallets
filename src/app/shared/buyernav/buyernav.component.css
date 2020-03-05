@@ -10,6 +10,8 @@
     background-color: blue;
     color: white;
  }
+
+  
  
  .head img{
     padding-bottom: 3%;
@@ -42,6 +44,10 @@ color: white;
  }
  .extras{
      display: none;
+ }
+ .active {
+   background-color: rgb(208, 208, 235);
+   color: white;
  }
 
  @media screen and (max-width: 989px) {
