@@ -270,7 +270,6 @@ export class SupplierViewOrdersComponent implements OnInit {
       )
     );
 
-
     console.log(
       `The SupplierOrder: ${JSON.stringify(supplierOrder, null, 2)} `
     );
