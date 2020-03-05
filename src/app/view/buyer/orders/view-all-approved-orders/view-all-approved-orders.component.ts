@@ -14,6 +14,7 @@ import { MatSort, MatPaginator, MatTableDataSource } from "@angular/material";
 import { PopulateApproveOrderTable } from "../approve-orders/approve.order.model.interface";
 import { ISupplierApproveOrder } from "./supplier.qot.order.model.interface";
 import { ApproveOrdersComponent } from "../approve-orders/approve-orders.component";
+// const idSelected = parseInt(localStorage.getItem("viewid"))
 
 @Component({
   selector: "app-view-all-approved-orders",
@@ -21,6 +22,8 @@ import { ApproveOrdersComponent } from "../approve-orders/approve-orders.compone
   styleUrls: ["../view-orders/view-orders.component.css"]
 })
 export class ViewAllApprovedOrdersComponent implements OnInit {
+
+
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -34,12 +37,12 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   termsOfPayment: string;
   termsOfDelivery: string;
 
-  srNo: string;
+  isbnNumber: string;
   itemName: string;
   itemDescription: string;
   salesUnit: string;
   quantity: number;
-  price: number;
+  Price: number;
   totalBeforeTax: number;
 
   subTotal: number;
@@ -58,13 +61,13 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     private httpService: HttpService<SupplierOrder>,
     private objectsUtil: ObjectsUtil<SupplierOrder>,
     private populateTable: PopulateTable<SupplierOrder, ISupplierApproveOrder>,
-    private router: Router,
-    private webSocketService: WebsocketService
+    private router: Router
+    // private webSocketService: WebsocketService
   ) {
-    this.populateOrderView();
+    // this.populateOrderView();
     this.populateTheTableApprovedOrders();
-    const x = ApproveOrdersComponent.returnId();
-    console.log(`teh value returned as id is ${x}`);
+    // const x = ApproveOrdersComponent.returnId();
+    // console.log(`teh value returned as id is ${x}`);
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -74,14 +77,48 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     this.httpService
       .getRequest("/supplierOrders/findAll")
       .subscribe(response => {
-        console.log(`Response is ${JSON.stringify(response.body, null, 2)}`);
-
+        
+        console.log(`Response is ${JSON.stringify(response)}`);
+        // console.log(`the id of the order which is selected is ${idSelected}`)
         this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
-          console.log(`the selected id ${localStorage.getItem("viewid")}`);
+          let idSelected = parseInt(localStorage.getItem("viewid"))
+          if (idSelected == e.order.id) {
+            console.log(`the hhhhhhhhhhh${e.order.id}`)
 
-          ApproveSupplierQotData.addApproveOrder(e);
-          ApproveSupplierQotData.addApproveOrderToMap(e, e.id);
-          console.log(`Supplier Order Quotation that comes: ${JSON.stringify(e,null,2)}`);
+            let order = e.order
+            console.log(`why the hell ${e.pricePerItem}`)
+            console.log(`all data from the supplier data is ${JSON.stringify(e, null, 2)}`)
+            this.buyerName = order.buyer.name;
+            this.buyerPhone = order.buyer.phoneNumber;
+            this.buyerEmail = order.buyer.email;
+
+            this.supplierName = order.supplier.name;
+            this.supplierPhone = order.supplier.phoneNumber;
+            this.supplierEmail = order.supplier.email;
+
+            this.orderId = `ord-${e.order.id}`;
+            this.placeOfDelivery = order.placeOfDelivery;
+            this.termsOfPayment = order.paymentTerms;
+            this.termsOfDelivery = order.deliveryTerms;
+            this.isbnNumber = order.isbnNumber;
+            this.itemName = order.itemName;
+            this.itemDescription = order.itemDescription;
+            this.salesUnit = order.saleUnit;
+            this.quantity = order.quantity;
+            this.Price = e.pricePerItem;
+
+            this.subTotal = e.subTotal;
+            this.tax = e.taxRate;
+            this.shipping = e.shippingCharges;
+            this.subTotal = e.subTotal;
+            this.totalBeforeTax = e.pricePerItem;
+            this.totalAfterTax = e.finalTotal
+          }
+          // console.log(`the selected id ${localStorage.getItem("viewid")}`);
+
+          // ApproveSupplierQotData.addApproveOrder(e);
+          // ApproveSupplierQotData.addApproveOrderToMap(e, e.id);
+          // console.log(`Supplier Order Quotation that comes: ${JSON.stringify(e, null, 2)}`);
           // this.price = e.pricePerItem;
           // this.subTotal = e.subTotal;
           // this.tax = e.taxRate;
@@ -95,60 +132,62 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     // this.supplierPendingOrdersInfoTableDataSource.paginator = this.paginator;
   }
 
-  cancel() {
-    this.location.back(); // <-- go back to previous location on cancel
-  }
+  // cancel() {
+  //   this.location.back(); // <-- go back to previous location on cancel
+  // }
 
-  private populateOrderView(): void {
-    const order = ApproveOrderData.getApproveOrderMap().get(
-      ApproveOrderData.getIdOfOrderToView()
-    );
+  // private populateOrderView(): void {
+  //   const order = ApproveOrderData.getApproveOrderMap().get(
+  //     ApproveOrderData.getIdOfOrderToView()
+  //   );
 
-    // const quotation = ApproveSupplierQotData.getApproveOrderMap().get(
-    //   ApproveSupplierQotData.getIdOfOrderToView()
-    // );
+  // const quotation = ApproveSupplierQotData.getApproveOrderMap().get(
+  //   ApproveSupplierQotData.getIdOfOrderToView()
+  // );
 
-    if (order !== undefined && order != null) {
-      this.buyerName = order.buyer.name;
-      this.buyerPhone = order.buyer.phoneNumber;
-      this.buyerEmail = order.buyer.email;
+  // if (order !== undefined && order != null) {
+  //   this.buyerName = order.buyer.name;
+  //   this.buyerPhone = order.buyer.phoneNumber;
+  //   this.buyerEmail = order.buyer.email;
 
-      this.supplierName = order.supplier.name;
-      this.supplierPhone = order.supplier.phoneNumber;
-      this.supplierEmail = order.supplier.email;
+  //   this.supplierName = order.supplier.name;
+  //   this.supplierPhone = order.supplier.phoneNumber;
+  //   this.supplierEmail = order.supplier.email;
 
-      this.orderId = `ord-${order.id}`;
-      this.placeOfDelivery = order.placeOfDelivery;
-      this.termsOfPayment = order.paymentTerms;
-      this.termsOfDelivery = order.deliveryTerms;
+  //   this.orderId = `ord-${order.id}`;
+  //   this.placeOfDelivery = order.placeOfDelivery;
+  //   this.termsOfPayment = order.paymentTerms;
+  //   this.termsOfDelivery = order.deliveryTerms;
 
-      this.srNo = `ord-${order.id}`;
-      this.itemName = order.itemName;
-      this.itemDescription = order.itemDescription;
-      this.salesUnit = order.saleUnit;
-      this.quantity = order.quantity;
-      this.price = 0;
+  //   this.srNo = `ord-${order.id}`;
+  //   this.itemName = order.itemName;
+  //   this.itemDescription = order.itemDescription;
+  //   this.salesUnit = order.saleUnit;
+  //   this.quantity = order.quantity;
+  //   this.price = 0;
 
-      // this.subTotal = 0;
-      // this.tax = 0;
-      // this.shipping = 0;
-      // this.totalBeforeTax = 0;
-      // this.totalAfterTax = 0;
+  // this.subTotal = 0;
+  // this.tax = 0;
+  // this.shipping = 0;
+  // this.totalBeforeTax = 0;
+  // this.totalAfterTax = 0;
 
-      // this.tax = quotation.taxRate;
-      // this.shipping = quotation.shippingCharges;
-      // this.subTotal = quotation.subTotal;
-      // this.totalBeforeTax = quotation.pricePerItem;
-      // this.totalAfterTax = quotation.finalTotal;
-    } else {
-      // fetch the order direct from the db basing on the ID provided
-    }
-  }
+  // this.tax = quotation.taxRate;
+  // this.shipping = quotation.shippingCharges;
+  // this.subTotal = quotation.subTotal;
+  // this.totalBeforeTax = quotation.pricePerItem;
+  // this.totalAfterTax = quotation.finalTotal;
+  //   } else {
+  //     // fetch the order direct from the db basing on the ID provided
+  //   }
+  // }
 
   // }
   ngOnInit() {
-    this.populateOrderView();
     this.populateTheTableApprovedOrders();
+
+    // this.populateOrderView();
+    // this.populateTheTableApprovedOrders();
 
     // const theID = this.approveOrders.returnId();
     // console.log(`Once upon a time: ${theID}`);
