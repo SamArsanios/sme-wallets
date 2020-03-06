@@ -14,6 +14,7 @@ import { Mapp } from "../../../../utils/collections/map";
 import { SupplierData } from "../../../../service/supplier/supplier.data";
 import { Wallet } from "../../../../shared/model/wallet/wallet-model";
 import { WebsocketService } from "src/app/utils/websocket/websocket.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-create-order",
@@ -24,6 +25,7 @@ export class CreateOrderComponent implements OnInit {
   OrderStatus = false;
   // tslint:disable-next-line:max-line-length
   constructor(
+    private router: Router,
     private httpService: HttpService<User>,
     private objectUtil: ObjectsUtil<User>,
     private objectUtilOrder: ObjectsUtil<Order>,
@@ -146,7 +148,11 @@ export class CreateOrderComponent implements OnInit {
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
       this.websocket.notify("/topic/orders/create", this.showNotification);
       console.log(`the result ${JSON.stringify(e)} `);
-      this.OrderStatus = true
+      this.OrderStatus = true;
+      setTimeout(() => {
+        this.router.navigate(['/buyer/pendingOrders']);
+      }, 2000);
+      // this.router.navigate(["/buyer/orders/view-orders"])
     });
   } // end onSubmit()
 

@@ -8,6 +8,7 @@ import { ObjectsUtil } from 'src/app/utils/objects/objects';
 import { DateUtils } from 'src/app/utils/date/date-utils'
 import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 import { Registration } from 'src/app/shared/model/user/Registration';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { Registration } from 'src/app/shared/model/user/Registration';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  registrationStatus = false;
   repassi = true;
 
   firstname: null;
@@ -38,7 +39,8 @@ export class RegisterComponent implements OnInit {
   ]
   constructor(private httpServicee: HttpService<User>,
     private objectUtils: ObjectsUtil<User>,
-    private httpRegister: HttpService<Registration>) {
+    private httpRegister: HttpService<Registration>,
+    private router: Router) {
 
 
   }
@@ -74,6 +76,11 @@ export class RegisterComponent implements OnInit {
         const reg = new Registration(0, this.convertUserToUserTransient(e.body), object.industrytype, e.body.name, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
         this.httpRegister.postRequest("/registrations/create", reg).subscribe(result => {
           console.log(`reg result ${JSON.stringify(result)}`)
+          this.registrationStatus = true;
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 6000);
+          // setTimeout(function(){ form.reset(); }, 1000);
 
 
         })

@@ -1,4 +1,5 @@
 import {Order} from '../../../../model/buyer/order/order-model';
+import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 
 export interface IBuyerAllInvoices {
     invoiceNo: string;
@@ -11,7 +12,7 @@ export interface IBuyerAllInvoices {
 
 
 
-export class PopulateSupplierPendingOrderTable {
+export class  PopulateBuyerInvoiceInfoTable {
 
   public static displayedColumns: string[] = [
         "invoiceNo",
@@ -23,15 +24,15 @@ export class PopulateSupplierPendingOrderTable {
       ];
 
 
-  public  static populateTableOnInit(fromResponse: Order[]) {
+  public  static populateTableOnInit(fromResponse: Invoice[]) {
 
     return fromResponse.map(e => {
-
+      console.log(`the order due date is ${ JSON.stringify(e.order)}`)
       return  {
         invoiceNo: `ORD-${e.id}`,
-        invoiceDate: e.timestamp,
-        invoiceDueDate: e.orderDueDate,
-        supplierName: e.buyer.name,
+        invoiceDate: e.order.timestamp,
+        // invoiceDueDate: e.orderDueDate,
+        supplierName: e.order.supplier.name,
         invoiceStatus: 'pending',
         action: e.id
       };

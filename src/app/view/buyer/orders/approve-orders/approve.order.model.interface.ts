@@ -5,7 +5,7 @@ export interface IApproveOrder {
     orderDate: any;
     orderDueDate: any;
     orderStatus: any;
-    // action: any;
+    action: any;
   }
 
 
@@ -17,7 +17,7 @@ export class PopulateApproveOrderTable {
         "orderDueDate",
         "action",
         "orderStatus",
-        "empty"
+        // "empty"
   
   ];
 
@@ -30,8 +30,8 @@ export class PopulateApproveOrderTable {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
+        action: e.id,
         orderStatus: 'pending',
-        action: e.id
       };
 
     });

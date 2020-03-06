@@ -22,7 +22,9 @@ export class AllOrdersComponent implements OnInit {
   displayedColumns: string[] = PopulateAllOrderTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-  constructor( private httpService: HttpService<Order>, private objectsUtil: ObjectsUtil<Order>, private populateTable: PopulateTable<Order, IAllOrders>, private router: Router) { }
+  constructor( private httpService: HttpService<Order>,
+     private objectsUtil: ObjectsUtil<Order>,
+      private populateTable: PopulateTable<Order, IAllOrders>, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -87,4 +89,3 @@ export class AllOrdersComponent implements OnInit {
     this.allOrdersInfoTableDataSource.filter = filterValue.trim().toLowerCase();
   }
 }
-
