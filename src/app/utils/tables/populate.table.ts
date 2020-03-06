@@ -18,19 +18,19 @@ export class PopulateTable<T, I> {
 
   }
 
-  // private populateTableOnInit(fromResponse: T[]) {
-  //
-  //   return fromResponse.map(e => {
-  //
-  //     return  {
-  //       orderNo: e.id,
-  //       orderDate: e.timestamp,
-  //       orderDueDate: e.id,
-  //       orderStatus: e.id
-  //     };
-  //
-  //   });
-  // }
+  private populateTableOnInit(fromResponse: T[]) {
+  
+    return fromResponse.map(e => {
+  
+      return  {
+        // orderNo: e.id,
+        // orderDate: e.timestamp,
+        // orderDueDate: e.id,
+        // orderStatus: e.id
+      };
+  
+    });
+  }
 
 
 }

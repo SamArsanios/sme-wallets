@@ -5,12 +5,11 @@ import { Order } from "../../../../model/buyer/order/order-model";
 import { ObjectsUtil } from "../../../../utils/objects/objects";
 import {
   IBuyerAllInvoices,
-  PopulateBuyerInvoiceInfoTable
+  PopulateSupplierPendingOrderTable
 } from "./buyer-all-invoices-model";
 import { PopulateTable } from "../../../../utils/tables/populate.table";
+import { SupplierPendingOrderData } from "../../../../service/order/supplier.pending.order.data";
 import { Router } from "@angular/router";
-import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
-import { BuyerAllInvoicesInvoiceData } from 'src/app/service/order/buyer.allInvoices.invoice.data';
 
 @Component({
   selector: "app-all-invoices",
@@ -18,51 +17,47 @@ import { BuyerAllInvoicesInvoiceData } from 'src/app/service/order/buyer.allInvo
   styleUrls: ["./all-invoices.component.css"]
 })
 export class AllInvoicesComponent implements OnInit {
-
-  buyerInvoiceInfoTable: IBuyerAllInvoices[] = [];
-  buyerInvoiceInfoTableDataSource = new MatTableDataSource(
-    this.buyerInvoiceInfoTable
+  supplierPendingOrdersInfoTable: IBuyerAllInvoices[] = [];
+  supplierPendingOrdersInfoTableDataSource = new MatTableDataSource(
+    this.supplierPendingOrdersInfoTable
   );
 
   displayedColumns: string[] =
-  PopulateBuyerInvoiceInfoTable.displayedColumns;
+    PopulateSupplierPendingOrderTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-
   constructor(
-    private httpService: HttpService<Invoice>,
-    private objectsUtil: ObjectsUtil<Invoice>,
-    private populateTable: PopulateTable<Invoice, IBuyerAllInvoices>,
+    private httpService: HttpService<Order>,
+    private objectsUtil: ObjectsUtil<Order>,
+    private populateTable: PopulateTable<Order, IBuyerAllInvoices>,
     private router: Router
   ) {}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-
   private populateTheTable(): void {
     this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
-
+      console.log(`the response from raised invoices is ${JSON.stringify(response)}`)
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(response.body),
-        this.buyerInvoiceInfoTable,
-        this.  buyerInvoiceInfoTableDataSource,
-        PopulateBuyerInvoiceInfoTable.populateTableOnInit
+        this.supplierPendingOrdersInfoTable,
+        this.supplierPendingOrdersInfoTableDataSource,
+        PopulateSupplierPendingOrderTable.populateTableOnInit
       );
-      console.log(`the result is ${result}`)
 
-      this.buyerInvoiceInfoTableDataSource = new MatTableDataSource<
+      this.supplierPendingOrdersInfoTableDataSource = new MatTableDataSource<
       IBuyerAllInvoices
       >(result);
 
       this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
-        BuyerAllInvoicesInvoiceData.addSupplierPendingInvoice(e)
-        BuyerAllInvoicesInvoiceData.addSupplierPendingInvoiceToMap(e, e.id)
+        SupplierPendingOrderData.addSupplierPendingOrder(e);
+        SupplierPendingOrderData.addSupplierPendingOrderToMap(e, e.id);
       });
     });
 
-    this. buyerInvoiceInfoTableDataSource.sort = this.sort;
-    this. buyerInvoiceInfoTableDataSource.paginator = this.paginator;
+    this.supplierPendingOrdersInfoTableDataSource.sort = this.sort;
+    this.supplierPendingOrdersInfoTableDataSource.paginator = this.paginator;
   }
 
   ngOnInit() {
@@ -70,17 +65,25 @@ export class AllInvoicesComponent implements OnInit {
   }
 
   handleViewOrderClick($event): void {
+    // tslint:disable-next-line:radix
     const id = parseInt($event.target.closest("button").id);
-    console.log(`the id is ${id}`)
 
-    this.router.navigate(["/buyer/invoices/viewRaisedInvoices"]).then(() => {
-      BuyerAllInvoicesInvoiceData.setIdOfInvoiceToView(id);
-    });
-    
+    this.router
+      .navigate(["/buyer/viewRaisedInvoices"])
+      .then(e => {
+        console.log(
+          `the order to view again: ${JSON.stringify(
+            SupplierPendingOrderData.getSupplierPendingOrderMap().get(id),
+            null,
+            2
+          )} `
+        );
+        SupplierPendingOrderData.setIdOfOrderToView(id);
+      });
   }
-  
+
   applyFilter(filterValue: string) {
-    this.buyerInvoiceInfoTableDataSource.filter = filterValue
+    this.supplierPendingOrdersInfoTableDataSource.filter = filterValue
       .trim()
       .toLowerCase();
   }
