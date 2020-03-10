@@ -1,7 +1,6 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
 import { HttpService } from "../../../../utils/http/http-service";
-import { Order } from "../../../../model/buyer/order/order-model";
 import { ObjectsUtil } from "../../../../utils/objects/objects";
 import {
   IBuyerAllInvoices,

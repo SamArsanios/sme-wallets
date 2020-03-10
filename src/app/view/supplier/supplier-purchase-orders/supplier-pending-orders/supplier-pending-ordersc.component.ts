@@ -38,26 +38,31 @@ export class SupplierPendingOrdersComponent implements OnInit {
 
   private populateTheTable(): void {
     this.httpService.getRequest("/orders/findAll").subscribe(response => {
-      const result = this.populateTable.populateTable(
-        this.objectsUtil.dataObjectToArray(response.body),
-        this.supplierPendingOrdersInfoTable,
-        this.supplierPendingOrdersInfoTableDataSource,
-        PopulateSupplierPendingOrderTable.populateTableOnInit
-      );
-
-      this.supplierPendingOrdersInfoTableDataSource = new MatTableDataSource<
-        ISupplierPendingOrders
-      >(result);
-
       this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
-        SupplierPendingOrderData.addSupplierPendingOrder(e);
-        SupplierPendingOrderData.addSupplierPendingOrderToMap(e, e.id);
-      });
-    });
+        if (e.orderStatus == "invoiced") {
+          const result = this.populateTable.populateTable(
+            this.objectsUtil.dataObjectToArray(response.body),
+            
+            this.supplierPendingOrdersInfoTable,
+            this.supplierPendingOrdersInfoTableDataSource,
+            PopulateSupplierPendingOrderTable.populateTableOnInit
+          );
+          this.supplierPendingOrdersInfoTableDataSource = new MatTableDataSource<
+          ISupplierPendingOrders>(result);
 
-    this.supplierPendingOrdersInfoTableDataSource.sort = this.sort;
-    this.supplierPendingOrdersInfoTableDataSource.paginator = this.paginator;
-  }
+          this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
+            SupplierPendingOrderData.addSupplierPendingOrder(e);
+            SupplierPendingOrderData.addSupplierPendingOrderToMap(e, e.id);
+          });
+
+          this.supplierPendingOrdersInfoTableDataSource.sort = this.sort;
+          this.supplierPendingOrdersInfoTableDataSource.paginator = this.paginator;
+          
+        }
+
+      })
+
+    })}
 
   ngOnInit() {
     this.populateTheTable();

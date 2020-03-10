@@ -31,7 +31,7 @@ export class PopulateApproveOrderTable {
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
         action: e.id,
-        orderStatus: 'pending',
+        orderStatus: e.orderStatus,
       };
 
     });

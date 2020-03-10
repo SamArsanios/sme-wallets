@@ -140,18 +140,19 @@ export class CreateOrderComponent implements OnInit {
     order.wallet = this.temporaryWallet();
     order.supplier = userSupplier;
     order.buyer = this.temporaryBuyer();
+    order.orderStatus = "pending";
 
     const newOrder = this.objectUtilOrder.objectToInstance(order, object);
 
     console.log(`the order: ${JSON.stringify(newOrder, null, 2)} `);
 
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
-      this.websocket.notify("/topic/orders/create", this.showNotification);
-      console.log(`the result ${JSON.stringify(e)} `);
+      // this.websocket.notify("/topic/orders/create", this.showNotification);
+      console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
-      setTimeout(() => {
-        this.router.navigate(['/buyer/pendingOrders']);
-      }, 2000);
+      // setTimeout(() => {
+      //   this.router.navigate(['/buyer/pendingOrders']);
+      // }, 2000);
       // this.router.navigate(["/buyer/orders/view-orders"])
     });
   } // end onSubmit()

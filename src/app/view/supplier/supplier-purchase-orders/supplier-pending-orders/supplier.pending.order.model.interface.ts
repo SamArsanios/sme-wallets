@@ -31,7 +31,7 @@ export class PopulateSupplierPendingOrderTable {
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
         senderName: e.buyer.name,
-        orderStatus: 'pending',
+        orderStatus: e.orderStatus,
         action: e.id
       };
 
