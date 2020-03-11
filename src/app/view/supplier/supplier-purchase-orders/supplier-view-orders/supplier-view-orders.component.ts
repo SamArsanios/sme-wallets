@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ["./supplier-view-orders.component.css"]
 })
 export class SupplierViewOrdersComponent implements OnInit {
-  invoiceStatus;
+  invoiceStatus = false;
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -158,15 +158,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
       SupplierPendingOrderData.getIdOfOrderToView()
     );
-    // if(order){
-    //   let updateData = {orderStatus:"invoiced"} 
-    //   this.httpService.putRequest(`/orders/update/${order.id}`, JSON.stringify(updateData))    // .subscribe(e => {
-    //   .subscribe(e => {
-    //     console.log(`the updated Order is ${e.body}`)
-    //   })
-    // }
-    // order.orderStatus = "invoiced"
-    // create a transient timestampStr
+
     const timestampStrOrder = "timestampStr";
     order[timestampStrOrder] = DateUtils.convertDateFormatToParsable(
       order.timestamp
@@ -238,8 +230,15 @@ export class SupplierViewOrdersComponent implements OnInit {
     
     let newOrder = Order.createInstance();
     OldOrder.orderStatus = "invoiced";
-    this.objectUtilOrder.objectToInstance(newOrder, OldOrder);    this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
+    this.objectUtilOrder.objectToInstance(newOrder, OldOrder);    
+    this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
         console.log(`the updated Order is ${e.body, null, 2}`)
       });
+
+      this.invoiceStatus = true;
+      setTimeout(() => {
+        this.router.navigate(['/supplier/pendingorder-orders']);
+      }, 2000);
+
   }
 }
