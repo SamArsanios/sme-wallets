@@ -16,7 +16,7 @@ import { ApproveOrderData } from "src/app/service/order/approve.order.data";
 })
 export class ApproveOrdersComponent implements OnInit {
   identity: number;
-
+  receivers: Array<Order> = new Array<Order>();
   approvedOrdersInfoTable: IApproveOrder[] = [];
   approveOrdersInfoTableDataSource = new MatTableDataSource(
     this.approvedOrdersInfoTable
@@ -37,8 +37,16 @@ export class ApproveOrdersComponent implements OnInit {
 
   private populateTheTable(): void {
     this.httpService.getRequest("/orders/findAll").subscribe(response => {
+      this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
+        if (theOder.orderStatus === "invoiced") {
+          this.receivers.push(theOder);
+          ApproveOrderData.addApproveOrder(theOder)
+          ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
+        }
+      })
+
       const result = this.populateTable.populateTable(
-        this.objectsUtil.dataObjectToArray(response.body),
+        this.objectsUtil.dataObjectToArray(this.receivers),
         this.approvedOrdersInfoTable,
         this.approveOrdersInfoTableDataSource,
         PopulateApproveOrderTable.populateTableOnInit
@@ -48,7 +56,7 @@ export class ApproveOrdersComponent implements OnInit {
         IApproveOrder
       >(result);
 
-      this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
+      this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
         ApproveOrderData.addApproveOrder(e);
         ApproveOrderData.addApproveOrderToMap(e, e.id);
       });

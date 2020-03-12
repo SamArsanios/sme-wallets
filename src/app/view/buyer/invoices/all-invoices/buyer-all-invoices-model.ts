@@ -1,4 +1,3 @@
-import {Order} from '../../../../model/buyer/order/order-model';
 import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 
 export interface IBuyerAllInvoices {

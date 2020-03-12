@@ -1,4 +1,4 @@
-a{
+/* a{
     text-decoration: none;
     color: white;
 }
@@ -63,10 +63,27 @@ button{
     background-image: url("../../../assets/bg.webp");
     min-height:100%;
     background-repeat: no-repeat;
-  }
+  } */
  
  /* @media screen and (max-width: 800px) {
     mdb-navbar{
        display: none;
     }
   } */
+
+
+  a{
+   text-decoration: none;
+   color: white;
+}
+
+button{
+   margin: 10%;
+   font-weight: 500;
+}
+.row{
+   background-color: cornflowerblue;
+}
+.spacer{
+   margin-top: 10%;
+}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ApproveOrderData } from 'src/app/service/order/approve.order.data';
 import { BuyerAllInvoicesInvoiceData } from 'src/app/service/order/buyer.allInvoices.invoice.data';
 
 
@@ -47,11 +46,11 @@ cancel() {
 }
 
   private populateOrderView(): void {
-    const order = BuyerAllInvoicesInvoiceData.getBuyerInvoiceMap().get(BuyerAllInvoicesInvoiceData.getIdOfInvoiceToView())
-
+    let order = BuyerAllInvoicesInvoiceData.getBuyerInvoiceMap().get(BuyerAllInvoicesInvoiceData.getIdOfInvoiceToView())
+console.log(`ze order is eeeeeeee${JSON.stringify(order, null, 2)}`)
     if ( order !== undefined && order != null ) {
 
-      this.buyerName = "lucy";
+      this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
       this.buyerEmail = order.order.buyer.email;
 
@@ -68,15 +67,15 @@ cancel() {
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;
-      this.price = 0;
-      this.totalBeforeTax = 0;
+      // this.price = order.order.price;
+      // this.totalBeforeTax = order.order;
 
       this.subTotal = 0;
-      this.tax = 0;
+      this.tax = order.interestRate;
       this.shipping = 0;
       this.quantity = order.order.quantity;
-      this.totalBeforeTax = 0;
-      this.totalAfterTax = 0;
+      // this.totalBeforeTax = order.;
+      this.totalAfterTax = order.amountToPay;
 
     } else {
 

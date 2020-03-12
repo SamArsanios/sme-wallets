@@ -1,6 +1,7 @@
 import {Order} from '../../../../model/buyer/order/order-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
-export interface ISupplierPendingOrders {
+export interface ISupplierAllOrders {
     orderNo: string;
     orderDate: any;
     orderDueDate: any;
@@ -10,7 +11,7 @@ export interface ISupplierPendingOrders {
   }
 
 
-export class PopulateSupplierPendingOrderTable {
+export class PopulateSupplierAllOrderTable {
 
   public static displayedColumns: string[] = [
         "orderNo",
@@ -22,16 +23,16 @@ export class PopulateSupplierPendingOrderTable {
       ];
 
 
-  public  static populateTableOnInit(fromResponse: Order[]) {
+  public  static populateTableOnInit(fromResponse: SupplierOrder[]) {
 
     return fromResponse.map(e => {
 
       return  {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
-        orderDueDate: e.orderDueDate,
-        senderName: e.buyer.name,
-        orderStatus: e.orderStatus,
+        orderDueDate: e.order.orderDueDate,
+        senderName: e.order.buyer.name,
+        orderStatus: e.order.orderStatus,
         action: e.id
       };
 

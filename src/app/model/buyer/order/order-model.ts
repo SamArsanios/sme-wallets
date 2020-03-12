@@ -83,7 +83,7 @@ export class Order {
   }
 
   static createInstance(): Order {
-    const instance = new Order(
+    let instance = new Order(
       null,
       null,
       null,

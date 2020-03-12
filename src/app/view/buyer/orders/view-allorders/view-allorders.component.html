@@ -147,8 +147,13 @@
 
       </div>
       <div class="col-sm-4">
-        <button class="btn btn-primary btn-lg pdfbutton" type="submit">Generate PDF</button>
-
+        <button
+          (click)="generatePdf()"
+          class="btn btn-primary btn-lg pdfbutton"
+          type="submit"
+        >
+          Generate PDF
+        </button>
       </div>
     </div>
 </div>
