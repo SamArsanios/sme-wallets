@@ -84,6 +84,7 @@ import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-app
 // tslint:disable-next-line:max-line-length
 import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
