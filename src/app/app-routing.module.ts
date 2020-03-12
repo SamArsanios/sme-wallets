@@ -35,6 +35,7 @@ import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-sup
 import { ViewRaisedInvoicesComponent } from './view/buyer/view-raised-invoices/view-raised-invoices.component';
 import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pending-orders.component';
 import { SupplierPendingOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component';
+import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-all-orders/view-supplier-all-orders/view-supplier-all-orders.component';
 
 
 const routes: Routes = [
@@ -86,6 +87,12 @@ const routes: Routes = [
     path: "supplier/orders",
     component: SupplierPurchaseOrdersComponent
   },
+  {
+
+    path: "supplier/viewallsuppliers",
+    component:   ViewSupplierAllOrdersComponent
+  },
+
   {
     path: "supplier/supplier-purchase-orders/supplier-view-orders",
     component: SupplierViewOrdersComponent
