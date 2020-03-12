@@ -88,6 +88,7 @@ import { ViewRaisedInvoicesComponent } from './view/buyer/view-raised-invoices/v
 import { AllInvoicesComponent } from './view/buyer/invoices/all-invoices/all-invoices.component';
 import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-all-orders/view-supplier-all-orders/view-supplier-all-orders.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
