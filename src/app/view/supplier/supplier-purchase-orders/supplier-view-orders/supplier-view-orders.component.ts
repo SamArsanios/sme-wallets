@@ -228,14 +228,20 @@ export class SupplierViewOrdersComponent implements OnInit {
     let OldOrder = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
       SupplierPendingOrderData.getIdOfOrderToView()
     );
-    
+    let supplierNewOrder = SupplierOrder.createInstance();
     let newOrder = Order.createInstance();
     OldOrder.orderStatus = "invoiced";
-    this.objectUtilOrder.objectToInstance(newOrder, OldOrder);    
+    this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
+
+    this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
+      console.log(`the supplier Order is ${e.body, null, 2}`)
+    });
+
     this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
         console.log(`the updated Order is ${e.body, null, 2}`)
       });
 
+      
       this.invoiceStatus = true;
       setTimeout(() => {
         this.router.navigate(['/supplier/pendingorder-orders']);
@@ -243,3 +249,5 @@ export class SupplierViewOrdersComponent implements OnInit {
 
   }
 }
+
+

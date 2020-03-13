@@ -128,7 +128,6 @@ export class SupplierPendingOrdersComponent implements OnInit {
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         console.log(`the pending orders are ${JSON.stringify(theOder)}`)
 
-        // let loggedinUserId = JSON.parse(localStorage.getItem('loggedinUser'))[0].id
         if (theOder.orderStatus === "pending") {
 
           this.receivers.push(theOder);
