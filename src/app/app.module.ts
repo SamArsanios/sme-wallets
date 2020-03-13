@@ -87,6 +87,7 @@ import { ViewApprovedInvoiceComponent } from './view/supplier/view-approved-invo
 import { ViewRaisedInvoicesComponent } from './view/buyer/view-raised-invoices/view-raised-invoices.component';
 import { AllInvoicesComponent } from './view/buyer/invoices/all-invoices/all-invoices.component';
 import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-all-orders/view-supplier-all-orders/view-supplier-all-orders.component';
+import { ViewSupplierInvoicedOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/view-supplier-invoiced-orders.component';
 
 @NgModule({
   declarations: [
@@ -150,7 +151,8 @@ import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchas
     ViewApprovedInvoiceComponent,
     ViewRaisedInvoicesComponent,
     SupplierAllOrdersComponent,
-    ViewSupplierAllOrdersComponent
+    ViewSupplierAllOrdersComponent,
+    ViewSupplierInvoicedOrdersComponent
 
     // PiechartComponent
   ],

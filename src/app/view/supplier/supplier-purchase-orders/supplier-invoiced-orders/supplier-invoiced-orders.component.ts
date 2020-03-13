@@ -39,7 +39,6 @@ export class SupplierInvoicedOrdersComponent implements OnInit {
 
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         console.log("the invoiced orders are,", response.body)
-        // let loggedinUserId = JSON.parse(localStorage.getItem('loggedinUser'))[0].id
         if (theOder.order.orderStatus === "invoiced") {
 
 
@@ -82,7 +81,7 @@ export class SupplierInvoicedOrdersComponent implements OnInit {
     const id = parseInt($event.target.closest("button").id);
 
     this.router
-      .navigate(["/supplier/supplier-purchase-orders/supplier-view-orders"])
+      .navigate(["/supplier/view-supplier-invoiced-orders-component"])
       .then(e => {
         console.log(
           `the order to view again: ${JSON.stringify(
