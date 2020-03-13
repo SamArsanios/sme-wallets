@@ -29,46 +29,31 @@ export class AllOrdersComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
+
   private populateTheTable(): void {
+        this.httpService.getRequest("/orders/findAll").subscribe(response => {
+        
+          const result = this.populateTable.populateTable(
+            this.objectsUtil.dataObjectToArray(response.body),
+            this.allOrdersInfoTable,
+            this.allOrdersInfoTableDataSource,
+            PopulateAllOrderTable.populateTableOnInit
+          );
+    
+          this.allOrdersInfoTableDataSource = new MatTableDataSource<
+            IAllOrders
+          >(result);
+    
+          this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
+            AllOrderData.addAAllOrder(e);
+            AllOrderData.addAAllOrderToMap(e, e.id);
+          });
+        });
+    
+        this.allOrdersInfoTableDataSource.sort = this.sort;
+        this.allOrdersInfoTableDataSource.paginator = this.paginator;
+      }
 
-    this.httpService.getRequest('/orders/findAll').subscribe(response => {
-
-      this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
-
-        let loggedinUserId = JSON.parse(localStorage.getItem('loggedinUser'))[0].id
-        console.log("this is the geeeen", loggedinUserId)
-        if (theOder.buyer.id === loggedinUserId) {
-
-
-          this.receivers.push(theOder);
-          AllOrderData.addAAllOrder(theOder)
-          AllOrderData.addAAllOrderToMap(theOder, theOder.id)
-          // alert(`these are all the orders made by id1 ${this.receivers}`)
-
-        }
-      });
-
-
-
-
-      const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(this.receivers), this.allOrdersInfoTable,
-        this.allOrdersInfoTableDataSource, PopulateAllOrderTable.populateTableOnInit);
-
-      this.allOrdersInfoTableDataSource = new MatTableDataSource<IAllOrders>(result);
-
-      this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
-
-        AllOrderData.addAAllOrder(e);
-        AllOrderData.addAAllOrderToMap(e, e.id);
-
-      });
-
-    });
-
-    this.allOrdersInfoTableDataSource.sort = this.sort;
-    this.allOrdersInfoTableDataSource.paginator = this.paginator;
-
-  }
 
   ngOnInit() {
     this.populateTheTable();

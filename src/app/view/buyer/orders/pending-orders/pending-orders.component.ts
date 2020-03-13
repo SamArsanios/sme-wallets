@@ -18,6 +18,7 @@ import { WebsocketService } from "../../../../utils/websocket/websocket.service"
   styleUrls: ["./pending-orders.component.css"]
 })
 export class PendingOrdersComponent implements OnInit {
+  receivers: Array<Order> = new Array<Order>();
   pendingOrdersInfoTable: IPendingOrder[] = [];
   pendingOrdersInfoTableDataSource = new MatTableDataSource(
     this.pendingOrdersInfoTable
@@ -25,7 +26,6 @@ export class PendingOrdersComponent implements OnInit {
 
   displayedColumns: string[] = PopulatePendingOrderTable.displayedColumns;
 
-  // tslint:disable-next-line:max-line-length
   constructor(
     private httpService: HttpService<Order>,
     private objectsUtil: ObjectsUtil<Order>,
@@ -40,37 +40,46 @@ export class PendingOrdersComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
-    this.httpService.getRequest("/orders/findAll").subscribe(response => {
-      const result = this.populateTable.populateTable(
-        this.objectsUtil.dataObjectToArray(response.body),
-        this.pendingOrdersInfoTable,
-        this.pendingOrdersInfoTableDataSource,
-        PopulatePendingOrderTable.populateTableOnInit
-      );
-      console.log(`seeeeeerching ${JSON.stringify(this.objectsUtil.dataObjectToArray(response.body))}`)
 
-      this.pendingOrdersInfoTableDataSource = new MatTableDataSource<
-        IPendingOrder
-      >(result);
+    this.httpService.getRequest('/orders/findAll').subscribe(response => {
 
-      this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
+      this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
+        console.log(`the pending orders are ${JSON.stringify(theOder)}`)
+
+        if (theOder.orderStatus === "pending") {
+
+          this.receivers.push(theOder);
+          PendingOrderData.addAPendingOrder(theOder);
+          PendingOrderData.addAPendingOrderToMap(theOder, theOder.id);
+
+        }
+      });
+
+      const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(this.receivers), this.pendingOrdersInfoTable,
+        this.pendingOrdersInfoTableDataSource, PopulatePendingOrderTable.populateTableOnInit);
+
+      this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(result);
+
+      this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
+
         PendingOrderData.addAPendingOrder(e);
         PendingOrderData.addAPendingOrderToMap(e, e.id);
+
       });
+
     });
 
     this.pendingOrdersInfoTableDataSource.sort = this.sort;
     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
+
   }
 
-  
 
   ngOnInit() {
     this.populateTheTable();
   }
 
   handleViewOrderClick($event): void {
-    // tslint:disable-next-line:radix
     const id = parseInt($event.target.closest("button").id);
 
     this.router.navigate(["/buyer/orders/view-orders"]).then(() => {

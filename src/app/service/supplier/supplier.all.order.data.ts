@@ -1,26 +1,27 @@
 import {List} from '../../utils/collections/list';
-import {Order} from '../../model/buyer/order/order-model';
+// import {Order} from '../../model/buyer/order/order-model';
 import {Mapp} from '../../utils/collections/map';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 export class SupplierAllOrderData {
 
-  private static supplierAllOrderLists: List<Order>;
-  private static supplierAllOrderMap: Mapp<number, Order>;
+  private static supplierAllOrderLists: List<SupplierOrder>;
+  private static supplierAllOrderMap: Mapp<number, SupplierOrder>;
   private static idOfOrderToView: number;
 
-  public static setsupplierAllOrderLists(supplierAllOrders: List<Order>): void {
+  public static setsupplierAllOrderLists(supplierAllOrders: List<SupplierOrder>): void {
     SupplierAllOrderData.supplierAllOrderLists = supplierAllOrders;
   }
 
-  public static getsupplierAllOrderLists(): List<Order> {
+  public static getsupplierAllOrderLists(): List<SupplierOrder> {
     return SupplierAllOrderData.supplierAllOrderLists;
   }
 
-  public static setsupplierAllOrderMap(supplierAllOrder: Mapp<number, Order>): void {
+  public static setsupplierAllOrderMap(supplierAllOrder: Mapp<number, SupplierOrder>): void {
     SupplierAllOrderData.supplierAllOrderMap = supplierAllOrder;
   }
 
-  public static getsupplierAllOrderMap(): Mapp<number, Order> {
+  public static getsupplierAllOrderMap(): Mapp<number, SupplierOrder> {
     return SupplierAllOrderData.supplierAllOrderMap;
   }
 
@@ -33,11 +34,11 @@ export class SupplierAllOrderData {
     return SupplierAllOrderData.idOfOrderToView;
   }
 
-  static addAsupplierAllOrder(anOrder: Order): void {
+  static addAsupplierAllOrder(anOrder: SupplierOrder): void {
 
       if (SupplierAllOrderData.getsupplierAllOrderLists() == null || SupplierAllOrderData.getsupplierAllOrderLists().isEmpty()) {
 
-        const newList = new List<Order>();
+        const newList = new List<SupplierOrder>();
         newList.add(anOrder);
         SupplierAllOrderData.setsupplierAllOrderLists(newList);
 
@@ -49,11 +50,11 @@ export class SupplierAllOrderData {
 
   }
 
-  static addAsupplierAllOrderToMap(anOrder: Order, id: number): void {
+  static addAsupplierAllOrderToMap(anOrder: SupplierOrder, id: number): void {
 
       if (SupplierAllOrderData.getsupplierAllOrderMap() == null || SupplierAllOrderData.getsupplierAllOrderMap().isEmpty()) {
 
-        const newMap = new Mapp<number, Order>();
+        const newMap = new Mapp<number, SupplierOrder>();
         newMap.put(id, anOrder);
 
         SupplierAllOrderData.setsupplierAllOrderMap(newMap);

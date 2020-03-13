@@ -264,23 +264,23 @@ console.log( "fffffffffff", order)
 
     if (order !== undefined && order != null) {
 
-      this.buyerName = order.buyer.name;
-      this.buyerPhone = order.buyer.phoneNumber;
-      this.buyerEmail = order.buyer.email;
+      this.buyerName = order.order.buyer.name;
+      this.buyerPhone = order.order.buyer.phoneNumber;
+      this.buyerEmail = order.order.buyer.email;
 
-      this.supplierName = order.supplier.name;
-      this.supplierPhone = order.supplier.phoneNumber;
-      this.supplierEmail = order.supplier.email;
+      this.supplierName = order.order.supplier.name;
+      this.supplierPhone = order.order.supplier.phoneNumber;
+      this.supplierEmail = order.order.supplier.email;
 
       this.orderId = `ord-${order.id}`;
-      this.placeOfDelivery = order.placeOfDelivery;
+      this.placeOfDelivery = order.order.placeOfDelivery;
       // this.termsOfPayment = order.order.paymentTerms;
-      this.termsOfDelivery = order.deliveryTerms;
+      this.termsOfDelivery = order.order.deliveryTerms;
 
       this.srNo = `ord-${order.id}`;
-      this.itemName = order.itemName;
-      this.itemDescription = order.itemDescription;
-      this.salesUnit = order.saleUnit;
+      this.itemName = order.order.itemName;
+      this.itemDescription = order.order.itemDescription;
+      this.salesUnit = order.order.saleUnit;
     //   this.price = order.pricePerItem;
     //   this.totalBeforeTax = order.totalPrice;
 

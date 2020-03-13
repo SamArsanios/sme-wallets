@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
 import { HttpService } from "../../../../utils/http/http-service";
-import { Order } from "../../../../model/buyer/order/order-model";
+// import { Order } from "../../../../model/buyer/order/order-model";
 import { ObjectsUtil } from "../../../../utils/objects/objects";
 
 import { PopulateTable } from "../../../../utils/tables/populate.table";
@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 import { WebsocketService } from "../../../../utils/websocket/websocket.service";
 import { ISupplierAllOrders, PopulateSupplierAllOrderTable } from './supplier.all.order.model.interface';
 import { SupplierAllOrderData } from 'src/app/service/supplier/supplier.all.order.data';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 @Component({
     selector: 'app-supplier-all-orders',
@@ -25,9 +26,9 @@ import { SupplierAllOrderData } from 'src/app/service/supplier/supplier.all.orde
 
   // tslint:disable-next-line:max-line-length
   constructor(
-    private httpService: HttpService<Order>,
-    private objectsUtil: ObjectsUtil<Order>,
-    private populateTable: PopulateTable<Order, ISupplierAllOrders>,
+    private httpService: HttpService<SupplierOrder>,
+    private objectsUtil: ObjectsUtil<SupplierOrder>,
+    private populateTable: PopulateTable<SupplierOrder, ISupplierAllOrders>,
     private router: Router,
     private webSocketService: WebsocketService
   ) {
@@ -38,7 +39,7 @@ import { SupplierAllOrderData } from 'src/app/service/supplier/supplier.all.orde
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
-    this.httpService.getRequest("/orders/findAll").subscribe(response => {
+    this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(response.body),
         this.supplierAllOrdersInfoTable,
@@ -72,7 +73,7 @@ import { SupplierAllOrderData } from 'src/app/service/supplier/supplier.all.orde
     // tslint:disable-next-line:radix
     const id = parseInt($event.target.closest("button").id);
 
-    this.router.navigate(["/buyer/orders/view-orders"]).then(() => {
+    this.router.navigate(["/supplier/viewallsuppliers"]).then(() => {
       SupplierAllOrderData.setIdOfOrderToView(id);
     });
   }
