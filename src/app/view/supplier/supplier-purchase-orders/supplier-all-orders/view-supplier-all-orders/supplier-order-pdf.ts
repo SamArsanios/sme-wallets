@@ -1,6 +1,5 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Order } from 'src/app/model/buyer/order/order-model';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;

@@ -1,20 +1,15 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ApproveOrderData } from "../../../../service/order/approve.order.data";
-import { Location } from "@angular/common";
-import { SupplierPendingOrderData } from "src/app/service/order/supplier.pending.order.data";
-import { ApproveSupplierQotData } from "src/app/service/supplier/supplier.order.data";
-import { HttpService } from "src/app/utils/http/http-service";
-import { SupplierOrder } from "src/app/model/supplier/order/SupplierOrder";
-import { Router } from "@angular/router";
-import { ISupplierPendingOrders } from "src/app/view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier.pending.order.model.interface";
-import { PopulateTable } from "src/app/utils/tables/populate.table";
-import { ObjectsUtil } from "src/app/utils/objects/objects";
-import { WebsocketService } from "src/app/utils/websocket/websocket.service";
-import { MatSort, MatPaginator, MatTableDataSource } from "@angular/material";
-import { PopulateApproveOrderTable } from "../approve-orders/approve.order.model.interface";
-import { ISupplierApproveOrder } from "./supplier.qot.order.model.interface";
-import { ApproveOrdersComponent } from "../approve-orders/approve-orders.component";
-// const idSelected = parseInt(localStorage.getItem("viewid"))
+import { Component, OnInit } from '@angular/core';
+import { ApproveOrderData } from 'src/app/service/order/approve.order.data';
+import { Location } from '@angular/common';
+import { NgForm } from '@angular/forms';
+import { DateUtils } from 'src/app/utils/date/date-utils';
+import { User } from 'src/app/shared/model/user/user-model';
+import { Wallet } from 'src/app/shared/model/wallet/wallet-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+import { ObjectsUtil } from 'src/app/utils/objects/objects';
+import { Router } from '@angular/router';
+import { Order } from 'src/app/model/buyer/order/order-model';
+import { HttpService } from 'src/app/utils/http/http-service';
 
 @Component({
   selector: "app-view-all-approved-orders",
@@ -22,8 +17,6 @@ import { ApproveOrdersComponent } from "../approve-orders/approve-orders.compone
   styleUrls: ["../view-orders/view-orders.component.css"]
 })
 export class ViewAllApprovedOrdersComponent implements OnInit {
-
-
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -37,12 +30,12 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   termsOfPayment: string;
   termsOfDelivery: string;
 
-  isbnNumber: string;
+  srNo: string;
   itemName: string;
   itemDescription: string;
   salesUnit: string;
   quantity: number;
-  Price: number;
+  price: number;
   totalBeforeTax: number;
 
   subTotal: number;
@@ -50,158 +43,142 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  supplierPendingOrdersInfoTable: ISupplierApproveOrder[] = [];
-  supplierPendingOrdersInfoTableDataSource = new MatTableDataSource(
-    this.supplierPendingOrdersInfoTable
-  );
-
   constructor(
-    // private approveOrders: ApproveOrdersComponent,
-    private location: Location,
+    private router: Router,
+    private objectUtilOrder: ObjectsUtil<Order>,
+    private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
     private httpService: HttpService<SupplierOrder>,
-    private objectsUtil: ObjectsUtil<SupplierOrder>,
-    private populateTable: PopulateTable<SupplierOrder, ISupplierApproveOrder>,
-    private router: Router
-    // private webSocketService: WebsocketService
+    private location: Location
   ) {
-    // this.populateOrderView();
-    this.populateTheTableApprovedOrders();
-    // const x = ApproveOrdersComponent.returnId();
-    // console.log(`teh value returned as id is ${x}`);
+
+    this.populateOrderView();
+
+
   }
 
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
-  private populateTheTableApprovedOrders(): void {
-    this.httpService
-      .getRequest("/supplierOrders/findAll")
-      .subscribe(response => {
-        
-        console.log(`Response is ${JSON.stringify(response)}`);
-        // console.log(`the id of the order which is selected is ${idSelected}`)
-        this.objectsUtil.dataObjectToArray(response.body).forEach(e => {
-          let idSelected = parseInt(localStorage.getItem("viewid"))
-          if (idSelected == e.order.id) {
-            console.log(`the hhhhhhhhhhh${e.order.id}`)
-
-            let order = e.order
-            console.log(`why the hell ${e.pricePerItem}`)
-            console.log(`all data from the supplier data is ${JSON.stringify(e, null, 2)}`)
-            this.buyerName = order.buyer.name;
-            this.buyerPhone = order.buyer.phoneNumber;
-            this.buyerEmail = order.buyer.email;
-
-            this.supplierName = order.supplier.name;
-            this.supplierPhone = order.supplier.phoneNumber;
-            this.supplierEmail = order.supplier.email;
-
-            this.orderId = `ord-${e.order.id}`;
-            this.placeOfDelivery = order.placeOfDelivery;
-            this.termsOfPayment = order.paymentTerms;
-            this.termsOfDelivery = order.deliveryTerms;
-            this.isbnNumber = order.isbnNumber;
-            this.itemName = order.itemName;
-            this.itemDescription = order.itemDescription;
-            this.salesUnit = order.saleUnit;
-            this.quantity = order.quantity;
-            this.Price = e.pricePerItem;
-
-            this.subTotal = e.subTotal;
-            this.tax = e.taxRate;
-            this.shipping = e.shippingCharges;
-            this.subTotal = e.subTotal;
-            this.totalBeforeTax = e.pricePerItem;
-            this.totalAfterTax = e.finalTotal
-          }
-          // console.log(`the selected id ${localStorage.getItem("viewid")}`);
-
-          // ApproveSupplierQotData.addApproveOrder(e);
-          // ApproveSupplierQotData.addApproveOrderToMap(e, e.id);
-          // console.log(`Supplier Order Quotation that comes: ${JSON.stringify(e, null, 2)}`);
-          // this.price = e.pricePerItem;
-          // this.subTotal = e.subTotal;
-          // this.tax = e.taxRate;
-          // this.shipping = e.shippingCharges;
-          // this.totalBeforeTax = e.pricePerItem;
-          // this.totalAfterTax = e.finalTotal;
-        });
-      });
-
-    // this.supplierPendingOrdersInfoTableDataSource.sort = this.sort;
-    // this.supplierPendingOrdersInfoTableDataSource.paginator = this.paginator;
+  cancel() {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 
-  // cancel() {
-  //   this.location.back(); // <-- go back to previous location on cancel
-  // }
+  private populateOrderView(): void {
+    //     const order = SupplierAllSupplierOrderData.getsupplierAllSupplierSupplierOrderMap().get(SupplierAllSupplierOrderData.getIdOfSupplierOrderToView());
 
-  // private populateOrderView(): void {
-  //   const order = ApproveOrderData.getApproveOrderMap().get(
-  //     ApproveOrderData.getIdOfOrderToView()
-  //   );
 
-  // const quotation = ApproveSupplierQotData.getApproveOrderMap().get(
-  //   ApproveSupplierQotData.getIdOfOrderToView()
-  // );
+    const order = ApproveOrderData.getApproveOrderMap().get(ApproveOrderData.getIdOfOrderToView());
 
-  // if (order !== undefined && order != null) {
-  //   this.buyerName = order.buyer.name;
-  //   this.buyerPhone = order.buyer.phoneNumber;
-  //   this.buyerEmail = order.buyer.email;
+    if (order !== undefined && order != null) {
 
-  //   this.supplierName = order.supplier.name;
-  //   this.supplierPhone = order.supplier.phoneNumber;
-  //   this.supplierEmail = order.supplier.email;
+      this.buyerName = order.order.buyer.name;
+      this.buyerPhone = order.order.buyer.phoneNumber;
+      this.buyerEmail = order.order.buyer.email;
 
-  //   this.orderId = `ord-${order.id}`;
-  //   this.placeOfDelivery = order.placeOfDelivery;
-  //   this.termsOfPayment = order.paymentTerms;
-  //   this.termsOfDelivery = order.deliveryTerms;
+      this.supplierName = order.order.supplier.name;
+      this.supplierPhone = order.order.supplier.phoneNumber;
+      this.supplierEmail = order.order.supplier.email;
 
-  //   this.srNo = `ord-${order.id}`;
-  //   this.itemName = order.itemName;
-  //   this.itemDescription = order.itemDescription;
-  //   this.salesUnit = order.saleUnit;
-  //   this.quantity = order.quantity;
-  //   this.price = 0;
+      this.orderId = `ord-${order.id}`;
+      this.placeOfDelivery = order.order.placeOfDelivery;
+      // this.termsOfPayment = order.order.paymentTerms;
+      this.termsOfDelivery = order.order.deliveryTerms;
 
-  // this.subTotal = 0;
-  // this.tax = 0;
-  // this.shipping = 0;
-  // this.totalBeforeTax = 0;
-  // this.totalAfterTax = 0;
+      this.srNo = `ord-${order.id}`;
+      this.itemName = order.order.itemName;
+      this.itemDescription = order.order.itemDescription;
+      this.salesUnit = order.order.saleUnit;
+      this.price = order.pricePerItem;
+      this.totalBeforeTax = order.totalPrice;
 
-  // this.tax = quotation.taxRate;
-  // this.shipping = quotation.shippingCharges;
-  // this.subTotal = quotation.subTotal;
-  // this.totalBeforeTax = quotation.pricePerItem;
-  // this.totalAfterTax = quotation.finalTotal;
-  //   } else {
-  //     // fetch the order direct from the db basing on the ID provided
-  //   }
-  // }
+      this.subTotal = order.subTotal;
+      this.tax = order.taxRate;
+      this.shipping = order.shippingCharges;
+      this.quantity = order.order.quantity;
+      this.totalBeforeTax = 0;
+      this.totalAfterTax = order.finalTotal;
 
-  // }
+    } else {
+
+    }
+
+  }
+
   ngOnInit() {
-    this.populateTheTableApprovedOrders();
 
-    // this.populateOrderView();
-    // this.populateTheTableApprovedOrders();
+    this.populateOrderView();
 
-    // const theID = this.approveOrders.returnId();
-    // console.log(`Once upon a time: ${theID}`);
   }
 
-  // handleViewOrderClick($event): void {
-  //   // tslint:disable-next-line:radix
-  //   const id = parseInt($event.target.closest("button").id);
+  temporaryWallet(buyer: User): Wallet {
+    let wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
+    wallet.timestamp = null;
+    let timestampStr = "timestampStr";
+    wallet[timestampStr] = DateUtils.convertDateFormatToParsable(
+      wallet.timestamp
+    );
+    wallet.timestamp = null;
+    wallet["timestampStr"] = buyer["emailVerifiedAtStr"];
+    return wallet;
+  }
 
-  //   this.router
-  //     .navigate(["/buyer/orders/view-all-approved-orders"])
-  //     .then(() => {
+  onClickMe() {
+    // get the order
+    const orders = ApproveOrderData.getApproveOrderMap().get(
+      ApproveOrderData.getIdOfOrderToView());
 
-  //       ApproveSupplierQotData.setIdOfOrderToView(id);
-  //     });
-  // }
+    const timestampStrOrder = "timestampStr";
+    orders[timestampStrOrder] = DateUtils.convertDateFormatToParsable(
+      orders.timestamp
+    );
+    orders.finalTotal = 12
+    orders.order.isbnNumber =" 123"
+    orders.timestamp = null;
+    // create a transient emailVerifiedAtStr
+    const emailVerifiedAtStrBuyer = "emailVerifiedAtStr";
+    const buyer = orders.order.buyer;
+    buyer[emailVerifiedAtStrBuyer] = DateUtils.convertDateFormatToParsable(
+      buyer.emailVerifiedAt
+    );
+    buyer.emailVerifiedAt = null;
+    const supplier = orders.order.supplier;
+    const emailVerifiedAtStrSupplier = "emailVerifiedAtStr";
+    supplier[emailVerifiedAtStrSupplier] = DateUtils.convertDateFormatToParsable(supplier.emailVerifiedAt);
+    supplier.emailVerifiedAt = null;
+    orders.order.wallet = this.temporaryWallet(buyer);
+
+
+    // console.log(`The Order: ${JSON.stringify(orders, null, 2)} `);
+
+    let supplierOrder = SupplierOrder.createInstance();
+    // supplierOrder.finalTotal = 22;
+    supplierOrder = orders
+
+    supplierOrder = orders
+    supplierOrder.finalTotal = 11
+    supplierOrder.order.itemName = "maize"
+
+    // supplierOrder.id = 0;
+    // supplierOrder.order = orders.order;
+    // console.log(`the orrrrrrrrder: ${JSON.stringify(orders.order.wallet, null, 2)} `);
+    // supplierOrder.status = "approved Invoice"
+    // supplierOrder.order.orderStatus = "approved Invoice"
+    let OldOrder = ApproveOrderData.getApproveOrderMap().get(
+      ApproveOrderData.getIdOfOrderToView());
+      // OldOrder.subTotal = 11;
+
+// OldOrder.order.itemName = "ruth"
+    let newOrder = Order.createInstance();
+   
+    console.log("the old order is", OldOrder)
+
+    this.objectUtilOrder.objectToInstance(newOrder, OldOrder);
+    this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
+      console.log(`the updated Order is ${JSON.stringify(e.body)}`)
+    });
+
+    //   this.invoiceStatus = true;
+    //   setTimeout(() => {
+    //     this.router.navigate(['/supplier/pendingorder-orders']);
+    //   }, 2000);
+
+  }
+
 }

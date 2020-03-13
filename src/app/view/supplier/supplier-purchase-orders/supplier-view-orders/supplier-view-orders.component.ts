@@ -157,6 +157,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     // get the order
     const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
       SupplierPendingOrderData.getIdOfOrderToView()
+      
     );
 
     const timestampStrOrder = "timestampStr";
@@ -186,7 +187,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     );
     supplierOrder.id = 0;
     supplierOrder.order = order;
-    console.log(`the orrrrrrrrder: ${JSON.stringify(order.wallet, null, 2)} `);
+    console.log(`the orrrrrrrrder: ${JSON.stringify(order, null, 2)} `);
     supplierOrder.totalPrice = this.parseStringToNumber(
       this.totalBeforeTax.toString()
     );

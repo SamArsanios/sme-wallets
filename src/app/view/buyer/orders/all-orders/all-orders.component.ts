@@ -36,6 +36,7 @@ export class AllOrdersComponent implements OnInit {
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
 
         let loggedinUserId = JSON.parse(localStorage.getItem('loggedinUser'))[0].id
+        console.log("this is the geeeen", loggedinUserId)
         if (theOder.buyer.id === loggedinUserId) {
 
 

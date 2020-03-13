@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 import { IApproveOrder } from "../../payment-info/payment-info.component";
 import { PopulateApproveOrderTable } from "./approve.order.model.interface";
 import { ApproveOrderData } from "src/app/service/order/approve.order.data";
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 @Component({
   selector: "app-approve-orders",
@@ -16,7 +17,7 @@ import { ApproveOrderData } from "src/app/service/order/approve.order.data";
 })
 export class ApproveOrdersComponent implements OnInit {
   identity: number;
-  receivers: Array<Order> = new Array<Order>();
+  receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
   approvedOrdersInfoTable: IApproveOrder[] = [];
   approveOrdersInfoTableDataSource = new MatTableDataSource(
     this.approvedOrdersInfoTable
@@ -26,9 +27,9 @@ export class ApproveOrdersComponent implements OnInit {
   static identity: number;
 
   constructor(
-    private httpService: HttpService<Order>,
-    private objectsUtil: ObjectsUtil<Order>,
-    private populateTable: PopulateTable<Order, IApproveOrder>,
+    private httpService: HttpService<SupplierOrder>,
+    private objectsUtil: ObjectsUtil<SupplierOrder>,
+    private populateTable: PopulateTable<SupplierOrder, IApproveOrder>,
     private router: Router
   ) {}
 
@@ -36,9 +37,9 @@ export class ApproveOrdersComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
-    this.httpService.getRequest("/orders/findAll").subscribe(response => {
+    this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
-        if (theOder.orderStatus === "invoiced") {
+        if (theOder.order.orderStatus === "invoiced") {
           this.receivers.push(theOder);
           ApproveOrderData.addApproveOrder(theOder)
           ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
@@ -72,27 +73,36 @@ export class ApproveOrdersComponent implements OnInit {
   }
 
   handleViewOrderClick($event): void {
-    
+    // tslint:disable-next-line:radix
     const id = parseInt($event.target.closest("button").id);
-    const saveid = JSON.stringify(id);
-    this.identity = id;
-    this.router.navigate(["buyer/orders/view-all-approved-orders"]).then(e => {
-      console.log(`The Current ID is ${id}`);
-      localStorage.setItem("viewid", saveid);
 
-      console.log(
-        `the order to view again: ${JSON.stringify(
-          ApproveOrderData.getApproveOrderMap().get(id),
-          null,
-          2
-        )} `
-      );
-      
+    this.router.navigate(["buyer/orders/view-all-approved-orders"]).then(() => {
       ApproveOrderData.setIdOfOrderToView(id);
-
-
     });
   }
+
+  // handleViewOrderClick($event): void {
+    
+  //   const id = parseInt($event.target.closest("button").id);
+  //   const saveid = JSON.stringify(id);
+  //   this.identity = id;
+  //   this.router.navigate(["buyer/orders/view-all-approved-orders"]).then(e => {
+  //     console.log(`The Current ID is ${id}`);
+  //     localStorage.setItem("viewid", saveid);
+
+  //     console.log(
+  //       `the order to view again: ${JSON.stringify(
+  //         ApproveOrderData.getApproveOrderMap().get(id),
+  //         null,
+  //         2
+  //       )} `
+  //     );
+      
+  //     ApproveOrderData.setIdOfOrderToView(id);
+
+
+  //   });
+  // }
 
   public static returnId(): number {
     return this.identity;

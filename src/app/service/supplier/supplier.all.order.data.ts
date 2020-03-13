@@ -1,69 +1,69 @@
-// import { Mapp } from "src/app/utils/collections/map";
-// import { SupplierOrder } from "src/app/model/supplier/SupplierOrder/SupplierOrder";
-// import { List } from "src/app/utils/collections/list";
-import { Mapp } from 'src/app/utils/collections/map';
-import { List } from 'src/app/utils/collections/list';
-import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+import {List} from '../../utils/collections/list';
+import {Order} from '../../model/buyer/order/order-model';
+import {Mapp} from '../../utils/collections/map';
 
-export class SupplierAllSupplierOrderData {
-  private static supplierAllSupplierOrderList: List<SupplierOrder>;
-  private static supplierAllSupplierOrderMap: Mapp<number, SupplierOrder>;
-  private static idOfSupplierOrderToView: number;
+export class SupplierAllOrderData {
 
-  public static setAllSupplierOrderLists(supplierAllSupplierOrders: List<SupplierOrder>): void {
-    SupplierAllSupplierOrderData.supplierAllSupplierOrderList = supplierAllSupplierOrders;
+  private static supplierAllOrderLists: List<Order>;
+  private static supplierAllOrderMap: Mapp<number, Order>;
+  private static idOfOrderToView: number;
+
+  public static setsupplierAllOrderLists(supplierAllOrders: List<Order>): void {
+    SupplierAllOrderData.supplierAllOrderLists = supplierAllOrders;
   }
 
-  public static getSupplierAllSupplierOrderLists(): List<SupplierOrder> {
-    return SupplierAllSupplierOrderData.supplierAllSupplierOrderList;
+  public static getsupplierAllOrderLists(): List<Order> {
+    return SupplierAllOrderData.supplierAllOrderLists;
   }
 
-  public static setsupplierAllSupplierOrderMap(
-    supplierAllSupplierOrders: Mapp<number, SupplierOrder>
-  ): void {
-    SupplierAllSupplierOrderData.supplierAllSupplierOrderMap = supplierAllSupplierOrders;
+  public static setsupplierAllOrderMap(supplierAllOrder: Mapp<number, Order>): void {
+    SupplierAllOrderData.supplierAllOrderMap = supplierAllOrder;
   }
 
-  public static getsupplierAllSupplierSupplierOrderMap(): Mapp<number, SupplierOrder> {
-    return SupplierAllSupplierOrderData.supplierAllSupplierOrderMap;
+  public static getsupplierAllOrderMap(): Mapp<number, Order> {
+    return SupplierAllOrderData.supplierAllOrderMap;
   }
 
-  // public static getApproveOrderMap(): Mapp<number, SupplierOrder> {
-  //   return ApproveSupplierQotData.approveOrderMap;
-  // }
 
-  public static setIdOfSupplierOrderToView(id: number): void {
-    SupplierAllSupplierOrderData.idOfSupplierOrderToView = id;
+  public static setIdOfOrderToView(id: number): void {
+    SupplierAllOrderData.idOfOrderToView = id;
   }
 
-  public static getIdOfSupplierOrderToView(): number {
-    return SupplierAllSupplierOrderData.idOfSupplierOrderToView;
+  public static getIdOfOrderToView(): number {
+    return SupplierAllOrderData.idOfOrderToView;
   }
 
-  static addAAllSupplierSupplierOrder(anSupplierOrder: SupplierOrder): void {
-    if (
-      SupplierAllSupplierOrderData.getSupplierAllSupplierOrderLists() == null ||
-      SupplierAllSupplierOrderData.getSupplierAllSupplierOrderLists().isEmpty()
-    ) {
-      const newList = new List<SupplierOrder>();
-      newList.add(anSupplierOrder);
-      SupplierAllSupplierOrderData.setAllSupplierOrderLists(newList);
-    } else {
-      SupplierAllSupplierOrderData.getSupplierAllSupplierOrderLists().add(anSupplierOrder);
+  static addAsupplierAllOrder(anOrder: Order): void {
+
+      if (SupplierAllOrderData.getsupplierAllOrderLists() == null || SupplierAllOrderData.getsupplierAllOrderLists().isEmpty()) {
+
+        const newList = new List<Order>();
+        newList.add(anOrder);
+        SupplierAllOrderData.setsupplierAllOrderLists(newList);
+
+      } else {
+
+        SupplierAllOrderData.getsupplierAllOrderLists().add(anOrder);
+
     }
+
   }
 
-  static addAAllSupplierSupplierOrderToMap(anSupplierOrder: SupplierOrder, id: number): void {
-    if (
-      SupplierAllSupplierOrderData.getsupplierAllSupplierSupplierOrderMap() == null ||
-      SupplierAllSupplierOrderData.getsupplierAllSupplierSupplierOrderMap().isEmpty()
-    ) {
-      const newMap = new Mapp<number, SupplierOrder>();
-      newMap.put(id, anSupplierOrder);
+  static addAsupplierAllOrderToMap(anOrder: Order, id: number): void {
 
-      SupplierAllSupplierOrderData.setsupplierAllSupplierOrderMap(newMap);
-    } else {
-      SupplierAllSupplierOrderData.getsupplierAllSupplierSupplierOrderMap().put(id, anSupplierOrder);
+      if (SupplierAllOrderData.getsupplierAllOrderMap() == null || SupplierAllOrderData.getsupplierAllOrderMap().isEmpty()) {
+
+        const newMap = new Mapp<number, Order>();
+        newMap.put(id, anOrder);
+
+        SupplierAllOrderData.setsupplierAllOrderMap(newMap);
+
+      } else {
+
+        SupplierAllOrderData.getsupplierAllOrderMap().put(id, anOrder);
+
+      }
     }
-}
+
+
 }
