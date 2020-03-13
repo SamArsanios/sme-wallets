@@ -8,7 +8,7 @@ import { PopulateTable } from '../../../../utils/tables/populate.table';
 import { Router } from '@angular/router';
 import { ISupplierInvoicedOrders, PopulateSupplierInvoicedOrderTable } from './supplier.invoiced.order.model.interface';
 import { SupplierInvoicedOrderData } from 'src/app/service/supplier/supplier.invoiced.order.data';
-import { Order } from 'src/app/model/buyer/order/order-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 // import { ISupplierInvoicedOrders, PopulateSupplierInvoicedOrderTable } from './supplier.pending.order.model.interface';
 
@@ -18,7 +18,7 @@ import { Order } from 'src/app/model/buyer/order/order-model';
   styleUrls: ['./supplier-invoiced-orders.component.css']
 })
 export class SupplierInvoicedOrdersComponent implements OnInit {
-  receivers: Array<Order> = new Array<Order>();
+  receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
   numberOfOrders;
   allOrdersInfoTable: ISupplierInvoicedOrders[] = [];
   supplierInvoicedOrdersInfoTableDataSource = new MatTableDataSource(this.allOrdersInfoTable);
@@ -26,21 +26,21 @@ export class SupplierInvoicedOrdersComponent implements OnInit {
   displayedColumns: string[] = PopulateSupplierInvoicedOrderTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private httpService: HttpService<Order>,
-    private objectsUtil: ObjectsUtil<Order>,
-    private populateTable: PopulateTable<Order, ISupplierInvoicedOrders>, private router: Router) { }
+  constructor(private httpService: HttpService<SupplierOrder>,
+    private objectsUtil: ObjectsUtil<SupplierOrder>,
+    private populateTable: PopulateTable<SupplierOrder, ISupplierInvoicedOrders>, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
 
-    this.httpService.getRequest('/orders/findAll').subscribe(response => {
+    this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         console.log("the invoiced orders are,", response.body)
         // let loggedinUserId = JSON.parse(localStorage.getItem('loggedinUser'))[0].id
-        if (theOder.orderStatus === "invoiced") {
+        if (theOder.order.orderStatus === "invoiced") {
 
 
           this.receivers.push(theOder);

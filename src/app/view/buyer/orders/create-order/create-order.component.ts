@@ -113,8 +113,6 @@ export class CreateOrderComponent implements OnInit {
     console.log("supplier infrmation", supplierInfo);
     localStorage.setItem("supplierinfo", JSON.stringify(supplierInfo));
 
-    // localStorage.setItem('selectedSupplier', JSON.stringify(this.currentUser))
-
     const object = form.value;
 
     let userSupplier = new User(null, null, null, null, null, null, null, null);
@@ -147,13 +145,11 @@ export class CreateOrderComponent implements OnInit {
     console.log(`the order: ${JSON.stringify(newOrder, null, 2)} `);
 
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
-      // this.websocket.notify("/topic/orders/create", this.showNotification);
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
-      // setTimeout(() => {
-      //   this.router.navigate(['/buyer/pendingOrders']);
-      // }, 2000);
-      // this.router.navigate(["/buyer/orders/view-orders"])
+      setTimeout(() => {
+        this.router.navigate(['/buyer/pendingOrders']);
+      }, 2000);
     });
   } // end onSubmit()
 

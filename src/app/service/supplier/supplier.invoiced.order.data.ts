@@ -1,27 +1,27 @@
 import { List } from '../../../../src/app/utils/collections/list';
 
 import { Mapp } from '../../../../src/app/utils/collections/map';
-import { Order } from 'src/app/model/buyer/order/order-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 export class SupplierInvoicedOrderData {
 
-    private static SupplierInvoicedOrderList: List<Order>;
-    private static SupplierInvoicedOrderMap: Mapp<number, Order>;
+    private static SupplierInvoicedOrderList: List<SupplierOrder>;
+    private static SupplierInvoicedOrderMap: Mapp<number, SupplierOrder>;
     private static idOfOrderToView: number;
 
-    public static setSupplierInvoicedOrderList(allSupplierInvoicedOrders: List<Order>): void {
+    public static setSupplierInvoicedOrderList(allSupplierInvoicedOrders: List<SupplierOrder>): void {
         SupplierInvoicedOrderData.SupplierInvoicedOrderList = allSupplierInvoicedOrders;
     }
 
-    public static  getSupplierInvoicedOrderList(): List<Order> {
+    public static  getSupplierInvoicedOrderList(): List<SupplierOrder> {
         return SupplierInvoicedOrderData.SupplierInvoicedOrderList;
     }
 
-    public static   setSupplierInvoicedOrderMap(allSupplierOrder: Mapp<number, Order>): void {
+    public static   setSupplierInvoicedOrderMap(allSupplierOrder: Mapp<number, SupplierOrder>): void {
         SupplierInvoicedOrderData.SupplierInvoicedOrderMap = allSupplierOrder;
     }
 
-    public static  getSupplierInvoicedOrderMap(): Mapp<number, Order> {
+    public static  getSupplierInvoicedOrderMap(): Mapp<number, SupplierOrder> {
         return SupplierInvoicedOrderData.SupplierInvoicedOrderMap;
     }
 
@@ -33,11 +33,11 @@ export class SupplierInvoicedOrderData {
         return SupplierInvoicedOrderData.idOfOrderToView;
     }
 
-    static addSupplierInvoicedOrder(anOrder: Order): void {
+    static addSupplierInvoicedOrder(anOrder: SupplierOrder): void {
 
         if (SupplierInvoicedOrderData. getSupplierInvoicedOrderList() == null || SupplierInvoicedOrderData. getSupplierInvoicedOrderList().isEmpty()) {
 
-            const newList = new List<Order>();
+            const newList = new List<SupplierOrder>();
             newList.add(anOrder);
             SupplierInvoicedOrderData.setSupplierInvoicedOrderList(newList);
 
@@ -49,11 +49,11 @@ export class SupplierInvoicedOrderData {
 
     }
 
-    static  addSupplierInvoicedOrderToMap(anOrder: Order, id: number): void {
+    static  addSupplierInvoicedOrderToMap(anOrder: SupplierOrder, id: number): void {
 
         if (SupplierInvoicedOrderData. getSupplierInvoicedOrderMap() == null || SupplierInvoicedOrderData. getSupplierInvoicedOrderMap().isEmpty()) {
 
-            const newMap = new Mapp<number, Order>();
+            const newMap = new Mapp<number, SupplierOrder>();
             newMap.put(id, anOrder);
 
             SupplierInvoicedOrderData.  setSupplierInvoicedOrderMap(newMap);
