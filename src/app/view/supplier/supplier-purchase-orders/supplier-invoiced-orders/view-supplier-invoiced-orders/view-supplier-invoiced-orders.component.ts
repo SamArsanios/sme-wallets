@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { SupplierInvoicedOrderData } from 'src/app/service/supplier/supplier.invoiced.order.data';
 import { Order } from 'src/app/model/buyer/order/order-model';
+import { GeneratePurchaseOrderPDF } from 'src/app/view/buyer/orders/view-orders/generatePurchaseOrderPDF';
+import { GenerateSupplierInvoicedOrderPDF } from './generateSupplierInvoicedOrderPDF';
 
 @Component({
   selector: 'app-view-supplier-invoiced-orders',
@@ -91,6 +93,15 @@ cancel() {
 
     this.populateOrderView();
 
+  }
+
+  generatePdf() {
+    const id = SupplierInvoicedOrderData.getIdOfOrderToView();
+    const orderToViewPdf = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(id);
+
+    console.log(orderToViewPdf);
+
+    GenerateSupplierInvoicedOrderPDF.generatePdf(orderToViewPdf);
   }
 
 }
