@@ -1,4 +1,6 @@
-import {Order} from '../../../../model/buyer/order/order-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+
+// import {Order} from '../../../../model/buyer/order/order-model';
 
 export interface IApproveOrder {
     orderNo: string;
@@ -22,16 +24,16 @@ export class PopulateApproveOrderTable {
   ];
 
 
-  public  static populateTableOnInit(fromResponse: Order[]) {
+  public  static populateTableOnInit(fromResponse: SupplierOrder[]) {
 
     return fromResponse.map(e => {
 
       return  {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
-        orderDueDate: e.orderDueDate,
+        orderDueDate: e.order.orderDueDate,
         action: e.id,
-        orderStatus: e.orderStatus,
+        orderStatus: e.order.orderStatus,
       };
 
     });

@@ -1,31 +1,31 @@
 import { List } from 'src/app/utils/collections/list';
-import { Order } from 'src/app/model/buyer/order/order-model';
 import { Mapp } from 'src/app/utils/collections/map';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 
 
 
 export class ApproveOrderData {
 
-    private static approveOrderLists: List<Order>;
-    private static approveOrderMap: Mapp<number, Order>;
+    private static approveOrderLists: List<SupplierOrder>;
+    private static approveOrderMap: Mapp<number, SupplierOrder>;
     private static idOfOrderToView: number;
 
 
-    public static setApproveOrderLists(approveOrders: List<Order>): void {
+    public static setApproveOrderLists(approveOrders: List<SupplierOrder>): void {
         ApproveOrderData.approveOrderLists = approveOrders;
     }
 
-    public static getApproveOrderLists(): List<Order> {
+    public static getApproveOrderLists(): List<SupplierOrder> {
         return ApproveOrderData.approveOrderLists;
     }
     
-    public static setApproveOrderMap(approveOrders: Mapp<number, Order>): void {
+    public static setApproveOrderMap(approveOrders: Mapp<number, SupplierOrder>): void {
         ApproveOrderData.approveOrderMap = approveOrders;
     }
   
 
-    public static getApproveOrderMap(): Mapp<number, Order> {
+    public static getApproveOrderMap(): Mapp<number, SupplierOrder> {
         return ApproveOrderData.approveOrderMap;
     }
 
@@ -38,11 +38,11 @@ export class ApproveOrderData {
         return ApproveOrderData.idOfOrderToView;
     }
 
-    static addApproveOrder(anOrder: Order): void {
+    static addApproveOrder(anOrder: SupplierOrder): void {
 
         if (ApproveOrderData.getApproveOrderLists() == null || ApproveOrderData.getApproveOrderLists().isEmpty()) {
 
-            const newList = new List<Order>();
+            const newList = new List<SupplierOrder>();
             newList.add(anOrder);
             ApproveOrderData.setApproveOrderLists(newList);
 
@@ -54,11 +54,11 @@ export class ApproveOrderData {
 
     }
 
-    static addApproveOrderToMap(anOrder: Order, id: number): void {
+    static addApproveOrderToMap(anOrder: SupplierOrder, id: number): void {
 
         if (ApproveOrderData.getApproveOrderMap() == null || ApproveOrderData.getApproveOrderMap().isEmpty()) {
 
-            const newMap = new Mapp<number, Order>();
+            const newMap = new Mapp<number, SupplierOrder>();
             newMap.put(id, anOrder);
 
             ApproveOrderData.setApproveOrderMap(newMap);

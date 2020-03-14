@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { SupplierInvoicedOrderData } from 'src/app/service/supplier/supplier.invoiced.order.data';
 import { Order } from 'src/app/model/buyer/order/order-model';
-import { SupplierAllOrderData } from 'src/app/service/supplier/supplier.all.order.data';
-import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
+import { GeneratePurchaseOrderPDF } from 'src/app/view/buyer/orders/view-orders/generatePurchaseOrderPDF';
+import { GenerateSupplierInvoicedOrderPDF } from './generateSupplierInvoicedOrderPDF';
 
 @Component({
-    selector: 'app-view-supplier-all-orders',
-    templateUrl: './view-supplier-all-orders.component.html',
-    styleUrls: ['./view-supplier-all-orders.component.css']
-  })
-  export class ViewSupplierAllOrdersComponent implements OnInit {
+  selector: 'app-view-supplier-invoiced-orders',
+  templateUrl: './view-supplier-invoiced-orders.component.html',
+  styleUrls: ['./view-supplier-invoiced-orders.component.css']
+})
+export class ViewSupplierInvoicedOrdersComponent implements OnInit {
 
   buyerName: string;
   buyerPhone: string;
@@ -45,7 +46,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
 
   private populateOrderView(): void {
 
-    const order = SupplierAllOrderData.getsupplierAllOrderMap().get(SupplierAllOrderData.getIdOfOrderToView());
+    const order = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(SupplierInvoicedOrderData.getIdOfOrderToView());
 
     if ( order !== undefined && order != null ) {
 
@@ -95,12 +96,12 @@ cancel() {
   }
 
   generatePdf() {
-    const id = SupplierAllOrderData.getIdOfOrderToView();
-    const orderToViewPdf = SupplierAllOrderData.getsupplierAllOrderMap().get(id);
+    const id = SupplierInvoicedOrderData.getIdOfOrderToView();
+    const orderToViewPdf = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(id);
 
     console.log(orderToViewPdf);
 
-    GenerateSupplierAllOrderPDF.generatePdf(orderToViewPdf);
+    GenerateSupplierInvoicedOrderPDF.generatePdf(orderToViewPdf);
   }
 
 }

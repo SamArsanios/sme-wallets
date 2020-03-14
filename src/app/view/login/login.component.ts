@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
         if(e.body[0].email === object.email && e.body[0].password === object.password ){
             console.log("you have logged in successfully")
             this.currentUser=e.body;
+            
            localStorage.setItem('loggedinUser', JSON.stringify(this.currentUser))
             console.log(`the current user is ${this.currentUser}`)
             if(e.body[0].userType=="supplier"){

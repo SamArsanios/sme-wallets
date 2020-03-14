@@ -26,8 +26,8 @@ export class PopulatePendingOrderTable {
       return  {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
-        orderDueDate: "not specified",
-        orderStatus: 'pending',
+        orderDueDate: e.orderDueDate,
+        orderStatus: e.orderStatus,
         action: e.id
       };
 

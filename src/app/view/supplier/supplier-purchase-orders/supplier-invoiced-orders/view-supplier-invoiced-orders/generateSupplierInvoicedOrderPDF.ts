@@ -1,10 +1,9 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
-
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-export class SupplierOrderPDF {
+export class GenerateSupplierInvoicedOrderPDF {
   static generatePdf(order: SupplierOrder) {
     const documentDefinition = {
       content: [
@@ -19,7 +18,7 @@ export class SupplierOrderPDF {
               text: ``
             },
             {
-              text: `ORDER NO - ${order.id}\n ORDER DUE DATE : \n\n\n`,
+              text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
               alignment: `right`,
               margin: [0, 30, 0, 0],
               fontSize: 12
@@ -29,7 +28,7 @@ export class SupplierOrderPDF {
         {
           columns: [
             {
-              text: `Sender/Buyer \n Name :${order.pricePerItem}\n Address : \n Phone :${order.order.buyer.phoneNumber}`,
+              text: `Sender/Buyer \n Name :${order.order.buyer.name}\n Address : \n Phone :${order.order.buyer.phoneNumber}`,
               style: `subheader`
             },
             {
@@ -89,8 +88,8 @@ export class SupplierOrderPDF {
                 { text: `${order.order.itemDescription}`, style: `tableContent` },
                 { text: `${order.order.saleUnit}`, style: `tableContent` },
                 { text: `${order.order.quantity}`, style: `tableContent` },
-                { text: `${order.pricePerItem}`, style: `tableContent` },
-                { text: `${order.totalPrice}`, style: `tableContent` }
+                { text: `0`, style: `tableContent` },
+                { text: `0`, style: `tableContent` }
               ]
             ]
           }
@@ -116,7 +115,7 @@ export class SupplierOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `${order.subTotal}`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -128,7 +127,7 @@ export class SupplierOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `${order.taxRate}`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -140,7 +139,7 @@ export class SupplierOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `${order.shippingCharges}`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -153,7 +152,7 @@ export class SupplierOrderPDF {
                     },
 
                     {
-                      text: `${order.totalPrice}`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]
