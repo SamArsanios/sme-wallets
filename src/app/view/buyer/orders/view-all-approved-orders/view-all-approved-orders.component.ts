@@ -10,6 +10,7 @@ import { ObjectsUtil } from 'src/app/utils/objects/objects';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/model/buyer/order/order-model';
 import { HttpService } from 'src/app/utils/http/http-service';
+import { GenerateBUyerApproveOrderPDF } from './generateBuyerApproveOrderPDF';
 
 @Component({
   selector: "app-view-all-approved-orders",
@@ -179,6 +180,15 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     //     this.router.navigate(['/supplier/pendingorder-orders']);
     //   }, 2000);
 
+  }
+
+  generatePdf() {
+    const id = ApproveOrderData.getIdOfOrderToView();
+    const orderToViewPdf = ApproveOrderData.getApproveOrderMap().get(id);
+
+    console.log(orderToViewPdf);
+
+    GenerateBUyerApproveOrderPDF.generatePdf(orderToViewPdf);
   }
 
 }

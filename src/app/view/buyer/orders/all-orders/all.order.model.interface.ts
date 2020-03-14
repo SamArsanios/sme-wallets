@@ -29,7 +29,7 @@ export class PopulateAllOrderTable {
         orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
-        senderName : e.buyer.name,
+        // senderName : e.buyer.name,
         orderStatus: e.orderStatus,
         action: e.id
       };
