@@ -33,7 +33,7 @@ export class PopulateApproveOrderTable {
         orderDate: e.timestamp,
         orderDueDate: e.order.orderDueDate,
         action: e.id,
-        orderStatus: e.status,
+        orderStatus: e.order.orderStatus,
       };
 
     });

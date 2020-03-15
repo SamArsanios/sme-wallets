@@ -47,7 +47,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private objectUtilOrder: ObjectsUtil<SupplierOrder>,
+    private objectUtilOrder: ObjectsUtil<Order>,
     private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
     private httpService: HttpService<SupplierOrder>,
     private location: Location
@@ -62,13 +62,9 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
-  gees() {
-    console.log(`you have clicked meman`)
-  }
+
 
   private populateOrderView(): void {
-    //     const order = SupplierAllSupplierOrderData.getsupplierAllSupplierSupplierOrderMap().get(SupplierAllSupplierOrderData.getIdOfSupplierOrderToView());
-
 
     const order = ApproveOrderData.getApproveOrderMap().get(ApproveOrderData.getIdOfOrderToView());
 
@@ -98,7 +94,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
       this.tax = order.taxRate;
       this.shipping = order.shippingCharges;
       this.quantity = order.order.quantity;
-      this.totalBeforeTax =order.totalPrice;
+      this.totalBeforeTax = order.totalPrice;
       this.totalAfterTax = order.finalTotal;
 
     } else {
@@ -110,9 +106,6 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   ngOnInit() {
 
     this.populateOrderView();
-    console.log(`you have clicked meman`)
-
-
   }
 
   temporaryWallet(buyer: User): Wallet {
@@ -135,56 +128,46 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
 
     const supplerOrder = ApproveOrderData.getApproveOrderMap().get(
       ApproveOrderData.getIdOfOrderToView()
-     
-      
+
+
     );
+    const order = supplerOrder.order;
 
-    const timestampStrSupplierOrder = "timestampStr";
-    supplerOrder[timestampStrSupplierOrder] = DateUtils.convertDateFormatToParsable(
-      supplerOrder.timestamp
+    const timestampStrOrderorder = "timestampStr";
+    order[timestampStrOrderorder] = DateUtils.convertDateFormatToParsable(
+      order.timestamp
     );
-    supplerOrder.timestamp = null;
+    order.timestamp = null;
 
-    const timestampStrOrder = "timestampStr";
-    supplerOrder.order[timestampStrOrder] = DateUtils.convertDateFormatToParsable(
-      supplerOrder.order.timestamp
+    const emailVerifiedAtStrorderBuyer = "emailVerifiedAtStr";
+    const orderbuyer = order.buyer;
+    orderbuyer[emailVerifiedAtStrorderBuyer] = DateUtils.convertDateFormatToParsable(
+      orderbuyer.emailVerifiedAt
     );
-    supplerOrder.order.timestamp = null;
-    supplerOrder.order["orderStatus"] = "approved"
+    orderbuyer.emailVerifiedAt = null;
+
+    const ordersupplier = order.supplier;
+    const emailVerifiedAtStrSupplierorder = "emailVerifiedAtStr";
+    ordersupplier[emailVerifiedAtStrSupplierorder] = DateUtils.convertDateFormatToParsable(ordersupplier.emailVerifiedAt);
+    ordersupplier.emailVerifiedAt = null;
+    order.wallet = this.temporaryWallet(orderbuyer);
+
+    let OldOrderorder = supplerOrder.order;
+
+    let NewOrders = Order.createInstance();
+
+    OldOrderorder.orderStatus = "approved";
+    this.objectUtilOrder.objectToInstance(NewOrders, OldOrderorder);
 
 
-    const emailVerifiedAtStrBuyer = "emailVerifiedAtStr";
-    const buyer = supplerOrder.order.buyer;
-    buyer[emailVerifiedAtStrBuyer] = DateUtils.convertDateFormatToParsable(
-      buyer.emailVerifiedAt
-    );
-    buyer.emailVerifiedAt = null;
-    const supplier = supplerOrder.order.supplier;
-    const emailVerifiedAtStrSupplier = "emailVerifiedAtStr";
-    supplier[emailVerifiedAtStrSupplier] = DateUtils.convertDateFormatToParsable(supplier.emailVerifiedAt);
-    supplier.emailVerifiedAt = null;
-    supplerOrder.order.wallet = this.temporaryWallet(buyer);
-    
-    let OldOrder = ApproveOrderData.getApproveOrderMap().get(
-      ApproveOrderData.getIdOfOrderToView())
 
-    let supplierNewOrders = SupplierOrder.createInstance();
-    // let newOrder = Order.createInstance();
-    OldOrder.status = "approved";
-    console.log("the old order is  ", JSON.stringify(OldOrder))
-    this.objectUtilOrder.objectToInstance(supplierNewOrders, OldOrder); 
-
-    
-    // this.httpService.putRequest("/supplierOrders/update", OldOrder).subscribe(e => {
-    //   console.log(`the updated Order is ${JSON.stringify(e.body)}`)
-    // });
-
-      
-      this.approveStatus = true;
-      setTimeout(() => {
-        this.router.navigate(['/buyer/orders']);
-      }, 2000);
-
+    this.httpService.putRequest("/orders/update", OldOrderorder).subscribe(e => {
+      console.log(`the updated Order is ${JSON.stringify(e.body)}`)
+    });
+    this.approveStatus = true;
+    setTimeout(() => {
+      this.router.navigate(['/buyer/orders']);
+    }, 2000);
   }
 
   generatePdf() {
