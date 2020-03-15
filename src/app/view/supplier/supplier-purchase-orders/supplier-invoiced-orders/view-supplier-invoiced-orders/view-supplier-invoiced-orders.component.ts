@@ -15,6 +15,8 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
+  date: string;
+  orderNumber: number;
 
   supplierName: string;
   supplierPhone: string;
@@ -49,7 +51,8 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
     const order = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(SupplierInvoicedOrderData.getIdOfOrderToView());
 
     if ( order !== undefined && order != null ) {
-
+      this.date = order.order.timestamp;
+      this.orderNumber = order.order.id;
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
       this.buyerEmail = order.order.buyer.email;

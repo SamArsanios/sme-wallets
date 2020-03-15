@@ -46,7 +46,7 @@
       <td>{{ itemDescription }}</td>
       <td>{{ salesUnit }}</td>
       <td>{{ quantity }}</td>
-      <td>{{Price}}</td>
+      <td>{{price}}</td>
       <td>{{totalBeforeTax}}</td>
     </tr>
   </table>
@@ -81,12 +81,25 @@
           </td>
         </tr>
       </table>
+      <div *ngIf="approveStatus" class="alert alert-success statusmessage">
+        <strong>Success!</strong> You have successfully approved the invoiced order
+      </div>
 
       <div class="btns">
-          <button class="btn btn-success btn-lg pdfbutton" (click)="onClickMe()">Approve</button>
-
-        <button class="btn btn-primary btn-lg pdfbutton">Generate PDF</button>
-      </div>
+          <button (click)="views()"
+          
+          class="btn btn-primary btn-lg pdfbutton" 
+          
+        >
+        Approve
+        </button>
+          <button
+          (click)="generatePdf()"
+          class="btn btn-primary btn-lg pdfbutton"
+          
+        >
+          Generate PDF
+        </button>      </div>
     </div>
   </div>
 </div>
