@@ -78,12 +78,12 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
       this.supplierPhone = order.order.supplier.phoneNumber;
       this.supplierEmail = order.order.supplier.email;
 
-      this.orderId = `ord-${order.id}`;
+      this.orderId = `ord-${order.order.id}`;
       this.placeOfDelivery = order.order.placeOfDelivery;
       // this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;
 
-      this.srNo = `ord-${order.id}`;
+      this.srNo = order.order.isbnNumber;
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;

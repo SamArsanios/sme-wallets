@@ -45,7 +45,6 @@ export class SupplierInvoicedOrdersComponent implements OnInit {
           this.receivers.push(theOder);
           SupplierInvoicedOrderData.addSupplierInvoicedOrder(theOder)
           SupplierInvoicedOrderData.addSupplierInvoicedOrderToMap(theOder, theOder.id)
-          // alert(`these are all the orders made by id1 ${this.receivers}`)
 
         }
       });

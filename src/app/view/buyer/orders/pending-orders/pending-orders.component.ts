@@ -33,7 +33,7 @@ export class PendingOrdersComponent implements OnInit {
     private router: Router,
     private webSocketService: WebsocketService
   ) {
-    this.populateTheTable();
+    // this.populateTheTable();
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

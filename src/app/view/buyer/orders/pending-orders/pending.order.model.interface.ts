@@ -24,7 +24,7 @@ export class PopulatePendingOrderTable {
     return fromResponse.map(e => {
 
       return  {
-        orderNo: `ORD-${e.id}`,
+        orderNo: e.isbnNumber,
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
         orderStatus: e.orderStatus,

@@ -88,8 +88,8 @@ export class GenerateSupplierAllOrderPDF {
                 { text: `${order.order.itemDescription}`, style: `tableContent` },
                 { text: `${order.order.saleUnit}`, style: `tableContent` },
                 { text: `${order.order.quantity}`, style: `tableContent` },
-                { text: `0`, style: `tableContent` },
-                { text: `0`, style: `tableContent` }
+                { text: `${order.pricePerItem}`, style: `tableContent` },
+                { text: `${order.totalPrice}`, style: `tableContent` }
               ]
             ]
           }
@@ -115,7 +115,7 @@ export class GenerateSupplierAllOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `0`,
+                      text: `${order.subTotal}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -127,7 +127,7 @@ export class GenerateSupplierAllOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `0`,
+                      text: `${order.taxRate}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -139,7 +139,7 @@ export class GenerateSupplierAllOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `0`,
+                      text: `${order.shippingCharges}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -152,7 +152,7 @@ export class GenerateSupplierAllOrderPDF {
                     },
 
                     {
-                      text: `0`,
+                      text: `${order.totalPrice}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]
