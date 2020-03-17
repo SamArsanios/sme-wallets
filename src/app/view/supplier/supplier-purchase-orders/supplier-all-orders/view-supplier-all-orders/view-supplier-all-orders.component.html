@@ -154,6 +154,16 @@
         >
           Generate PDF
         </button>
+
+
+      <div *ngIf="orderStatusSupplier" class="alert alert-success statusmessage">
+        <button
+        (click)="RaiseInvoice()"
+        class="btn btn-primary btn-lg pdfbutton"
+        type="submit"
+      >
+        Raise Invoice
+      </button>      </div>
       </div>
     </div>
 </div>
