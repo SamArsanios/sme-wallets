@@ -13,9 +13,9 @@ export class Invoice {
          id: number;
          order: Order;
          sponsor: User;
-         wallet: Wallet;
-         invoiceDate: string;
-         invoiceDueDate: string;
+       
+         invoiceDate;
+         invoiceDueDate;
          invoiceStatus: string;
          transactionFeePercentage: number;
          transactionFees: number;
@@ -29,14 +29,14 @@ export class Invoice {
          getPaid: Boolean;
          authorizeStatus: Boolean;
          sponsorStatus: Boolean;
-         theTimestamp: string;
+         theTimestamp;
 
 
-        constructor($id: number, $order: Order, $sponsor: User, $wallet: Wallet, $invoiceDate: string, $invoiceDueDate: string, $invoiceStatus: string, $transactionFeePercentage: number, $transactionFees: number, $interestRate: number, $amountToPay: number, $withHoldingAmount: number, $withHoldingTaxPercentage: number, $notificationStatus: string, $buyerNotificationStatus: string, $declineReason: string, $getPaid: Boolean, $authorizeStatus: Boolean, $sponsorStatus: Boolean, $theTimestamp: string) {
+        constructor($id: number, $order: Order, $sponsor: User, $invoiceDate: string, $invoiceDueDate: string, $invoiceStatus: string, $transactionFeePercentage: number, $transactionFees: number, $interestRate: number, $amountToPay: number, $withHoldingAmount: number, $withHoldingTaxPercentage: number, $notificationStatus: string, $buyerNotificationStatus: string, $declineReason: string, $getPaid: Boolean, $authorizeStatus: Boolean, $sponsorStatus: Boolean, $theTimestamp: string) {
                 this.id = $id;
                 this.order = $order;
                 this.sponsor = $sponsor;
-                this.wallet = $wallet;
+                // this.wallet = $wallet;
                 this.invoiceDate = $invoiceDate;
                 this.invoiceDueDate = $invoiceDueDate;
                 this.invoiceStatus = $invoiceStatus;
@@ -56,6 +56,6 @@ export class Invoice {
         }
         static createInstance(): Invoice{
                 return new Invoice(null, null, null, null, null, null, null, null, null,
-                    null, null, null, null, null, null, null, null, null, null, null);
+                    null, null, null, null, null, null, null, null, null, null);
             }
 }

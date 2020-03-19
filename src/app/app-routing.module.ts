@@ -37,6 +37,8 @@ import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pendi
 import { SupplierPendingOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component';
 import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-all-orders/view-supplier-all-orders/view-supplier-all-orders.component';
 import { ViewSupplierInvoicedOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/view-supplier-invoiced-orders.component';
+import { ViewApprovedInvoiceComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/view-approved-invoice/view-approved-invoice.component';
+import { ViewApproveInvoicesComponent } from './view/buyer/invoices/approve-invoices/view-approve-invoices/view-approve-invoices.component';
 
 
 const routes: Routes = [
@@ -59,8 +61,17 @@ const routes: Routes = [
     component: SideAccountSettingssComponent
   },
   {
+    path: "supplier/view-approved-invoice-component",
+    component: ViewApprovedInvoiceComponent
+  },
+ 
+  {
     path: "buyer/pendingOrders",
     component: PendingOrdersComponent
+  },
+  {
+    path: "buyer/view-approve-invoices",
+    component: ViewApproveInvoicesComponent
   },
   
 
