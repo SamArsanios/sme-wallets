@@ -20,7 +20,7 @@ export class Registration {
         state: string;
         country: string;
         zip: string;
-        corAddress: string;
+        corContact: string;
         corCity: string;
         corState: string;
         corCountry: string;
@@ -28,10 +28,36 @@ export class Registration {
         companyName: string;
         crName: string;
         companyEmail: string;
+        crbNumber:number;
         companyAddress: string;
         timestamp: string;
 
-        constructor(id: number, user: User, industryType: string, name: string, email: string, address: string, contactNumber: string, city: string, state: string, country: string, zip: string, corAddress: string, corCity: string, corState: string, corCountry: string, corZipCode: string, companyName: string, crName: string, companyEmail: string, companyAddress: string, timestamp: string) {
+        constructor(
+                id: number, 
+                user: User, 
+                industryType: string, 
+                name: string,
+                email: string, 
+                address: string, 
+                contactNumber: string, 
+                city: string, 
+                state: string, 
+                country: string, 
+                zip: string, 
+                corContact: string, 
+                corCity: string, 
+                corState: string, 
+                corCountry: string, 
+                corZipCode: string, 
+                companyName: string, 
+                crName: string, 
+                companyEmail: string, 
+                crbNumber:number, 
+                companyAddress: string, 
+                timestamp: string
+                ) 
+                
+                {
                 this.id = id;
                 this.user = user;
                 this.industryType = industryType;
@@ -43,7 +69,7 @@ export class Registration {
                 this.state = state;
                 this.country = country;
                 this.zip = zip;
-                this.corAddress = corAddress;
+                this.corContact = corContact;
                 this.corCity = corCity;
                 this.corState = corState;
                 this.corCountry = corCountry;
@@ -51,12 +77,36 @@ export class Registration {
                 this.companyName = companyName;
                 this.crName = crName;
                 this.companyEmail = companyEmail;
+                this.crbNumber = crbNumber;
                 this.companyAddress = companyAddress;
                 this.timestamp = timestamp;
         }
 
         static createInstance(): Registration{
-                let newRegistration = new Registration(null, null, null, null,null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+                let newRegistration = new Registration(
+                         null,
+                         null, 
+                         null,
+                         null,
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null,
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null, 
+                         null
+                         )
                 return newRegistration ;
               }
 }

@@ -25,7 +25,7 @@ export class SponsorSettingsComponent implements OnInit {
   registrationIdForUpdate: number;
   userInfo: User;
 
-  registration = new Registration(null, null, null, null, null, null, null,
+  registration = new Registration(null, null, null, null, null, null, null,null,
     null, null, null, null, null, null, null, null, null, null, null, null, null, null)
 
 
@@ -110,7 +110,7 @@ export class SponsorSettingsComponent implements OnInit {
     
     let user = new User(null, null, null, null, null, null, null, null);
     
-    let reg = new Registration(null, null, null, null, null, null, null,
+    let reg = new Registration(null, null, null, null, null, null, null,null,
       null, null, null, null, null, null, null, null, null, null, null, null, null, null)
 
     const userObject = {
