@@ -20,7 +20,7 @@ import { PopulateInputFieldsService } from 'src/app/view/buyer/side-account-sett
 export class SideAccountSettingsComponent implements OnInit {
 
   // wallet: string;
-  wallets = ["SME", "AGRIC", "Test1", "Admin", "test_wallet", "ret", "test",
+  wallets = ["SME", "AGRIC", "Test1", "Admin", "form", "ret", "test",
     "test_new", "OGAS Wallet", "test", "asd", "ert", "demo"]
 
   personalInfoName = '';
@@ -32,10 +32,11 @@ export class SideAccountSettingsComponent implements OnInit {
   walletInfo: Wallet;
   registrationInfo: Registration;
 
+
   private idOfUserLoggedIn: number;
   private emailOfUserLoggedIn: string;
 
-  registration = new Registration(null, null, null, null, null, null, null,
+  registration = new Registration(null, null, null, null, null, null, null,null,
     null, null, null, null, null, null, null, null, null, null, null, null, null, null)
 
 
@@ -64,11 +65,29 @@ export class SideAccountSettingsComponent implements OnInit {
 
       this.populateInputFieldsService.populateFieldsForUpdate(user.email);
 
-      this.httpServiceRegistration.getRequest(`/registrations/findRegistrationByEmail/${this.emailOfUserLoggedIn}`)
-      .subscribe(e => {
-        console.log(`the body:  ${e.body}`);
-      });
 
+
+      // this.httpServiceRegistration.getRequest(`/registrations/findRegistrationByEmail/${this.emailOfUserLoggedIn}`)
+      //   .subscribe(e => {
+      //     console.log(`the body:  ${e.body}`);
+
+      //   });
+
+      // TODO makes ure the getting by email works
+      // for now, find all and loop thru by comparing the email that matches the logged in email
+
+      // retrieve data from database
+      this.httpServiceRegistration.getRequest(`/registrations/findAll`).subscribe(e => {
+
+        // get the body of the response and convert it to an array
+        this.objectsUtilsReg.dataObjectToArray(e.body).forEach(aReg => {
+          
+          if (this.emailOfUserLoggedIn == aReg.user.email) {
+            this.registration = aReg;
+          }
+
+        });
+      });
 
     });
 
@@ -93,29 +112,105 @@ export class SideAccountSettingsComponent implements OnInit {
 
   onRegisteredSubmit(form: NgForm) {
 
-
-
-    console.log(form.value);
+    const v = form.value;
+    console.log(v);
     const theObject = form.value;
     console.log(`the form values: ${JSON.stringify(theObject, null, 2)} `);
 
     let theRegistration = Registration.createInstance();
+    
+    theRegistration = this.registration;
 
-    theRegistration = this.updateRegistrationDetails(theObject);
-    console.log(`reg////: ${JSON.stringify(theRegistration)} `);
 
-    const timestampStr = 'timestampStr';
-    // theRegistration[timestampStr] = DateUtils.convertDateFormatToParsable(this.registrationInfo.timestamp);
+    theRegistration.contactNumber = theObject.contactNumber;
+    theRegistration.city = theObject.city;
+    theRegistration.state = theObject.state;
+    theRegistration.country = theObject.country;
+    theRegistration.zip = theObject.zip;
+
+    theRegistration["timestampStr"] = DateUtils.convertDateFormatToParsable(theRegistration.timestamp);
+    theRegistration.timestamp = null;
+
+    theRegistration.user["emailVerifiedAtStr"] = DateUtils.convertDateFormatToParsable(theRegistration.user.emailVerifiedAt);
+    theRegistration.user.emailVerifiedAt = null;
+
+
+    console.log(`the next step: ${JSON.stringify(theRegistration, null, 2)} `);
+
+
+
+// theRegistration[timestampStr] = DateUtils.convertDateFormatToParsable(this.registrationInfo.timestamp);
+    // theRegistration.timestamp = null;// theRegistration[timestampStr] = DateUtils.convertDateFormatToParsable(this.registrationInfo.timestamp);
     // theRegistration.timestamp = null;
 
-    this.updateAddressOnlyInfo(theRegistration);
 
 
+    const timestampStr = 'timestampStr';
+    
 
-    console.log(`the registr: ${JSON.stringify(theRegistration, null, 2)} `);
-
+    this.httpServiceRegistration.putRequest('/registrations/update',theRegistration).subscribe (e => {
+      // console.log(`the registr: ${JSON.stringify(e, null, 2)} `);
+    });
 
   }
+
+  onCorrespondenceSubmit(form:NgForm){
+
+    const correspondenceObject = form.value;
+    console.log(form.value);
+    let theCorrespondence = Registration.createInstance();
+
+    theCorrespondence = this.registration;
+
+    theCorrespondence.corContact = correspondenceObject.corContact;
+    theCorrespondence.corCity = correspondenceObject.corCity;
+    theCorrespondence.state = correspondenceObject.corState;
+    theCorrespondence.country = correspondenceObject.corCountry;
+    theCorrespondence.corZipCode = correspondenceObject.corZipCode
+
+    theCorrespondence["timestampStr"] = DateUtils.convertDateFormatToParsable(theCorrespondence.timestamp);
+    theCorrespondence.timestamp = null;
+
+    theCorrespondence.user["emailVerifiedAtStr"] = DateUtils.convertDateFormatToParsable(theCorrespondence.user.emailVerifiedAt);
+    
+    theCorrespondence.user.emailVerifiedAt = null;
+
+    const timestampStr = 'timestampStr';
+
+    this.httpServiceRegistration.putRequest('/registrations/update',theCorrespondence).subscribe (e => {
+      // console.log(`the registr: ${JSON.stringify(e, null, 2)} `);
+    });
+
+  }
+
+  onSubmitCompanyInfo(form:NgForm){
+
+    const companyInfoObject = form.value;
+    console.log(form.value)
+
+    let thecompanyInfo = Registration.createInstance();
+    thecompanyInfo = this.registration;
+
+    thecompanyInfo.companyName = companyInfoObject.companyName;
+    thecompanyInfo.crName = companyInfoObject.crName;
+    thecompanyInfo.companyEmail = companyInfoObject.companyEmail;
+    thecompanyInfo.crbNumber = companyInfoObject.crbNumber;
+    thecompanyInfo.companyAddress = companyInfoObject.companyAddress;
+
+    thecompanyInfo["timestampStr"] = DateUtils.convertDateFormatToParsable(thecompanyInfo.timestamp);
+    thecompanyInfo.timestamp = null;
+
+    thecompanyInfo.user["emailVerifiedAtStr"] = DateUtils.convertDateFormatToParsable(thecompanyInfo.user.emailVerifiedAt);
+    thecompanyInfo.user.emailVerifiedAt = null;
+
+    const timestampStr = 'timestampStr';
+
+    this.httpServiceRegistration.putRequest('/registrations/update',thecompanyInfo).subscribe (e => {
+      // console.log(`the registr: ${JSON.stringify(e, null, 2)} `);
+    });
+
+  }
+
 
   onSubmit(form: NgForm) {
 
@@ -200,8 +295,8 @@ export class SideAccountSettingsComponent implements OnInit {
 
     let user = new User(null, null, null, null, null, null, null, null);
 
-    let reg = new Registration(null, null, null, null, null, null, null,
-      null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+    let reg = new Registration(null, null, null, null, null, null, null,null,
+      null, null, null, null, null, null, null, null, null, null, null, null,null, null)
 
     const userObject = {
       "id": 2,
