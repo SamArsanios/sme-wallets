@@ -89,7 +89,7 @@ export class ViewApprovedInvoiceComponent implements OnInit {
       this.srNo = `ord-${order.id}`;
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
-      this.salesUnit = order.order.saleUnit;
+      // this.salesUnit = order.order.saleUnit;
       this.price = order.pricePerItem;
       this.totalBeforeTax = order.totalPrice;
 
@@ -225,15 +225,19 @@ export class ViewApprovedInvoiceComponent implements OnInit {
     // return wallet;
   }
 
-  toTimestamp(strDate){
+  toTimestamp(strDate) {
     var datum = Date.parse(strDate);
-    return datum/1000;
- }
+    return datum / 1000;
+  }
 
   raiseInvoice(form: NgForm) {
     const supplierOrders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
+
+
+
+
 
 
     // change buyer email verified at string
@@ -272,32 +276,254 @@ export class ViewApprovedInvoiceComponent implements OnInit {
     userwalletstamps[userwalletTimestampStr] = neededOrder.wallet.user.emailVerifiedAt
     userwalletstamps[userwalletTimestampStr] = DateUtils.convertDateFormatToParsable(userwalletstamps.emailVerifiedAt)
     userwalletstamps.emailVerifiedAt = null
-  
-    let invoice = Invoice.createInstance()
-// create a value for invoice date
-
-// const invoicedateStr = "invoicedateStr";
-
-// invoice[invoicedateStr] = invoice.theTimestamp
-// invoice[invoicedateStr] = DateUtils.convertDateFormatToParsable(invoice.theTimestamp)
-// invoice.theTimestamp = null
-
-// invoice.order = supplierOrder.order;
-
-    var inputValue = "2020-03-13 07:39:00"
 
 
-  let x = this.toTimestamp('2020-03-13 07:39:00');
+    console.log("am looking for", neededOrder)
+
+    // let mr = {
+    //   "order": {
+    //     "conveyanceMethod": "",
+    //     "deliveryTerms": "",
+    //     "deliveryTime": "",
+    //     "department": "",
+    //     "id": 3,
+    //     "industryType": "Oil and Gas",
+    //     "isbnNumber": "",
+    //     "itemDescription": "",
+    //     "itemName": "",
+    //     "orderStatus": "approved",
+    //     "paymentTerms": "",
+    //     "placeOfDelivery": "",
+    //     "saleUnit": "",
+    //     // timestamp: null
+    //     "timestampStr": "2020-03-20 08:00:05",
+    //     "supplier": {
+    //       "email": "kab@gmail.com",
+    //       // emailVerifiedAt: null
+    //       "id": 1,
+    //       "name": "kab kabs",
+    //       "password": "kab",
+    //       "phoneNumber": "+25677657657",
+    //       "refUserId": 123,
+    //       "supplierEmailverifiedAtStr": "2020-03-20 02:32:35",
+    //       "userType": "supplier"
+    //     },
+
+    //     "buyer": {
+    //       "id": 2,
+    //       "email": "ken@gmail.com",
+    //       "name": "ken ken",
+    //       "buyerEmailverifiedAtStr": "2020-03-20 02:33:26",
+    //       // emailVerifiedAt: null, 
+    //       "password": "ken",
+    //       "phoneNumber": "+25665645646",
+    //       "refUserId": 123,
+    //       "userType": "buyer"
+    //     },
+    //     "wallet": {
+    //       "id": 1,
+    //       "name": "SME",
+    //       "walletTimestampStr": "2020-03-20 06:39:24",
+    //       // "timestamp": null
+
+    //       "user": {
+    //         "email": "kab@gmail.com",
+    //         // emailVerifiedAt: null
+    //         "id": 1,
+    //         "name": "kab kabs",
+    //         "password": "kab",
+    //         "phoneNumber": "+25677657657",
+    //         "refUserId": 123,
+    //         "userType": "supplier",
+    //         "userwalletTimestampStr": "2020-03-20 02:32:35"
+    //       }
+    //     }
+
+
+    //   },
+    //   "sponsor": {
+    //     "id": 3,
+    //     "email": "tintino@gmail.com",
+    //     "emailVerifiedAtStr": "2019-11-21 10:01:09",
+    //     "password": "jothi",
+    //     "phoneNumber": "0781123456",
+    //     "refUserId": 102,
+    //     "name": "Tin Tin",
+    //     "userType": "sponsor"
+    //   },
+    //   "invoiceDueDateStr": "2020-1-19 7:44:23",
+    //   "invoiceStatus": "Pending",
+    //   "transactionFeePercentage": 5,
+    //   "transactionFees": 10,
+    //   "interestRate": 3,
+    //   "amountToPay": 15,
+    //   "withHoldingAmount": 33,
+    //   "withHoldingTaxPercentage": 10,
+    //   "notificationStatus": "Approved",
+    //   "buyerNotificationStatus": "Accepted",
+    //   "declineReason": "Insufficient Funds",
+    //   "getPaid": 1,
+    //   "authorizeStatus": 1,
+    //   "sponsorStatus": 1
+    // }
+   
+    let mr = {
+      "order":neededOrder,
+      "sponsor": {
+        "id": 3,
+        "email": "tintino@gmail.com",
+        "emailVerifiedAtStr": "2019-11-21 10:01:09",
+        "password": "jothi",
+        "phoneNumber": "0781123456",
+        "refUserId": 102,
+        "name": "Tin Tin",
+        "userType": "sponsor"
+      },
+      "invoiceDueDateStr": "2020-1-19 7:44:23",
+      "invoiceStatus": "Pending",
+      "transactionFeePercentage": 5,
+      "transactionFees": 10,
+      "interestRate": 3,
+      "amountToPay": 15,
+      "withHoldingAmount": 33,
+      "withHoldingTaxPercentage": 10,
+      "notificationStatus": "Approved",
+      "buyerNotificationStatus": "Accepted",
+      "declineReason": "Insufficient Funds",
+      "getPaid": 1,
+      "authorizeStatus": 1,
+      "sponsorStatus": 1
+
+    }
+
+    this.httpService.postRequest("/invoices/create", mr).subscribe(e => {
+      console.log(`the supplier Order is ${e.body, null, 2}`)
+    });
+  }
+
+  ngOnInit() {
+
+    this.populateOrderView();
+    this.dateCtrl = new FormControl("", [Validators.required]);
+
+
+  }
+
+}
+
+
+    // let mr = {
+    //   "order": {
+    //     "conveyanceMethod": "",
+    //     "deliveryTerms": "",
+    //     "deliveryTime": "",
+    //     "department": "",
+    //     "id": 3,
+    //     "industryType": "Oil and Gas",
+    //     "isbnNumber": "",
+    //     "itemDescription": "",
+    //     "itemName": "",
+    //     "orderStatus": "approved",
+    //     "paymentTerms": "",
+    //     "placeOfDelivery": "",
+    //     "saleUnit": "",
+    //     // timestamp: null
+    //     "timestampStr": "2020-03-20 08:00:05",
+    //     "supplier": {
+    //       "email": "kab@gmail.com",
+    //       // emailVerifiedAt: null
+    //       "id": 1,
+    //       "name": "kab kabs",
+    //       "password": "kab",
+    //       "phoneNumber": "+25677657657",
+    //       "refUserId": 123,
+    //       "supplierEmailverifiedAtStr": "2020-03-20 02:32:35",
+    //       "userType": "supplier"
+    //     },
+
+    //     "buyer": {
+    //       "id": 2,
+    //       "email": "ken@gmail.com",
+    //       "name": "ken ken",
+    //       "buyerEmailverifiedAtStr": "2020-03-20 02:33:26",
+    //       // emailVerifiedAt: null, 
+    //       "password": "ken",
+    //       "phoneNumber": "+25665645646",
+    //       "refUserId": 123,
+    //       "userType": "buyer"
+    //     },
+    //     "wallet": {
+    //       "id": 1,
+    //       "name": "SME",
+    //       "walletTimestampStr": "2020-03-20 06:39:24",
+    //       // "timestamp": null
+
+    //       "user": {
+    //         "email": "kab@gmail.com",
+    //         // emailVerifiedAt: null
+    //         "id": 1,
+    //         "name": "kab kabs",
+    //         "password": "kab",
+    //         "phoneNumber": "+25677657657",
+    //         "refUserId": 123,
+    //         "userType": "supplier",
+    //         "userwalletTimestampStr": "2020-03-20 02:32:35"
+    //       }
+    //     }
+
+
+    //   },
+    //   "sponsor": {
+    //     "id": 3,
+    //     "email": "tintino@gmail.com",
+    //     "emailVerifiedAtStr": "2019-11-21 10:01:09",
+    //     "password": "jothi",
+    //     "phoneNumber": "0781123456",
+    //     "refUserId": 102,
+    //     "name": "Tin Tin",
+    //     "userType": "sponsor"
+    //   },
+    //   "invoiceDueDateStr": "2020-1-19 7:44:23",
+    //   "invoiceStatus": "Pending",
+    //   "transactionFeePercentage": 5,
+    //   "transactionFees": 10,
+    //   "interestRate": 3,
+    //   "amountToPay": 15,
+    //   "withHoldingAmount": 33,
+    //   "withHoldingTaxPercentage": 10,
+    //   "notificationStatus": "Approved",
+    //   "buyerNotificationStatus": "Accepted",
+    //   "declineReason": "Insufficient Funds",
+    //   "getPaid": 1,
+    //   "authorizeStatus": 1,
+    //   "sponsorStatus": 1
+
+    // }
+    // let invoice = Invoice.createInstance()
+    // create a value for invoice date
+
+    // const invoicedateStr = "invoicedateStr";
+
+    // invoice[invoicedateStr] = invoice.theTimestamp
+    // invoice[invoicedateStr] = DateUtils.convertDateFormatToParsable(invoice.theTimestamp)
+    // invoice.theTimestamp = null
+
+    // invoice.order = supplierOrder.order;
+
+    //   var inputValue = "2020-03-13 07:39:00"
+
+
+    // let x = this.toTimestamp('2020-03-13 07:39:00');
 
     // var inputValue = (<HTMLInputElement>document.getElementById("dates")).value;
     // let invoiceOrderDueDate = DateUtils.convertDateFormatToParsable(inputValue)
 
 
-    invoice.order = neededOrder
-    invoice.sponsor = this.temporarySponsor()
-    invoice.invoiceDueDate = x
-    invoice.invoiceStatus = "pending"
-    invoice.invoiceDate = x
+    // invoice.order = neededOrder
+    // invoice.sponsor = this.temporarySponsor()
+    // invoice.invoiceDueDate = x
+    // invoice.invoiceStatus = "pending"
+    // invoice.invoiceDate = x
     // invoice.transactionFeePercentage = 5;
     // invoice.transactionFees = 788;
     // invoice.withHoldingAmount = 55;
@@ -319,20 +545,160 @@ export class ViewApprovedInvoiceComponent implements OnInit {
     // invoice.sponsorStatus = true
 
     // const newOrder = this.objectUtil.objectToInstance(invoice, );
+    // invoice.invoiceDueDate = Date()
 
-let smallInv = new Invoice(0, neededOrder, this.temporarySponsor(), null, null, "pending", null, null,null, null, null, null,null, null,null, null,null, null,null)
+    // const invoiceDueDateStr = "invoiceDueDateStr";
+    // // const invoiceDueDatestamps = invoice
+    // invoice[invoiceDueDateStr] = invoice.invoiceDueDate;
+    // // invoice[invoiceDueDateStr] = "2020-03-20 08:00:05"
+    // orderInfo[timestampStr] = DateUtils.convertDateFormatToParsable(orderInfo.timestamp)
 
-    console.log("the invoice i want to send is ", invoice)
+    // invoice[invoiceDueDateStr] = DateUtils.convertDateFormatToParsable("2012-07-21 12:11:12")
+    // invoice.invoiceDueDate = null
 
-        this.httpService.postRequest("/invoices/create", smallInv).subscribe(e => {
-      console.log(`the supplier Order is ${e.body, null, 2}`)
-    });
+
+
+    // // let invoice = Invoice.createInstance()
+    // let smallInv = new Invoice(0, neededOrder, this.temporarySponsor(), null, invoice[invoiceDueDateStr], "pending", null, null, null, null, null, null, null, null, null, null, null, null, null)
+
+    // console.log("the invoice i want to send is ", smallInv)
+    //     let p = {
+    //       order:
+    //         billingAddress: ""
+    // buyer:
+    //       buyerEmailverifiedAtStr: "2020-03-20 02:33:26"
+    // email: "ken@gmail.com"
+    // emailVerifiedAt: null
+    // id: 2
+    // name: "ken ken"
+    // password: "ken"
+    // phoneNumber: "+25665645646"
+    // refUserId: 123
+    // userType: "buyer"
+    // __proto__: Object
+    // conveyanceMethod: ""
+    // deliveryTerms: ""
+    // deliveryTime: ""
+    // department: ""
+    // id: 3
+    // industryType: "Oil and Gas"
+    // isbnNumber: ""
+    // itemDescription: ""
+    // itemName: ""
+    // orderStatus: "approved"
+    // paymentTerms: ""
+    // placeOfDelivery: ""
+    // saleUnit: ""
+    // supplier: { id: 1, email: "kab@gmail.com", emailVerifiedAt: null, password: "kab", phoneNumber: "+25677657657", … }
+    // timestamp: null
+    // timestampStr: undefined
+    // wallet: { id: 1, name: "SME", timestamp: null, user: { … }, walletTimestampStr: "2020-03-20 06:39:24" }
+    // __proto__: Object
+    // sponsor: User { id: 2, email: "judie@gmail.com", emailVerifiedAt: null, password: "rec", phoneNumber: "+25624534534", … }
+    //     sponsorStatus: null
+    //     theTimestamp: null
+    //     transactionFeePercentage: null
+    //     transactionFees: null
+    //     withHoldingAmount: null
+    //     withHoldingTaxPercentage: null
+    //     __proto__: Object
+    //     zone - evergreen.js: 2952
+    //     "order": {
+    //       "id": "3",
+    //       "isbnNumber": "",
+    //       "itemName": "",
+    //       "itemDescription": "",
+    //       "billingAddress": "",
+    //       "saleUnit": "",
+
+    //       "department": "",
+    //       "conveyanceMethod": "",
+    //       "deliveryTerms": "",
+    //       "paymentTerms": "",
+    //       "placeOfDelivery": "",
+    //       "deliveryTime": "",
+    //       // "orderDueDate": "2020-01-29 13:37:05",
+    //       "orderStatus": "approved",
+    //       "raiseInvoice": "raise invoice",
+    //       "notificationStatus": "the notification status",
+    //       "timestampStr": "2020-03-18 10:37:23.161940",
+    //       "industryType": "Manufacturing",
+
+    //                                                 "buyer": {
+    //         "id": 1,
+    //           "name": "Okia Jacob",
+    //             "email": "jacob@gmail.com",
+    //               // "refUserId": 100,
+    //                 // "emailVerifiedAtStr": "2020-03-20 02:33:26",
+    //                 //   "password": "passs",
+    //                 //     "phoneNumber": "07005677789",
+    //                 //       "userType": "buyer"
+    //       },
+
+    //       "supplier": {
+    //         "id": 2,
+    //           "name": "Deb",
+    //             "email": "deb@gmail.com",
+    //               "refUserId": 105,
+    //                 "emailVerifiedAtStr": "2020-02-26 08:27:31.116151",
+    //                   "password": "passs",
+    //                     "phoneNumber": "0700",
+    //                       "userType": "supplier"
+    //       },
+
+    //       "wallet": {
+    //         "id": 1,
+    //           "name": "SME",
+    //             "timestampStr": "2020-03-03 10:30:45.603888",
+    //               "user": {
+    //           "id": 1,
+    //             "name": "Okia Jacob",
+    //               "email": "jacob@gmail.com",
+    //                 "refUserId": 100,
+    //                   "emailVerifiedAtStr": "2020-03-03 10:01:49.192690",
+    //                     "password": "passs",
+    //                       "phoneNumber": "07005677789",
+    //                         "userType": "buyer"
+    //         }
+    //       }
+    //     },
+
+    //     "sponsor": {
+    //       "id": 3,
+    //         "email": "tintino@gmail.com",
+    //           "emailVerifiedAtStr": "2019-11-21 10:01:09",
+    //             "password": "jothi",
+    //               "phoneNumber": "0781123456",
+    //                 "refUserId": 102,
+    //                   "name": "Tin Tin",
+    //                     "userType": "sponsor"
+    //     },
+
+    //     "invoiceDueDateStr": "2020-1-19 7:44:23",
+    //       "invoiceStatus": "Pending",
+    //         "transactionFeePercentage": 5,
+    //           "transactionFees": 10,
+    //             "interestRate": 3,
+    //               "amountToPay": 15,
+    //                 "withHoldingAmount": 33,
+    //                   "withHoldingTaxPercentage": 10,
+    //                     "notificationStatus": "Approved",
+    //                       "buyerNotificationStatus": "Accepted",
+    //                         "declineReason": "Insufficient Funds",
+    //                           "getPaid": 1,
+    //                             "authorizeStatus": 1,
+    //                               "sponsorStatus": 1
+
+    //   }
+    //     this.httpService.postRequest("/invoices/create", smallInv).subscribe(e => {
+    // console.log(`the supplier Order is ${e.body, null, 2}`)
+    // });
     // const supplierOrder = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
     //   SupplierApprovedOrdersData.getIdOfOrderToView())
 
     // console.log("the supplier order returned is ", this.Order())
     // const buyers = this.temporarySponsor
-    // let inv = new Invoice(null, this.Order(), this.temporarySponsor(), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
+    // let inv = new Invoice(null, this.Order(), this.temporarySponsor(), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null)
     // console.log("the data i want to send iss", inv)
     // let inv = new Invoice($order: Order, $sponsor: User, $wallet: Wallet, $invoiceDate: string, $invoiceDueDate: string, $invoiceStatus: string, $transactionFeePercentage: number, $transactionFees: number, $interestRate: number, $amountToPay: number, $withHoldingAmount: number, $withHoldingTaxPercentage: number, $notificationStatus: string, $buyerNotificationStatus: string, $declineReason: string, $getPaid: Boolean, $authorizeStatus: Boolean, $sponsorStatus: Boolean, $theTimestamp: string)
     // let = new Order(d: number, buyer: User, supplier: User, isbnNumber: string, itemName: string, itemDescription: string, billingAddress: string, saleUnit: string, quantity: number, department: string, conveyanceMethod: string, deliveryTerms: string, paymentTerms: string, placeOfDelivery: string, deliveryTime: string, orderDueDate: string, timePeriod: string, qrCode: string, wallet: Wallet, orderStatus: string, raiseInvoice: string, notificationStatus: string, timestamp: string, industryType: string)
@@ -415,12 +781,12 @@ let smallInv = new Invoice(0, neededOrder, this.temporarySponsor(), null, null, 
 
     // console.log("teh shit i want to send is ", newInvoice)
 
-    // this.httpService.postRequest("/invoices/create", inv).subscribe(e => {
+    // this.httpService.postRequest("/invoices/create", mr).subscribe(e => {
     //   console.log(`the supplier Order is ${e.body, null, 2}`)
     // });
 
 
-  }
+
 
 
   // onSubmit(form: NgForm) {
@@ -507,9 +873,9 @@ let smallInv = new Invoice(0, neededOrder, this.temporarySponsor(), null, null, 
   //     console.log(`the updated Order is ${e.body, null, 2}`)
   //   });
 
-  //   this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
-  //     console.log(`the supplier Order is ${e.body, null, 2}`)
-  //   });
+    // this.httpService.postRequest("/supplierOrders/create", mr).subscribe(e => {
+    //   console.log(`the supplier Order is ${e.body, null, 2}`)
+    // });
 
 
   //   this.invoiceStatus = true;
@@ -520,12 +886,12 @@ let smallInv = new Invoice(0, neededOrder, this.temporarySponsor(), null, null, 
   // }
 
 
-  ngOnInit() {
+//   ngOnInit() {
 
-    this.populateOrderView();
-    this.dateCtrl = new FormControl("", [Validators.required]);
+//     this.populateOrderView();
+//     this.dateCtrl = new FormControl("", [Validators.required]);
 
 
-  }
+//   }
 
-}
+// }

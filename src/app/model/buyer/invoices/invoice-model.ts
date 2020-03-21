@@ -14,8 +14,8 @@ export class Invoice {
          order: Order;
          sponsor: User;
        
-         invoiceDate;
-         invoiceDueDate;
+         invoiceDate: string;
+         invoiceDueDate: string;
          invoiceStatus: string;
          transactionFeePercentage: number;
          transactionFees: number;
