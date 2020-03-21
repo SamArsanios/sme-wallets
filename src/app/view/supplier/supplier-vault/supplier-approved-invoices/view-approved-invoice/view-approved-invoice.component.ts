@@ -185,49 +185,6 @@ export class ViewApprovedInvoiceComponent implements OnInit {
     orderInfo.timestamp = null
 
     return neededOrder;
-
-    // // change timestamp string for buyer email verified at
-
-    // const buyerEmailVerifiedStr = "buyerEmailVerifiedStr";
-    // neededOrder.buyer[buyerEmailVerifiedStr] = supplierOrders.order.buyer.emailVerifiedAt;
-    // neededOrder.buyer[buyerEmailVerifiedStr] = DateUtils.convertDateFormatToParsable(neededOrder.buyer.emailVerifiedAt);
-    // neededOrder.buyer.emailVerifiedAt = null
-    // neededOrder
-
-
-    // console.log("another rap", neededOrder)
-
-
-    // return 
-
-    //   // change timestamp string for supplier email verified at
-
-    //   const supplierEmailVerifiedStr = "supplierEmailVerifiedStr";
-    //   neededOrder.supplier[supplierEmailVerifiedStr] = neededOrder.supplier.emailVerifiedAt;
-    //   neededOrder.supplier[supplierEmailVerifiedStr] = DateUtils.convertDateFormatToParsable(neededOrder.supplier.emailVerifiedAt)
-    //   neededOrder.supplier.emailVerifiedAt = null 
-
-    // return neededOrder
-
-    // const orderistance = Order.createInstance()
-
-    //     const newods = this.objectUtilInvoice.objectToInstance(orderistance, supplierOrder);
-
-
-    // let rorder = new Order(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
-    // // wallet.timestamp = null;
-    // let timestampStr = "timestampStr";
-    // wallet[timestampStr] = DateUtils.convertDateFormatToParsable(
-    //   wallet.timestamp
-    // );
-    // wallet.timestamp = null;
-    // wallet["timestampStr"] = buyer["emailVerifiedAtStr"];
-    // return wallet;
-  }
-
-  toTimestamp(strDate) {
-    var datum = Date.parse(strDate);
-    return datum / 1000;
   }
 
   raiseInvoice(form: NgForm) {
@@ -235,9 +192,9 @@ export class ViewApprovedInvoiceComponent implements OnInit {
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
 
-
-
-
+     let invoiceDueDatehtml = (<HTMLInputElement>document.getElementById("dates")).value
+let parsableDueDate = DateUtils.convertDateFormatToParsable(invoiceDueDatehtml)
+console.log("the invoice dueeeee is", parsableDueDate)
 
 
     // change buyer email verified at string
@@ -280,94 +237,8 @@ export class ViewApprovedInvoiceComponent implements OnInit {
 
     console.log("am looking for", neededOrder)
 
-    // let mr = {
-    //   "order": {
-    //     "conveyanceMethod": "",
-    //     "deliveryTerms": "",
-    //     "deliveryTime": "",
-    //     "department": "",
-    //     "id": 3,
-    //     "industryType": "Oil and Gas",
-    //     "isbnNumber": "",
-    //     "itemDescription": "",
-    //     "itemName": "",
-    //     "orderStatus": "approved",
-    //     "paymentTerms": "",
-    //     "placeOfDelivery": "",
-    //     "saleUnit": "",
-    //     // timestamp: null
-    //     "timestampStr": "2020-03-20 08:00:05",
-    //     "supplier": {
-    //       "email": "kab@gmail.com",
-    //       // emailVerifiedAt: null
-    //       "id": 1,
-    //       "name": "kab kabs",
-    //       "password": "kab",
-    //       "phoneNumber": "+25677657657",
-    //       "refUserId": 123,
-    //       "supplierEmailverifiedAtStr": "2020-03-20 02:32:35",
-    //       "userType": "supplier"
-    //     },
-
-    //     "buyer": {
-    //       "id": 2,
-    //       "email": "ken@gmail.com",
-    //       "name": "ken ken",
-    //       "buyerEmailverifiedAtStr": "2020-03-20 02:33:26",
-    //       // emailVerifiedAt: null, 
-    //       "password": "ken",
-    //       "phoneNumber": "+25665645646",
-    //       "refUserId": 123,
-    //       "userType": "buyer"
-    //     },
-    //     "wallet": {
-    //       "id": 1,
-    //       "name": "SME",
-    //       "walletTimestampStr": "2020-03-20 06:39:24",
-    //       // "timestamp": null
-
-    //       "user": {
-    //         "email": "kab@gmail.com",
-    //         // emailVerifiedAt: null
-    //         "id": 1,
-    //         "name": "kab kabs",
-    //         "password": "kab",
-    //         "phoneNumber": "+25677657657",
-    //         "refUserId": 123,
-    //         "userType": "supplier",
-    //         "userwalletTimestampStr": "2020-03-20 02:32:35"
-    //       }
-    //     }
-
-
-    //   },
-    //   "sponsor": {
-    //     "id": 3,
-    //     "email": "tintino@gmail.com",
-    //     "emailVerifiedAtStr": "2019-11-21 10:01:09",
-    //     "password": "jothi",
-    //     "phoneNumber": "0781123456",
-    //     "refUserId": 102,
-    //     "name": "Tin Tin",
-    //     "userType": "sponsor"
-    //   },
-    //   "invoiceDueDateStr": "2020-1-19 7:44:23",
-    //   "invoiceStatus": "Pending",
-    //   "transactionFeePercentage": 5,
-    //   "transactionFees": 10,
-    //   "interestRate": 3,
-    //   "amountToPay": 15,
-    //   "withHoldingAmount": 33,
-    //   "withHoldingTaxPercentage": 10,
-    //   "notificationStatus": "Approved",
-    //   "buyerNotificationStatus": "Accepted",
-    //   "declineReason": "Insufficient Funds",
-    //   "getPaid": 1,
-    //   "authorizeStatus": 1,
-    //   "sponsorStatus": 1
-    // }
    
-    let mr = {
+    let theInvoice = {
       "order":neededOrder,
       "sponsor": {
         "id": 3,
@@ -379,24 +250,14 @@ export class ViewApprovedInvoiceComponent implements OnInit {
         "name": "Tin Tin",
         "userType": "sponsor"
       },
-      "invoiceDueDateStr": "2020-1-19 7:44:23",
-      "invoiceStatus": "Pending",
-      "transactionFeePercentage": 5,
-      "transactionFees": 10,
-      "interestRate": 3,
-      "amountToPay": 15,
-      "withHoldingAmount": 33,
-      "withHoldingTaxPercentage": 10,
-      "notificationStatus": "Approved",
-      "buyerNotificationStatus": "Accepted",
-      "declineReason": "Insufficient Funds",
-      "getPaid": 1,
-      "authorizeStatus": 1,
-      "sponsorStatus": 1
+
+      "invoiceDueDateStr": parsableDueDate,
+     
+      "invoiceStatus": "invoice raised"
 
     }
 
-    this.httpService.postRequest("/invoices/create", mr).subscribe(e => {
+    this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
       console.log(`the supplier Order is ${e.body, null, 2}`)
     });
   }
