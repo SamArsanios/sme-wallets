@@ -84,7 +84,7 @@ import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-app
 // tslint:disable-next-line:max-line-length
 import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
 import { ViewApprovedInvoiceComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/view-approved-invoice/view-approved-invoice.component';
-import { ViewRaisedInvoicesComponent } from './view/buyer/view-raised-invoices/view-raised-invoices.component';
+import { ViewRaisedInvoicesComponent } from './view/buyer/invoices/all-invoices/view-raised-invoices/view-raised-invoices.component';
 import { AllInvoicesComponent } from './view/buyer/invoices/all-invoices/all-invoices.component';
 import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-all-orders/view-supplier-all-orders/view-supplier-all-orders.component';
 import { ViewSupplierInvoicedOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/view-supplier-invoiced-orders.component';

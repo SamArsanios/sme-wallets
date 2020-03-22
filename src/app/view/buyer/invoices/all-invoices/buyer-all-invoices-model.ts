@@ -32,7 +32,7 @@ export class  PopulateBuyerInvoiceInfoTable {
         invoiceDate: e.order.timestamp,
         // invoiceDueDate: e.orderDueDate,
         supplierName: e.order.supplier.name,
-        invoiceStatus: 'pending',
+        invoiceStatus: e.invoiceStatus,
         action: e.id
       };
 

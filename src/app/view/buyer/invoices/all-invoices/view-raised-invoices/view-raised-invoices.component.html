@@ -1,0 +1,117 @@
+<div class="container">
+  <div style="display: block;">
+    <img src="../../../../../assets/purchase-order-2.png" alt="purchase order icon" />
+  </div>
+  <h3>Purchase Order</h3>
+  <hr />
+  <div class="row">
+    <div class="col-sm-4">
+      <div>
+        <li>From :{{ buyerName }}</li>
+        <li>Phone : {{ buyerPhone }}</li>
+        <li>Email : {{ buyerEmail }}</li>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <li>To : {{ supplierName }}</li>
+        <li>Phone : {{ supplierPhone }}</li>
+        <li>Email : {{ supplierEmail }}</li>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <li>Invoice : {{ invoiceId }}</li>
+        <li>Order ID : {{ orderId }}</li>
+        <li>Payment Due : {{paymentDue}}</li>
+        <li>Delivery Place : {{placeOfDelivery}}</li>
+        <li>Payment Terms :{{ termsOfPayment }}</li>
+        <li>Delivery Terms :{{termsOfDelivery}}</li>
+      </div>
+    </div>
+  </div>
+  <form #form="ngForm" class="supplierorder" (ngSubmit)="onSubmit(form)">
+    <table>
+      <tr>
+        <th>
+          Sr No.
+        </th>
+        <th>
+          Item Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Sale Unit(PCS/LTR)
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>{{srNo}}</td>
+        <td>{{itemName}}</td>
+        <td>{{ itemDescription }}</td>
+        <td>{{ salesUnit }}</td>
+        <td>{{ quantity }}</td>
+        <td>{{ price }}</td>
+        <td>{{totalAfterTax}}</td>
+
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <h3>Order Due: {{orderDueDate}}</h3>
+        <table>
+          <tr>
+            <th>Subtotal :</th>
+            <td>
+              {{subTotal}}
+            </td>
+          </tr>
+          <tr>
+            <th>Tax :</th>
+            <td>
+              {{tax}}
+
+            </td>
+          </tr>
+          <tr>
+            <th>Shipping :</th>
+            <td>
+              {{shipping}}
+
+            </td>
+          </tr>
+          <tr>
+            <th>Total :</th>
+            <td>
+              {{totalAfterTax}}
+
+            </td>
+          </tr>
+        </table>
+        <div *ngIf="invoiceStatus" class="alert alert-success statusmessage">
+          <strong>Success!</strong> You have successfully forwarded an invoice to the buyer
+        </div>
+        <div class="btns">
+          <div class="col-sm-4">
+            <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
+              Generate PDF
+            </button>
+            <button id="btn1" class="btn btn-success btn-sm" type="submit">
+              Accept
+            </button>
+            <button id="btn2" class="btn btn-danger btn-sm">
+              Decline
+            </button>
+          </div>
+        </div>
+      </div>
+  <!-- </form> -->
+</div>

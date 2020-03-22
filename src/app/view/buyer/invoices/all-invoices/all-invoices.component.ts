@@ -12,6 +12,7 @@ import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 import { BuyerAllInvoicesInvoiceData } from 'src/app/service/order/buyer.allInvoices.invoice.data';
 
 @Component({
+
   selector: "app-all-invoices",
   templateUrl: "./all-invoices.component.html",
   styleUrls: ["./all-invoices.component.css"]
@@ -29,7 +30,7 @@ export class AllInvoicesComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
 
   constructor(
-    private httpService: HttpService<Invoice>,
+    private httpService: HttpService<any>,
     private objectsUtil: ObjectsUtil<Invoice>,
     private populateTable: PopulateTable<Invoice, IBuyerAllInvoices>,
     private router: Router
@@ -40,7 +41,10 @@ export class AllInvoicesComponent implements OnInit {
 
 
   private populateTheTable(): void {
-    this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
+  // this.httpService.getRequest("/supplierOrder/findAll").subscribe(response => {
+  //       console.log("the rrrrrrrrr", response.body)
+  // })
+    this.httpService.getRequest("/invoices/findAll").subscribe(response => {
 
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(response.body),
@@ -66,14 +70,38 @@ export class AllInvoicesComponent implements OnInit {
 
   ngOnInit() {
     this.populateTheTable();
+    // this.supsoo()
   }
+//   supsoo(){
+//         this.httpService.getRequest("/supplierOrder/findAll").subscribe(response => {
+//         console.log("the rrrrrrrrr", response.body)
+//   })
 
   handleViewOrderClick($event): void {
     const id = parseInt($event.target.closest("button").id);
     console.log(`the id is ${id}`)
-
+    // this. supsoo()
     this.router.navigate(["/buyer/invoices/viewRaisedInvoices"]).then(() => {
+     
       BuyerAllInvoicesInvoiceData.setIdOfInvoiceToView(id);
+
+
+    // this.httpService.getRequest("/supplierOrder/findAll").subscribe(response => {
+    //   // this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
+    //     console.log("the invoiced orders are,", response.body)
+    //     const theSupplierOrder = response.body;
+    //   //   if (theOder.order.id === order.order.id) {
+    //   //     console.log("the supplier order is", theOder)
+
+
+    //       // this.receivers.push(theOder);
+    //       // SupplierInvoicedOrderData.addSupplierInvoicedOrder(theOder)
+    //       // SupplierInvoicedOrderData.addSupplierInvoicedOrderToMap(theOder, theOder.id)
+
+    //     })
+      // });
+
+    // })
     });
     
   }
