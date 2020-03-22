@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <form #form="ngForm" class="supplierorder" (ngSubmit)="onSubmit(form)">
+  <form #form="ngForm" class="supplierorder">
     <table>
       <tr>
         <th>
@@ -104,8 +104,8 @@
             <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
               Generate PDF
             </button>
-            <button id="btn1" class="btn btn-success btn-sm" type="submit">
-              Accept
+            <button id="btn1" (click)="ApproveInvoice()" class="btn btn-success btn-sm">
+              Approve
             </button>
             <button id="btn2" class="btn btn-danger btn-sm">
               Decline

@@ -232,6 +232,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     let newOrder = Order.createInstance();
     OldOrder.orderStatus = "invoiced";
     this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
+    console.log("most needed is", OldOrder)
 
     this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)

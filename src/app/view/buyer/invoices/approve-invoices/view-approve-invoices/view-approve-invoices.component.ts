@@ -90,15 +90,15 @@ export class ViewApproveInvoicesComponent implements OnInit {
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;
-      this.price = order.pricePerItem;
-      this.totalBeforeTax = order.totalPrice;
+      // this.price = order.pricePerItem;
+      // this.totalBeforeTax = order.totalPrice;
 
-      this.subTotal = order.subTotal;
-      this.tax = order.taxRate;
-      this.shipping = order.shippingCharges;
-      this.quantity = order.order.quantity;
-      this.totalBeforeTax = order.subTotal;
-      this.totalAfterTax = order.finalTotal;
+      // this.subTotal = order.subTotal;
+      // this.tax = order.taxRate;
+      // this.shipping = order.shippingCharges;
+      // this.quantity = order.order.quantity;
+      // this.totalBeforeTax = order.subTotal;
+      // this.totalAfterTax = order.finalTotal;
 
     } else {
 

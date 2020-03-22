@@ -90,15 +90,15 @@ export class ViewApprovedInvoiceComponent implements OnInit {
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       // this.salesUnit = order.order.saleUnit;
-      this.price = order.pricePerItem;
-      this.totalBeforeTax = order.totalPrice;
+      // this.price = order.order.;
+      // this.totalBeforeTax = order.totalPrice;
 
-      this.subTotal = order.subTotal;
-      this.tax = order.taxRate;
-      this.shipping = order.shippingCharges;
-      this.quantity = order.order.quantity;
-      this.totalBeforeTax = order.subTotal;
-      this.totalAfterTax = order.finalTotal;
+      // this.subTotal = order.subTotal;
+      // this.tax = order.taxRate;
+      // this.shipping = order.shippingCharges;
+      // this.quantity = order.order.quantity;
+      // this.totalBeforeTax = order.subTotal;
+      // this.totalAfterTax = order.finalTotal;
 
     } else {
 
@@ -108,14 +108,14 @@ export class ViewApprovedInvoiceComponent implements OnInit {
 
   }
 
-  generatePdf() {
-    const id = SupplierApprovedOrdersData.getIdOfOrderToView();
-    const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
+  // generatePdf() {
+  //   const id = SupplierApprovedOrdersData.getIdOfOrderToView();
+  //   const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
 
-    console.log(orderToViewPdf);
+  //   console.log(orderToViewPdf);
 
-    GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
-  }
+  //   GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
+  // }
 
   temporaryWallet(buyer: User): Wallet {
     let wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
