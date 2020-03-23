@@ -1,0 +1,81 @@
+<!-- First Tab -->
+<!-- View Approved Invoices -->
+<div class="container">
+    <mat-form-field>
+      <input
+        (keyup)="applyFilter($event.target.value)"
+        matInput
+        placeholder="Search"
+      />
+    </mat-form-field>
+  
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="buyerInvoiceInfoTableDataSource" matSort>
+        <!-- Inovice Number -->
+        <ng-container matColumnDef="invoiceNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >invoiceNo</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.invoiceNo }}</mat-cell>
+        </ng-container>
+  
+        <!-- Invoice Date Column -->
+        <ng-container matColumnDef="invoiceDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Invoice Date</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{ element.invoiceDate }}</mat-cell>
+        </ng-container>
+  
+        <!-- Invoice Due Date Column -->
+        <ng-container matColumnDef="invoiceDueDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Invoice Due Date</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{
+            element.invoiceDueDate
+          }}</mat-cell>
+        </ng-container>
+  
+        <!-- Supplier Name Column -->
+        <ng-container matColumnDef="supplierName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Supplier Name</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{
+            element.supplierName
+          }}</mat-cell>
+        </ng-container>
+  
+        <!-- Invoice Status Column -->
+        <ng-container matColumnDef="invoiceStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Invoice Status</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">{{
+            element.invoiceStatus
+          }}</mat-cell>
+        </ng-container>
+  
+        <!-- Supplier Action Column -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Action</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element">
+            <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
+              View</button>
+          </mat-cell>
+          <!-- <mat-cell *matCellDef="let element"
+            ><button class="btn-primary btn-sm">View</button></mat-cell
+          > -->
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>

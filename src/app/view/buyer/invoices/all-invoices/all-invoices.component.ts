@@ -2,14 +2,15 @@ import { Component, ViewChild, OnInit } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
 import { HttpService } from "../../../../utils/http/http-service";
 import { ObjectsUtil } from "../../../../utils/objects/objects";
-import {
-  IBuyerAllInvoices,
-  PopulateBuyerInvoiceInfoTable
-} from "./buyer-all-invoices-model";
+// import {
+//   IBuyerAllInvoices,
+//   PopulateBuyerInvoiceInfoTable
+// } from "./buyer-all-invoices-model";
 import { PopulateTable } from "../../../../utils/tables/populate.table";
 import { Router } from "@angular/router";
 import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 import { BuyerAllInvoicesInvoiceData } from 'src/app/service/order/buyer.allInvoices.invoice.data';
+import { IBuyerAllInvoices, PopulateBuyerInvoiceInfoTable } from './buyer-all-invoices-interface';
 
 @Component({
 

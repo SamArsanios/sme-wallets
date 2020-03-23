@@ -1,17 +1,19 @@
 import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 
+// import {Order} from '../../../../model/buyer/order/order-model';
+// import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+
 export interface IBuyerAllInvoices {
-    invoiceNo: string;
-  invoiceDate: any;
-  invoiceDueDate: any;
-  supplierName: string;
-  invoiceStatus: string;
+    orderNo: string;
+    invoiceDate: any;
+    invoiceDueDate: any;
+    senderName: string;
+    invoiceStatus: string;
     action: any;
   }
 
 
-
-export class  PopulateBuyerInvoiceInfoTable {
+export class PopulateBuyerInvoiceInfoTable {
 
   public static displayedColumns: string[] = [
         "invoiceNo",
@@ -26,11 +28,11 @@ export class  PopulateBuyerInvoiceInfoTable {
   public  static populateTableOnInit(fromResponse: Invoice[]) {
 
     return fromResponse.map(e => {
-      console.log(`the order due date is ${ JSON.stringify(e.order)}`)
+
       return  {
-        invoiceNo: `ORD-${e.id}`,
-        invoiceDate: e.order.timestamp,
-        // invoiceDueDate: e.orderDueDate,
+        invoiceNo: e.id,
+        invoiceDate: e.invoiceDate,
+        invoiceDueDate: e.invoiceDueDate,
         supplierName: e.order.supplier.name,
         invoiceStatus: e.invoiceStatus,
         action: e.id

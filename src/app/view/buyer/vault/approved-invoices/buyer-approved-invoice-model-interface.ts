@@ -1,36 +1,37 @@
 import { Invoice } from '../../../../model/buyer/invoices/invoice-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 export interface IApprovedInvoices {
     orderNo: string;
-    orderDate: any;
+    invoiceDate: any;
     orderDueDate: any;
     senderName: string;
-    orderStatus: string;
+    invoiceStatus: string;
     action: number;
 }
 
 export class ApprovedInvoicesTable {
 
     public static displayedColumns: string[] = [
-        'orderNo',
-        'orderDate',
+        'invoiceNo',
+        'invoiceDate',
         'orderDueDate',
-        'senderName',
-        'orderStatus',
+        'supplierName',
+        'invoiceStatus',
         'action'
     ];
 
 
-    public static populateTableOnInit(fromResponse: Invoice[]) {
+    public static populateTableOnInit(fromResponse: SupplierOrder[]) {
 
         return fromResponse.map(e => {
 
             return {
-                orderNo: `ORD-${e.id}`,
-                invoiceDate: e.invoiceDate,
-                invoiceDueDate: e.invoiceDueDate,
-                supplierName: "unknown",
-                InvoiceStatus: "pending",
+                invoiceNo: `INV-${e.id}`,
+                invoiceDate: e.timestamp,
+                invoiceDueDate: "not fixed yet",
+                supplierName: e.order.supplier.name,
+                InvoiceStatus: e.order.orderStatus,
                 action: e.id
             };
 

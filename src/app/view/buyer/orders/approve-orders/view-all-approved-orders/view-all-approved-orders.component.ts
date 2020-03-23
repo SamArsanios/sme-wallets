@@ -15,7 +15,7 @@ import { GenerateBUyerApproveOrderPDF } from './generateBuyerApproveOrderPDF';
 @Component({
   selector: "app-view-all-approved-orders",
   templateUrl: "./view-all-approved-orders.component.html",
-  styleUrls: ["../view-orders/view-orders.component.css"]
+  styleUrls: ["../../view-orders/view-orders.component.css"]
 })
 export class ViewAllApprovedOrdersComponent implements OnInit {
   approveStatus = false
