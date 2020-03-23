@@ -23,14 +23,21 @@ import { Router } from '@angular/router';
 })
 export class CreateOrderComponent implements OnInit {
   OrderStatus = false;
+
   // tslint:disable-next-line:max-line-length
   constructor(
+    // private location: Location,
     private router: Router,
     private httpService: HttpService<User>,
     private objectUtil: ObjectsUtil<User>,
     private objectUtilOrder: ObjectsUtil<Order>,
-    private websocket: WebsocketService
-  ) {}
+    private websocket: WebsocketService,
+    // private location: Location,
+    
+  ) {
+
+}
+  
 
   public supplierNames: List<User>;
   successPost: string;
@@ -38,6 +45,10 @@ export class CreateOrderComponent implements OnInit {
   dateCtrl: FormControl;
 
   receivers: Array<User> = new Array<User>();
+
+  // cancel() {
+  //   this.location.back(); // <-- go back to previous location on cancel
+  // }
 
   ngOnInit() {
     this.httpService.getRequest("/users/findAll").subscribe(e => {
@@ -148,7 +159,7 @@ export class CreateOrderComponent implements OnInit {
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
       setTimeout(() => {
-        this.router.navigate(['/buyer/pendingOrders']);
+        
       }, 2000);
     });
   } // end onSubmit()

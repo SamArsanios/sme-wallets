@@ -10,6 +10,12 @@
     <mat-tab-group #tabRef>
       <!-- First Tab -->
 
+      <mat-tab label="Pending Orders">
+        <div class="container-fluid">
+          <app-pending-orders></app-pending-orders>
+        </div>
+      </mat-tab>
+
       <mat-tab label="Create Orders" (click)="test()" >
         <div class="container-fluid">
           <app-create-order id="test-id" >ttttttt...mmmm</app-create-order>

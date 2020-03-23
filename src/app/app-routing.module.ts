@@ -99,6 +99,13 @@ const routes: Routes = [
     path: "supplier/orders",
     component: SupplierPurchaseOrdersComponent
   },
+  // {
+
+  //   path: "supplier/orders",
+  //   component: OrdersComponent
+  // },
+
+  
   {
 
     path: "supplier/viewallsuppliers",
