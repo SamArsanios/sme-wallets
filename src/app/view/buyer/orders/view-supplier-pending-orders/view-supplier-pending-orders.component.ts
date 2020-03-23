@@ -25,7 +25,7 @@ export class ViewSupplierPendingOrdersComponent implements OnInit {
   srNo: string;
   itemName: string;
   itemDescription: string;
-  salesUnit: string;
+  salesUnit: number;
   quantity: number;
   price: number;
   totalBeforeTax: number;

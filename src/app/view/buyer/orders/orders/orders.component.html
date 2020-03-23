@@ -9,13 +9,6 @@
  
     <mat-tab-group #tabRef>
       <!-- First Tab -->
-      <!-- View Approve Invoices -->
-      <mat-tab label="Approve Orders">
-        <div class="container-fluid">
-          <app-approve-orders></app-approve-orders>
-        </div>
-      </mat-tab>
-
 
       <mat-tab label="Create Orders" (click)="test()" >
         <div class="container-fluid">
@@ -28,6 +21,15 @@
           <app-pending-orders></app-pending-orders>
         </div>
       </mat-tab> 
+      <!-- View Approve Invoices -->
+      <mat-tab label="Approve Orders">
+        <div class="container-fluid">
+          <app-approve-orders></app-approve-orders>
+        </div>
+      </mat-tab>
+
+
+
 
       <mat-tab label="All Orders">
         <div class="container-fluid">

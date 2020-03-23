@@ -30,7 +30,7 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
   srNo: string;
   itemName: string;
   itemDescription: string;
-  salesUnit: string;
+  salesUnit: number;
   quantity: number;
   price: number;
   totalBeforeTax: number;
@@ -70,7 +70,7 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;
-      this.price = order.pricePerItem
+      this.price = order.pricePerItem;
       this.totalBeforeTax = order.subTotal;
 
       this.subTotal = order.subTotal;

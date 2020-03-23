@@ -15,15 +15,15 @@ export class InvoiceTransient extends Invoice {
     invoiceDateStr: string;
     invoiceDueDateStr: string
 
-    constructor($id: number, $order: Order, $sponsor: User, $wallet: Wallet, $invoiceDate: string, $invoiceDueDate: string, $invoiceStatus: string, $transactionFeePercentage: number, $transactionFees: number, $interestRate: number, $amountToPay: number, $withHoldingAmount: number, $withHoldingTaxPercentage: number, $notificationStatus: string, $buyerNotificationStatus: string, $declineReason: string, $getPaid: Boolean, $authorizeStatus: Boolean, $sponsorStatus: Boolean, $theTimestamp: string, $theTimestampStr: string, $invoiceDateStr: string) {
-        super($id, $order, $sponsor, $wallet, $invoiceDate, $invoiceDueDate, $invoiceStatus, $transactionFeePercentage, $transactionFees, $interestRate, $amountToPay, $withHoldingAmount, $withHoldingTaxPercentage, $notificationStatus, $buyerNotificationStatus, $declineReason, $getPaid, $authorizeStatus, $sponsorStatus, $theTimestamp);
+    constructor($id: number, $order: Order, $sponsor: User, $invoiceDate: string, $invoiceDueDate: string, $invoiceStatus: string, $transactionFeePercentage: number, $transactionFees: number, $interestRate: number, $amountToPay: number, $withHoldingAmount: number, $withHoldingTaxPercentage: number, $notificationStatus: string, $buyerNotificationStatus: string, $declineReason: string, $getPaid: Boolean, $authorizeStatus: Boolean, $sponsorStatus: Boolean, $theTimestamp: string, $theTimestampStr: string, $invoiceDateStr: string) {
+        super($id, $order, $sponsor, $invoiceDate, $invoiceDueDate, $invoiceStatus, $transactionFeePercentage, $transactionFees, $interestRate, $amountToPay, $withHoldingAmount, $withHoldingTaxPercentage, $notificationStatus, $buyerNotificationStatus, $declineReason, $getPaid, $authorizeStatus, $sponsorStatus, $theTimestamp);
         this.theTimestampStr = $theTimestampStr;
         this.invoiceDateStr = $invoiceDateStr;
     }
 
     static createInstance(): InvoiceTransient {
         let newInvoice = new InvoiceTransient(null, null, null, null, null, null, null, null, null,
-            null, null, null, null, null, null, null, null, null, null, null, null, null);
+            null, null, null, null, null, null, null, null, null, null, null, null);
         return newInvoice
     }
 

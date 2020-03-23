@@ -1,4 +1,4 @@
-import {Order} from '../../../../model/buyer/order/order-model';
+import {Order} from '../../../../../model/buyer/order/order-model';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 export interface ISupplierApproveOrder {

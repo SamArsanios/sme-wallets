@@ -12,6 +12,8 @@ import { GeneratePurchaseOrderPDF } from "./generatePurchaseOrderPDF";
   styleUrls: ["./view-orders.component.css"]
 })
 export class ViewOrdersComponent implements OnInit {
+  date: string;
+  orderNo: number;
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -28,7 +30,7 @@ export class ViewOrdersComponent implements OnInit {
   srNo: string;
   itemName: string;
   itemDescription: string;
-  salesUnit: string;
+  salesUnit: number;
   quantity: number;
   price: number;
   totalBeforeTax: number;
@@ -56,6 +58,8 @@ export class ViewOrdersComponent implements OnInit {
     );
 
     if (order !== undefined && order != null) {
+      this.date = order.timestamp;
+      this.orderNo = order.id;
       this.buyerName = order.buyer.name;
       this.buyerPhone = order.buyer.phoneNumber;
       this.buyerEmail = order.buyer.email;
@@ -69,7 +73,7 @@ export class ViewOrdersComponent implements OnInit {
       this.termsOfPayment = order.paymentTerms;
       this.termsOfDelivery = order.deliveryTerms;
 
-      this.srNo = `ord-${order.id}`;
+      this.srNo = order.isbnNumber;
       this.itemName = order.itemName;
       this.itemDescription = order.itemDescription;
       this.salesUnit = order.saleUnit;

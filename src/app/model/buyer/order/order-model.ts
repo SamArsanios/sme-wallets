@@ -9,7 +9,7 @@ export class Order {
   itemName: string;
   itemDescription: string;
   billingAddress: string;
-  saleUnit: string;
+  saleUnit: number;
   quantity: number;
   department: string;
   conveyanceMethod: string;
@@ -37,7 +37,7 @@ export class Order {
     itemDescription: string,
     billingAddress: string,
     saleUnit: // tslint:disable-next-line:max-line-length align
-    string,
+    number,
     quantity: number,
     department: string,
     conveyanceMethod: string,

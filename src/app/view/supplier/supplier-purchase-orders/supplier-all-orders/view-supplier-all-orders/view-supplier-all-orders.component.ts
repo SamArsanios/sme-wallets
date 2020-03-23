@@ -14,6 +14,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
+  orderStatusSupplier = false
 
   supplierName: string;
   supplierPhone: string;
@@ -27,7 +28,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
   srNo: string;
   itemName: string;
   itemDescription: string;
-  salesUnit: string;
+  salesUnit: number;
   quantity: number;
   price: number;
   totalBeforeTax: number;
@@ -36,6 +37,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
   tax: number;
   shipping: number;
   totalAfterTax: number;
+  orderStatus: string;
 
   constructor(private location: Location) {
 
@@ -52,6 +54,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
       this.buyerEmail = order.order.buyer.email;
+      // this.orderStatus = order.order.orderStatus;
 
       this.supplierName = order.order.supplier.name;
       this.supplierPhone = order.order.supplier.phoneNumber;
@@ -61,6 +64,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
       this.placeOfDelivery = order.order.placeOfDelivery;
       this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;
+      
 
       this.srNo = `ord-${order.id}`;
       this.itemName = order.order.itemName;
@@ -75,14 +79,20 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
       this.quantity = order.order.quantity;
       this.totalBeforeTax = order.subTotal;
       this.totalAfterTax = order.finalTotal;
+      this.orderStatus = order.order.orderStatus
 
     } else {
 
       // fetch the order direct from the db basing on the ID provided
 
     }
+    if(this.orderStatus = "approved"){
+      this.orderStatusSupplier =true
+    }
+
 
   }
+
 
 cancel() {
   this.location.back(); // <-- go back to previous location on cancel

@@ -30,13 +30,15 @@ import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders
 import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component";
 import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
 import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-allorders.component';
-import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/view-all-approved-orders/view-all-approved-orders.component';
+import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/approve-orders/view-all-approved-orders/view-all-approved-orders.component';
 import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
-import { ViewRaisedInvoicesComponent } from './view/buyer/view-raised-invoices/view-raised-invoices.component';
+import { ViewRaisedInvoicesComponent } from './view/buyer/invoices/all-invoices/view-raised-invoices/view-raised-invoices.component';
 import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pending-orders.component';
 import { SupplierPendingOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-pending-orders.component';
 import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-all-orders/view-supplier-all-orders/view-supplier-all-orders.component';
 import { ViewSupplierInvoicedOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/view-supplier-invoiced-orders.component';
+import { ViewApprovedInvoiceComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/view-approved-invoice/view-approved-invoice.component';
+import { ViewApproveInvoicesComponent } from './view/buyer/invoices/aprove-invoice/view-approve-invoices/view-approve-invoices.component';
 
 
 const routes: Routes = [
@@ -51,7 +53,7 @@ const routes: Routes = [
   { path: "buyer/orders/view-all-approved-orders", component: ViewAllApprovedOrdersComponent},
 
   { path: "buyer/Invitecontacts", component: InviteContactsComponent },
-  { path: "buyer/invoices", component: InvoicesComponent },
+  { path: "buyer/invoicess", component: InvoicesComponent },
   { path: "buyer/Vault", component: VaultComponent },
   { path: "buyer/accountsettings", component: SideAccountSettingsComponent },
   {
@@ -59,8 +61,17 @@ const routes: Routes = [
     component: SideAccountSettingssComponent
   },
   {
+    path: "supplier/view-approved-invoice-component",
+    component: ViewApprovedInvoiceComponent
+  },
+ 
+  {
     path: "buyer/pendingOrders",
     component: PendingOrdersComponent
+  },
+  {
+    path: "buyer/view-approve-invoices",
+    component: ViewApproveInvoicesComponent
   },
   
 
