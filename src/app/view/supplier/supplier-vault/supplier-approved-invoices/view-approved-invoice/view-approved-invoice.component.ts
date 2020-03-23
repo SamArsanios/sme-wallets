@@ -260,13 +260,13 @@ export class ViewApprovedInvoiceComponent implements OnInit {
     }
 
 
-    // this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
-    //   console.log(`the supplier Order is ${e.body, null, 2}`)
-    // });
-
-    this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
-      console.log(`the updated Order is ${e.body, null, 2}`)
+    this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
+      console.log(`the supplier Order is ${e.body, null, 2}`)
     });
+
+    // this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
+    //   console.log(`the updated Order is ${e.body, null, 2}`)
+    // });
 
     // let newOrder = Order.createInstance();
     // theInvoice.order.orderStatus = "invoiced";
