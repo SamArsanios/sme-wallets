@@ -27,7 +27,7 @@ export class PopulateSupplierInvoicedOrderTable {
     return fromResponse.map(e => {
 
       return  {
-        orderNo: `ORD-${e.id}`,
+        orderNo: `ord-${e.order.id}`,
         orderDate: e.order.timestamp,
         orderDueDate: e.order.orderDueDate,
         senderName: e.order.buyer.name,

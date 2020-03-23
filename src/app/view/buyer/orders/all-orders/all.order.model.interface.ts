@@ -26,10 +26,10 @@ export class PopulateAllOrderTable {
     return fromResponse.map(e => {
 
       return  {
-        orderNo: e.isbnNumber,
+        orderNo: `ord-${e.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.orderDueDate,
-        // senderName : e.buyer.name,
+        senderName : e.buyer.name,
         orderStatus: e.orderStatus,
         action: e.id
       };

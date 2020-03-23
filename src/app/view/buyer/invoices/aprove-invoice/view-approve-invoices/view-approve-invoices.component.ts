@@ -362,6 +362,7 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
     let invoicess = Invoice.createInstance();
     OldInvoice.invoiceStatus = "approved";
+    OldInvoice.order.orderStatus = "approved"
     this.objectsUtil.objectToInstance(invoicess, OldInvoice);
 
     this.httpService.putRequest("/invoices/update", OldInvoice).subscribe(e => {
