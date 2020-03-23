@@ -108,10 +108,6 @@ import { Router } from '@angular/router';
 import { ISupplierApprovedOrders, PopulateSupplierApprovedOrderTable } from './supplier.approved.invoices.model.interface';
 import { SupplierApprovedOrdersData } from 'src/app/service/supplier/supplier.approved.order.data';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
-// import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
-// import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
-// import { SupplierPendingOrderData } from 'src/app/service/order/supplier.pending.order.data';
-// import { ISupplierApprovedOrders, PopulateSupplierPendingOrderTable } from './supplier.pending.order.model.interface';
 
 @Component({
   selector: "app-supplier-approved-invoices",
@@ -146,7 +142,6 @@ export class SupplierApprovedInvoicesComponent implements OnInit {
           this.receivers.push(theOder);
           SupplierApprovedOrdersData.addAsupplierApprovedOrders(theOder)
           SupplierApprovedOrdersData.addAsupplierApprovedOrdersToMap(theOder, theOder.id)
-          // alert(`these are all the orders made by id1 ${this.receivers}`)
 
         }
       });

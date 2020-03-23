@@ -27,7 +27,7 @@ import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-s
 import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
 import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
 import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
-import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-view-orders/supplier-view-orders.component";
+import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-view-orders/supplier-view-orders.component";
 import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
 import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-allorders.component';
 import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/approve-orders/view-all-approved-orders/view-all-approved-orders.component';

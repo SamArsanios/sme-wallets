@@ -1,6 +1,6 @@
-import { Order } from 'src/app/model/buyer/order/order-model';
+// import { Order } from 'src/app/model/buyer/order/order-model';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
-import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+// import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 
 export interface ISupplierApprovedOrders {
     orderNo: string;
@@ -16,24 +16,24 @@ export class PopulateSupplierApprovedOrderTable {
 
   public static displayedColumns: string[] = [
         "orderNo",
-        "invoiceDate",
-        "invoiceDueDate",
+        "orderDate",
+        "orderDueDate",
         "senderName",
         "orderStatus",
         "action"
       ];
 
 
-  public  static populateTableOnInit(fromResponse: Invoice[]) {
+  public  static populateTableOnInit(fromResponse: SupplierOrder[]) {
 
     return fromResponse.map(e => {
       console.log(`the naaame ${JSON.stringify(e.order.buyer.name, null, 2)}`)
       return  {
-        orderNo: `INV-${e.id}`,
-        invoiceDate: e.invoiceDate,
-        invoiceDueDate: e.invoiceDueDate,
+        orderNo: `ord-${e.order.id}`,
+        orderDate: e.order.timestamp,
+        orderDueDate: "not yet culculated",
         senderName: e.order.buyer.name,
-        orderStatus: e.invoiceStatus,
+        orderStatus: e.order.orderStatus,
         action: e.id
       };
 
