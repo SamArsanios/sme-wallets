@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <input type="text" [value]="phoneNumber" [disabled]="disabled" (keyup)="phoneNumberChanged($event.target.value)"
+  <input  type="text" [value]="phoneNumber" [disabled]="disabled" (keyup)="phoneNumberChanged($event.target.value)"
     class="form-control"
     [placeholder]="placeholderText + ': ' + getAsYouTyped(examples[countries[selectedCountryIndex].iso2])"
     aria-label="Text input with dropdown button">

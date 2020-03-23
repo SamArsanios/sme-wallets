@@ -5,6 +5,7 @@
  */
 
 import { User } from '../user/user-model';
+import { WalletTransient } from './wallet-model-transient';
 
 export class Wallet {
 
@@ -13,11 +14,15 @@ export class Wallet {
         timestamp: string;
         user: User;
 
-        constructor($id: number, $name: string, $timestamp: string, $user: User) {
-                this.id = $id;
-                this.name = $name;
-                this.timestamp = $timestamp;
-                this.user = $user;
+        constructor(id: number, name: string, timestamp: string, user: User) {
+                this.id = id;
+                this.name = name;
+                this.timestamp = timestamp;
+                this.user = user;
         }
+
+        static createInstance(): Wallet{
+                return new Wallet(null, null, null, null);
+              }
 
 }

@@ -1,6 +1,6 @@
 <app-header></app-header>
 <app-suppliernav></app-suppliernav>
-<div class="container">
+<div class="container-fluid">
   <mat-tab-group #tabRef>
     <!-- First Tab -->
     <!-- View Pending Orders -->
@@ -14,7 +14,7 @@
     <!-- View Current Orders-->
     <mat-tab label="Current Orders">
       <div class="container">
-        <app-supplier-pending-orders></app-supplier-pending-orders>
+        <!-- <app-supplier-current-orders></app-supplier-current-orders> -->
       </div>
     </mat-tab>
 
@@ -22,7 +22,7 @@
     <!-- View Invoiced Orders-->
     <mat-tab label="Invoiced Orders">
       <div class="container">
-        <app-supplier-pending-orders></app-supplier-pending-orders>
+        <app-supplier-invoiced-orders></app-supplier-invoiced-orders>
       </div>
     </mat-tab>
 
@@ -30,7 +30,7 @@
     <!-- View All Orders-->
     <mat-tab label="All Orders">
       <div class="container">
-        <app-supplier-pending-orders></app-supplier-pending-orders>
+        <app-supplier-all-orders></app-supplier-all-orders>
       </div>
     </mat-tab>
   </mat-tab-group>

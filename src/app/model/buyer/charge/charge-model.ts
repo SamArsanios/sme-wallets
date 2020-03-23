@@ -48,4 +48,9 @@ export class Charge {
     this.user = $user;
     this.wallet = $wallet;
   }
+
+  static createInstance(): Charge {
+    return new Charge(null, null, null, null, null, null, null, null, null,
+      null, null, null);
+  }
 }

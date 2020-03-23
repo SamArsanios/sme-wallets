@@ -1,113 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <!-- I am the first column -->
-        </div>
-        <div class="samu col-sm-8">
-          <h1>Member Sign In</h1>
-          <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <div class="form-group">
-              <label for="username">Username</label>
+<form #form="ngForm" class="register" (ngSubmit)=onSubmit(form)>
 
-              <input
-                id="user"
-                name="username"
-                class="form-control"
-                placeholder="Username"
-                [(ngModel)]="loginData.username"
-                #usernameField="ngModel"
-                required
-              />
-              <div
-                class="alert alert-danger"
-                [hidden]="!form.submitted || usernameField.valid"
-              >
-                please enter a valid email address
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6" id="bgimage">
+
+      </div>
+
+      <div class="col-sm-6">
+        <div class="majorcontent">
+          <div class="row">
+            <div class="title">
+              <p>Member Sign In</p>
+            </div>
+            <hr class="detail">
+          </div>
+
+          <div class="main">
+
+
+
+            <div class="row">
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Enter Your Email</mat-label>
+                <input matInput placeholder="Enter Email" name="email" [(ngModel)]="email" required #emails="ngModel"
+                  [class.ld-error]="form.submitted && emails.invalid">
+              </mat-form-field>
+
+              <div [hidden]="!form.submitted || emails.valid" class="alert alert-danger">
+                Please Enter a valid email Address
               </div>
             </div>
-            <div class="form-group">
-              <label for="email">Password</label>
-              <input
-                id="pass"
-                name="password"
-                class="form-control"
-                placeholder="Password"
-                [(ngModel)]="loginData.password"
-                #passwordField="ngModel"
-                required
-              />
-              <div
-                class="alert alert-danger"
-                [hidden]="!form.submitted || usernameField.valid"
-              >
-                please enter the correct password
+
+            <div class="row">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Enter Your password</mat-label>
+                <input matInput placeholder="password" name="password" type="password" [(ngModel)]=password required #emal="ngModel"
+                  [class.ld-error]="form.submitted && emal.invalid">
+              </mat-form-field>
+              
+              <div [hidden]="!form.submitted || emal.valid" class="alert alert-danger">
+                Please Enter a valid password
               </div>
             </div>
-            <input
-              id="btnSignin"
-              type="submit"
-              value="Sign In"
-              class="btn btn-indigo btn-block"
-            />
-            <div id="forgotpass">
-              <p><a> Forgot Password?</a></p>
-              <p>Dont have an account?<a routerLink="/register">Sign Up</a></p>
-            </div>
-            <!-- Material input -->
-            <!-- <div class="md-form">
-                              <div class="md-form mb-4">
-                                <i class="fas fa-envelope prefix grey-text"></i>
-                                <input
-                                  type="text"
-                                  id="user"
-                                  class="form-control"
-                                  placeholder="Username"
-                                />
-                              </div>
-                              <div class="md-form mb-4">
-                                <i class="fas fa-lock prefix grey-text"></i>
-                                <input
-                                  type="text"
-                                  id="pass"
-                                  class="form-control"
-                                  placeholder="Password"
-                                />
-                              </div>
-                
-                              <label for="form1"></label>
-                              <input
-                                type="submit"
-                                value="Sign In"
-                                class="btn btn-deep-purple btn-block"
-                              />
-                            </div> -->
 
-            <!-- <mat-form-field>
-                              
-                               <i class="fas fa-envelope prefix grey-text"></i> 
-                              <input matInput placeholder="Input" />
-                            </mat-form-field> -->
 
-            <!-- <mat-form-field>
-                                <example-tel-input
-                                  placeholder="Phone number"
-                                  required
-                                ></example-tel-input>
-                                <mat-icon matSuffix>phone</mat-icon>
-                                <mat-hint>Include area code</mat-hint>
-                              </mat-form-field> -->
-          </form>
+          
+
+          <div class="row">
+            <input id="btnregister" class="registers" type="submit" value="Login"
+              class="btn btn-primary btn-block btn-lg" />
+          </div>
+          <div [hidden]="!form.submitted || wrongCredentials" class="alert alert-danger">
+              You cant login with invalid credentials
+          </div>
+        
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>

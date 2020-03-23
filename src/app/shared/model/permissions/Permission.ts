@@ -1,3 +1,5 @@
+import { PermissionTransient } from './permissions-model-transient';
+
 /**
  * @author Daniel Comboni
  * 
@@ -18,6 +20,10 @@
                 this.guardName = $guardName;
                 this.timestamp = $timestamp;
         }
+
+        static createInstance(): Permission{
+                return new Permission(null, null, null, null);
+              }
 
         public getId(): number {
                 return this.id;

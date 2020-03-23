@@ -1,15 +1,3 @@
-a{
-    color: black;
-    font-size: 120%;
- }
- .nav{
-    margin-bottom: 10%;
-   
- } 
- .spacer{
-     margin-bottom: 5%; 
-
- } 
 
  .nav{
     
@@ -23,8 +11,7 @@ a{
 .container{
    margin-top: 10%;
 }
-.row{
-}
+
 .currentOrders, .invoices, .totalorders, .invited-contacts{
    background-color: blue;
    color: white;
@@ -41,3 +28,17 @@ a{
 .icon-display {
    transform: scale(2);
 }
+.container-fluid{
+   padding-top: 250px;
+}
+
+.active {
+   background-color: rgb(208, 208, 235);
+   color: white;
+ }
+
+@media screen and (max-width: 800px) {
+   .container-fluid{
+     /* font-size: 200%; */
+   }
+   } 

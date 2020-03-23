@@ -11,9 +11,9 @@ export class WalletTransient extends Wallet {
 
     timestampStr: String;
 
-    constructor($id: number, $name: string, $timestamp: string, $user: User, $timestampStr: String) {
-        super($id, $name, $timestamp, $user);
-        this.timestampStr = $timestampStr;
+    constructor(id: number, name: string, timestamp: string, user: User, timestampStr: String) {
+        super(id, name, timestamp, user);
+        this.timestampStr = timestampStr;
     }
 
 }

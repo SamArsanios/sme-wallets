@@ -1,0 +1,155 @@
+<body>
+
+    <div class="container">
+      <button class="btn btn-primary btn-sm backbutton" (click)="cancel()">Back</button>
+  
+      <div class="row center">
+        <h3>SME WALLETS</h3>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-sm-6">
+          <ul>
+            <li>Company phone:256 0704555555</li>
+            <li>Email: screentech@gmail.com</li>
+            <li>Website: sme1Wallet</li>
+            <li>Address: plot 4, Kablagala, Uganda</li>
+          </ul>
+        </div>
+        <div class="col-sm-6 orderDate">
+          <h4>PURCHASE ORDER</h4>
+          Dated As: <br>
+          Purchase Order No:
+        </div>
+      </div>
+      <hr>
+  
+  
+      <div class="row details">
+        <div class="col-sm-6 ">
+          <ul class="buyerinfo">
+            <h2><b>Vendor </b></h2>
+            <li>{{buyerName}}</li>
+            <li>Phone : {{buyerPhone}} </li>
+            <li>Email {{buyerEmail}} :</li>
+          </ul>
+        </div>
+        <div class="col-sm-6">
+          <ul class="buyerinfo">
+            <h2><b>Ship To </b></h2>
+  
+            <li>{{supplierName}}</li>
+  
+            <li>Phone : {{supplierPhone}} </li>
+  
+            <li>Email : {{supplierEmail}} </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"> Sr No.</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Sale Unit(PCS/LTR)</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+  
+  
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+  
+                <td> {{srNo}} </td>
+  
+                <td> {{itemName}} </td>
+  
+                <td> {{itemDescription}} </td>
+  
+                <td> {{salesUnit}} </td>
+  
+                <td> {{quantity}} </td>
+  
+                <td> {{price}} </td>
+  
+                <td> {{totalBeforeTax}} </td>
+              </tr>
+  
+  
+  
+            </tbody>
+          </table>
+        </div>
+  
+      </div>
+  
+      <div class="row">
+  
+        <div class="col-sm-6"></div>
+  
+        <div class="col-sm-6">
+  
+          <h3>Order Due</h3>
+  
+          <table>
+  
+            <tr>
+  
+              <th>Subtotal :</th>
+  
+              <td> {{subTotal}} </td>
+  
+            </tr>
+  
+  
+            <tr>
+  
+              <th>Tax :</th>
+  
+              <td> {{tax}} </td>
+  
+            </tr>
+  
+  
+            <tr>
+  
+              <th>Shipping :</th>
+  
+              <td> {{shipping}} </td>
+  
+            </tr>
+  
+  
+            <tr>
+  
+              <th>Total :</th>
+  
+              <td> {{totalAfterTax}} </td>
+  
+            </tr>
+  
+          </table>
+        </div>
+  
+      </div>
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+  
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-primary btn-lg pdfbutton" type="submit">Generate PDF</button>
+  
+        </div>
+      </div>
+  
+    </div>
+  
+  </body>

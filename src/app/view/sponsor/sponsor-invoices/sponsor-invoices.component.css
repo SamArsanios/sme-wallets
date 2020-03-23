@@ -1,13 +1,24 @@
 table {
-    width: 100%;
-  }
-  
-  .mat-sort-header-button {
-  }
-  
-  mat-header-cell {
-    background-color: rebeccapurple;
-    color: beige;
-    font-size: 16px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
+  width: 100%;
+}
+
+.mat-sort-header-button {
+}
+
+mat-header-cell {
+  background-color: rebeccapurple;
+  color: beige;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  padding-top: 200px;
+}
+.active {
+  background-color: rgb(208, 208, 235);
+  color: white;
+}
+
+.mat-form-field {
+  margin-left: 930px;
+}

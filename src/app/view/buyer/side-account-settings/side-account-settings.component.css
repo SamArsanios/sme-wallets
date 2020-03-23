@@ -3,7 +3,7 @@ mat-form-field {
   width: 90%;
 }
 .container {
-  margin-left: 35%;
+  margin: auto;
 }
 
 mat-card {
@@ -14,15 +14,13 @@ mat-card {
 #nav {
   /* margin-top: 10%; */
   position: fixed;
-  margin-right: 5%;
+  margin-right: 0%;
   background-color: cornsilk;
   font-size: 120%;
-  margin-left: 10%;
 }
 
 #personalInfo {
 }
-
 /* app-header {
     position: fixed;
     width: 100%;

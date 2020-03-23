@@ -1,4 +1,5 @@
 <app-header></app-header>
+<!-- <div class="container-fluid"></div>  -->
 <app-sponsornav></app-sponsornav>
 <div class="container">
   <mat-form-field>
@@ -63,16 +64,6 @@
           >Face Value</mat-header-cell
         >
         <mat-cell *matCellDef="let element">{{ element.faceValue }}</mat-cell>
-      </ng-container>
-
-      <!-- Anticipated Settlement Date Column -->
-      <ng-container matColumnDef="anticipatedSettlementDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Anticipated Settlement Date</mat-header-cell
-        >
-        <mat-cell *matCellDef="let element">{{
-          element.anticipatedSettlementDate
-        }}</mat-cell>
       </ng-container>
 
       <!-- Supplier Action Column -->

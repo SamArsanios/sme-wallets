@@ -1,76 +1,16 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
-//data source for filtering and Matsort for sorting
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
-export interface IPendingOrder {
-  orderNo: string;
-  orderDate: any;
-  orderDueDate: any;
-  orderStatus: string;
-  // action: any;
-}
-
-const ELEMENT_DATA: IPendingOrder[] = [
-  {
-    orderNo: "ORD-1",
-    orderDate: "12 - 12 - 2011",
-    orderDueDate: "1 - 1 - 2012",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-2",
-    orderDate: "10 - 1 - 2014",
-    orderDueDate: "2 - 2 - 2014",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-3",
-    orderDate: "12 - 12 - 2019",
-    orderDueDate: "20 - 12 - 2019",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-4",
-    orderDate: "10 - 11 - 1997",
-    orderDueDate: "10 - 11 - 1997",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-5",
-    orderDate: "10 - 5 - 2014",
-    orderDueDate: "15 - 5 - 2014",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-6",
-    orderDate: "10 - 12 - 2015",
-    orderDueDate: "11 - 12 - 2015",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-7",
-    orderDate: "1 - 5 - 2016",
-    orderDueDate: "1 - 6 - 2016",
-    orderStatus: "Approved"
-  },
-  {
-    orderNo: "ORD-8",
-    orderDate: "1 - 2 - 1996",
-    orderDueDate: "10 - 2 - 1996",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-9",
-    orderDate: "10 - 12 - 1999",
-    orderDueDate: "15 - 12 - 1999",
-    orderStatus: "Processing"
-  },
-  {
-    orderNo: "ORD-10",
-    orderDate: "10 - 1 - 2018",
-    orderDueDate: "1 - 1 - 2018",
-    orderStatus: "Approved"
-  }
-];
+import { HttpService } from "../../../../utils/http/http-service";
+import { Order } from "../../../../model/buyer/order/order-model";
+import { ObjectsUtil } from "../../../../utils/objects/objects";
+import {
+  IPendingOrder,
+  PopulatePendingOrderTable
+} from "./pending.order.model.interface";
+import { PopulateTable } from "../../../../utils/tables/populate.table";
+import { PendingOrderData } from "../../../../service/order/pending.order.data";
+import { Router } from "@angular/router";
+import { WebsocketService } from "../../../../utils/websocket/websocket.service";
 
 @Component({
   selector: "app-pending-orders",
@@ -78,28 +18,78 @@ const ELEMENT_DATA: IPendingOrder[] = [
   styleUrls: ["./pending-orders.component.css"]
 })
 export class PendingOrdersComponent implements OnInit {
-  constructor() {}
-  displayedColumns: string[] = [
-    "orderNo",
-    "orderDate",
-    "orderDueDate",
-    "orderStatus",
-    "action"
-  ];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  receivers: Array<Order> = new Array<Order>();
+  pendingOrdersInfoTable: IPendingOrder[] = [];
+  pendingOrdersInfoTableDataSource = new MatTableDataSource(
+    this.pendingOrdersInfoTable
+  );
+
+  displayedColumns: string[] = PopulatePendingOrderTable.displayedColumns;
+
+  constructor(
+    private httpService: HttpService<Order>,
+    private objectsUtil: ObjectsUtil<Order>,
+    private populateTable: PopulateTable<Order, IPendingOrder>,
+    private router: Router,
+    private webSocketService: WebsocketService
+  ) {
+    // this.populateTheTable();
+  }
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  ngOnInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+  private populateTheTable(): void {
+
+    this.httpService.getRequest('/orders/findAll').subscribe(response => {
+
+      this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
+        console.log(`the pending orders are ${JSON.stringify(theOder)}`)
+
+        if (theOder.orderStatus === "pending") {
+
+          this.receivers.push(theOder);
+          PendingOrderData.addAPendingOrder(theOder);
+          PendingOrderData.addAPendingOrderToMap(theOder, theOder.id);
+
+        }
+      });
+
+      const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(this.receivers), this.pendingOrdersInfoTable,
+        this.pendingOrdersInfoTableDataSource, PopulatePendingOrderTable.populateTableOnInit);
+
+      this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(result);
+
+      this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
+
+        PendingOrderData.addAPendingOrder(e);
+        PendingOrderData.addAPendingOrderToMap(e, e.id);
+
+      });
+
+    });
+
+    this.pendingOrdersInfoTableDataSource.sort = this.sort;
+    this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
+
   }
 
-  logData(row) {
-    console.log(row);
+
+  ngOnInit() {
+    this.populateTheTable();
+  }
+
+  handleViewOrderClick($event): void {
+    const id = parseInt($event.target.closest("button").id);
+
+    this.router.navigate(["/buyer/orders/view-orders"]).then(() => {
+      PendingOrderData.setIdOfOrderToView(id);
+    });
   }
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.pendingOrdersInfoTableDataSource.filter = filterValue
+      .trim()
+      .toLowerCase();
   }
 }
