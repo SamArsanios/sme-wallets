@@ -147,12 +147,14 @@
   
         </div>
         <div class="col-sm-4">
-          <button
-            (click)="generatePdf()"
-            class="btn btn-primary btn-lg pdfbutton"
-            type="submit"
-          >
-            Generate PDFssssss
+          <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
+            Generate PDF
+          </button>
+          <button id="btn1" (click)="ApproveInvoice()" class="btn btn-success btn-sm">
+            Approve
+          </button>
+          <button id="btn2" class="btn btn-danger btn-sm">
+            Decline
           </button>
         </div>
       </div>

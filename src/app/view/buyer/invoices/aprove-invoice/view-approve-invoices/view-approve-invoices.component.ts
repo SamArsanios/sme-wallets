@@ -274,10 +274,8 @@ export class ViewApproveInvoicesComponent implements OnInit {
   //   GenerateRaisedInvoicePDF.generatePdf(orderToViewPdf);
   // }
 
-
   ApproveInvoice() {
     let order = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
-    console.log("the firstttttt is teh invoice i want to modify", order)
 
     // modify the Timestamp
     
@@ -368,12 +366,11 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
     this.httpService.putRequest("/invoices/update", OldInvoice).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
+      
     });
 
   }
-
-
-
+ 
 }
 
 

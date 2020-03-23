@@ -88,23 +88,23 @@ export class AproveInvoiceComponent implements OnInit {
     this.populateTheTable();
   }
 
-  // handleViewOrderClick($event): void {
-  //       // tslint:disable-next-line:radix
-  //       const id = parseInt($event.target.closest("button").id);
+  handleViewOrderClick($event): void {
+        // tslint:disable-next-line:radix
+        const id = parseInt($event.target.closest("button").id);
     
-  //       this.router
-  //         .navigate(["/supplier/supplier-purchase-orders/supplier-view-orders"])
-  //         .then(e => {
-  //           console.log(
-  //             `the order to view again: ${JSON.stringify(
-  //               BuyerapproveInvoicesData.getBuyerInvoiceMap().get(id),
-  //               null,
-  //               2
-  //             )} `
-  //           );
-  //           BuyerapproveInvoicesData.setIdOfInvoiceToView(id);
-  //         });
-  //     } 
+        this.router
+          .navigate(["/buyer/view-approve-invoices"])
+          .then(e => {
+            console.log(
+              `the order to view again: ${JSON.stringify(
+                BuyerapproveInvoicesData.getBuyerInvoiceMap().get(id),
+                null,
+                2
+              )} `
+            );
+            BuyerapproveInvoicesData.setIdOfInvoiceToView(id);
+          });
+      } 
 
  
   // handleViewOrderClick($event): void {

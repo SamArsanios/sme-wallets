@@ -10,7 +10,7 @@
     </mat-form-field>
   
     <div class="mat-elevation-z8">
-      <mat-table [dataSource]="buyerInvoiceInfoTableDataSource" matSort>
+      <mat-table [dataSource]="buyerApproveInvoiceInfoTableDataSource" matSort>
         <!-- Inovice Number -->
         <ng-container matColumnDef="invoiceNo">
           <mat-header-cell *matHeaderCellDef mat-sort-header
@@ -50,7 +50,7 @@
         <!-- Invoice Status Column -->
         <ng-container matColumnDef="invoiceStatus">
           <mat-header-cell *matHeaderCellDef mat-sort-header
-            >Invoice Status</mat-header-cell
+            >Invoice Statuss</mat-header-cell
           >
           <mat-cell *matCellDef="let element">{{
             element.invoiceStatus
