@@ -144,13 +144,15 @@ import { BuyerapproveInvoicesData } from 'src/app/service/order/buyerApproveInvo
   selector: 'app-view-approve-invoices',
   templateUrl: './view-approve-invoices.component.html',
   styleUrls: ['./view-approve-invoices.component.css']
-  
+
 })
 export class ViewApproveInvoicesComponent implements OnInit {
+  invoicestatus = false;
   price: number;
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
+  date: string;
 
   supplierName: string;
   supplierPhone: string;
@@ -175,12 +177,13 @@ export class ViewApproveInvoicesComponent implements OnInit {
   tax: number;
   shipping: number;
   totalAfterTax: number;
+  invoiceDueDate: string;
 
   constructor(
     private location: Location,
     private httpService: HttpService<Invoice>,
     private objectsUtil: ObjectsUtil<any>
-    
+
   ) {
 
 
@@ -224,8 +227,8 @@ export class ViewApproveInvoicesComponent implements OnInit {
       this.invoiceId = `INV-${order.id}`;
       this.orderDueDate = order.invoiceDueDate;
       // this.price = order.
-      Invoice
 
+      this.date = order.theTimestamp;
       this.supplierName = order.order.supplier.name;
       this.supplierPhone = order.order.supplier.phoneNumber;
       this.supplierEmail = order.order.supplier.email;
@@ -278,7 +281,7 @@ export class ViewApproveInvoicesComponent implements OnInit {
     let order = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
 
     // modify the Timestamp
-    
+
     const theTimestampStr = "theTimestampStr";
     const invoice = order
     invoice[theTimestampStr] = DateUtils.convertDateFormatToParsable(
@@ -367,11 +370,12 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
     this.httpService.putRequest("/invoices/update", OldInvoice).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
-      
+      this.invoicestatus = true
+
     });
 
   }
- 
+
 }
 
 

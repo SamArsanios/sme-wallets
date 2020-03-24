@@ -161,7 +161,7 @@ export class CreateOrderComponent implements OnInit {
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
       setTimeout(() => {
-       this.cancel() 
+      //  this.cancel() 
       }, 2000);
     });
   } // end onSubmit()

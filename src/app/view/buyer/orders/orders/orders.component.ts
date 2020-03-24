@@ -13,18 +13,22 @@ export class OrdersComponent implements OnInit {
   constructor( private router: Router) { 
     this.navLinks = [
       {
-          label: 'First',
+          label: 'Pending Orders',
           link: './first',
           index: 0
       }, {
-          label: 'Second',
+          label: 'Create Orders',
           link: './second',
           index: 1
       }, {
-          label: 'Third',
+          label: 'Approve Orders',
           link: './third',
           index: 2
-      }, 
+      }, {
+        label: 'Approve Orders',
+        link: './third',
+        index: 2
+    },  
   ];
   }
 

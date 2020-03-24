@@ -166,7 +166,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     });
     this.approveStatus = true;
     setTimeout(() => {
-      this.router.navigate(['/buyer/orders']);
+      // this.router.navigate(['/buyer/orders']);
     }, 2000);
   }
 
