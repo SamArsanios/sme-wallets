@@ -17,9 +17,9 @@
           </ul>
         </div>
         <div class="col-sm-6 orderDate">
-          <h4>PURCHASE ORDER</h4>
+          <h4>INVOICE</h4>
           Dated As: {{date}} <br>
-          Purchase Order No: {{orderNumber}}
+          Invoice No: {{invoiceId}}
         </div>
       </div>
       <hr>
@@ -100,7 +100,7 @@
           <div *ngIf="invoicestatus" class="alert alert-success statusmessage">
             <strong>Success!</strong> This invoice has been approved successful
           </div>
-          <h3>Order Due</h3>
+          <h3>Invoice Due Date: {{orderDueDate}}</h3>
   
           <table>
   
