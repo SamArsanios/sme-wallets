@@ -147,6 +147,7 @@ import { BuyerapproveInvoicesData } from 'src/app/service/order/buyerApproveInvo
   
 })
 export class ViewApproveInvoicesComponent implements OnInit {
+  invoicestatus = false;
   price: number;
   buyerName: string;
   buyerPhone: string;
@@ -367,6 +368,7 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
     this.httpService.putRequest("/invoices/update", OldInvoice).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
+      this.invoicestatus = true
       
     });
 

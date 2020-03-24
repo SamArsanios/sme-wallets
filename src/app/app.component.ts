@@ -11,6 +11,8 @@ import { Order } from "./model/buyer/order/order-model";
 })
 export class AppComponent implements OnInit {
   title = "sme-wallets";
+  
+
 
   constructor(
     private websocketService: WebsocketService,

@@ -241,16 +241,19 @@ export class SupplierViewOrdersComponent implements OnInit {
 
     this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
       console.log(`the supplier Order is ${e.body, null, 2}`)
+      this. invoiceStatus = true;
     });
 
       
       this.invoiceStatus = true;
       setTimeout(() => {
-        this.cancel()
+        // this.cancel()
         // this.router.navigate(['/supplier/pendingorder-orders']);
       }, 2000);
 
   }
+
+  
 }
 
 

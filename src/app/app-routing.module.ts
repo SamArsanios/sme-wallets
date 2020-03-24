@@ -86,6 +86,10 @@ const routes: Routes = [
     path: "home/sponsor/sponsordashboard",
     component: SponsordashboardComponent
   },
+  {
+    path: "approve",
+    component: OrdersComponent
+  },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
 
