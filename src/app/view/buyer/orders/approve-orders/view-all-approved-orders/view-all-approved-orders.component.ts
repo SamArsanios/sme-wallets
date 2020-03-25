@@ -44,6 +44,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   tax: number;
   shipping: number;
   totalAfterTax: number;
+  isbnNumber: string;
 
   constructor(
     private router: Router,
@@ -96,6 +97,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
       this.quantity = order.order.quantity;
       this.totalBeforeTax = order.totalPrice;
       this.totalAfterTax = order.finalTotal;
+      this.isbnNumber = order.order.isbnNumber;
 
     } else {
 

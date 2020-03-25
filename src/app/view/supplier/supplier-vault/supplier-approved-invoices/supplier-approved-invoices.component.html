@@ -9,22 +9,22 @@
   </li>
 
   <div class="mat-elevation-z8">
-    <mat-table [dataSource]="supplierApprovedOrdersInfoTableDataSource" matSort>
+    <mat-table [dataSource]="supplierApprovedInvoicesTableDataSource" matSort>
       <!-- Order Number Column -->
       <ng-container matColumnDef="orderNo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Order No.</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice No.</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.orderNo }}</mat-cell>
       </ng-container>
 
       <!-- Order Date Column -->
       <ng-container matColumnDef="orderDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>orderDate</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Date</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.orderDate }}</mat-cell>
       </ng-container>
 
       <!-- Order Due Date Column -->
       <ng-container matColumnDef="orderDueDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>orderDueDate</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Due Date</mat-header-cell>
         <mat-cell *matCellDef="let element">{{
           element.orderDueDate
         }}</mat-cell>
@@ -38,7 +38,7 @@
 
       <!-- Order Status Column -->
       <ng-container matColumnDef="orderStatus">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Status</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.orderStatus }}</mat-cell>
       </ng-container>
 

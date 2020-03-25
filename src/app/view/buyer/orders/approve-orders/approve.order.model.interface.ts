@@ -29,7 +29,7 @@ export class PopulateApproveOrderTable {
     return fromResponse.map(e => {
 
       return  {
-        orderNo: `ord-${e.id}`,
+        orderNo: `ord-${e.order.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.order.orderDueDate,
         action: e.id,
