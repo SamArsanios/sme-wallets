@@ -53,6 +53,8 @@ export class CreateOrderComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log("the buyer is ",localStorage.getItem('loggedinUser'))
+
     this.httpService.getRequest("/users/findAll").subscribe(e => {
       this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
         if (aSupplier.userType === "supplier") {
@@ -79,6 +81,8 @@ export class CreateOrderComponent implements OnInit {
       "jacob okia ",
       "buyer"
     );
+    // console.log("the buyer is ",localStorage.getItem('loggedinUser'))
+
 
     const emailVerifiedAtStr = "emailVerifiedAtStr";
 

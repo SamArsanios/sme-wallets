@@ -39,7 +39,7 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   srNo: string;
   itemName: string;
   itemDescription: string;
-  salesUnit: string;
+  salesUnit: number;
   quantity: number;
   price: number;
   totalBeforeTax: number;
@@ -48,14 +48,13 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   tax: number;
   shipping: number;
   totalAfterTax: number;
+  invoiceDueDate: string;
 
   constructor(
     private router: Router,
-    // private objectUtilOrder: ObjectsUtil<Order>,
     private objectUtilOrder: ObjectsUtil<Order>,
     private httpService: HttpService<SupplierOrder>,
-    private objectUtil: ObjectsUtil<Invoice>,
-    // private objectUtilOrder: ObjectsUtil<Order>
+    private objectUtil: ObjectsUtil<SupplierOrder>,
     private location: Location
   ) {
 
@@ -68,11 +67,24 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   }
 
   private populateOrderView(): void {
+const order = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
+
+this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
+
+  this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+    if (theOder.order.id === order.order.id) {
+      console.log("the suuuups order is", theOder)
+      this.price = theOder.pricePerItem;
+      this.shipping = theOder.shippingCharges;
+      this.subTotal = theOder.subTotal;
+      this.tax = theOder.taxRate;
+      this.totalAfterTax = theOder.finalTotal;
+    }
+  });
+})
 
 
-    const order = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
-
-    if (order !== undefined && order != null) {
+if (order !== undefined && order != null) {
 
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
@@ -86,37 +98,29 @@ export class ViewApprovedInvoiceComponent implements OnInit {
       this.placeOfDelivery = order.order.placeOfDelivery;
       this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;
+      this.invoiceDueDate = order.invoiceDueDate;
 
       this.srNo = `ord-${order.id}`;
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
-      // this.salesUnit = order.order.saleUnit;
-      this.price = order.pricePerItem;
-      this.totalBeforeTax = order.totalPrice;
-
-      this.subTotal = order.subTotal;
-      this.tax = order.taxRate;
-      this.shipping = order.shippingCharges;
+      this.salesUnit = order.order.saleUnit;
       this.quantity = order.order.quantity;
-      this.totalBeforeTax = order.subTotal;
-      this.totalAfterTax = order.finalTotal;
+
 
     } else {
-
-      // fetch the order direct from the db basing on the ID provided
 
     }
 
   }
 
-  generatePdf() {
-    const id = SupplierApprovedOrdersData.getIdOfOrderToView();
-    const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
+  // generatePdf() {
+  //   const id = SupplierApprovedOrdersData.getIdOfOrderToView();
+  //   const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
 
-    console.log(orderToViewPdf);
+  //   console.log(orderToViewPdf);
 
-    GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
-  }
+  //   GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
+  // }
 
   temporaryWallet(buyer: User): Wallet {
     let wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
