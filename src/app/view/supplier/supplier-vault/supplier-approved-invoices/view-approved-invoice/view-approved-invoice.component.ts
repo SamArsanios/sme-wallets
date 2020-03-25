@@ -51,7 +51,7 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   constructor(
     private router: Router,
     // private objectUtilOrder: ObjectsUtil<Order>,
-    private objectUtilOrder: ObjectsUtil<Order>,
+    private objectUtilInvoice: ObjectsUtil<Invoice>,
     private httpService: HttpService<SupplierOrder>,
     private objectUtil: ObjectsUtil<Invoice>,
     // private objectUtilOrder: ObjectsUtil<Order>
@@ -90,15 +90,15 @@ export class ViewApprovedInvoiceComponent implements OnInit {
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       // this.salesUnit = order.order.saleUnit;
-      this.price = order.pricePerItem;
-      this.totalBeforeTax = order.totalPrice;
+      // this.price = order.order.;
+      // this.totalBeforeTax = order.totalPrice;
 
-      this.subTotal = order.subTotal;
-      this.tax = order.taxRate;
-      this.shipping = order.shippingCharges;
-      this.quantity = order.order.quantity;
-      this.totalBeforeTax = order.subTotal;
-      this.totalAfterTax = order.finalTotal;
+      // this.subTotal = order.subTotal;
+      // this.tax = order.taxRate;
+      // this.shipping = order.shippingCharges;
+      // this.quantity = order.order.quantity;
+      // this.totalBeforeTax = order.subTotal;
+      // this.totalAfterTax = order.finalTotal;
 
     } else {
 
@@ -108,14 +108,14 @@ export class ViewApprovedInvoiceComponent implements OnInit {
 
   }
 
-  generatePdf() {
-    const id = SupplierApprovedOrdersData.getIdOfOrderToView();
-    const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
+  // generatePdf() {
+  //   const id = SupplierApprovedOrdersData.getIdOfOrderToView();
+  //   const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
 
-    console.log(orderToViewPdf);
+  //   console.log(orderToViewPdf);
 
-    GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
-  }
+  //   GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
+  // }
 
   temporaryWallet(buyer: User): Wallet {
     let wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
@@ -188,26 +188,24 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   }
 
   raiseInvoice(form: NgForm) {
-
-
     const supplierOrders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
 
-    let invoiceDueDatehtml = (<HTMLInputElement>document.getElementById("dates")).value
-    let parsableDueDate = DateUtils.convertDateFormatToParsable(invoiceDueDatehtml)
-    console.log("the invoice dueeeee is", parsableDueDate)
+     let invoiceDueDatehtml = (<HTMLInputElement>document.getElementById("dates")).value
+let parsableDueDate = DateUtils.convertDateFormatToParsable(invoiceDueDatehtml)
+console.log("the invoice dueeeee is", parsableDueDate)
 
 
     // change buyer email verified at string
-    const buyerEmailverifiedAtStr = "emailVerifiedAtStr";
+    const buyerEmailverifiedAtStr = "buyerEmailverifiedAtStr";
     const neededos = neededOrder.buyer
     neededos[buyerEmailverifiedAtStr] = neededOrder.buyer.emailVerifiedAt
     neededos[buyerEmailverifiedAtStr] = DateUtils.convertDateFormatToParsable(neededos.emailVerifiedAt)
     neededos.emailVerifiedAt = null
 
     //  change supplier email verified at
-    const supplierEmailverifiedAtStr = "emailVerifiedAtStr";
+    const supplierEmailverifiedAtStr = "supplierEmailverifiedAtStr";
     const supplierInfo = neededOrder.supplier
     supplierInfo[supplierEmailverifiedAtStr] = supplierInfo.emailVerifiedAt
     supplierInfo[supplierEmailverifiedAtStr] = DateUtils.convertDateFormatToParsable(supplierInfo.emailVerifiedAt)
@@ -223,14 +221,14 @@ export class ViewApprovedInvoiceComponent implements OnInit {
 
     // change timestamp for the wallet in order
 
-    const walletTimestampStr = "timestampStr";
+    const walletTimestampStr = "walletTimestampStr";
     const walletstamps = neededOrder.wallet
     walletstamps[walletTimestampStr] = neededOrder.wallet.timestamp
     walletstamps[walletTimestampStr] = DateUtils.convertDateFormatToParsable(walletstamps.timestamp)
     walletstamps.timestamp = null
 
     // change email verified at for user in wallet
-    const userwalletTimestampStr = "emailVerifiedAtStr";
+    const userwalletTimestampStr = "userwalletTimestampStr";
     const userwalletstamps = neededOrder.wallet.user
     userwalletstamps[userwalletTimestampStr] = neededOrder.wallet.user.emailVerifiedAt
     userwalletstamps[userwalletTimestampStr] = DateUtils.convertDateFormatToParsable(userwalletstamps.emailVerifiedAt)
@@ -239,9 +237,9 @@ export class ViewApprovedInvoiceComponent implements OnInit {
 
     console.log("am looking for", neededOrder)
 
-
+   
     let theInvoice = {
-      "order": neededOrder,
+      "order":neededOrder,
       "sponsor": {
         "id": 3,
         "email": "tintino@gmail.com",
@@ -254,41 +252,14 @@ export class ViewApprovedInvoiceComponent implements OnInit {
       },
 
       "invoiceDueDateStr": parsableDueDate,
-
+     
       "invoiceStatus": "invoice raised"
 
     }
 
-
-    // this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
-    //   console.log(`the supplier Order is ${e.body, null, 2}`)
-    // });
-
-    this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
-      console.log(`the updated Order is ${e.body, null, 2}`)
+    this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
+      console.log(`the supplier Order is ${e.body, null, 2}`)
     });
-
-    // let newOrder = Order.createInstance();
-    // theInvoice.order.orderStatus = "invoiced";
-    // this.objectUtilOrder.objectToInstance(newOrder, theInvoice.order);
-    // let order = theInvoice.order
-
-
-
-    let newOrder = Order.createInstance();
-    theInvoice.order.orderStatus = "raised invoices"
-    this.objectUtilOrder.objectToInstance(newOrder, theInvoice.order)
-    console.log("the order from this is ", theInvoice.order)
-
-    this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
-      console.log(`the updated Order is ${e.body, null, 2}`)
-    });
-
-
-    // this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
-    //   console.log(`the updated Order is ${e.body, null, 2}`)
-    // });
-
   }
 
   ngOnInit() {

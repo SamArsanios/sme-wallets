@@ -39,7 +39,6 @@ export class SupplierViewOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
   constructor(
-    
     private router: Router,
     private objectUtilOrder: ObjectsUtil<Order>,
     private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
@@ -48,9 +47,9 @@ export class SupplierViewOrdersComponent implements OnInit {
   ) {
     this.populateOrderView();
   }
-  cancel() {
-    this.location.back();
-  }
+  // cancel() {
+  //   this.location.back();
+  // }
   private populateOrderView(): void {
     const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
       SupplierPendingOrderData.getIdOfOrderToView()
@@ -66,7 +65,7 @@ export class SupplierViewOrdersComponent implements OnInit {
       this.placeOfDelivery = order.placeOfDelivery;
       this.termsOfPayment = order.paymentTerms;
       this.termsOfDelivery = order.deliveryTerms;
-      this.srNo = order.isbnNumber;
+      this.srNo = `ord-${order.id}`;
       this.itemName = order.itemName;
       this.itemDescription = order.itemDescription;
       this.salesUnit = order.saleUnit;
@@ -246,8 +245,7 @@ export class SupplierViewOrdersComponent implements OnInit {
       
       this.invoiceStatus = true;
       setTimeout(() => {
-        this.cancel()
-        // this.router.navigate(['/supplier/pendingorder-orders']);
+        this.router.navigate(['/supplier/pendingorder-orders']);
       }, 2000);
 
   }

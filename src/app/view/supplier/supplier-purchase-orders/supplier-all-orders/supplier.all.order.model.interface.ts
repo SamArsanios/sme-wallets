@@ -28,7 +28,7 @@ export class PopulateSupplierAllOrderTable {
     return fromResponse.map(e => {
       console.log(`the naaame ${JSON.stringify(e.order.buyer.name, null, 2)}`)
       return  {
-        orderNo: `ord-${e.order.id}`,
+        orderNo: `ORD-${e.id}`,
         orderDate: e.timestamp,
         orderDueDate: e.order.orderDueDate,
         senderName: e.order.buyer.name,

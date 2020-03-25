@@ -157,7 +157,13 @@
 
 
       <div *ngIf="orderStatusSupplier" class="alert alert-success statusmessage">
-         </div>
+        <button
+        (click)="RaiseInvoice()"
+        class="btn btn-primary btn-lg pdfbutton"
+        type="submit"
+      >
+        Raise Invoice
+      </button>      </div>
       </div>
     </div>
 </div>

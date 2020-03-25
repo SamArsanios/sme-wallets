@@ -15,7 +15,6 @@ import { SupplierData } from "../../../../service/supplier/supplier.data";
 import { Wallet } from "../../../../shared/model/wallet/wallet-model";
 import { WebsocketService } from "src/app/utils/websocket/websocket.service";
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: "app-create-order",
@@ -27,7 +26,7 @@ export class CreateOrderComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(
-    private location: Location,
+    // private location: Location,
     private router: Router,
     private httpService: HttpService<User>,
     private objectUtil: ObjectsUtil<User>,
@@ -47,10 +46,9 @@ export class CreateOrderComponent implements OnInit {
 
   receivers: Array<User> = new Array<User>();
 
-  cancel() {
-    this.location.back(); // <-- go back to previous location on cancel
-  }
-
+  // cancel() {
+  //   this.location.back(); // <-- go back to previous location on cancel
+  // }
 
   ngOnInit() {
     this.httpService.getRequest("/users/findAll").subscribe(e => {
@@ -161,7 +159,7 @@ export class CreateOrderComponent implements OnInit {
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
       setTimeout(() => {
-       this.cancel() 
+        
       }, 2000);
     });
   } // end onSubmit()
