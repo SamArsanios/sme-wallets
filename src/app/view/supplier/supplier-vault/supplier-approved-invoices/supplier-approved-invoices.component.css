@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+.mat-sort-header-arrow {
+  color: red;
+}
+
+.mat-sort-header-stem {
+  color: red;
+  background-color: red;
+}
+
+mat-header-cell {
+  background-color: rebeccapurple;
+  color: beige;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mat-form-field {
+  margin-left: 900px;
+}

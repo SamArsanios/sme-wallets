@@ -1,0 +1,21 @@
+<app-header></app-header>
+<app-buyernav></app-buyernav>
+<div class="container">
+  <mat-tab-group #tabRef>
+    <!-- First Tab -->
+    <!-- Approved Invoices -->
+    <mat-tab label="Approved Invoices">
+      <div class="container-fluid">
+        <app-approved-invoices></app-approved-invoices>
+      </div>
+    </mat-tab>
+
+    <!-- Second Tab -->
+    <!-- Completed Invoices-->
+    <mat-tab label="Completed Invoices">
+      <div class="container-fluid">
+        <app-completed-invoices></app-completed-invoices>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

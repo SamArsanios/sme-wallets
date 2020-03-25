@@ -1,0 +1,26 @@
+<div class="input-group" (keydown)="keyboardNav($event)">
+  <div class="input-group-prepend">
+    <button class="btn btn-selected" [disabled]="disabled" type="button" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false" (focus)="onFocused()" (blur)="onBlured($event)" (click)="onCountrySelectionButtonClicked()">
+      <span class="flag-icon" [ngClass]="'flag-icon-' + selectedCountry.iso2.toLowerCase()"></span>
+      <span class="dial-code"> +{{selectedCountry.dialCode}}</span>
+      <span class="arrow" [ngStyle]="{'transform' : isMenuOpen ? '' : 'deg(180)'}">
+        ▼
+      </span>
+    </button>
+    <div #menu class="dropdown-menu">
+      <div class="dropdown-item"
+        [ngClass]="{'selected': selectedCountryIndex === i,'hovered':tempSelectedCountryIndex === i}"
+        (click)="pickCountry(country)" (keyup.enter)="pickCountry(country)"
+        *ngFor="let country of countries;let i = index;">
+        <span class="flag-icon" [ngClass]="'flag-icon-' + country.iso2.toLowerCase()"></span>
+        <span class="country-name ml-2">{{country.name}}</span>
+        <!-- <span class="ml-2 phone-code">+{{getCountryCallingCode(country)}}</span> -->
+      </div>
+    </div>
+  </div>
+  <input  type="text" [value]="phoneNumber" [disabled]="disabled" (keyup)="phoneNumberChanged($event.target.value)"
+    class="form-control"
+    [placeholder]="placeholderText + ': ' + getAsYouTyped(examples[countries[selectedCountryIndex].iso2])"
+    aria-label="Text input with dropdown button">
+</div>

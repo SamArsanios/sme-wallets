@@ -1,0 +1,492 @@
+<nav>
+  <app-header></app-header>
+  <!-- <div class="contain"></div> -->
+  <app-sponsornav></app-sponsornav>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+      <div class="navs">
+        <!-- <nav class="nav flex-column" data-spy="scroll" data-target=".navbar" pageScrollOffset="100px"> -->
+
+        <a
+          class="nav-link"
+          pageScroll
+          PageScrollConfig.defaultScrollOffset="500"
+          href="#personalInfo"
+          >Personal Info</a
+        >
+        <a class="nav-link" pageScroll href="#registered-address"
+          >registered address</a
+        >
+        <a class="nav-link" pageScroll href="#corresponsing-address"
+          >corresponsing address</a
+        >
+        <a class="nav-link" pageScroll href="#company-information"
+          >company information</a
+        >
+        <a class="nav-link" pageScroll href="#update-password"
+          >update-password</a
+        >
+        <a class="nav-link" pageScroll href="#security-questions"
+          >security questions</a
+        >
+        <a class="nav-link" pageScroll href="#payment-details"
+          >payment details</a
+        >
+        <a class="nav-link" pageScroll href="#quality">quality</a>
+        <a class="nav-link" pageScroll href="#bank-details">bank details</a>
+        <!-- </nav> -->
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <!-- <div class="col-md-9"> -->
+      <mat-card>
+        <mat-card-title id="personalInfo">Personal Information</mat-card-title>
+        <mat-card-content>
+          <div>
+            <form #personalInfoForm="ngForm" (ngSubmit)="onSubmit(form)">
+              <div
+                class="form-group"
+                
+              >
+                <mat-form-field appearance="outline">
+                  <mat-label class="control-label">Name</mat-label>
+
+                  <input
+                    matInput
+                    required 
+                    name="name"
+                    #personalInfoName="ngModel"
+                    [(ngModel)]="name"
+                    
+                  />
+                  
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden] = "!personalInfoName.touched || personalInfoName.valid ">
+                  Please enter name
+                </span>
+              </div> 
+
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+
+              <input matInput required name="email" #personalInfoEmail="ngModel"[(ngModel)]="email" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden] = "!personalInfoEmail.touched || personalInfoEmail.valid &&personalInfoForm.submitted ">Please enter your email</span>
+                
+              </div>
+
+              <div [class.has-error]="personalInfoWallet.touched|| personalInfoWallet.invalid">
+                  <label for="">Wallet</label>
+                  <mat-radio-group label="Wallet" >
+                    <mat-radio-button
+                      *ngFor="let option of options"
+                      [value]="option" required name="wallet" [(ngModel)]="wallet"  #personalInfoWallet="ngModel"
+                    >
+                      {{ option }}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                  <span *ngIf="personalInfoWallet.invalid && personalInfoForm.submitted">Please choose a wallet</span>
+
+              </div>
+
+
+              
+              {{ personalInfoForm.value | json }}
+              <button mat-raised-button color="primary" type="submit" onsubmit="updatePersonalInfo()">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="registered-address">
+        <mat-card-title>Registered Address</mat-card-title>
+        <mat-card-content>
+          <div>
+            <form #registeredAddress="ngForm" (ngSubmit)="onSubmit(form)">
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contact</mat-label>
+    
+                    <input matInput name="contact" type="number" required #registeredContact="ngModel" [(ngModel)]="contact" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!registeredContact.touched ||registeredContact.valid">Please enter the contact</span>
+            </div>
+
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+    
+                    <input matInput name="city" required #registeredCity ="ngModel" [(ngModel)]="city" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!registeredCity.touched ||registeredCity.valid">Please enter the City</span>
+    
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>
+    
+                    <input matInput name="state" required #registeredState="ngModel" [(ngModel)]="state" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!registeredState.touched ||registeredState.valid">Please enter the State</span>
+    
+            </div>
+           
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+    
+                    <input matInput name="country" required #registeredCountry="ngModel" [(ngModel)]= "country" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!registeredCountry.touched ||registeredCountry.valid">Please enter the Country</span>
+            </div>
+
+           <div>
+              <mat-form-field appearance="outline">
+                  <mat-label>Zip Code</mat-label>
+  
+                  <input matInput name="zipcode" type="number" required #registeredZipcode ="ngModel" [(ngModel)]="zipcode" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!registeredZipcode.touched ||registeredZipcode.valid">Please enter the Zip Code</span>
+  
+           </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="corresponsing-address">
+        <mat-card-title>Correspodence Address</mat-card-title>
+        <mat-card-content>
+          <div>
+            <form #correspondenceAddress ="ngForm" (ngSubmit)="onSubmit(form)">
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contact</mat-label>
+                    <input matInput name="contact" type="number" required #correspondenceContact ="ngModel" [(ngModel)]="contact" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!correspondenceContact.touched ||correspondenceContact.valid">Please enter the Contact</span>
+
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input matInput name="city" type="text" required #correspondenceCity="ngModel" [(ngModel)]="city" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!correspondenceContact.touched ||correspondenceContact.valid">Please enter the Contact</span>
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input matInput name="state" required #correspondenceState="ngModel" [(ngModel)]="state" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!correspondenceState.touched ||correspondenceState.valid">Please enter the State</span>
+
+            </div>
+            
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input matInput name="country" required #correspondenceCountry="ngModel" [(ngModel)]="country" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!correspondenceCountry.touched ||correspondenceCountry.valid">Please enter the Country</span>
+
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Zip Code</mat-label>
+                    <input matInput name="zipcode" required type="number" #correspondenceZipcode="ngModel" [(ngModel)]="zipcode" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!correspondenceZipcode.touched ||correspondenceZipcode.valid">Please enter the Zip Code</span>
+
+            </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card id="company-information">
+        <mat-card-title>
+          Company Information
+        </mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form #companyInfo="ngForm" (ngSubmit)="onSubmit(form)">
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput name="companyname" required #companyInfoName="ngModel" [(ngModel)]="companyname" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!companyInfoName.touched ||companyInfoName.valid">Please enter the Company Name</span>
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Company Representative Name</mat-label>
+                    <input matInput name="companyrepresentativename" required #companyRep="ngModel" [(ngModel)]="companyrepresentativename" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!companyRep.touched ||companyRep.valid">Please enter the Company Representative Name</span>
+
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Company Email</mat-label>
+                    <input matInput name="email" required #companyEmail="ngModel" [(ngModel)]="email" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!companyEmail.touched ||companyEmail.valid">Please enter the Company Email</span>
+
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>CRB/BUNS Number</mat-label>
+                    <input matInput name="crbnumber" required #companyCrb="ngModel" [(ngModel)]="crbnumber" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!companyCrb.touched ||companyCrb.valid">Please enter the CRB/BUNS Number</span>
+            </div>
+            
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Company Address</mat-label>
+                    <input matInput name="address" required #companyAddress="ngModel" [(ngModel)]="address" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!companyAddress.touched ||companyAddress.valid">Please enter the Company Address</span>
+
+            </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="update-password">
+        <mat-card-title>
+          Update Password
+        </mat-card-title>
+        <mat-card-content>
+          <div>
+            <form action="">
+              <mat-form-field appearance="outline">
+                <mat-label>Current Email</mat-label>
+                <input matInput />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input matInput />
+              </mat-form-field>
+              <br />
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput />
+              </mat-form-field>
+              <br />
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="security-questions">
+        <mat-card-title>
+          Update Security Questions
+        </mat-card-title>
+
+        <mat-card-content>
+          <div>
+            <form #securityQuestion="ngForm">
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>
+                    In what city or town did your mother and father meet?
+                  </mat-label>
+                  <input matInput required name="firstMeeting" #cityMeeting="ngModel" [(ngModel)]="firstMeeting" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!cityMeeting.touched ||cityMeeting.valid">Please enter the city your mother and father met</span>
+              </div>
+
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>In what town was your first job?</mat-label>
+                  <input matInput required name="firstJob" #firstJobTown="ngModel" [(ngModel)]="firstJob" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!firstJobTown.touched ||firstJobTown.valid">Please enter the town you had your first job</span>
+              </div>
+              
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label
+                    >What was the name of the company where you had your first
+                    job?
+                  </mat-label>
+                  <input matInput required name="companyName" #firstJobCompany="ngModel" [(ngModel)]="companyName" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!firstJobCompany.touched ||firstJobCompany.valid">Please enter the company you had your first job</span>
+
+              </div>
+              
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>What was your favorite food as a child?</mat-label>
+                  <input matInput required name="favoritefood" #favoriteFood="ngModel" [(ngModel)]="favoritefood" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!favoriteFood.touched ||favoriteFood.valid">Please enter your childhood favorite food</span>
+              </div>
+              
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label
+                    >What is the name of your favorite childhood friend?</mat-label>
+                  <input matInput required name="childhoodfriend" #childhoodFriend="ngModel" [(ngModel)]="childhoodfriend" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!childhoodFriend.touched ||childhoodFriend.valid">Please enter your childhood favorite food</span>
+              </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="payment-details">
+        <mat-card-title>Payment Details</mat-card-title>
+        <mat-card-content>
+          <div>
+            <form #paymentDetails="ngForm" (ngSubmit)="onSubmit(form)">
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Order Currency</mat-label>
+                    <input matInput required name="ordercurrency" #paymentOrderCurrency="ngModel" [(ngModel)]="ordercurrency" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!paymentOrderCurrency.touched ||paymentOrderCurrency.valid">Please enter the Order Currency</span>
+            </div>
+            
+           <div>
+            <mat-form-field appearance="outline">
+              <mat-label>IncoTerms</mat-label>
+              <input matInput required name="incoterms" #incoTerms="ngModel" [(ngModel)]="incoterms" />
+            </mat-form-field>
+            <span class="alert alert-danger" [hidden]="!incoTerms.touched ||incoTerms.valid">Please enter the IncoTerms</span>
+           </div>
+            
+            
+           <div>
+            <mat-radio-group>
+              <mat-radio-button value="Agric"
+                >Telegraphic Transfer</mat-radio-button
+              >
+              <mat-radio-button value="SMe"
+                >Cheque Credit Period</mat-radio-button
+              >
+            </mat-radio-group>
+           </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="quality">
+        <mat-card-title>Quality</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <form #quality="ngForm">
+              <div>
+                <mat-radio-group label="Wallet">
+                  <label label>Is your company ISO 9001 certified?</label>
+                  <mat-radio-button value="Yes">Yes</mat-radio-button>
+                  <mat-radio-button value="No">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div>
+                <mat-label>
+                  If your company is not ISO 9001 certified,<br />
+                  what other quality assurance program/process is in place in your
+                  company?
+                </mat-label>
+                <mat-form-field appearance="outline">
+                  <textarea matInput required name="alternatecertification" #alternateCertification="ngModel" [(ngModel)]="alternatecertification"></textarea>
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!alternateCertification.touched ||alternateCertification.valid">Please enter the alternate Certification in place</span>
+              </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card id="bank-details">
+        <mat-card-title>Bank Details</mat-card-title>
+        <mat-card-content>
+          <div class="container">
+            <form #bankDetails="ngForm">
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Bank Name</mat-label>
+                    <input matInput name="bankname" required #bankName="ngModel"  [(ngModel)]="bankname" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!bankName.touched ||bankName.valid">Please enter the Company Address</span>
+            </div>
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Branch</mat-label>
+                    <input matInput name="branch" required  #Branch="ngModel" [(ngModel)]="branch" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!Branch.touched ||Branch.valid">Please enter the Bank branch</span>
+
+            </div>
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Swift Code</mat-label>
+                    <input matInput name="swiftcode" required type="number" #swiftCode="ngModel"  [(ngModel)]="swiftcode" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!swiftCode.touched ||swiftCode.valid">Please enter the Swift Code</span>
+
+              </div>
+              <div>
+                  <mat-form-field appearance="outline">
+                      <mat-label>Bank Code</mat-label>
+                      <input matInput required name="bankcode" #bankCode="ngModel"  [(ngModel)]="bankcode" />
+                    </mat-form-field>
+                    <span class="alert alert-danger" [hidden]="!bankCode.touched ||bankCode.valid">Please enter the Bank Code</span>
+
+              </div>
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Beneficiary's Name</mat-label>
+                    <input matInput name="beneficiaryname" required #beneficiaryName="ngModel" [(ngModel)]="beneficiaryname" />
+                  </mat-form-field>
+                  <span class="alert alert-danger" [hidden]="!beneficiaryName.touched ||beneficiaryName.valid">Please enter the Beneficiary's Name</span>
+
+             </div>
+              
+              <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Account Number</mat-label>
+                    <input matInput name="accountnumber" required #accountNumber="ngModel"  [(ngModel)]="accountnumber" />
+                </mat-form-field>
+                <span class="alert alert-danger" [hidden]="!accountNumber.touched ||accountNumber.valid">Please enter the Account Number</span>
+
+            </div>
+              <button mat-raised-button color="primary">Update</button>
+            </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <!-- </div> -->
+    </div>
+   
+  </div>
+</div>

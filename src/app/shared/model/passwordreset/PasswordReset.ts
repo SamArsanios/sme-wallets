@@ -1,3 +1,5 @@
+import { PasswordResetTransient } from './password-reset-model-transient';
+
 /**
  * @author Daniel Comboni
  * 
@@ -11,11 +13,15 @@ export class PasswordReset {
      token: string;
      createAt: string;
 
-    constructor($id: number, $email: string, $token: string, $createAt: string) {
-        this.id = $id;
-        this.email = $email;
-        this.token = $token;
-        this.createAt = $createAt;
+    constructor(id: number, email: string, token: string, createAt: string) {
+        this.id = id;
+        this.email = email;
+        this.token = token;
+        this.createAt = createAt;
     }
+
+    static createInstance(): PasswordReset {
+        return new PasswordReset(null, null, null, null);
+      }
 
 }

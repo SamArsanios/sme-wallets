@@ -1,0 +1,174 @@
+<app-header></app-header>
+<app-buyernav></app-buyernav>
+<div class="container">
+  <mat-tab-group #tabRef>
+    <mat-tab label="Invite Contacts">
+      <div class="container-fluid">
+        <mat-card>
+          <mat-card-title>Invite</mat-card-title>
+          <mat-card-content>
+            <form>
+              <mat-form-field class="full-width">
+                <input
+                  matInput
+                  placeholder="Email"
+                  [formControl]="emailFormControl"
+                  [errorStateMatcher]="matcher"
+                />
+                <mat-hint align="end">Hint: email@domain.com</mat-hint>
+                <mat-error
+                  align="end"
+                  *ngIf="
+                    emailFormControl.hasError('email') &&
+                    !emailFormControl.hasError('required')
+                  "
+                  >Please enter a valid email address</mat-error
+                >
+              </mat-form-field>
+
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Name" />
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+          <mat-card-actions>
+            <button class="btn-block" mat-raised-button color="primary">
+              Submit
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Second Tab -->
+    <!-- View All Suppliers -->
+    <mat-tab label="View Suppliers">
+      <div class="container-fluid">
+        <mat-form-field class="searchBox">
+          <input
+            (keyup)="applySuppliersFilter($event.target.value)"
+            matInput
+            placeholder="Search"
+          />
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <mat-table [dataSource]="invitedSuppliersDataSource" matSort>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Name</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="email">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Email</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+            </ng-container>
+
+            <!-- Industry Type Column -->
+            <ng-container matColumnDef="industryType">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Industry Type</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.industryType
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Sender Name Column -->
+            <ng-container matColumnDef="contactNumber">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Contact Number</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.contactNumber
+              }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row
+              *matHeaderRowDef="displayedInviteSuppliersColumns"
+            ></mat-header-row>
+            <mat-row
+              *matRowDef="let row; columns: displayedInviteSuppliersColumns"
+            ></mat-row>
+          </mat-table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- View All Contacts -->
+    <mat-tab label="View All Contacts">
+      <div class="container-fluid">
+        <mat-form-field class="searchBox">
+          <input
+            (keyup)="applyContactsFilter($event.target.value)"
+            matInput
+            placeholder="Search"
+          />
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <mat-table [dataSource]="invitedContactsDataSource" matSort>
+            <!-- Name Column -->
+            <ng-container matColumnDef="sellerName">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Seller Name</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.sellerName
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="sellerEmail">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Seller Email</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.sellerEmail
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Industry Type Column -->
+            <ng-container matColumnDef="industryType">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Industry Type</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.industryType
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Sender Name Column -->
+            <ng-container matColumnDef="contactNumber">
+              <mat-header-cell *matHeaderCellDef mat-sort-header
+                >Contact Number</mat-header-cell
+              >
+              <mat-cell *matCellDef="let element">{{
+                element.contactNumber
+              }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row
+              *matHeaderRowDef="displayedInviteContactsColumns"
+            ></mat-header-row>
+            <mat-row
+              *matRowDef="let row; columns: displayedInviteContactsColumns"
+            ></mat-row>
+          </mat-table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

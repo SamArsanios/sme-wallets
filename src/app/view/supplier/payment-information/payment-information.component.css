@@ -1,0 +1,21 @@
+.container-fluid {
+  padding-top: 230px;
+}
+mat-tab-group {
+  /* position: absolute; */
+  width: 100%;
+  /* background-color: blueviolet; */
+  /* position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+}
+
+.mat-form-field {
+  margin-left: 870px;
+}
+
+.active {
+  background-color: rgb(208, 208, 235);
+  color: white;
+}

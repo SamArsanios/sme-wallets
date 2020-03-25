@@ -1,0 +1,37 @@
+<app-header></app-header>
+<app-suppliernav></app-suppliernav>
+<div class="container-fluid">
+  <mat-tab-group #tabRef>
+    <!-- First Tab -->
+    <!-- View Pending Orders -->
+    <mat-tab label="Pending Orders">
+      <div class="container">
+        <app-supplier-pending-orders></app-supplier-pending-orders>
+      </div>
+    </mat-tab>
+
+    <!-- Second Tab -->
+    <!-- View Current Orders-->
+    <mat-tab label="Current Orders">
+      <div class="container">
+        <!-- <app-supplier-current-orders></app-supplier-current-orders> -->
+      </div>
+    </mat-tab>
+
+    <!-- Third Tab -->
+    <!-- View Invoiced Orders-->
+    <mat-tab label="Invoiced Orders">
+      <div class="container">
+        <app-supplier-invoiced-orders></app-supplier-invoiced-orders>
+      </div>
+    </mat-tab>
+
+    <!-- Fourth Tab -->
+    <!-- View All Orders-->
+    <mat-tab label="All Orders">
+      <div class="container">
+        <app-supplier-all-orders></app-supplier-all-orders>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
