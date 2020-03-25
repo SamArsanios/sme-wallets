@@ -52,7 +52,7 @@ export class AproveInvoiceComponent implements OnInit {
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         console.log(`the pending orders are ${JSON.stringify(theOder)}`)
 
-        if (theOder.invoiceStatus==="Pending") {
+        if (theOder.invoiceStatus !="approved") {
 
           this.receivers.push(theOder);
           BuyerapproveInvoicesData.addSupplierPendingInvoice(theOder)
