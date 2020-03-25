@@ -66,7 +66,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
       this.termsOfDelivery = order.order.deliveryTerms;
       
 
-      this.srNo = `ord-${order.id}`;
+      this.srNo = `ord-${order.order.isbnNumber}`;
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;

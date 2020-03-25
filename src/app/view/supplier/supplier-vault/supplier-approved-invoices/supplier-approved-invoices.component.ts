@@ -6,7 +6,8 @@ import { PopulateTable } from '../../../../utils/tables/populate.table';
 import { Router } from '@angular/router';
 import { ISupplierApprovedOrders, PopulateSupplierApprovedOrderTable } from './supplier.approved.invoices.model.interface';
 import { SupplierApprovedOrdersData } from 'src/app/service/supplier/supplier.approved.order.data';
-import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+// import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 // import { SupplierPendingOrderData } from 'src/app/service/order/supplier.pending.order.data';
 // import { ISupplierApprovedOrders, PopulateSupplierPendingOrderTable } from './supplier.pending.order.model.interface';
@@ -17,7 +18,7 @@ import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
   styleUrls: ["./supplier-approved-invoices.component.css"]
 })
 export class SupplierApprovedInvoicesComponent implements OnInit {
-  receivers: Array<Invoice> = new Array<Invoice>();
+  receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
   numberOfOrders;
   supplierApprovedInvoicesInfoTable: ISupplierApprovedOrders[] = [];
 supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierApprovedInvoicesInfoTable);
@@ -25,21 +26,22 @@ supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierAp
   displayedColumns: string[] = PopulateSupplierApprovedOrderTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-  constructor( private httpService: HttpService<Invoice>,
-     private objectsUtil: ObjectsUtil<Invoice>,
-      private populateTable: PopulateTable<Invoice, ISupplierApprovedOrders>, private router: Router) { }
+  constructor( private httpService: HttpService<SupplierOrder>,
+     private objectsUtil: ObjectsUtil<SupplierOrder>,
+      private populateTable: PopulateTable<SupplierOrder, ISupplierApprovedOrders>, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
 
-    this.httpService.getRequest('/invoices/findAll').subscribe(response => {
+    this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         console.log(`the pending orders are ${JSON.stringify(theOder)}`)
 
-        if (theOder.invoiceStatus === "approved") {
+        if (theOder.order.orderStatus == "approved") {
+          
 
           this.receivers.push(theOder);
           SupplierApprovedOrdersData.addAsupplierApprovedOrders(theOder)
@@ -116,7 +118,7 @@ supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierAp
 //   styleUrls: ["./supplier-approved-invoices.component.css"]
 // })
 // export class SupplierApprovedInvoicesComponent implements OnInit {
-//   receivers: Array<Invoice> = new Array<Invoice>();
+//   receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
 //   numberOfOrders;
 //   supplierApprovedInvoicesInfoTable: ISupplierApprovedOrders[] = [];
 // supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierApprovedInvoicesInfoTable);
@@ -124,8 +126,8 @@ supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierAp
 //   displayedColumns: string[] = PopulateSupplierApprovedOrderTable.displayedColumns;
 
 //   // tslint:disable-next-line:max-line-length
-//   constructor( private httpService: HttpService<Invoice>,
-//      private objectsUtil: ObjectsUtil<Invoice>,
+//   constructor( private httpService: HttpService<SupplierOrder>,
+//      private objectsUtil: ObjectsUtil<SupplierOrder>,
 //       private populateTable: PopulateTable<SupplierOrder, ISupplierApprovedOrders>, private router: Router) { }
 
 //   @ViewChild(MatSort, { static: true }) sort: MatSort;

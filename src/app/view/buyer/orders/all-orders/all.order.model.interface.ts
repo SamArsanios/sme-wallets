@@ -1,4 +1,4 @@
-import {Order} from '../../../../model/buyer/order/order-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 export interface IAllOrders {
   orderNo: string;
@@ -21,16 +21,16 @@ export class PopulateAllOrderTable {
   ];
 
 
-  public  static populateTableOnInit(fromResponse: Order[]) {
+  public  static populateTableOnInit(fromResponse: SupplierOrder[]) {
 
     return fromResponse.map(e => {
 
       return  {
-        orderNo: `ord-${e.id}`,
+        orderNo: `ord-${e.order.id}`,
         orderDate: e.timestamp,
-        orderDueDate: e.orderDueDate,
-        senderName : e.buyer.name,
-        orderStatus: e.orderStatus,
+        orderDueDate: e.order.orderDueDate,
+        senderName : e.order.buyer.name,
+        orderStatus: e.order.orderStatus,
         action: e.id
       };
 

@@ -140,7 +140,23 @@
 
         </table>
         
-        Invoice Due Date: <b> {{invoiceDueDate}}</b>
+        Invoice Due Date: 
+
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+
+          <input matInput [matDatepicker]="myDatePicker" id = "dates" [formControl]="dateCtrl" name="date" ngModel />
+
+          <mat-datepicker-toggle [for]="myDatePicker" matPrefix></mat-datepicker-toggle>
+
+          <mat-datepicker #myDatePicker></mat-datepicker>
+
+          <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
+
+            A valid date mm/dd/yyyy is required
+
+          </mat-error>
+
+        </mat-form-field>
 
       </div>
 
@@ -151,9 +167,14 @@
 
       </div>
       <div class="col-sm-4">
-        <!-- <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
+        <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
           Generate PDF
-        </button> -->
+        </button>
+        <button (click)="raiseInvoice()" class="btn btn-primary btn-lg pdfbutton" type="submit">
+           Raise Invoice
+        </button>
+
+        
 
       </div>
     </div>

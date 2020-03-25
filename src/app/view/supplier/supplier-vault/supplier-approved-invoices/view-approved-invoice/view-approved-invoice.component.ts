@@ -98,7 +98,7 @@ if (order !== undefined && order != null) {
       this.placeOfDelivery = order.order.placeOfDelivery;
       this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;
-      this.invoiceDueDate = order.invoiceDueDate;
+      // this.invoiceDueDate = order.invoiceDueDate;
 
       this.srNo = `ord-${order.id}`;
       this.itemName = order.order.itemName;
