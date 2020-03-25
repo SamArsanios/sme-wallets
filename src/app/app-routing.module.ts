@@ -39,6 +39,8 @@ import { ViewSupplierAllOrdersComponent } from './view/supplier/supplier-purchas
 import { ViewSupplierInvoicedOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/view-supplier-invoiced-orders.component';
 import { ViewApprovedInvoiceComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/view-approved-invoice/view-approved-invoice.component';
 import { ViewApproveInvoicesComponent } from './view/buyer/invoices/aprove-invoice/view-approve-invoices/view-approve-invoices.component';
+import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/approved-invoices.component';
+import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/vews-approved-invoices/vews-approved-invoices.component';
 
 
 const routes: Routes = [
@@ -73,6 +75,13 @@ const routes: Routes = [
     path: "buyer/view-approve-invoices",
     component: ViewApproveInvoicesComponent
   },
+
+  {
+    path: "buyer/vault/view-approve-invoices",
+    component: VewsApprovedInvoicesComponent
+  },
+
+  
   
 
   { path: "home/supplier/supplierdashboard", component: SupplierDashComponent },

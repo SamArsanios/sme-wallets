@@ -2,16 +2,11 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { HttpService } from '../../../../utils/http/http-service';
 import { ObjectsUtil } from '../../../../utils/objects/objects';
-// import { IApprovedInvoices, PopulateSupplierInvoicedOrderTable } from './all.order.model.interface';
 import { PopulateTable } from '../../../../utils/tables/populate.table';
-// import {  SupplierInvoicedOrderData } from '../../../../service/order/all.order.data';
 import { Router } from '@angular/router';
-import { SupplierInvoicedOrderData } from 'src/app/service/supplier/supplier.invoiced.order.data';
-import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 import { ApprovedInvoicesTable, IApprovedInvoices } from './buyer-approved-invoice-model-interface';
-import { BuyerApprovedInvoiceData } from 'src/app/service/buyer/buyer.approved.invoice.data';
-// import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
-// import { IApprovedInvoices, PopulateSupplierInvoicedOrderTable } from './supplier.pending.order.model.interface';
+import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+import { BuyerApprovedInvoiceData } from 'src/app/service/supplier/buyer.approved.invoice.data';
 
 @Component({
   selector: "app-approved-invoices",
@@ -19,7 +14,7 @@ import { BuyerApprovedInvoiceData } from 'src/app/service/buyer/buyer.approved.i
   styleUrls: ["./approved-invoices.component.css"]
 })
 export class ApprovedInvoicesComponent implements OnInit {
-  receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
+  receivers: Array<Invoice> = new Array<Invoice>();
   numberOfOrders;
   allApprovedInvoicesInfoTable: IApprovedInvoices[] = [];
   buyerInvoicedInfoTableDataSource = new MatTableDataSource(this.allApprovedInvoicesInfoTable);
@@ -27,25 +22,25 @@ export class ApprovedInvoicesComponent implements OnInit {
   displayedColumns: string[] = ApprovedInvoicesTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private httpService: HttpService<SupplierOrder>,
-    private objectsUtil: ObjectsUtil<SupplierOrder>,
-    private populateTable: PopulateTable<SupplierOrder, IApprovedInvoices>, private router: Router) { }
+  constructor(private httpService: HttpService<Invoice>,
+    private objectsUtil: ObjectsUtil<Invoice>,
+    private populateTable: PopulateTable<Invoice, IApprovedInvoices>, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   private populateTheTable(): void {
 
-    this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
+    this.httpService.getRequest('/invoices/findAll').subscribe(response => {
 
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         console.log("the invoiced orders are,", response.body)
-        if (theOder.order.orderStatus === "invoiced") {
+        if (theOder.invoiceStatus === "approved") {
 
 
           this.receivers.push(theOder);
-          SupplierInvoicedOrderData.addSupplierInvoicedOrder(theOder)
-          SupplierInvoicedOrderData.addSupplierInvoicedOrderToMap(theOder, theOder.id)
+          BuyerApprovedInvoiceData.addAbuyerApprovedInvoices(theOder)
+          BuyerApprovedInvoiceData.addAbuyerApprovedInvoicesToMap(theOder, theOder.id)
 
         }
       });
@@ -60,8 +55,8 @@ export class ApprovedInvoicesComponent implements OnInit {
 
       this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
 
-        BuyerApprovedInvoiceData.addABuyerApprovedInvoices(e);
-        BuyerApprovedInvoiceData.addABuyerApprovedInvoicesToMap(e, e.id);
+        BuyerApprovedInvoiceData.addAbuyerApprovedInvoices(e);
+        BuyerApprovedInvoiceData.addAbuyerApprovedInvoicesToMap(e, e.id);
 
       });
 
@@ -81,16 +76,16 @@ export class ApprovedInvoicesComponent implements OnInit {
     const id = parseInt($event.target.closest("button").id);
 
     this.router
-      .navigate(["buyer/view-approve-invoices"])
+      .navigate(["buyer/vault/view-approve-invoices"])
       .then(e => {
         console.log(
           `the order to view again: ${JSON.stringify(
-            BuyerApprovedInvoiceData.getbuyerApprovedInvoicesMap().get(id),
+            BuyerApprovedInvoiceData.getbuyerApprovedInvoiceMap().get(id),
             null,
             2
           )} `
         );
-        BuyerApprovedInvoiceData.setIdOfInvoiceToView(id);
+        BuyerApprovedInvoiceData.setIdOfOrderToView(id);
       });
   }
 
