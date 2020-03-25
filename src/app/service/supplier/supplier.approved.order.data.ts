@@ -6,15 +6,15 @@
 
 // export class SupplierApprovedOrdersData {
 
-//   private static supplierApprovedOrdersLists: List<Invoice>;
+//   private static supplierApprovedOrdersLists: List<SupplierOrder>;
 //   private static supplierApprovedOrdersMap: Mapp<number, Invoice>;
 //   private static idOfOrderToView: number;
 
-//   public static setsupplierApprovedOrdersLists(supplierApprovedOrderss: List<Invoice>): void {
+//   public static setsupplierApprovedOrdersLists(supplierApprovedOrderss: List<SupplierOrder>): void {
 //     SupplierApprovedOrdersData.supplierApprovedOrdersLists = supplierApprovedOrderss;
 //   }
 
-//   public static getsupplierApprovedOrdersLists(): List<Invoice> {
+//   public static getsupplierApprovedOrdersLists(): List<SupplierOrder> {
 //     return SupplierApprovedOrdersData.supplierApprovedOrdersLists;
 //   }
 
@@ -39,7 +39,7 @@
 
 //       if (SupplierApprovedOrdersData.getsupplierApprovedOrdersLists() == null || SupplierApprovedOrdersData.getsupplierApprovedOrdersLists().isEmpty()) {
 
-//         const newList = new List<Invoice>();
+//         const newList = new List<SupplierOrder>();
 //         newList.add(anOrder);
 //         SupplierApprovedOrdersData.setsupplierApprovedOrdersLists(newList);
 
@@ -74,29 +74,30 @@
 import {List} from '../../utils/collections/list';
 // import {Order} from '../../model/buyer/order/order-model';
 import {Mapp} from '../../utils/collections/map';
-import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+// import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 export class SupplierApprovedOrdersData {
 
-  private static supplierApprovedOrdersLists: List<Invoice>;
-  private static supplierApprovedOrdersMap: Mapp<number, Invoice>;
+  private static supplierApprovedOrdersLists: List<SupplierOrder>;
+  private static supplierApprovedOrdersMap: Mapp<number, SupplierOrder>;
   private static idOfOrderToView: number;
 
-  public static setsupplierApprovedOrdersLists(supplierApprovedOrderss: List<Invoice>): void {
+  public static setsupplierApprovedOrdersLists(supplierApprovedOrderss: List<SupplierOrder>): void {
     SupplierApprovedOrdersData.supplierApprovedOrdersLists = supplierApprovedOrderss;
   }
 
-  public static getsupplierApprovedOrdersLists(): List<Invoice> {
+  public static getsupplierApprovedOrdersLists(): List<SupplierOrder> {
     return SupplierApprovedOrdersData.supplierApprovedOrdersLists;
   }
 
-  public static setsupplierApprovedOrdersMap(supplierApprovedOrders: Mapp<number, Invoice>): void {
+  public static setsupplierApprovedOrdersMap(supplierApprovedOrders: Mapp<number, SupplierOrder>): void {
     SupplierApprovedOrdersData.supplierApprovedOrdersMap = supplierApprovedOrders;
   }
 
-  public static getsupplierApprovedOrdersMap(): Mapp<number, Invoice> {
+  public static getsupplierApprovedOrdersMap(): Mapp<number, SupplierOrder> {
     return SupplierApprovedOrdersData.supplierApprovedOrdersMap;
   }
 
@@ -109,11 +110,11 @@ export class SupplierApprovedOrdersData {
     return SupplierApprovedOrdersData.idOfOrderToView;
   }
 
-  static addAsupplierApprovedOrders(anOrder: Invoice): void {
+  static addAsupplierApprovedOrders(anOrder: SupplierOrder): void {
 
       if (SupplierApprovedOrdersData.getsupplierApprovedOrdersLists() == null || SupplierApprovedOrdersData.getsupplierApprovedOrdersLists().isEmpty()) {
 
-        const newList = new List<Invoice>();
+        const newList = new List<SupplierOrder>();
         newList.add(anOrder);
         SupplierApprovedOrdersData.setsupplierApprovedOrdersLists(newList);
 
@@ -125,11 +126,11 @@ export class SupplierApprovedOrdersData {
 
   }
 
-  static addAsupplierApprovedOrdersToMap(anOrder: Invoice, id: number): void {
+  static addAsupplierApprovedOrdersToMap(anOrder: SupplierOrder, id: number): void {
 
       if (SupplierApprovedOrdersData.getsupplierApprovedOrdersMap() == null || SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().isEmpty()) {
 
-        const newMap = new Mapp<number, Invoice>();
+        const newMap = new Mapp<number, SupplierOrder>();
         newMap.put(id, anOrder);
 
         SupplierApprovedOrdersData.setsupplierApprovedOrdersMap(newMap);
