@@ -4,10 +4,12 @@ import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 import { HttpService } from 'src/app/utils/http/http-service';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 import { ObjectsUtil } from 'src/app/utils/objects/objects';
-import { GenerateSupplierInvoicedOrderPDF } from 'src/app/view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/generateSupplierInvoicedOrderPDF';
+// import { GenerateSupplierInvoicedOrderPDF } from 'src/app/view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/generateSupplierInvoicedOrderPDF';
 // import { GenerateRaisedInvoicePDF } from './generateraisedInvoicePDF';
 import { DateUtils } from 'src/app/utils/date/date-utils';
 import { BuyerapproveInvoicesData } from 'src/app/service/order/buyerApproveInvoiceData';
+import { GenerateSupplierApprovedInvoicePDF } from './generateBuyerApprovedInvoicePDF';
+// import { GenerateBuyerApproveddInvoicePDF, GenerateSupplierApprovedInvoicePDF } from './generateBuyerApprovedInvoicePDF';
 
 
 @Component({
@@ -17,6 +19,7 @@ import { BuyerapproveInvoicesData } from 'src/app/service/order/buyerApproveInvo
 
 })
 export class ViewApproveInvoicesComponent implements OnInit {
+  public data;
   invoicestatus = false;
   price: number;
   buyerName: string;
@@ -51,8 +54,14 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private httpService: HttpService<Invoice>,
-    private objectsUtil: ObjectsUtil<any>
+    // private httpService: HttpService<Invoice>,
+    private objectsUtil: ObjectsUtil<any>,
+    
+      // private router: Router,
+      // private objectUtilOrder: ObjectsUtil<Order>,
+      private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
+      private httpService: HttpService<SupplierOrder>,
+    
 
   ) {
 
@@ -135,6 +144,7 @@ export class ViewApproveInvoicesComponent implements OnInit {
   ngOnInit() {
 
     this.populateOrderView();
+    this. generatePdf()
 
   }
 
@@ -144,7 +154,56 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
   //   console.log(orderToViewPdf);
 
-  //   GenerateRaisedInvoicePDF.generatePdf(orderToViewPdf);
+  //   GenerateSupplierApprovedInvoicePDF.generatePdf(orderToViewPdf);
+  // }
+
+  generatePdf() {
+//     this.orderToView()
+//     const id = AllOrderData.getIdOfOrderToView();
+//     const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
+// var datas;
+    // const id = BuyerapproveInvoicesData.getIdOfInvoiceToView();
+    const invoices = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
+    console.log("the selected invoice id", invoices)
+    
+      var iif;
+      this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
+
+        this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
+          if (theOder.order.id === invoices.order.id) {
+            this.data = theOder
+
+            console.log("the generated supplierOrder of the invoice is", theOder)
+            
+          }
+        });
+      })
+      console.log("teh daaaaaata is",this.data )
+          GenerateSupplierApprovedInvoicePDF.generatePdf(this.data);
+
+      // GenerateSupplierBuyerAllOrderPDF.generatePdf(this.data);
+
+    }
+    // else{
+    //   // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
+    // // this.data = order;
+    //     // const id = AllOrderData.getIdOfOrderToView();
+    //     this.httpService.getRequest('/orders/findAll').subscribe(response => {
+
+    //       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+    //         if (theOder.id === id) {
+    //           this.data = theOder
+              
+    //         }
+    //       });
+    //     })
+    //     GenerateBuyerAllOrderPDF.generatePdf(this.data);
+    // }
+    // const orderToViewPdf = AllOrderData.getAllOrderMap().get(id);
+
+    // console.log(orderToViewPdf);
+
+    // console.log("the data to populate", this.data)
   // }
 
   ApproveInvoice() {

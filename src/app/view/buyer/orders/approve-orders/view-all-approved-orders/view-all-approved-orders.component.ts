@@ -39,6 +39,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   quantity: number;
   price: number;
   totalBeforeTax: number;
+  deliveryTerms: string;
 
   subTotal: number;
   tax: number;

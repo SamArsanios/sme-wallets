@@ -7,7 +7,8 @@ import { IAllOrders, PopulateAllOrderTable } from './all.order.model.interface';
 import { PopulateTable } from '../../../../utils/tables/populate.table';
 import { AllOrderData } from '../../../../service/order/all.order.data';
 import { Router } from '@angular/router';
-import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+import { Order } from 'src/app/model/buyer/order/order-model';
+// import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 @Component({
   selector: "app-all-orders",
@@ -15,7 +16,7 @@ import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
   styleUrls: ["./all-orders.component.css"]
 })
 export class AllOrdersComponent implements OnInit {
-  receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
+  receivers: Array<Order> = new Array<Order>();
   numberOfOrders;
   allOrdersInfoTable: IAllOrders[] = [];
   allOrdersInfoTableDataSource = new MatTableDataSource(this.allOrdersInfoTable);
@@ -23,16 +24,16 @@ export class AllOrdersComponent implements OnInit {
   displayedColumns: string[] = PopulateAllOrderTable.displayedColumns;
 
   // tslint:disable-next-line:max-line-length
-  constructor( private httpService: HttpService<SupplierOrder>,
-     private objectsUtil: ObjectsUtil<SupplierOrder>,
-      private populateTable: PopulateTable<SupplierOrder, IAllOrders>, private router: Router) { }
+  constructor( private httpService: HttpService<Order>,
+     private objectsUtil: ObjectsUtil<Order>,
+      private populateTable: PopulateTable<Order, IAllOrders>, private router: Router) { }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 
   private populateTheTable(): void {
-        this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
+        this.httpService.getRequest("/orders/findAll").subscribe(response => {
         
           const result = this.populateTable.populateTable(
             this.objectsUtil.dataObjectToArray(response.body),
