@@ -29,7 +29,7 @@ import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponso
 import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
 import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-view-orders/supplier-view-orders.component";
 import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
-import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-allorders.component';
+import { ViewAllordersComponent } from './view/buyer/orders/all-orders/view-allorders/view-allorders.component';
 import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/approve-orders/view-all-approved-orders/view-all-approved-orders.component';
 import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';
 import { ViewRaisedInvoicesComponent } from './view/buyer/invoices/all-invoices/view-raised-invoices/view-raised-invoices.component';

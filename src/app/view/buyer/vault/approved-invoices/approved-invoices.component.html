@@ -1,4 +1,4 @@
-First Tab
+
 <!-- View Approved Invoices -->
 <div class="container">
   <mat-form-field>
@@ -9,7 +9,7 @@ First Tab
     <mat-table [dataSource]="buyerInvoicedInfoTableDataSource" matSort>
       <!-- Inovice Number -->
       <ng-container matColumnDef="invoiceNo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice No</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.invoiceNo }}</mat-cell>
       </ng-container>
 

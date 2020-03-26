@@ -1,11 +1,12 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+import { Order } from 'src/app/model/buyer/order/order-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-export class GenerateBuyerApprovedInvoicePDF {
-  static generatePdf(order: Invoice) {
+export class GenerateSupplierBuyerAllOrderPDF {
+  static generatePdf(order: SupplierOrder) {
     const documentDefinition = {
       content: [
         {
@@ -18,8 +19,9 @@ export class GenerateBuyerApprovedInvoicePDF {
             {
               text: ``
             },
+            // Order
             {
-              text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
+              text: `ORDER NO - ${order.order.id}\n ORDER DUE DATE :${order.id} \n\n\n`,
               alignment: `right`,
               margin: [0, 30, 0, 0],
               fontSize: 12
@@ -63,7 +65,7 @@ export class GenerateBuyerApprovedInvoicePDF {
                 { text: `${order.order.deliveryTerms}`, style: `tableContent` },
                 { text: `${order.order.conveyanceMethod}`, style: `tableContent` },
                 { text: `${order.order.placeOfDelivery}`, style: `tableContent` },
-                { text: `${order.order.deliveryTerms}`, style: `tableContent` },
+                { text: `${order.order.deliveryTime}`, style: `tableContent` },
                 { text: `${order.order.paymentTerms}`, style: `tableContent` }
               ]
             ]
@@ -81,20 +83,21 @@ export class GenerateBuyerApprovedInvoicePDF {
                 { text: `DESCRIPTION`, style: `tableHeader` },
                 { text: `UNIT OF SALE(PCS/LTR)`, style: `tableHeader` },
                 { text: `QUANTITY`, style: `tableHeader` },
-                // { text: `UNIT PRICE`, style: `tableHeader` },
-                // { text: `TOTAL PRICE`, style: `tableHeader` }
+                { text: `UNIT PRICE`, style: `tableHeader` },
+                { text: `TOTAL PRICE`, style: `tableHeader` }
               ],
               [
                 { text: `${order.order.isbnNumber}`, style: `tableContent` },
                 { text: `${order.order.itemDescription}`, style: `tableContent` },
                 { text: `${order.order.saleUnit}`, style: `tableContent` },
                 { text: `${order.order.quantity}`, style: `tableContent` },
-                // { text: `${order.pricePerItem}`, style: `tableContent` },
-                // { text: `${order.totalPrice}`, style: `tableContent` }
+                { text: `${order.pricePerItem}`, style: `tableContent` },
+                { text: `${order.totalPrice}`, style: `tableContent` }
               ]
             ]
           }
         },
+        // SupplierOrder
         {
           alignment: `justify`,
           columns: [
@@ -116,7 +119,7 @@ export class GenerateBuyerApprovedInvoicePDF {
                       alignment: `right`
                     },
                     {
-                    //   text: `${order.subTotal}`,
+                      text: `${order.subTotal}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -128,7 +131,7 @@ export class GenerateBuyerApprovedInvoicePDF {
                       alignment: `right`
                     },
                     {
-                    //   text: `${order.taxRate}`,
+                      text: `${order.taxRate}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -140,7 +143,7 @@ export class GenerateBuyerApprovedInvoicePDF {
                       alignment: `right`
                     },
                     {
-                    //   text: `${order.shippingCharges}`,
+                      text: `${order.shippingCharges}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -153,7 +156,7 @@ export class GenerateBuyerApprovedInvoicePDF {
                     },
 
                     {
-                    //   text: `${order.totalPrice}`,
+                      text: `${order.totalPrice}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]

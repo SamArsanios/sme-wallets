@@ -79,7 +79,7 @@ import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders
 import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-view-orders/supplier-view-orders.component';
 
 import { ViewInvoicesComponent } from './view/buyer/invoices/view-invoices/view-invoices.component';
-import { ViewAllordersComponent } from './view/buyer/orders/view-allorders/view-allorders.component';
+import { ViewAllordersComponent } from './view/buyer/orders/all-orders/view-allorders/view-allorders.component';
 import { ViewAllApprovedOrdersComponent } from './view/buyer/orders/approve-orders/view-all-approved-orders/view-all-approved-orders.component';
 // tslint:disable-next-line:max-line-length
 import { ViewSupplierPendingOrdersComponent } from './view/buyer/orders/view-supplier-pending-orders/view-supplier-pending-orders.component';

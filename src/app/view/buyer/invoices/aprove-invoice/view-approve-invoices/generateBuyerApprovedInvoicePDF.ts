@@ -1,9 +1,11 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+// import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-export class GenerateBuyerAllOrderPDF {
+export class GenerateSupplierApprovedInvoicePDF {
   static generatePdf(order: SupplierOrder) {
     const documentDefinition = {
       content: [
@@ -89,7 +91,7 @@ export class GenerateBuyerAllOrderPDF {
                 { text: `${order.order.saleUnit}`, style: `tableContent` },
                 { text: `${order.order.quantity}`, style: `tableContent` },
                 { text: `${order.pricePerItem}`, style: `tableContent` },
-                { text: `${order.totalPrice}`, style: `tableContent` }
+                { text: `${order.subTotal}`, style: `tableContent` }
               ]
             ]
           }
