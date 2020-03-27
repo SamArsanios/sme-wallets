@@ -240,7 +240,7 @@
         <div class="col-sm-6"></div>
         <div class="col-sm-6">
             <div *ngIf="invoiceStatus" class="alert alert-success statusmessage">
-                <strong>Success!</strong> Your invoice has been successfully raised
+                <strong>Success!</strong> You have successfullt approved the raised invoice
               </div>
           <h3>Order Due</h3>
           <table>
@@ -271,6 +271,9 @@
           </table>
           
           <div class="btns">
+              <div *ngIf="invoiceStatus" class="alert alert-success statusmessage">
+                  <strong>Success!</strong> You have successfullt approved the raised invoice
+                </div>
          
               <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
                   Generate PDF
