@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { PendingOrderData } from "../../../../service/order/pending.order.data";
+import { PendingOrderData } from "../../../../../service/order/pending.order.data";
 import { Location } from "@angular/common";
 import { GeneratePurchaseOrderPDF } from "./generatePurchaseOrderPDF";
 
@@ -26,6 +26,8 @@ export class ViewOrdersComponent implements OnInit {
   placeOfDelivery: string;
   termsOfPayment: string;
   termsOfDelivery: string;
+  deliveryTime: string;
+  
 
   srNo: string;
   itemName: string;
@@ -63,6 +65,7 @@ export class ViewOrdersComponent implements OnInit {
       this.buyerName = order.buyer.name;
       this.buyerPhone = order.buyer.phoneNumber;
       this.buyerEmail = order.buyer.email;
+      this.deliveryTime = order.deliveryTime;
 
       this.supplierName = order.supplier.name;
       this.supplierPhone = order.supplier.phoneNumber;

@@ -62,7 +62,7 @@ export class GeneratePurchaseOrderPDF {
                 { text: `${order.deliveryTerms}`, style: `tableContent` },
                 { text: `${order.conveyanceMethod}`, style: `tableContent` },
                 { text: `${order.placeOfDelivery}`, style: `tableContent` },
-                { text: `${order.deliveryTerms}`, style: `tableContent` },
+                { text: `${order.deliveryTime}`, style: `tableContent` },
                 { text: `${order.paymentTerms}`, style: `tableContent` }
               ]
             ]

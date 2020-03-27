@@ -26,7 +26,7 @@ import { SponsordashboardComponent } from "./shared/sponsordashboard/sponsordash
 import { SponsorVaultSponsorshipComponent } from "./view/sponsor/sponsor-vault-sponsorship/sponsor-vault-sponsorship.component";
 import { SponsorInvoicesComponent } from "./view/sponsor/sponsor-invoices/sponsor-invoices.component";
 import { SponsorSettingsComponent } from "./view/sponsor/sponsor-settings/sponsor-settings.component";
-import { ViewOrdersComponent } from "./view/buyer/orders/view-orders/view-orders.component";
+import { ViewOrdersComponent } from "./view/buyer/orders/pending-orders/view-orders/view-orders.component";
 import { SupplierViewOrdersComponent } from "./view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-view-orders/supplier-view-orders.component";
 import { ViewInvoicesComponent } from "./view/buyer/invoices/view-invoices/view-invoices.component";
 import { ViewAllordersComponent } from './view/buyer/orders/all-orders/view-allorders/view-allorders.component';
@@ -112,11 +112,12 @@ const routes: Routes = [
     path: "supplier/orders",
     component: SupplierPurchaseOrdersComponent
   },
-  // {
+  {
 
-  //   path: "supplier/orders",
-  //   component: OrdersComponent
-  // },
+    path: "suppliers/view-approved-invoice-component",
+    component: ViewSupplierInvoicedOrdersComponent
+  },
+  
 
   
   {
