@@ -38,6 +38,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
   shipping: number;
   totalAfterTax: number;
   orderStatus: string;
+  total: number;
 
   constructor(private location: Location) {
 
@@ -66,12 +67,14 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
       this.termsOfDelivery = order.order.deliveryTerms;
       
 
-      this.srNo = `ord-${order.order.isbnNumber}`;
+      this.srNo = order.order.isbnNumber;
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;
       this.price = order.pricePerItem
       this.totalBeforeTax = order.subTotal;
+      this.total = this.price * this.quantity;
+
 
       this.subTotal = order.subTotal;
       this.tax = order.taxRate;

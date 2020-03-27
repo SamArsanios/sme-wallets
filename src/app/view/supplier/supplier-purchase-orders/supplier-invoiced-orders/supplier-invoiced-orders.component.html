@@ -9,7 +9,7 @@
     </li>
   
     <div class="mat-elevation-z8">
-      <mat-table [dataSource]="supplierInvoicedOrdersInfoTableDataSource" matSort>
+      <mat-table [dataSource]="supplierApprovedInvoicesTableDataSource" matSort>
         <!-- Order Number Column -->
         <ng-container matColumnDef="orderNo">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Order No</mat-header-cell>
@@ -47,7 +47,7 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
           <mat-cell *matCellDef="let element">
             <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
-              View</button>
+              Views</button>
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

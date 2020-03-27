@@ -1,161 +1,133 @@
-<body>
-
-    <div class="container">
-      <button class="btn btn-primary btn-sm backbutton" (click)="cancel()">Back</button>
-  
-      <div class="row center">
-        <h3>SME WALLETS</h3>
-      </div>
-      <br><br>
-      <div class="row">
-        <div class="col-sm-6">
-          <ul>
-            <li>Company phone:256 0704555555</li>
-            <li>Email: screentech@gmail.com</li>
-            <li>Website: sme1Wallet</li>
-            <li>Address: plot 4, Kablagala, Uganda</li>
-          </ul>
-        </div>
-        <div class="col-sm-6 orderDate">
-          <h4>PURCHASE ORDER</h4>
-          Dated As: {{date}} <br>
-          Purchase Order No: {{orderNumber}}
-        </div>
-      </div>
-      <hr>
-  
-  
-      <div class="row details">
-        <div class="col-sm-6 ">
-          <ul class="buyerinfo">
-            <h2><b>Vendor </b></h2>
-            <li>{{buyerName}}</li>
-            <li>Phone : {{buyerPhone}} </li>
-            <li>Email {{buyerEmail}} :</li>
-          </ul>
-        </div>
-        <div class="col-sm-6">
-          <ul class="buyerinfo">
-            <h2><b>Ship To </b></h2>
-  
-            <li>{{supplierName}}</li>
-  
-            <li>Phone : {{supplierPhone}} </li>
-  
-            <li>Email : {{supplierEmail}} </li>
-          </ul>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="col-sm-12">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col"> Sr No.</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Sale Unit(PCS/LTR)</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total</th>
-  
-  
-              </tr>
-            </thead>
-  
-            <tbody>
-              <tr>
-  
-                <td> {{srNo}} </td>
-  
-                <td> {{itemName}} </td>
-  
-                <td> {{itemDescription}} </td>
-  
-                <td> {{salesUnit}} </td>
-  
-                <td> {{quantity}} </td>
-  
-                <td> {{price}} </td>
-  
-                <td> {{totalBeforeTax}} </td>
-              </tr>
-  
-  
-  
-            </tbody>
-          </table>
-        </div>
-  
-      </div>
-  
-      <div class="row">
-  
-        <div class="col-sm-6">
-  
-        </div>
-  
-        <div class="col-sm-6">
-  
-          <h3>Order Due</h3>
-  
-          <table>
-  
-            <tr>
-  
-              <th>Subtotal :</th>
-  
-              <td> {{subTotal}} </td>
-  
-            </tr>
-  
-  
-            <tr>
-  
-              <th>Tax :</th>
-  
-              <td> {{tax}} </td>
-  
-            </tr>
-  
-  
-            <tr>
-  
-              <th>Shipping :</th>
-  
-              <td> {{shipping}} </td>
-  
-            </tr>
-  
-  
-            <tr>
-  
-              <th>Total :</th>
-  
-              <td> {{totalAfterTax}} </td>
-  
-            </tr>
-  
-          </table>
-        </div>
-  
-      </div>
-      <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-  
-        </div>
-        <div class="col-sm-4">
-          <button
-            (click)="generatePdf()"
-            class="btn btn-primary btn-lg pdfbutton"
-            type="submit"
-          >
-            Generate PDF
-          </button>
-        </div>
-      </div>
+<div class="container">
+  <div style="display: block;">
+    <img
+      src="../../../../../assets/purchase-order-2.png"
+      alt="purchase order icon"
+    />
   </div>
-   
-  </body>
+  <h3>Purchase Order</h3>
+  <hr />
+  <div class="row">
+    <div class="col-sm-4">
+      <div>
+        <li>From :{{ buyerName }}</li>
+        <li>Phone : {{ buyerPhone }}</li>
+        <li>Email : {{ buyerEmail }}</li>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <li>To : {{ supplierName }}</li>
+        <li>Phone : {{ supplierPhone }}</li>
+        <li>Email : {{ supplierEmail }}</li>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <li>Order ID : {{ orderId }}</li>
+        <li>Delivery Place : {{ placeOfDelivery }}</li>
+        <li>Payment Terms :{{ termsOfPayment }}</li>
+        <li>Delivery Terms :{{ termsOfDelivery }}</li>
+      </div>
+    </div>
+  </div>
+  <form #form="ngForm" class="supplierorder" (ngSubmit)="onSubmit(form)">
+    <table>
+      <tr>
+        <th>
+          Sr No.
+        </th>
+        <th>
+          Item Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Sale Unit(PCS/LTR)
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>{{srNo}}</td>
+        <td>{{ itemName }}</td>
+        <td>{{ itemDescription }}</td>
+        <td>{{ salesUnit }}</td>
+        <td>{{ quantity }}</td>
+        <td>
+     {{price}}
+        </td>
+        <td>
+  {{totalBeforeTax}}
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+          <div *ngIf="invoiceStatus" class="alert alert-success statusmessage">
+              <strong>Success!</strong> Your invoice has been successfully raised
+            </div>
+        <h3>Order Due</h3>
+        <table>
+          <tr>
+            <th>Subtotal :</th>
+            <td>           
+                {{ subTotal }}             
+            </td>
+          </tr>
+          <tr>
+            <th>Tax (%) :</th>
+            <td>
+         {{tax}}
+            </td>
+          </tr>
+          <tr>
+            <th>Shipping :</th>
+            <td>
+         {{shipping}}
+            </td>
+          </tr>
+          <tr>
+            <th>Total :</th>
+            <td>
+          {{totalAfterTax}}
+            </td>
+          </tr>
+        </table>
+        Invoice Due Date: 
+
+        <mat-form-field style="font-size: 13px;" appearance="outline">
+
+          <input matInput [matDatepicker]="myDatePicker" id = "dates" [formControl]="dateCtrl" name="date" ngModel />
+
+          <mat-datepicker-toggle [for]="myDatePicker" matPrefix></mat-datepicker-toggle>
+
+          <mat-datepicker #myDatePicker></mat-datepicker>
+
+          <mat-error align="end" *ngIf="dateCtrl.hasError('required')">
+
+            A valid date mm/dd/yyyy is required
+
+          </mat-error>
+
+        </mat-form-field>
+        
+        <div class="btns">
+       
+          <button (click)="generatePdf()" id="btn1" class="btn btn-primary btn-sm" type="submit">Generate PDF</button>
+          <button (click)="raiseInvoice()" class="btn btn-primary btn-lg pdfbutton">
+            Raise Invoice
+         </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+

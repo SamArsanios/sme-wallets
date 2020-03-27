@@ -15,7 +15,7 @@ import { GenerateBUyerApproveOrderPDF } from './generateBuyerApproveOrderPDF';
 @Component({
   selector: "app-view-all-approved-orders",
   templateUrl: "./view-all-approved-orders.component.html",
-  styleUrls: ["../../view-orders/view-orders.component.css"]
+  styleUrls: ["./view-all-approved-orders.component.css"]
 })
 export class ViewAllApprovedOrdersComponent implements OnInit {
   approveStatus = false
@@ -30,6 +30,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   orderId: string;
   placeOfDelivery: string;
   termsOfPayment: string;
+  deliveryTime: string;
   termsOfDelivery: string;
 
   srNo: string;
@@ -40,6 +41,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
   price: number;
   totalBeforeTax: number;
   deliveryTerms: string;
+  
 
   subTotal: number;
   tax: number;
@@ -75,6 +77,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
       this.buyerEmail = order.order.buyer.email;
+      this.termsOfPayment = order.order.paymentTerms;
 
       this.supplierName = order.order.supplier.name;
       this.supplierPhone = order.order.supplier.phoneNumber;
@@ -91,6 +94,9 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
       this.salesUnit = order.order.saleUnit;
       this.price = order.pricePerItem;
       this.totalBeforeTax = order.totalPrice;
+      this.deliveryTime = order.order.deliveryTime;
+      this.termsOfDelivery = order.order.deliveryTerms;
+      
 
       this.subTotal = order.subTotal;
       this.tax = order.taxRate;

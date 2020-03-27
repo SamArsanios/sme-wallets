@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { SupplierInvoicedOrderData } from 'src/app/service/supplier/supplier.invoiced.order.data';
 import { Order } from 'src/app/model/buyer/order/order-model';
-import { GeneratePurchaseOrderPDF } from 'src/app/view/buyer/orders/view-orders/generatePurchaseOrderPDF';
+import { GeneratePurchaseOrderPDF } from 'src/app/view/buyer/orders/pending-orders/view-orders/generatePurchaseOrderPDF';
 import { GenerateSupplierInvoicedOrderPDF } from './generateSupplierInvoicedOrderPDF';
+import { FormControl, Validators, NgForm } from '@angular/forms';
+import { DateUtils } from 'src/app/utils/date/date-utils';
+import { ObjectsUtil } from 'src/app/utils/objects/objects';
+import { HttpService } from 'src/app/utils/http/http-service';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 
 @Component({
   selector: 'app-view-supplier-invoiced-orders',
@@ -11,11 +16,13 @@ import { GenerateSupplierInvoicedOrderPDF } from './generateSupplierInvoicedOrde
   styleUrls: ['./view-supplier-invoiced-orders.component.css']
 })
 export class ViewSupplierInvoicedOrdersComponent implements OnInit {
-
+  invoiceStatus;
+  date = new Date();
+  dateCtrl: FormControl;
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
-  date: string;
+  // date: string;
   orderNumber: number;
 
   supplierName: string;
@@ -40,7 +47,11 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
   shipping: number;
   totalAfterTax: number;
 
-  constructor(private location: Location) {
+  constructor(private location: Location,
+    private objectUtilOrder: ObjectsUtil<Order>,
+    private httpService: HttpService<SupplierOrder>,
+    private objectUtil: ObjectsUtil<SupplierOrder>,
+    ) {
 
     this.populateOrderView();
 
@@ -49,9 +60,11 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
   private populateOrderView(): void {
 
     const order = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(SupplierInvoicedOrderData.getIdOfOrderToView());
+    console.log("the orddddddddddder", order)
 
     if ( order !== undefined && order != null ) {
-      this.date = order.order.timestamp;
+      // this.date = order.order.timestamp;
+      // console.log("the date is ", this.date)
       this.orderNumber = order.order.id;
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
@@ -93,6 +106,7 @@ cancel() {
 }
 
   ngOnInit() {
+    this.dateCtrl = new FormControl("", [Validators.required]);
 
     this.populateOrderView();
 
@@ -107,5 +121,96 @@ cancel() {
     GenerateSupplierInvoicedOrderPDF.generatePdf(orderToViewPdf);
   }
 
+
+  raiseInvoice(form: NgForm) {
+
+
+    const supplierOrders = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(
+      SupplierInvoicedOrderData.getIdOfOrderToView())
+    const neededOrder = supplierOrders.order;
+
+    let invoiceDueDatehtml = (<HTMLInputElement>document.getElementById("dates")).value
+    let parsableDueDate = DateUtils.convertDateFormatToParsable(invoiceDueDatehtml)
+    console.log("the invoice dueeeee is", parsableDueDate)
+
+
+    // change buyer email verified at string
+    const buyerEmailverifiedAtStr = "emailVerifiedAtStr";
+    const neededos = neededOrder.buyer
+    neededos[buyerEmailverifiedAtStr] = neededOrder.buyer.emailVerifiedAt
+    neededos[buyerEmailverifiedAtStr] = DateUtils.convertDateFormatToParsable(neededos.emailVerifiedAt)
+    neededos.emailVerifiedAt = null
+
+    //  change supplier email verified at
+    const supplierEmailverifiedAtStr = "emailVerifiedAtStr";
+    const supplierInfo = neededOrder.supplier
+    supplierInfo[supplierEmailverifiedAtStr] = supplierInfo.emailVerifiedAt
+    supplierInfo[supplierEmailverifiedAtStr] = DateUtils.convertDateFormatToParsable(supplierInfo.emailVerifiedAt)
+    supplierInfo.emailVerifiedAt = null
+
+    // change timestamp for orders
+
+    const timestampStr = "timestampStr";
+    const orderInfo = neededOrder;
+    orderInfo[timestampStr] = orderInfo.timestamp
+    orderInfo[timestampStr] = DateUtils.convertDateFormatToParsable(orderInfo.timestamp)
+    orderInfo.timestamp = null
+
+    // change timestamp for the wallet in order
+
+    const walletTimestampStr = "timestampStr";
+    const walletstamps = neededOrder.wallet
+    walletstamps[walletTimestampStr] = neededOrder.wallet.timestamp
+    walletstamps[walletTimestampStr] = DateUtils.convertDateFormatToParsable(walletstamps.timestamp)
+    walletstamps.timestamp = null
+
+    // change email verified at for user in wallet
+    const userwalletTimestampStr = "emailVerifiedAtStr";
+    const userwalletstamps = neededOrder.wallet.user
+    userwalletstamps[userwalletTimestampStr] = neededOrder.wallet.user.emailVerifiedAt
+    userwalletstamps[userwalletTimestampStr] = DateUtils.convertDateFormatToParsable(userwalletstamps.emailVerifiedAt)
+    userwalletstamps.emailVerifiedAt = null
+
+
+    console.log("am looking for", neededOrder)
+
+
+    let theInvoice = {
+      "order": neededOrder,
+      "sponsor": {
+        "id": 3,
+        "email": "tintino@gmail.com",
+        "emailVerifiedAtStr": "2019-11-21 10:01:09",
+        "password": "jothi",
+        "phoneNumber": "0781123456",
+        "refUserId": 102,
+        "name": "Tin Tin",
+        "userType": "sponsor"
+      },
+
+      "invoiceDueDateStr": parsableDueDate,
+
+      "invoiceStatus": "invoice raised"
+
+    }
+
+
+    this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
+      console.log(`the supplier Order is ${e.body, null, 2}`)
+    });
+
+
+    let newOrder = Order.createInstance();
+    theInvoice.order.orderStatus = "raised invoices"
+    this.objectUtilOrder.objectToInstance(newOrder, theInvoice.order)
+    console.log("the order from this is ", theInvoice.order)
+
+    this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
+      console.log(`the updated Order is ${e.body, null, 2}`)
+      this.invoiceStatus = true;
+    });
+    
+
+  }
 }
 

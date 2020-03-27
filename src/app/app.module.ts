@@ -75,7 +75,7 @@ import { InViewportModule } from '@thisissoon/angular-inviewport';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { ViewOrdersComponent } from './view/buyer/orders/view-orders/view-orders.component';
+import { ViewOrdersComponent } from './view/buyer/orders/pending-orders/view-orders/view-orders.component';
 import { SupplierViewOrdersComponent } from './view/supplier/supplier-purchase-orders/supplier-pending-orders/supplier-view-orders/supplier-view-orders.component';
 
 import { ViewInvoicesComponent } from './view/buyer/invoices/view-invoices/view-invoices.component';
