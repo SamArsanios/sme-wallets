@@ -39,7 +39,7 @@ export class GenerateSupplierBuyerAllOrderPDF {
               style: `subheader`
             },
             {
-              text: `Order Details  \n Order Id : ${order.id}\n Delivery Place :${order.order.placeOfDelivery}\n Payment Terms : ${order.order.paymentTerms} \n Delivery Terms : ${order.order.deliveryTerms}`,
+              text: `Order Details  \n Order Id : ${order.order.id}\n Delivery Place :${order.order.placeOfDelivery}\n Payment Terms : ${order.order.paymentTerms} \n Delivery Terms : ${order.order.deliveryTerms}`,
               style: `subheader`
             }
           ]

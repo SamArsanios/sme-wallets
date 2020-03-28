@@ -300,41 +300,5 @@ if (order !== undefined && order != null) {
 
     GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
   }
-  // generatePdf() {
-  //   // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-
-  //   const orders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(SupplierApprovedOrdersData.getIdOfOrderToView())
-  //   // const idss = SupplierApprovedOrdersData.getIdOfOrderToView();
   
-  //   if(orders.order.orderStatus != "pending"){
-  //     this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
-
-  //       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-  //         if (theOder.order.id === orders.order.id) {
-  //           this.data = theOder
-  //           GenerateApprovedInvoicesPDF.generatePdf(this.data)
-            
-  //         }
-  //       });
-  //     })
-  //   }
-
-  //   else{
-  //     // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-  //   // this.data = order;
-  //       // const id = AllOrderData.getIdOfOrderToView();
-  //       this.httpService.getRequest('/orders/findAll').subscribe(response => {
-
-  //         this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-  //           if (theOder.id === orders.order.id) {
-  //             this.data = theOder
-              
-  //           }
-  //         });
-  //       })
-  //       GenerateBuyerAllOrderPDF.generatePdf(this.data);
-  //   }
-
-  // }
-
 }
