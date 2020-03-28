@@ -61,7 +61,7 @@ import { GenerateSupplierAllOrderPDF } from './generateSupplierAllOrderPDF';
       this.supplierPhone = order.order.supplier.phoneNumber;
       this.supplierEmail = order.order.supplier.email;
 
-      this.orderId = `ord-${order.id}`;
+      this.orderId = `ord-${order.order.id}`;
       this.placeOfDelivery = order.order.placeOfDelivery;
       this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;

@@ -162,7 +162,7 @@
     </tr>
   </table> -->
 
-  <!-- <div class="row">
+<!-- <div class="row">
     <div class="col-sm-6"></div>
     <div class="col-sm-6">
       <h3>Order Due</h3>
@@ -188,15 +188,12 @@
       <button (click)="generatePdf()" id="btn1" class="btn btn-primary btn-sm" type="submit">Generate PDF</button>
     </div>
   </div> -->
-<!-- </body> --> 
+<!-- </body> -->
 
 
 <div class="container">
   <div style="display: block;">
-    <img
-      src="../../../../../assets/purchase-order-2.png"
-      alt="purchase order icon"
-    />
+    <img src="../../../../../assets/purchase-order-2.png" alt="purchase order icon" />
   </div>
   <h3>Purchase Order</h3>
   <hr />
@@ -252,21 +249,10 @@
         <td>{{ salesUnit }}</td>
         <td>{{ quantity }}</td>
         <td>
-          <input
-            (keyup)="onKeyPrice($event)"
-            id="price"
-            name="pricePerItem"
-            ngModel
-          />
+          0
         </td>
         <td>
-          <input
-            id="totalBeforeTax"
-            name="totalPrice"
-            value="{{ totalBeforeTax }}"
-            
-            ngModel
-          />
+          0
         </td>
       </tr>
     </table>
@@ -279,53 +265,29 @@
           <tr>
             <th>Subtotal :</th>
             <td>
-              <input
-                id="subtotal"
-                name="subTotal"
-                value="{{ subTotal }}"
-                
-                ngModel
-              />
+              0
             </td>
           </tr>
           <tr>
             <th>Tax (%) :</th>
             <td>
-              <input
-                (keyup)="onKeyTax($event)"
-                id="tax"
-                name="taxRate"
-                value="{{ tax }}"
-                ngModel
-              />
+              0
             </td>
           </tr>
           <tr>
             <th>Shipping :</th>
             <td>
-              <input
-                (keyup)="onKeyShipping($event)"
-                id="shipping"
-                name="shippingCharges"
-                value="{{ shipping }}"
-                ngModel
-              />
+              0
             </td>
           </tr>
           <tr>
             <th>Total :</th>
             <td>
-              <input
-                id="totalAfterTax"
-                name="finalTotal"
-                value="{{ totalAfterTax }}"
-                ngModel
-                
-              />
+              0
             </td>
           </tr>
         </table>
-        
+
         <div class="btns">
           <button (click)="generatePdf()" id="btn1" class="btn btn-primary btn-sm" type="submit">Generate PDF</button>
         </div>
@@ -333,4 +295,3 @@
     </div>
   </form>
 </div>
-

@@ -17,7 +17,7 @@ import { GenerateSupplierBuyerAllOrderPDF } from './generateSupplierBuyerAllOrde
 })
 export class ViewAllordersComponent implements OnInit {
   public data;
-  
+
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -48,7 +48,6 @@ export class ViewAllordersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    // private objectUtilOrder: ObjectsUtil<Order>,
     private httpService: HttpService<SupplierOrder>,
     private objectUtil: ObjectsUtil<SupplierOrder>,
     private location: Location
@@ -101,17 +100,17 @@ export class ViewAllordersComponent implements OnInit {
       this.itemDescription = order.itemDescription;
       this.salesUnit = order.saleUnit;
       this.quantity = order.quantity;
-      // this.price = order.pricePerItem;
-      // this.totalBeforeTax = order.totalPrice;
-      // this.subTotal = order.subTotal;
-      // this.shipping = order.shippingCharges;
-      // this.totalAfterTax = order.finalTotal;
-      // this.tax = order.taxRate;
+      this.price = 0;
+      this.totalBeforeTax = 0;
+      this.subTotal = 0;
+      this.shipping = 0;
+      this.totalAfterTax = 0;
+      this.tax = 0;
+
+      this.totalAfterTax = 0;
 
 
     } else {
-
-      // fetch the order direct from the db basing on the ID provided
 
     }
 
@@ -121,58 +120,26 @@ export class ViewAllordersComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
-  // orderToView(){
-  //   const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-  //   this.receivers.push(order);
-
-  //   this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
-
-  //     this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-  //       if (theOder.order.id === order.id) {
-  //         console.log("the suuuups order is", theOder)
-  //         this.price = theOder.pricePerItem;
-  //         this.shipping = theOder.shippingCharges;
-  //         this.subTotal = theOder.subTotal;
-  //         this.tax = theOder.taxRate;
-  //         this.totalAfterTax = theOder.finalTotal;
-  //       }
-  //     });
-  //   })
-
-  // }
-
-  // generatePdf() {
-  //   const id = AllOrderData.getIdOfOrderToView();
-  //   const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-  //   const orderToViewPdf = AllOrderData.getAllOrderMap().get(id);
-
-  //   console.log(orderToViewPdf);
-
-  //   GenerateBuyerAllOrderPDF.generatePdf(orderToViewPdf);
-  // }
-
-
- orderToView(){
+  orderToView() {
     const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-    // this.data = order;
-        const id = AllOrderData.getIdOfOrderToView();
-        this.httpService.getRequest('/orders/findAll').subscribe(response => {
+    const id = AllOrderData.getIdOfOrderToView();
+    this.httpService.getRequest('/orders/findAll').subscribe(response => {
 
-          this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-            if (theOder.id === id) {
-              this.data = theOder
-              
-            }
-          });
-        })
-    
+      this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+        if (theOder.id === id) {
+          this.data = theOder
+
+        }
+      });
+    })
+
 
     this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
         if (theOder.order.id === id) {
           this.data = theOder
-          
+
         }
       });
     })
@@ -183,35 +150,33 @@ export class ViewAllordersComponent implements OnInit {
     this.orderToView()
     const id = AllOrderData.getIdOfOrderToView();
     const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-var datas;
-    if(order.orderStatus != "pending"){
-      
+    var datas;
+    if (order.orderStatus != "pending") {
+
       this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
         this.objectUtil.dataObjectToArray(response.body).map(theOder => {
           if (theOder.order.id === id) {
             this.data = theOder
-            
+
           }
         });
       })
       GenerateSupplierBuyerAllOrderPDF.generatePdf(this.data);
 
     }
-    else{
-      // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-    // this.data = order;
-        // const id = AllOrderData.getIdOfOrderToView();
-        this.httpService.getRequest('/orders/findAll').subscribe(response => {
+    else {
 
-          this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-            if (theOder.id === id) {
-              this.data = theOder
-              
-            }
-          });
-        })
-        GenerateBuyerAllOrderPDF.generatePdf(this.data);
+      this.httpService.getRequest('/orders/findAll').subscribe(response => {
+
+        this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+          if (theOder.id === id) {
+            this.data = theOder
+
+          }
+        });
+      })
+      GenerateBuyerAllOrderPDF.generatePdf(this.data);
     }
     // const orderToViewPdf = AllOrderData.getAllOrderMap().get(id);
 
@@ -222,14 +187,14 @@ var datas;
 
 
 
-  
+
 
 
   ngOnInit() {
     this.orderToView()
     this.populateOrderView();
-    console.log("mmmmmmmmmmmm",this.data)
-    
+    console.log("mmmmmmmmmmmm", this.data)
+
 
   }
 

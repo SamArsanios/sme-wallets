@@ -20,7 +20,7 @@ export class GenerateSupplierApprovedInvoicePDF {
               text: ``
             },
             {
-              text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
+              text: `Invoice NO - ${order.id}\n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
               alignment: `right`,
               margin: [0, 30, 0, 0],
               fontSize: 12

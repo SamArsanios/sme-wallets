@@ -20,7 +20,7 @@ import { GenerateSupplierApprovedInvoicePDF } from './generateBuyerApprovedInvoi
 })
 export class ViewApproveInvoicesComponent implements OnInit {
   public data;
-  invoicestatus = false;
+  invoiceStatus = false;
   price: number;
   buyerName: string;
   buyerPhone: string;
@@ -299,7 +299,7 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
     this.httpService.putRequest("/invoices/update", OldInvoice).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
-      this.invoicestatus = true
+      this.invoiceStatus = true
 
     });
 
