@@ -39,7 +39,7 @@ export class ApproveOrdersComponent implements OnInit {
   private populateTheTable(): void {
     this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
-        if (theOder.order.orderStatus === "invoiced") {
+        if (theOder.order.orderStatus === "accepted") {
           this.receivers.push(theOder);
           ApproveOrderData.addApproveOrder(theOder)
           ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)

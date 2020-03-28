@@ -199,7 +199,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     supplierOrder.shippingCharges = this.parseStringToNumber(
       this.shipping.toString()
     );
-    supplierOrder.status = "invoiced"
+    supplierOrder.status = "accepted"
     supplierOrder.taxRate = this.parseStringToNumber(this.tax.toString());
     supplierOrder.pricePerItem = this.parseStringToNumber(
       this.price.toString()
@@ -231,7 +231,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     );
     let supplierNewOrder = SupplierOrder.createInstance();
     let newOrder = Order.createInstance();
-    OldOrder.orderStatus = "invoiced";
+    OldOrder.orderStatus = "accepted";
     this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
     console.log("most needed is", OldOrder)
 

@@ -6,7 +6,7 @@ import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class GenerateBuyerAllOrderPDF {
-  static generatePdf(order: any) {
+  static generatePdf(order: Order) {
     const documentDefinition = {
       content: [
         {
@@ -21,7 +21,7 @@ export class GenerateBuyerAllOrderPDF {
             },
             // Order
             {
-              text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.id} \n\n\n`,
+              text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.orderDueDate} \n\n\n`,
               alignment: `right`,
               margin: [0, 30, 0, 0],
               fontSize: 12
@@ -31,7 +31,7 @@ export class GenerateBuyerAllOrderPDF {
         {
           columns: [
             {
-              text: `Sender/Buyer \n Name :${order.buyer.nam}\n Address : \n Phone :${order.buyer.phoneNumber}`,
+              text: `Sender/Buyer \n Name :${order.buyer.name}\n Address : \n Phone :${order.buyer.phoneNumber}`,
               style: `subheader`
             },
             {
@@ -65,7 +65,7 @@ export class GenerateBuyerAllOrderPDF {
                 { text: `${order.deliveryTerms}`, style: `tableContent` },
                 { text: `${order.conveyanceMethod}`, style: `tableContent` },
                 { text: `${order.placeOfDelivery}`, style: `tableContent` },
-                { text: `${order.paymentTime}`, style: `tableContent` },
+                { text: `${order.deliveryTime}`, style: `tableContent` },
                 { text: `${order.paymentTerms}`, style: `tableContent` }
               ]
             ]
@@ -88,11 +88,11 @@ export class GenerateBuyerAllOrderPDF {
               ],
               [
                 { text: `${order.isbnNumber}`, style: `tableContent` },
-                { text: `${order.description}`, style: `tableContent` },
-                { text: `pending`, style: `tableContent` },
+                { text: `${order.itemDescription}`, style: `tableContent` },
+                { text: `${order.saleUnit}`, style: `tableContent` },
                 { text: `${order.quantity}`, style: `tableContent` },
-                { text: `pending`, style: `tableContent` },
-                { text: `pending`, style: `tableContent` }
+                { text: `0`, style: `tableContent` },
+                { text: `0`, style: `tableContent` }
               ]
             ]
           }
@@ -119,7 +119,7 @@ export class GenerateBuyerAllOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `pending`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -131,7 +131,7 @@ export class GenerateBuyerAllOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `pending`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -143,7 +143,7 @@ export class GenerateBuyerAllOrderPDF {
                       alignment: `right`
                     },
                     {
-                      text: `pending`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -156,7 +156,7 @@ export class GenerateBuyerAllOrderPDF {
                     },
 
                     {
-                      text: `pending`,
+                      text: `0`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]
