@@ -31,7 +31,7 @@ export class ViewOrdersComponent implements OnInit {
   srNo: string;
   itemName: string;
   itemDescription: string;
-  salesUnit: any;
+  salesUnit: number;
   quantity: number;
   price: number;
   totalBeforeTax: number;
