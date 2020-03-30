@@ -31,7 +31,7 @@ export class HttpService<T> {
    */
   private getHeaders(): HttpHeaders {
     return new HttpHeaders()
-      .set('Content-Type', 'application/json');
+      // .set('Content-Type', 'application/json');this.updateAddressOnlyInfo(theRegistration);this.updateAddressOnlyInfo(theRegistration);
   }
 
   /**

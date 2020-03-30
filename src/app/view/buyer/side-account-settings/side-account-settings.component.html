@@ -60,7 +60,7 @@
 
         <mat-card-content>
           <div>
-            <form #personalInfoForm="ngForm" (ngSubmit)="onSubmit(form)">
+            <form #personalInfoForm="ngForm" (click)="onSubmit(personalInfoForm)">
               <div
                 class="form-group"
                 
@@ -87,23 +87,29 @@
                 <mat-form-field appearance="outline">
                   <mat-label>Email</mat-label>
 
-              <input matInput required name="email" #personalInfoEmail="ngModel"[(ngModel)]="email" />
+              <input matInput 
+              required 
+              name="email" 
+              #personalInfoEmail="ngModel"
+              [(ngModel)]="email" />
                 </mat-form-field>
                 <span class="alert alert-danger" [hidden] = "!personalInfoEmail.touched || personalInfoEmail.valid &&personalInfoForm.submitted ">Please enter your email</span>
                 
               </div>
 
-              <div [class.has-error]="personalInfoWallet.touched|| personalInfoWallet.invalid">
-                  <label for="">Wallet</label>
-                  <mat-radio-group label="Wallet" >
-                    <mat-radio-button
-                      *ngFor="let option of options"
-                      [value]="option" required name="wallet" [(ngModel)]="wallet"  #personalInfoWallet="ngModel"
-                    >
-                      {{ option }}
-                    </mat-radio-button>
-                  </mat-radio-group>
-                  <span *ngIf="personalInfoWallet.invalid && personalInfoForm.submitted">Please choose a wallet</span>
+              <div >
+                <mat-form-field appearance="outline">
+                  <mat-label>Select wallet</mat-label>
+                  <mat-label class="label">Wallets</mat-label>
+                  <mat-select class="labelinfo" name="wallet" [(ngModel)]=wallet required #wal="ngModel">
+
+                      <mat-option *ngFor= "let wallet of wallets" [value]="wallet">
+                           {{wallet}} 
+                      </mat-option>
+                  </mat-select>
+              </mat-form-field>
+             
+
 
               </div>
 
@@ -114,8 +120,8 @@
               <button
                 mat-raised-button
                 color="primary"
-                type="submit"
-                onsubmit="updatePersonalInfo()"
+                
+                
               >
                 Update
               </button>
@@ -130,12 +136,17 @@
 
         <mat-card-content>
           <div>
-            <form #registeredAddress="ngForm" (ngSubmit)="onSubmit(form)" >
+            <form #registeredAddress="ngForm" (ngSubmit)="onRegisteredSubmit(registeredAddress)" >
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Contact</mat-label>
       
-                      <input matInput name="contact" type="number" required #registeredContact="ngModel" [(ngModel)]="contact" />
+                      <input matInput 
+                      name="contactNumber" 
+                      type="text" 
+                      required 
+                      #registeredContact="ngModel" 
+                      [(ngModel)]="contactNumber" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!registeredContact.touched ||registeredContact.valid">Please enter the contact</span>
               </div>
@@ -145,7 +156,11 @@
                   <mat-form-field appearance="outline">
                       <mat-label>City</mat-label>
       
-                      <input matInput name="city" required #registeredCity ="ngModel" [(ngModel)]="city" />
+                      <input matInput 
+                      name="city" 
+                      required 
+                      #registeredCity ="ngModel" 
+                      [(ngModel)]="city" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!registeredCity.touched ||registeredCity.valid">Please enter the City</span>
       
@@ -155,7 +170,11 @@
                   <mat-form-field appearance="outline">
                       <mat-label>State</mat-label>
       
-                      <input matInput name="state" required #registeredState="ngModel" [(ngModel)]="state" />
+                      <input matInput 
+                      name="state" 
+                      required 
+                      #registeredState="ngModel" 
+                      [(ngModel)]="state" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!registeredState.touched ||registeredState.valid">Please enter the State</span>
       
@@ -165,7 +184,11 @@
                   <mat-form-field appearance="outline">
                       <mat-label>Country</mat-label>
       
-                      <input matInput name="country" required #registeredCountry="ngModel" [(ngModel)]= "country" />
+                      <input matInput 
+                      name="country" 
+                      required 
+                      #registeredCountry="ngModel" 
+                      [(ngModel)]= "country" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!registeredCountry.touched ||registeredCountry.valid">Please enter the Country</span>
               </div>
@@ -174,13 +197,17 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Zip Code</mat-label>
     
-                    <input matInput name="zipcode" type="number" required #registeredZipcode ="ngModel" [(ngModel)]="zipcode" />
+                    <input matInput 
+                    name="zip" 
+                    type="number" 
+                    required #registeredZipcode ="ngModel" 
+                    [(ngModel)]="zip" />
                   </mat-form-field>
                   <span class="alert alert-danger" [hidden]="!registeredZipcode.touched ||registeredZipcode.valid">Please enter the Zip Code</span>
     
              </div>
 
-              <button mat-raised-button color="primary" type="submit">
+              <button mat-raised-button color="primary" >
                 Update
               </button>
             </form>
@@ -193,12 +220,12 @@
         {{correspondenceAddress.value|json}}
         <mat-card-content>
           <div>
-            <form #correspondenceAddress ="ngForm" (ngSubmit)="onSubmit(form)" >
+            <form #correspondenceAddress ="ngForm" (ngSubmit)="onCorrespondenceSubmit(correspondenceAddress)" >
               
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Contact</mat-label>
-                      <input matInput name="contact" type="number" required #correspondenceContact ="ngModel" [(ngModel)]="contact" />
+                      <input matInput name="corContact" type="number" required #correspondenceContact ="ngModel" [(ngModel)]="corContact" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!correspondenceContact.touched ||correspondenceContact.valid">Please enter the Contact</span>
 
@@ -207,7 +234,7 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>City</mat-label>
-                      <input matInput name="city" type="text" required #correspondenceCity="ngModel" [(ngModel)]="city" />
+                      <input matInput name="corCity" type="text" required #correspondenceCity="ngModel" [(ngModel)]="corCity" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!correspondenceContact.touched ||correspondenceContact.valid">Please enter the Contact</span>
               </div>
@@ -215,7 +242,7 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>State</mat-label>
-                      <input matInput name="state" required #correspondenceState="ngModel" [(ngModel)]="state" />
+                      <input matInput name="corState" required #correspondenceState="ngModel" [(ngModel)]="corState" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!correspondenceState.touched ||correspondenceState.valid">Please enter the State</span>
 
@@ -225,7 +252,7 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Country</mat-label>
-                      <input matInput name="country" required #correspondenceCountry="ngModel" [(ngModel)]="country" />
+                      <input matInput name="corCountry" required #correspondenceCountry="ngModel" [(ngModel)]="corCountry" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!correspondenceCountry.touched ||correspondenceCountry.valid">Please enter the Country</span>
 
@@ -234,13 +261,13 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Zip Code</mat-label>
-                      <input matInput name="zipcode" required type="number" #correspondenceZipcode="ngModel" [(ngModel)]="zipcode" />
+                      <input matInput name="corZipCode" required type="number" #correspondenceZipcode="ngModel" [(ngModel)]="corZipCode" />
                     </mat-form-field>
                     <span class="alert alert-danger" [hidden]="!correspondenceZipcode.touched ||correspondenceZipcode.valid">Please enter the Zip Code</span>
 
               </div>
               
-              <button mat-raised-button color="primary" type="submit">
+              <button mat-raised-button color="primary" >
                 Update
               </button>
             </form>
@@ -249,12 +276,13 @@
       </mat-card>
       <mat-card id="company-information">
         <mat-card-title>
+    
           Company Information
         </mat-card-title>
 
         <mat-card-content>
           <div>
-            <form #companyInfo="ngForm" (ngSubmit)="onSubmit(form)">
+            <form #companyInfo="ngForm" (ngSubmit)="onSubmitCompanyInfo(companyInfo)">
               
               <div>
                   <mat-form-field appearance="outline">
@@ -267,7 +295,7 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Company Representative Name</mat-label>
-                      <input matInput name="companyrepresentativename" required #companyRep="ngModel" [(ngModel)]="companyrepresentativename" />
+                      <input matInput name="crName" required #companyRep="ngModel" [(ngModel)]="crName" />
                   </mat-form-field>
                   <span class="alert alert-danger" [hidden]="!companyRep.touched ||companyRep.valid">Please enter the Company Representative Name</span>
 
@@ -276,16 +304,16 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Company Email</mat-label>
-                      <input matInput name="email" required #companyEmail="ngModel" [(ngModel)]="email" />
+                      <input matInput name="companyEmail" required #companyEmailVal="ngModel" [(ngModel)]="companyEmail" />
                   </mat-form-field>
-                  <span class="alert alert-danger" [hidden]="!companyEmail.touched ||companyEmail.valid">Please enter the Company Email</span>
+                  <span class="alert alert-danger" [hidden]="!companyEmailVal.touched ||companyEmailVal.valid">Please enter the Company Email</span>
 
               </div>
               
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>CRB/BUNS Number</mat-label>
-                      <input matInput name="crbnumber" required #companyCrb="ngModel" [(ngModel)]="crbnumber" />
+                      <input matInput name="crbNumber" required #companyCrb="ngModel" [(ngModel)]="crbnumber" />
                   </mat-form-field>
                   <span class="alert alert-danger" [hidden]="!companyCrb.touched ||companyCrb.valid">Please enter the CRB/BUNS Number</span>
               </div>
@@ -293,14 +321,14 @@
               <div>
                   <mat-form-field appearance="outline">
                       <mat-label>Company Address</mat-label>
-                      <input matInput name="address" required #companyAddress="ngModel" [(ngModel)]="address" />
+                      <input matInput name="companyAddress" required #companyAddressVal="ngModel" [(ngModel)]="companyAddress" />
                   </mat-form-field>
-                  <span class="alert alert-danger" [hidden]="!companyAddress.touched ||companyAddress.valid">Please enter the Company Address</span>
+                  <span class="alert alert-danger" [hidden]="!companyAddressVal.touched ||companyAddressVal.valid">Please enter the Company Address</span>
 
               </div>
-              
+              {{companyInfo.value|json}}
               <br />
-              <button mat-raised-button color="primary" type="submit">
+              <button mat-raised-button color="primary" >
                 Update
               </button>
             </form>

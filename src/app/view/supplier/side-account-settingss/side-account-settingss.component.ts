@@ -27,7 +27,7 @@ export class SideAccountSettingssComponent{
   registrationIdForUpdate: number;
   userInfo: User;
 
-  registration = new Registration(null, null, null, null, null, null, null,
+  registration = new Registration(null, null, null, null, null, null, null,null,
     null, null, null, null, null, null, null, null, null, null, null, null, null, null)
 
 
@@ -112,7 +112,7 @@ export class SideAccountSettingssComponent{
     
     let user = new User(null, null, null, null, null, null, null, null);
     
-    let reg = new Registration(null, null, null, null, null, null, null,
+    let reg = new Registration(null, null, null, null, null, null, null,null,
       null, null, null, null, null, null, null, null, null, null, null, null, null, null)
 
     const userObject = {

@@ -93,6 +93,7 @@ import { AproveInvoiceComponent } from './view/buyer/invoices/aprove-invoice/apr
 import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/approved-invoices.component';
 import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/vews-approved-invoices/vews-approved-invoices.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

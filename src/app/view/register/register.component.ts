@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
     this.httpServicee.postRequest('/users/create', newUser).subscribe(e => {
       console.log(`the result ${JSON.stringify(e)} `)
       if (e.status == 200) {
-        const reg = new Registration(0, this.convertUserToUserTransient(e.body), object.industrytype, e.body.name, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        const reg = new Registration(0, this.convertUserToUserTransient(e.body), object.industrytype, e.body.name, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
         this.httpRegister.postRequest("/registrations/create", reg).subscribe(result => {
           console.log(`reg result ${JSON.stringify(result)}`)
           this.registrationStatus = true;
