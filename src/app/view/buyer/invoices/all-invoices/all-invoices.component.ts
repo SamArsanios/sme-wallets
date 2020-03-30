@@ -42,9 +42,7 @@ export class AllInvoicesComponent implements OnInit {
 
 
   private populateTheTable(): void {
-  // this.httpService.getRequest("/supplierOrder/findAll").subscribe(response => {
-  //       console.log("the rrrrrrrrr", response.body)
-  // })
+
     this.httpService.getRequest("/invoices/findAll").subscribe(response => {
 
       const result = this.populateTable.populateTable(
@@ -71,38 +69,15 @@ export class AllInvoicesComponent implements OnInit {
 
   ngOnInit() {
     this.populateTheTable();
-    // this.supsoo()
+
   }
-//   supsoo(){
-//         this.httpService.getRequest("/supplierOrder/findAll").subscribe(response => {
-//         console.log("the rrrrrrrrr", response.body)
-//   })
 
   handleViewOrderClick($event): void {
     const id = parseInt($event.target.closest("button").id);
     console.log(`the id is ${id}`)
-    // this. supsoo()
     this.router.navigate(["/buyer/invoices/viewRaisedInvoices"]).then(() => {
      
       BuyerAllInvoicesInvoiceData.setIdOfInvoiceToView(id);
-
-
-    // this.httpService.getRequest("/supplierOrder/findAll").subscribe(response => {
-    //   // this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
-    //     console.log("the invoiced orders are,", response.body)
-    //     const theSupplierOrder = response.body;
-    //   //   if (theOder.order.id === order.order.id) {
-    //   //     console.log("the supplier order is", theOder)
-
-
-    //       // this.receivers.push(theOder);
-    //       // SupplierInvoicedOrderData.addSupplierInvoicedOrder(theOder)
-    //       // SupplierInvoicedOrderData.addSupplierInvoicedOrderToMap(theOder, theOder.id)
-
-    //     })
-      // });
-
-    // })
     });
     
   }

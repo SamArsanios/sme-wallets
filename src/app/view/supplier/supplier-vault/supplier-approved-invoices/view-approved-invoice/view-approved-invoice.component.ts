@@ -68,7 +68,7 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   }
 
   private populateOrderView(): void {
-const order = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
+const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
 
 this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
@@ -162,7 +162,7 @@ if (order !== undefined && order != null) {
   }
 
   Order() {
-    const supplierOrders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
+    const supplierOrders = SupplierApprovedOrdersData.getApproveOrderMap().get(
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
     console.log("the neeeeded order is", neededOrder)
@@ -196,7 +196,7 @@ if (order !== undefined && order != null) {
   raiseInvoice(form: NgForm) {
 
 
-    const supplierOrders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
+    const supplierOrders = SupplierApprovedOrdersData.getApproveOrderMap().get(
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
 
@@ -294,7 +294,7 @@ if (order !== undefined && order != null) {
 
   generatePdf() {
     const id = SupplierApprovedOrdersData.getIdOfOrderToView();
-    const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
+    const orderToViewPdf = SupplierApprovedOrdersData.getApproveOrderMap().get(id);
 
     console.log(orderToViewPdf);
 

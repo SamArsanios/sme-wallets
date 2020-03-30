@@ -45,8 +45,8 @@ supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierAp
           
 
           this.receivers.push(theOder);
-          SupplierApprovedOrdersData.addAsupplierApprovedOrders(theOder)
-          SupplierApprovedOrdersData.addAsupplierApprovedOrdersToMap(theOder, theOder.id)
+          SupplierApprovedOrdersData.addApproveOrder(theOder)
+          SupplierApprovedOrdersData.addApproveOrderToMap(theOder, theOder.id)
 
         }
       });
@@ -61,8 +61,8 @@ supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierAp
 
       this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
 
-         SupplierApprovedOrdersData.addAsupplierApprovedOrders(e);
-         SupplierApprovedOrdersData.addAsupplierApprovedOrdersToMap(e, e.id);
+         SupplierApprovedOrdersData.addApproveOrder(e);
+         SupplierApprovedOrdersData.addApproveOrderToMap(e, e.id);
 
       });
 
@@ -82,11 +82,11 @@ supplierApprovedInvoicesTableDataSource = new MatTableDataSource(this.supplierAp
         const id = parseInt($event.target.closest("button").id);
     
         this.router
-          .navigate(["/supplier/view-approved-invoice-component"])
+          .navigate(["/suppliers/view-approved-invoice-component/getPaid"])
           .then(e => {
             console.log(
               `the order to view again: ${JSON.stringify(
-                SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id),
+                SupplierApprovedOrdersData.getApproveOrderMap().get(id),
                 null,
                 2
               )} `

@@ -92,6 +92,7 @@ import { ViewApproveInvoicesComponent } from './view/buyer/invoices/aprove-invoi
 import { AproveInvoiceComponent } from './view/buyer/invoices/aprove-invoice/aprove-invoice.component';
 import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/approved-invoices.component';
 import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/vews-approved-invoices/vews-approved-invoices.component';
+import { GetPaidComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/get-paid/get-paid.component';
 
 
 @NgModule({
@@ -159,7 +160,8 @@ import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoi
     ViewSupplierInvoicedOrdersComponent,
     ViewApproveInvoicesComponent,
     AproveInvoiceComponent,
-    VewsApprovedInvoicesComponent
+    VewsApprovedInvoicesComponent,
+    GetPaidComponent
 
     // PiechartComponent
   ],

@@ -41,6 +41,7 @@ export class VewsApprovedInvoicesComponent implements OnInit {
   tax: number;
   shipping: number;
   totalAfterTax: number;
+  invoiceDueDate: string;
 
 
   constructor(
@@ -79,6 +80,7 @@ export class VewsApprovedInvoicesComponent implements OnInit {
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
       this.buyerEmail = order.order.buyer.email;
+      this.invoiceDueDate = order.invoiceDueDate;
 
       this.supplierName = order.order.supplier.name;
       this.supplierPhone = order.order.supplier.phoneNumber;

@@ -35,20 +35,13 @@ export class PopulateSupplierApprovedOrderTable {
     return fromResponse.map(e => {
       console.log(`the naaame ${JSON.stringify(e.order.buyer.name, null, 2)}`)
       return  {
-<<<<<<< HEAD
         orderNo: `inv-${e.id}`,
         orderDate: e.theTimestamp,
         orderDueDate: e.invoiceDueDate,
+        
         senderName: e.order.buyer.name,
+        invoiceTotal: "unknown",
         orderStatus: e.invoiceStatus,
-=======
-        invoiceNo: `inv-${e.order.id}`,
-        orderDate: e.order.timestamp,
-        orderDueDate: e.order.orderDueDate,
-        senderName: e.order.buyer.name,
-        invoiceTotal:e.finalTotal,
-        orderStatus: e.order.orderStatus,
->>>>>>> a4ef45d6e863c738b7e8faa4ae13daf265dd71ee
         action: e.id
       };
 
