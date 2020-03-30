@@ -36,7 +36,7 @@ export class GenerateSupplierAllOrderPDF {
               style: `subheader`
             },
             {
-              text: `Order Details  \n Order Id : ${order.id}\n Delivery Place :${order.order.placeOfDelivery}\n Payment Terms : ${order.order.paymentTerms} \n Delivery Terms : ${order.order.deliveryTerms}`,
+              text: `Order Details  \n Order Id : ${order.order.id}\n Delivery Place :${order.order.placeOfDelivery}\n Payment Terms : ${order.order.paymentTerms} \n Delivery Terms : ${order.order.deliveryTerms}`,
               style: `subheader`
             }
           ]
@@ -62,7 +62,7 @@ export class GenerateSupplierAllOrderPDF {
                 { text: `${order.order.deliveryTerms}`, style: `tableContent` },
                 { text: `${order.order.conveyanceMethod}`, style: `tableContent` },
                 { text: `${order.order.placeOfDelivery}`, style: `tableContent` },
-                { text: `${order.order.deliveryTerms}`, style: `tableContent` },
+                { text: `${order.order.deliveryTime}`, style: `tableContent` },
                 { text: `${order.order.paymentTerms}`, style: `tableContent` }
               ]
             ]

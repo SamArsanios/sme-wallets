@@ -41,6 +41,7 @@ import { ViewApprovedInvoiceComponent } from './view/supplier/supplier-vault/sup
 import { ViewApproveInvoicesComponent } from './view/buyer/invoices/aprove-invoice/view-approve-invoices/view-approve-invoices.component';
 import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/approved-invoices.component';
 import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/vews-approved-invoices/vews-approved-invoices.component';
+import { GetPaidComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/get-paid/get-paid.component';
 
 
 const routes: Routes = [
@@ -117,6 +118,12 @@ const routes: Routes = [
     path: "suppliers/view-approved-invoice-component",
     component: ViewSupplierInvoicedOrdersComponent
   },
+  {
+
+    path: "suppliers/view-approved-invoice-component/getPaid",
+    component: GetPaidComponent
+  },
+  
   
 
   

@@ -10,42 +10,41 @@
 
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="supplierApprovedInvoicesTableDataSource" matSort>
-      <!-- Invoice Number Column -->
+      <!-- Order Number Column -->
       <ng-container matColumnDef="invoiceNo">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice No.</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.invoiceNo }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.orderNo }}</mat-cell>
       </ng-container>
 
-      <!-- Invoice Date Column -->
+      <!-- Order Date Column -->
       <ng-container matColumnDef="invoiceDate">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Date</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.invoiceDate }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.orderDate }}</mat-cell>
       </ng-container>
 
-      <!-- Invoice Due Date Column -->
+      <!-- Order Due Date Column -->
       <ng-container matColumnDef="invoiceDueDate">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Due Date</mat-header-cell>
         <mat-cell *matCellDef="let element">{{
-          element.invoiceDueDate
+          element.orderDueDate
         }}</mat-cell>
       </ng-container>
 
       <!-- Sender Name Column -->
       <ng-container matColumnDef="senderName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Sender Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Customer Name</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.senderName }}</mat-cell>
       </ng-container>
 
-      <!-- Invoice Status Column -->
-      <ng-container matColumnDef="invoiceStatus">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Status</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.invoiceStatus }}</mat-cell>
-      </ng-container>
-
-      <!-- Invoice Total Column -->
       <ng-container matColumnDef="invoiceTotal">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Total</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.invoiceTotal }}</mat-cell>
+      </ng-container>
+
+      <!-- Order Status Column -->
+      <ng-container matColumnDef="invoiceStatus">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Status</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.orderStatus }}</mat-cell>
       </ng-container>
 
       <!-- Action Column -->

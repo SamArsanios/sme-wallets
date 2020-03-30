@@ -1,10 +1,11 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+// import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class GenerateApprovedInvoicesPDF {
-  static generatePdf(order: SupplierOrder) {
+  static generatePdf(order: Invoice) {
     const documentDefinition = {
       content: [
         {
@@ -88,8 +89,8 @@ export class GenerateApprovedInvoicesPDF {
                 { text: `${order.order.itemDescription}`, style: `tableContent` },
                 { text: `${order.order.saleUnit}`, style: `tableContent` },
                 { text: `${order.order.quantity}`, style: `tableContent` },
-                { text: `${order.pricePerItem}`, style: `tableContent` },
-                { text: `${order.totalPrice}`, style: `tableContent` }
+                { text: `${order.id}`, style: `tableContent` },
+                { text: `${order.id}`, style: `tableContent` }
               ]
             ]
           }
@@ -115,7 +116,7 @@ export class GenerateApprovedInvoicesPDF {
                       alignment: `right`
                     },
                     {
-                      text: `${order.subTotal}`,
+                      text: `${order.id}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -127,7 +128,7 @@ export class GenerateApprovedInvoicesPDF {
                       alignment: `right`
                     },
                     {
-                      text: `${order.taxRate}`,
+                      text: `${order.id}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -139,7 +140,7 @@ export class GenerateApprovedInvoicesPDF {
                       alignment: `right`
                     },
                     {
-                      text: `${order.shippingCharges}`,
+                      text: `${order.id}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ],
@@ -152,7 +153,7 @@ export class GenerateApprovedInvoicesPDF {
                     },
 
                     {
-                      text: `${order.totalPrice}`,
+                      text: `${order.id}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]

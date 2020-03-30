@@ -68,7 +68,7 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   }
 
   private populateOrderView(): void {
-const order = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
+const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
 
 this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
@@ -162,7 +162,7 @@ if (order !== undefined && order != null) {
   }
 
   Order() {
-    const supplierOrders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
+    const supplierOrders = SupplierApprovedOrdersData.getApproveOrderMap().get(
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
     console.log("the neeeeded order is", neededOrder)
@@ -196,7 +196,7 @@ if (order !== undefined && order != null) {
   raiseInvoice(form: NgForm) {
 
 
-    const supplierOrders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(
+    const supplierOrders = SupplierApprovedOrdersData.getApproveOrderMap().get(
       SupplierApprovedOrdersData.getIdOfOrderToView())
     const neededOrder = supplierOrders.order;
 
@@ -294,47 +294,11 @@ if (order !== undefined && order != null) {
 
   generatePdf() {
     const id = SupplierApprovedOrdersData.getIdOfOrderToView();
-    const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
+    const orderToViewPdf = SupplierApprovedOrdersData.getApproveOrderMap().get(id);
 
     console.log(orderToViewPdf);
 
     GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
   }
-  // generatePdf() {
-  //   // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-
-  //   const orders = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(SupplierApprovedOrdersData.getIdOfOrderToView())
-  //   // const idss = SupplierApprovedOrdersData.getIdOfOrderToView();
   
-  //   if(orders.order.orderStatus != "pending"){
-  //     this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
-
-  //       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-  //         if (theOder.order.id === orders.order.id) {
-  //           this.data = theOder
-  //           GenerateApprovedInvoicesPDF.generatePdf(this.data)
-            
-  //         }
-  //       });
-  //     })
-  //   }
-
-  //   else{
-  //     // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-  //   // this.data = order;
-  //       // const id = AllOrderData.getIdOfOrderToView();
-  //       this.httpService.getRequest('/orders/findAll').subscribe(response => {
-
-  //         this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-  //           if (theOder.id === orders.order.id) {
-  //             this.data = theOder
-              
-  //           }
-  //         });
-  //       })
-  //       GenerateBuyerAllOrderPDF.generatePdf(this.data);
-  //   }
-
-  // }
-
 }

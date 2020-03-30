@@ -79,7 +79,7 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
       this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;
 
-      this.srNo = `ord-${order.id}`;
+      this.srNo = order.order.isbnNumber;
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;

@@ -1,0 +1,40 @@
+.container {
+    margin: auto;
+    padding-top: 40px;
+  }
+   
+  img {
+    height: 50px;
+    width: 50px;
+  }
+   
+  li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 16px;
+  }
+   
+  table {
+    margin: 30px 0;
+    width: 100%;
+  }
+   
+  table,
+  th,
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+   
+  th {
+    padding: 15px;
+  }
+   
+  tr:nth-child(1) {
+    background-color: #dddddd;
+  }
+  /* 3rd table white background */
+  .invoiceAmount {
+    background-color: #fff;
+  }
