@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Order } from 'src/app/model/buyer/order/order-model';
+Order
 @Component({
   selector: 'app-supplier-dash',
   templateUrl: './supplier-dash.component.html',
