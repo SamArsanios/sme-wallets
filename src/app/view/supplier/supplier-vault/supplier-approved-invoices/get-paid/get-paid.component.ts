@@ -4,6 +4,7 @@ import { Order } from 'src/app/model/buyer/order/order-model';
 import { HttpService } from 'src/app/utils/http/http-service';
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 import { SupplierApprovedOrdersData } from 'src/app/service/supplier/supplier.approved.order.data';
+import { InvoicePDF } from './generatePdf';
 
 @Component({
   selector: 'app-get-paid',
@@ -103,6 +104,39 @@ if (order !== undefined && order != null) {
 
   }
 
+  // generatePdf() {
+  //   const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
+
+  //   const orderToViewPdf = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(id);
+
+  //   console.log(orderToViewPdf);
+
+  //   GenerateSupplierInvoicedOrderPDF.generatePdf(orderToViewPdf);
+  // }
+
+  generatePdf() {
+        const invoices = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView())
+        console.log("the selected invoice id", invoices)
+        
+          var iif;
+          this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
+    
+            this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+              if (theOder.order.id === invoices.order.id) {
+                this.data = theOder
+                InvoicePDF.generatePdf(this.data);
+
+                console.log("the generated supplierOrder of the invoice is", this.data)
+                
+              }
+            });
+          })
+          // console.log("teh daaaaaata is",this.data )
+          // GetPaidInvoicesPDF.generatePdf(this.data);
+    
+          // GenerateSupplierBuyerAllOrderPDF.generatePdf(this.data);
+    
+        }
 
   ngOnInit() {
   }
