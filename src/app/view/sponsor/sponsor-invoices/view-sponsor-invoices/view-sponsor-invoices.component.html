@@ -1,0 +1,269 @@
+<!-- <div class="container">
+    <div style="display: block;">
+      <img
+        src="../../../../../assets/purchase-order-2.png"
+        alt="purchase order icon"
+      />
+    </div>
+    <h3>Invoice</h3>
+    <hr />
+    <div class="row">
+      <div class="col-sm-4">
+        <div>
+          <li>From :</li>
+          <li>Phone :</li>
+          <li>Email :</li>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <li>To :</li>
+          <li>Phone :</li>
+          <li>Email :</li>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <li>Invoice ID :</li>
+          <li>Order ID :</li>
+          <li>Payment Due :</li>
+          <li>Delivery Place :</li>
+          <li>Payment Terms :</li>
+          <li>Delivery Terms :</li>
+        </div>
+      </div>
+    </div>
+  
+    <table>
+      <tr>
+        <th>
+          Sr No.
+        </th>
+        <th>
+          Item Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Sale Unit(PCS/LTR)
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>Number</td>
+        <td>Some Text</td>
+        <td>Some Text</td>
+        <td>Some Text</td>
+        <td>Some Text</td>
+        <td>Some Text</td>
+        <td>Some Text</td>
+      </tr>
+    </table>
+  
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <h3>Amount Due</h3>
+        <table>
+          <tr>
+            <th>Subtotal :</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>Tax :</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>Shipping :</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>Total :</th>
+            <td>0</td>
+          </tr>
+        </table>
+  
+        <div class="btns">
+          <button
+            (click)="generatePdf()"
+            id="btn0"
+            class="btn btn-primary btn-sm"
+            type="submit"
+          >
+            Generate PDF
+          </button>
+          <button id="btn1" class="btn btn-success btn-sm" type="submit">
+            Accept
+          </button>
+          <button id="btn2" class="btn btn-danger btn-sm" type="submit">
+            Decline
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+
+   <div class="container">
+    <div style="display: block;">
+      <img
+        src="../../../../../assets/purchase-order-2.png"
+        alt="purchase order icon"
+      />
+    </div>
+    <h3>Invoice</h3>
+    <hr />
+    <div class="row">
+      <div class="col-sm-4">
+        <div>
+
+          <li>From : {{buyerName}}</li>
+          <li>Phone : {{buyerPhone}}</li>
+        <li>Email : {{buyerEmail}}</li>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <li>To : {{supplierName}}
+          <li>Phone : {{supplierPhone}}</li>
+          <li>Email : {{supplierEmail}}</li>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+    <li>Invoice ID : {{invoiceId}}</li>
+          <li>Order ID : {{orderId}}</li>
+          <li>Payment Due :</li>
+          <li>Delivery Place : {{placeOfDelivery}}</li>
+          <li>Payment Terms : {{termsOfPayment}}</li>
+          <li>Delivery Terms : {{termsOfDelivery}}</li>
+        </div>
+      </div>
+    </div>
+   
+    <table>
+      <tr>
+        <th>
+          Sr No.
+        </th>
+        <th>
+          Item Name
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Sale Unit(PCS/LTR)
+        </th>
+        <th>
+          Quantity
+        </th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+      <tr> 
+          
+        <td>{{srNo}}</td>
+        <td>{{itemName}}</td>
+        <td>{{itemDescription}}</td>
+        <td>{{salesUnit}}</td>
+        <td>{{quantity}}</td>
+        <td>{{price}}</td>
+        <td>{{totalBeforeTax}}</td>
+      </tr>
+    </table>
+   
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <h3>Amount Due</h3>
+        <table>
+          <tr>
+
+            <th>Subtotal :</th>
+            <td>{{subTotal}}</td>
+          </tr>
+          <tr>
+            <th>Tax :</th>
+            <td>{{tax}}</td>
+          </tr>
+          <tr>
+            <th>Shipping :</th>
+            <td>{{shipping}}</td>
+          </tr>
+          <tr>
+            <th>Total :</th>
+            <td>{{totalAfterTax}}</td>
+          </tr>
+        </table>
+      </div>
+      <h3>Discount Charges</h3>
+      <table>
+        <tr>
+          <th class="invoiceAmount">Invoice Amount</th>
+          <td class="invoiceAmount">{{totalAfterTax}}</td>
+        </tr>
+        <tr>
+          <th>Witholding Tax</th>
+          <td>{{tax}}</td>
+        </tr>
+        <tr>
+          <th>Total Invoice Amount - Receivable</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Invoice Discount Family</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Facility Fees</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Excise Duty on Reg.Fees</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Total Deductions</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Invoice Discount Facility Disbursment</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Discount Fees</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Wallet Balance</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th colspan="1">
+            <input type="checkbox" />
+            I accept the Discount Terms and Conditions.
+          </th>
+          <td></td>
+        </tr>
+        <!-- <tr>
+          <th colspan="1">
+            <button (click)="getPaid()" class="btn-success">Get Paid</button>
+          </th>
+          <td></td>
+        </tr> -->
+      </table>
+   
+      <div style="margin-bottom:50px ;">
+        <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
+          Generate PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
