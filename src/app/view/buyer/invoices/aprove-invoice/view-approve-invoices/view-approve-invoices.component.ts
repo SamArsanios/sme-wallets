@@ -9,6 +9,7 @@ import { ObjectsUtil } from 'src/app/utils/objects/objects';
 import { DateUtils } from 'src/app/utils/date/date-utils';
 import { BuyerapproveInvoicesData } from 'src/app/service/order/buyerApproveInvoiceData';
 import { GenerateSupplierApprovedInvoicePDF } from './generateBuyerApprovedInvoicePDF';
+import { BuyerApproveInvoicePDF } from './generatePdf';
 // import { GenerateBuyerApproveddInvoicePDF, GenerateSupplierApprovedInvoicePDF } from './generateBuyerApprovedInvoicePDF';
 
 
@@ -158,11 +159,6 @@ export class ViewApproveInvoicesComponent implements OnInit {
   // }
 
   generatePdf() {
-//     this.orderToView()
-//     const id = AllOrderData.getIdOfOrderToView();
-//     const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-// var datas;
-    // const id = BuyerapproveInvoicesData.getIdOfInvoiceToView();
     const invoices = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
     console.log("the selected invoice id", invoices)
     
@@ -179,7 +175,7 @@ export class ViewApproveInvoicesComponent implements OnInit {
         });
       })
       console.log("teh daaaaaata is",this.data )
-          GenerateSupplierApprovedInvoicePDF.generatePdf(this.data);
+      BuyerApproveInvoicePDF.generatePdf(this.data);
 
       // GenerateSupplierBuyerAllOrderPDF.generatePdf(this.data);
 
