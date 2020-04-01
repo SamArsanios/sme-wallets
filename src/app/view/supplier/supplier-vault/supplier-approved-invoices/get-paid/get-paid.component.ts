@@ -124,21 +124,21 @@ if (order !== undefined && order != null) {
             this.objectUtil.dataObjectToArray(response.body).map(theOder => {
               if (theOder.order.id === invoices.order.id) {
                 this.data = theOder
-                InvoicePDF.generatePdf(this.data);
+                // InvoicePDF.generatePdf(this.data);
 
                 console.log("the generated supplierOrder of the invoice is", this.data)
                 
               }
             });
           })
-          // console.log("teh daaaaaata is",this.data )
-          // GetPaidInvoicesPDF.generatePdf(this.data);
-    
-          // GenerateSupplierBuyerAllOrderPDF.generatePdf(this.data);
+          InvoicePDF.generatePdf(this.data);
+
     
         }
 
   ngOnInit() {
+    this.data
   }
+
 
 }

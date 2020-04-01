@@ -235,21 +235,23 @@ export class SupplierViewOrdersComponent implements OnInit {
     this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
     console.log("most needed is", OldOrder)
 
-    this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
-      console.log(`the updated Order is ${e.body, null, 2}`)
-    });
-
-    this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
+        this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
       console.log(`the supplier Order is ${e.body, null, 2}`)
       this. invoiceStatus = true;
     });
 
+    this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
+      console.log(`the updated Order is ${e.body, null, 2}`)
+    });
+
+
+
       
-      this.invoiceStatus = true;
-      setTimeout(() => {
-        // this.cancel()
-        // this.router.navigate(['/supplier/pendingorder-orders']);
-      }, 2000);
+      // this.invoiceStatus = true;
+      // setTimeout(() => {
+      //   // this.cancel()
+      //   // this.router.navigate(['/supplier/pendingorder-orders']);
+      // }, 2000);
 
   }
 

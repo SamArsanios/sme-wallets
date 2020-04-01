@@ -8,6 +8,7 @@ import { ObjectsUtil } from 'src/app/utils/objects/objects';
 import { GenerateSupplierInvoicedOrderPDF } from 'src/app/view/supplier/supplier-purchase-orders/supplier-invoiced-orders/view-supplier-invoiced-orders/generateSupplierInvoicedOrderPDF';
 import { GenerateRaisedInvoicePDF } from './generateraisedInvoicePDF';
 import { DateUtils } from 'src/app/utils/date/date-utils';
+import { BuyerInvoicePDF } from './generatePdf';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { DateUtils } from 'src/app/utils/date/date-utils';
   styleUrls: ['./view-raised-invoices.component.css']
 })
 export class ViewRaisedInvoicesComponent implements OnInit {
+  public data;
   price: number;
   buyerName: string;
   buyerPhone: string;
@@ -47,8 +49,12 @@ export class ViewRaisedInvoicesComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private httpService: HttpService<Invoice>,
-    private objectsUtil: ObjectsUtil<any>
+    private objectsUtil: ObjectsUtil<any>,
+   
+      private objectUtilOrder: ObjectsUtil<SupplierOrder>,
+      private httpService: HttpService<SupplierOrder>,
+      private objectUtil: ObjectsUtil<SupplierOrder>,
+    
     
   ) {
 
@@ -109,14 +115,10 @@ export class ViewRaisedInvoicesComponent implements OnInit {
       this.itemName = order.order.itemName;
       this.itemDescription = order.order.itemDescription;
       this.salesUnit = order.order.saleUnit;
-      // this.price = order.order.price;
-      // this.totalBeforeTax = order.order;
-
       this.subTotal = 0;
       this.tax = order.interestRate;
       this.shipping = 0;
       this.quantity = order.order.quantity;
-      // this.totalBeforeTax = order.;
       this.totalAfterTax = order.amountToPay;
 
 
@@ -134,14 +136,30 @@ export class ViewRaisedInvoicesComponent implements OnInit {
 
   }
 
+
   generatePdf() {
-    const id = BuyerAllInvoicesInvoiceData.getIdOfInvoiceToView();
-    const orderToViewPdf = BuyerAllInvoicesInvoiceData.getBuyerInvoiceMap().get(id);
+    const invoices = BuyerAllInvoicesInvoiceData.getBuyerInvoiceMap().get(BuyerAllInvoicesInvoiceData.getIdOfInvoiceToView())
+    console.log("the selected invoice id", invoices)
+    
+      var iif;
+      this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
-    console.log(orderToViewPdf);
+        this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+          if (theOder.order.id === invoices.order.id) {
+            // theOder.id = invoices.id
+            this.data = theOder
+            this.data["ids"] = invoices.id
 
-    GenerateRaisedInvoicePDF.generatePdf(orderToViewPdf);
-  }
+            console.log("the generated supplierOrder of the invoice is", this.data)
+            
+          }
+        });
+      })
+      BuyerInvoicePDF.generatePdf(this.data);
+
+
+    }
+
 
 
   ApproveInvoice() {

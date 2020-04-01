@@ -31,7 +31,7 @@ export class PopulateBuyerInvoiceInfoTable {
 
       return  {
         invoiceNo: e.id,
-        invoiceDate: e.invoiceDate,
+        invoiceDate: e.theTimestamp,
         invoiceDueDate: e.invoiceDueDate,
         supplierName: e.order.supplier.name,
         invoiceStatus: e.invoiceStatus,
