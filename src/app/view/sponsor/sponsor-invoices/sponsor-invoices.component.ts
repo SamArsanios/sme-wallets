@@ -77,7 +77,7 @@ export class SponsorInvoicesComponent implements OnInit {
     const id = parseInt($event.target.closest("button").id);
 
     this.router
-      .navigate(["buyer/vault/view-approve-invoices"])
+      .navigate(["sponsor/ViewSponsorInvoicesComponent"])
       .then(e => {
         console.log(
           `the order to view again: ${JSON.stringify(

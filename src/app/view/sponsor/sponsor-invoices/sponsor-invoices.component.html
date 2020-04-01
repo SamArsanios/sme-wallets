@@ -68,12 +68,12 @@
 
       <!-- Supplier Action Column -->
       <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Action</mat-header-cell
-        >
-        <mat-cell *matCellDef="let element"
-          ><button class="btn-primary btn-sm">View</button></mat-cell
-        >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+
+        <mat-cell *matCellDef="let element">
+          <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
+            View</button>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
