@@ -55,11 +55,9 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
   constructor(
     private location: Location,
-    // private httpService: HttpService<Invoice>,
+
     private objectsUtil: ObjectsUtil<any>,
-    
-      // private router: Router,
-      // private objectUtilOrder: ObjectsUtil<Order>,
+
       private objectUtilSupplierOrder: ObjectsUtil<SupplierOrder>,
       private httpService: HttpService<SupplierOrder>,
     
@@ -149,14 +147,6 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
   }
 
-  // generatePdf() {
-  //   const id = BuyerapproveInvoicesData.getIdOfInvoiceToView();
-  //   const orderToViewPdf = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(id);
-
-  //   console.log(orderToViewPdf);
-
-  //   GenerateSupplierApprovedInvoicePDF.generatePdf(orderToViewPdf);
-  // }
 
   generatePdf() {
     const invoices = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
@@ -177,30 +167,9 @@ export class ViewApproveInvoicesComponent implements OnInit {
       console.log("teh daaaaaata is",this.data )
       BuyerApproveInvoicePDF.generatePdf(this.data);
 
-      // GenerateSupplierBuyerAllOrderPDF.generatePdf(this.data);
 
     }
-    // else{
-    //   // const order = AllOrderData.getAllOrderMap().get(AllOrderData.getIdOfOrderToView());
-    // // this.data = order;
-    //     // const id = AllOrderData.getIdOfOrderToView();
-    //     this.httpService.getRequest('/orders/findAll').subscribe(response => {
 
-    //       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-    //         if (theOder.id === id) {
-    //           this.data = theOder
-              
-    //         }
-    //       });
-    //     })
-    //     GenerateBuyerAllOrderPDF.generatePdf(this.data);
-    // }
-    // const orderToViewPdf = AllOrderData.getAllOrderMap().get(id);
-
-    // console.log(orderToViewPdf);
-
-    // console.log("the data to populate", this.data)
-  // }
 
   ApproveInvoice() {
     let order = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
