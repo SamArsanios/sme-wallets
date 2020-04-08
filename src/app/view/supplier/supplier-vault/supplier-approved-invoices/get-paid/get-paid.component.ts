@@ -15,7 +15,8 @@ import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 })
 export class GetPaidComponent implements OnInit {
   public data
-
+  buttonStatus = false;
+  getPaidAlert = false;
 
   buyerName: string;
   buyerPhone: string;
@@ -44,6 +45,7 @@ export class GetPaidComponent implements OnInit {
   totalAfterTax: number;
   invoiceDueDate: string;
   invoiceId: string;
+  invoiceStatus;
 
   constructor(
     private objectUtilOrder: ObjectsUtil<Order>,
@@ -55,6 +57,7 @@ export class GetPaidComponent implements OnInit {
   ) {
 
     this.populateOrderView();
+    // this.generatePdf()
 
   }
 
@@ -62,7 +65,6 @@ export class GetPaidComponent implements OnInit {
 
   private populateOrderView(): void {
     const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
-    console.log("the order is ", order)
     this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
@@ -79,7 +81,10 @@ export class GetPaidComponent implements OnInit {
 
 
     if (order !== undefined && order != null) {
-
+      if (order.invoiceStatus == "approved") {
+        this.buttonStatus = true;
+      }
+      this.invoiceStatus = order.invoiceStatus;
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
       this.buyerEmail = order.order.buyer.email;
@@ -94,7 +99,6 @@ export class GetPaidComponent implements OnInit {
       this.placeOfDelivery = order.order.placeOfDelivery;
       this.termsOfPayment = order.order.paymentTerms;
       this.termsOfDelivery = order.order.deliveryTerms;
-      // this.invoiceDueDate = order.invoiceDueDate;
 
       this.srNo = order.order.isbnNumber;
       this.itemName = order.order.itemName;
@@ -112,17 +116,13 @@ export class GetPaidComponent implements OnInit {
 
   generatePdf() {
     const invoices = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView())
-    console.log("the selected invoice id", invoices)
 
-    var iif;
     this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
 
       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
         if (theOder.order.id === invoices.order.id) {
           this.data = theOder
-          // InvoicePDF.generatePdf(this.data);
-
-          console.log("the generated supplierOrder of the invoice is", this.data)
+          return this.data
 
         }
       });
@@ -136,8 +136,6 @@ export class GetPaidComponent implements OnInit {
 
   getPaid() {
     let order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
-
-    // let order = BuyerapproveInvoicesData.getBuyerInvoiceMap().get(BuyerapproveInvoicesData.getIdOfInvoiceToView())
 
     // modify the Timestamp
 
@@ -229,14 +227,22 @@ export class GetPaidComponent implements OnInit {
 
     this.httpService.putRequest("/invoices/update", OldInvoice).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
-      // this.invoiceStatus = true
-
+      this.getPaidAlert = true;
+      let x =(<HTMLInputElement>document.getElementById("gotPaid"));
+      x.style.display= "none";
     });
 
   }
 
   ngOnInit() {
+
     this.data
+    this.populateOrderView();
+    if (this.invoiceStatus == "approved") {
+      this.buttonStatus = true;
+    }
+    this.generatePdf()
+
   }
 
 

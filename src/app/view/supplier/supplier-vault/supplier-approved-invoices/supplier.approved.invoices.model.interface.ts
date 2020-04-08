@@ -18,6 +18,7 @@ export interface ISupplierApprovedOrders {
 
 
 export class PopulateSupplierApprovedOrderTable {
+  
 
   public static displayedColumns: string[] = [
         "invoiceNo",
@@ -31,9 +32,15 @@ export class PopulateSupplierApprovedOrderTable {
 
 
   public  static populateTableOnInit(fromResponse: Invoice[]) {
+    var buttonString;
 
     return fromResponse.map(e => {
-      console.log(`the naaame ${JSON.stringify(e.order.buyer.name, null, 2)}`)
+      if(e.invoiceStatus == "approved"){
+        buttonString = "Discount Amount"
+      }
+      else{
+        buttonString = "Discounted"
+      }
       return  {
         orderNo: `inv-${e.id}`,
         orderDate: e.theTimestamp,
@@ -41,8 +48,9 @@ export class PopulateSupplierApprovedOrderTable {
         
         senderName: e.order.buyer.name,
         invoiceTotal: "unknown",
-        orderStatus: e.invoiceStatus,
-        action: e.id
+        invoiceStatus: e.invoiceStatus,
+        action: e.id,
+        buttonString: buttonString
       };
 
     });

@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class SupplierViewOrdersComponent implements OnInit {
   invoiceStatus = false;
+  declinedStatus = false;
   buyerName: string;
   buyerPhone: string;
   buyerEmail: string;
@@ -243,19 +244,51 @@ export class SupplierViewOrdersComponent implements OnInit {
     this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
     });
+  }  
 
-
-
+  Decline() {
+    // get the order
+    const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
+      SupplierPendingOrderData.getIdOfOrderToView()
       
-      // this.invoiceStatus = true;
-      // setTimeout(() => {
-      //   // this.cancel()
-      //   // this.router.navigate(['/supplier/pendingorder-orders']);
-      // }, 2000);
+    );
+    console.log("teh retrieved order is", order)
 
-  }
+    const timestampStrOrder = "timestampStr";
+    order[timestampStrOrder] = DateUtils.convertDateFormatToParsable(
+      order.timestamp
+    );
+    order.timestamp = null;
+    // create a transient emailVerifiedAtStr
+    const emailVerifiedAtStrBuyer = "emailVerifiedAtStr";
+    const buyer = order.buyer;
+    buyer[emailVerifiedAtStrBuyer] = DateUtils.convertDateFormatToParsable(
+      buyer.emailVerifiedAt
+    );
+    buyer.emailVerifiedAt = null;
+    const supplier = order.supplier;
+    const emailVerifiedAtStrSupplier = "emailVerifiedAtStr";
+    supplier[emailVerifiedAtStrSupplier] = DateUtils.convertDateFormatToParsable(supplier.emailVerifiedAt);
+    supplier.emailVerifiedAt = null;
+    order.wallet = this.temporaryWallet(buyer);
 
-  
+    console.log(`The Order: ${JSON.stringify(order, null, 2)} `);
+   
+    
+    let OldOrder = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
+      SupplierPendingOrderData.getIdOfOrderToView()
+    );
+    // let supplierNewOrder = SupplierOrder.createInstance();
+    let newOrder = Order.createInstance();
+    OldOrder.orderStatus = "declined";
+    this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
+    console.log("most needed is", OldOrder)
+
+    this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
+      console.log(`the updated Order is ${e.body, null, 2}`)
+      this.declinedStatus = true;
+    });
+  }  
 }
 
 
