@@ -7,29 +7,42 @@
         <mat-card>
           <mat-card-title>Invite</mat-card-title>
           <mat-card-content>
-            <form>
-              <mat-form-field class="full-width">
-                <input
-                  matInput
-                  placeholder="Email"
-                  [formControl]="emailFormControl"
-                  [errorStateMatcher]="matcher"
-                />
-                <mat-hint align="end">Hint: email@domain.com</mat-hint>
-                <mat-error
-                  align="end"
-                  *ngIf="
-                    emailFormControl.hasError('email') &&
-                    !emailFormControl.hasError('required')
-                  "
-                  >Please enter a valid email address</mat-error
-                >
+            <form #form="ngForm">
+
+              <mat-form-field>
+
+                <mat-label class="label">Supplier email</mat-label>
+      
+                <mat-select class="labelinfo" name="receiveremail" selectedEmail id="test-id" [(value)] = "selectedEmail" (selectionChange)="someMethod($event.value)">
+      
+                  <mat-option *ngFor="let reci of receivers" value={{reci.email}}>
+      
+                    {{reci.email}}
+      
+                  </mat-option>
+      
+                </mat-select>
+      
               </mat-form-field>
 
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Name" />
+
+              <mat-form-field>
+
+                <mat-label class="label">Supplier name</mat-label>
+      
+                <mat-select class="labelinfo" name="receivername" ngModel id="test-id" (selectionChange)="selectName($event.value)" [(value)]="theCorrespondingName">
+      
+                  <mat-option *ngFor="let reci of receivers" value={{reci.name}}>
+      
+                    {{reci.name}}      
+                  </mat-option>
+      
+                </mat-select>
+      
               </mat-form-field>
+
             </form>
+
           </mat-card-content>
           <mat-card-actions>
             <button class="btn-block" mat-raised-button color="primary">
