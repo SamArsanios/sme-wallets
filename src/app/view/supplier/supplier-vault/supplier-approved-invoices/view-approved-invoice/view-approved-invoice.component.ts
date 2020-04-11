@@ -68,24 +68,27 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   }
 
   private populateOrderView(): void {
-const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
-
-this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
-
-  this.objectUtil.dataObjectToArray(response.body).map(theOder => {
-    if (theOder.order.id === order.order.id) {
-      console.log("the suuuups order is", theOder)
-      this.price = theOder.pricePerItem;
-      this.shipping = theOder.shippingCharges;
-      this.subTotal = theOder.subTotal;
-      this.tax = theOder.taxRate;
-      this.totalAfterTax = theOder.finalTotal;
+    const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
+    if (order.invoiceStatus =="approved") {
+      console.log("the order is aproved therefore the get  paid button should be there")
     }
-  });
-})
+
+    this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
+
+      this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+        if (theOder.order.id === order.order.id) {
+          console.log("the suuuups order is", theOder)
+          this.price = theOder.pricePerItem;
+          this.shipping = theOder.shippingCharges;
+          this.subTotal = theOder.subTotal;
+          this.tax = theOder.taxRate;
+          this.totalAfterTax = theOder.finalTotal;
+        }
+      });
+    })
 
 
-if (order !== undefined && order != null) {
+    if (order !== undefined && order != null) {
 
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;
@@ -113,15 +116,6 @@ if (order !== undefined && order != null) {
     }
 
   }
-
-  // generatePdf() {
-  //   const id = SupplierApprovedOrdersData.getIdOfOrderToView();
-  //   const orderToViewPdf = SupplierApprovedOrdersData.getsupplierApprovedOrdersMap().get(id);
-
-  //   console.log(orderToViewPdf);
-
-  //   GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
-  // }
 
   temporaryWallet(buyer: User): Wallet {
     let wallet = new Wallet(1, "SME", "Feb 21, 2020 5:13:45 AM", buyer);
@@ -280,7 +274,7 @@ if (order !== undefined && order != null) {
       console.log(`the updated Order is ${e.body, null, 2}`)
       this.invoiceStatus = true;
     });
-    
+
 
   }
 
@@ -288,8 +282,6 @@ if (order !== undefined && order != null) {
 
     this.populateOrderView();
     this.dateCtrl = new FormControl("", [Validators.required]);
-
-
   }
 
   generatePdf() {
@@ -300,5 +292,5 @@ if (order !== undefined && order != null) {
 
     GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
   }
-  
+
 }

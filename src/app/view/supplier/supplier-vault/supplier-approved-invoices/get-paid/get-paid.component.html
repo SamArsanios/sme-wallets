@@ -133,23 +133,31 @@
               <th>Wallet Balance</th>
               <td>0</td>
             </tr>
-            <tr>
+            <tr *ngIf="buttonStatus">
               <th colspan="1">
                 <input type="checkbox" />
                 I accept the Discount Terms and Conditions.
               </th>
               <td></td>
             </tr>
-            <tr>
+            <tr *ngIf="getPaidAlert" >
+                <div class="alert alert-success statusmessage">
+                    <strong>Success!</strong> Your request to get paid has been forwarded to both the sponsor and the buyer
+                  </div>
+            </tr>
+            <tr *ngIf="buttonStatus" id = "gotPaid">
               <th colspan="1">
-                <button (click)="getPaid()" class="btn-success">Get Paid</button>
+
+
+                  
+                <button  (click)="getPaid()" class="btn-success" >Get Paid</button>
               </th>
               <td></td>
             </tr>
           </table>
        
           <div style="margin-bottom:50px ;">
-            <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton" type="submit">
+            <button (click)="generatePdf()" class="btn btn-primary btn-lg pdfbutton">
               Generate PDF
             </button>
           </div>

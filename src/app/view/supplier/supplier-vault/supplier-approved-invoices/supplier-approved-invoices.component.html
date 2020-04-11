@@ -11,6 +11,8 @@
   <div class="mat-elevation-z8">
     <mat-table [dataSource]="supplierApprovedInvoicesTableDataSource" matSort>
       <!-- Order Number Column -->
+
+
       <ng-container matColumnDef="invoiceNo">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice No.</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.orderNo }}</mat-cell>
@@ -44,15 +46,19 @@
       <!-- Order Status Column -->
       <ng-container matColumnDef="invoiceStatus">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Invoice Status</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.orderStatus }}</mat-cell>
+        <mat-cell *matCellDef="let element" id="status">{{ element.invoiceStatus }}</mat-cell>
       </ng-container>
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
         <mat-cell *matCellDef="let element">
+
+
           <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
-            Discount Amount</button>
+            {{ element.buttonString }}</button>
+
+
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
