@@ -130,6 +130,7 @@ import { UserTransient } from "src/app/shared/model/user/user-model-transient";
 import { WebsocketService } from "src/app/utils/websocket/websocket.service";
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Invite } from 'src/app/model/buyer/invites/invite-model';
 
 
 @Component({
@@ -140,16 +141,11 @@ import { Location } from '@angular/common';
 export class InviteContactsComponent implements OnInit {
   // OrderStatus = false;
   receivers = []
-theCorrespondingName;
-selectedEmail;
-
-  
-
-  // public onChange(event): void {  // event will give you full breif of action
-  //   const newVal = event.target.value;
-  //   console.log(newVal);
-  // }
-  
+  theCorrespondingName;
+  selectedEmail;
+  supplierDetail;
+  user;
+  inviteStatus = false;
 
   // tslint:disable-next-line:max-line-length
   constructor(
@@ -157,58 +153,109 @@ selectedEmail;
     private router: Router,
     private httpService: HttpService<User>,
     private objectUtil: ObjectsUtil<User>,
-    private objectUtilOrder: ObjectsUtil<Order>,
-    // private websocket: WebsocketService,
-    // private location: Location,
-    
+    private objectUtilOrder: ObjectsUtil<Invite>,
   ) {
 
-}
-someMethod(value){
-  console.log("teh vaaaaaaaaa is ",value);
+  }
+  someMethod(value) {
+    console.log("teh vaaaaaaaaa is ", value);
 
 
-  this.httpService.getRequest("/users/findAll").subscribe(e => {
-    this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
-      if (aSupplier.userType === "supplier" && aSupplier.email === value ) {
-        this.theCorrespondingName = aSupplier.name;
-        console.log("teh vaaaaaaaaa is ",this.theCorrespondingName);
+    this.httpService.getRequest("/users/findAll").subscribe(e => {
+      this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
+        if (aSupplier.userType === "supplier" && aSupplier.email === value) {
+          this.theCorrespondingName = aSupplier.name;
+          console.log("teh vaaaaaaaaa is ", this.theCorrespondingName);
 
-      }
+        }
+      });
     });
-  });
 
-}
+  }
 
-selectName(value){
-  console.log("teh vaaaaaaaaa is ",value);
+  selectName(value) {
+    console.log("teh vaaaaaaaaa is ", value);
 
 
-  this.httpService.getRequest("/users/findAll").subscribe(e => {
-    this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
-      if (aSupplier.userType === "supplier" && aSupplier.name === value ) {
-        this.selectedEmail = aSupplier.email;
-        console.log("teh vaaaaaaaaa is ",this.selectedEmail);
+    this.httpService.getRequest("/users/findAll").subscribe(e => {
+      this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
+        if (aSupplier.userType === "supplier" && aSupplier.name === value) {
+          this.selectedEmail = aSupplier.email;
+          console.log("teh vaaaaaaaaa is ", this.selectedEmail);
 
-      }
+        }
+      });
     });
-  });
 
-}
-// onChange(event): void {  // event will give you full breif of action
-//   // const newVal = form.value.email;
-//   console.log("the new email is");
-// }
+  }
 
-GenerateDropDown(){
-  this.httpService.getRequest("/users/findAll").subscribe(e => {
-    this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
-      if (aSupplier.userType === "supplier") {
-        this.receivers.push(aSupplier);
+  Invitation(form: NgForm) {
+    var currentlyLoggedIn = JSON.parse(localStorage.getItem('loggedinUser'))
+    // var user;
+    var gg = [];
+    var theUser;
+    let object = form.value;
+    this.receivers.map(e => {
+      if (e.email === object.receiveremail) {
+        this.user = e
       }
+
+    if (e.name === object.receivername) {
+        this.user = e
+      }
+    })
+
+    currentlyLoggedIn.map(e => {
+      theUser = e
+      console.log("the logged in person is", theUser)
+    })
+
+
+    const emailVerifiedAtStr = "emailVerifiedAtStr";
+
+    theUser[emailVerifiedAtStr] = theUser.emailVerifiedAt;
+
+    theUser[emailVerifiedAtStr] = DateUtils.convertDateFormatToParsable(
+      theUser.emailVerifiedAt
+    );
+
+    theUser.emailVerifiedAt = null;
+
+    console.log("ggggggggggggggggggggg", theUser)
+
+    const invited = Invite.createInstance();
+    invited.user = theUser;
+    invited.email = this.user.email;
+    // invited.id = this.user.id;
+    invited.inviteCode = "whats this"
+    invited.name = this.user.name;
+
+    const newOrder = this.objectUtilOrder.objectToInstance(invited,theUser );
+
+    
+    // console.log("the data i want to", newOrder)
+
+
+    console.log("the data i want to sent to the db", invited.user)
+
+    this.httpService.postRequest("/invites/create", invited).subscribe(e => {
+      console.log(`the result ${JSON.stringify(e, null, 2)} `);
+      this.inviteStatus = true;
+      setTimeout(() => {
+      //  this.cancel() 
+      }, 2000);
     });
-  });
-}
+  }
+
+  GenerateDropDown() {
+    this.httpService.getRequest("/users/findAll").subscribe(e => {
+      this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
+        if (aSupplier.userType === "supplier") {
+          this.receivers.push(aSupplier);
+        }
+      });
+    });
+  }
 
   ngOnInit() {
     this.GenerateDropDown()

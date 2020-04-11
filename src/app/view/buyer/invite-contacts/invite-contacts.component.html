@@ -13,7 +13,7 @@
 
                 <mat-label class="label">Supplier email</mat-label>
       
-                <mat-select class="labelinfo" name="receiveremail" selectedEmail id="test-id" [(value)] = "selectedEmail" (selectionChange)="someMethod($event.value)">
+                <mat-select ngModel class="labelinfo" name="receiveremail" selectedEmail id="test-id" [(value)] = "selectedEmail" (selectionChange)="someMethod($event.value)">
       
                   <mat-option *ngFor="let reci of receivers" value={{reci.email}}>
       
@@ -30,7 +30,7 @@
 
                 <mat-label class="label">Supplier name</mat-label>
       
-                <mat-select class="labelinfo" name="receivername" ngModel id="test-id" (selectionChange)="selectName($event.value)" [(value)]="theCorrespondingName">
+                <mat-select ngModel class="labelinfo" name="receivername" ngModel id="test-id" (selectionChange)="selectName($event.value)" [(value)]="theCorrespondingName">
       
                   <mat-option *ngFor="let reci of receivers" value={{reci.name}}>
       
@@ -40,15 +40,25 @@
                 </mat-select>
       
               </mat-form-field>
-
+              <br>
+              <br>
+              <br>
+              <mat-card-actions>
+                  <button class="btn-block" mat-raised-button color="primary" (click) = "Invitation(form)">
+                    Submit
+                  </button>
+                </mat-card-actions>
             </form>
 
-          </mat-card-content>
-          <mat-card-actions>
-            <button class="btn-block" mat-raised-button color="primary">
+            <div *ngIf="inviteStatus" class="alert alert-success statusmessage">
+              <strong>Success!</strong> You have successfully invited ({{theCorrespondingName}})  as your supplier
+            </div>
+          </mat-card-content>{{selectedEmail}}
+          <!-- <mat-card-actions>
+            <button class="btn-block" mat-raised-button color="primary" (click) = "Invitation(form)">
               Submit
             </button>
-          </mat-card-actions>
+          </mat-card-actions> -->
         </mat-card>
       </div>
     </mat-tab>
