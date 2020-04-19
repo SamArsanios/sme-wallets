@@ -53,6 +53,7 @@ export class CreateOrderComponent implements OnInit {
 
 
   ngOnInit() {
+
     console.log("the buyer is ",localStorage.getItem('loggedinUser'))
 
     this.httpService.getRequest("/users/findAll").subscribe(e => {
@@ -60,15 +61,21 @@ export class CreateOrderComponent implements OnInit {
         if (aSupplier.userType === "supplier") {
           this.receivers.push(aSupplier);
 
+
           SupplierData.addASupplier(aSupplier);
+          console.log("all suppliers are heeeeeeeeeeeey ", SupplierData.getAllSuppliers())
+
 
           SupplierData.addASupplierToMap(aSupplier, aSupplier.id);
+        
         }
       });
     });
+    
 
     this.dateCtrl = new FormControl("", [Validators.required]);
   } // end ngOninit()
+
 
   temporaryBuyer(): User {
     const user = new User(

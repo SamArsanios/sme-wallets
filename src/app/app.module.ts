@@ -33,7 +33,7 @@ import { OrdersComponent } from './view/buyer/orders/orders/orders.component';
 import { CreateOrderComponent } from './view/buyer/orders/create-order/create-order.component';
 import { ApproveOrdersComponent } from './view/buyer/orders/approve-orders/approve-orders.component';
 import { PendingOrdersComponent } from './view/buyer/orders/pending-orders/pending-orders.component';
-import { InviteContactsComponent } from './view/buyer/invite-contacts/invite-contacts.component';
+import { InviteContactsComponent } from './view/buyer/invites/invite-contacts/invite-contacts.component';
 // forms
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
@@ -94,6 +94,7 @@ import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/
 import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/vews-approved-invoices/vews-approved-invoices.component';
 import { GetPaidComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/get-paid/get-paid.component';
 import { ViewSponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/view-sponsor-invoices/view-sponsor-invoices.component';
+import { ViewContactsComponent } from './view/buyer/invites/view-contacts/view-contacts.component';
 
 
 @NgModule({
@@ -163,7 +164,8 @@ import { ViewSponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/vi
     AproveInvoiceComponent,
     VewsApprovedInvoicesComponent,
     GetPaidComponent,
-    ViewSponsorInvoicesComponent
+    ViewSponsorInvoicesComponent,
+    ViewContactsComponent
 
     // PiechartComponent
   ],

@@ -7,11 +7,18 @@ export class SupplierData {
 
     private static allSuppliersPromise: Promise<List<User>>;
     private static allSuppliers: List<User>;
-
+    private static allSuppliersss;
     private static mapOfIdToSupplier: Mapp<number, User> ;
 
     static setMapOfIdToSupplier(mapOfIdToSupplier: Mapp<number, User>) {
         SupplierData.mapOfIdToSupplier = mapOfIdToSupplier;
+    }
+    static setAllSuppliersss(allSuppliersss) {
+        SupplierData.allSuppliersss = allSuppliersss;
+    }
+
+    static getAllSuppliersss() {
+        return SupplierData.allSuppliersss
     }
 
     static getMapOfIdToSupplier(): Mapp<number, User> {

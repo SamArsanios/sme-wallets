@@ -51,14 +51,28 @@ export class AllOrdersComponent implements OnInit {
             AllOrderData.addAllOrderToMap(e, e.id);
           });
         });
+        
     
         this.allOrdersInfoTableDataSource.sort = this.sort;
         this.allOrdersInfoTableDataSource.paginator = this.paginator;
       }
 
-
+rr(){
+ AllOrderData.getAllOrderLists()
+  // console.log("the alllllllllllllll order is", k)
+  // return k
+}
   ngOnInit() {
+
     this.populateTheTable();
+
+    var k = AllOrderData.getAllOrderLists()
+
+    if (k !== undefined && k != null) {
+    console.log("the alllllllllllllll order is", k)
+    }
+
+    console.log("gggggggggggggggggggggggggggg", this.rr)
   }
 
   // handleViewOrderClick($event): void {
