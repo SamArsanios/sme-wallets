@@ -68,6 +68,8 @@ rr(){
 
     var k = AllOrderData.getAllOrderLists()
 
+    console.log("the dataaaaaaaaaaaaaaaaaaaaaa is", this.allOrdersInfoTableDataSource)
+
     if (k !== undefined && k != null) {
     console.log("the alllllllllllllll order is", k)
     }

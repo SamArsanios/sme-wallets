@@ -58,6 +58,7 @@ export class ApproveOrdersComponent implements OnInit {
       >(result);
 
       this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
+        console.log("teh reviiiii are", e)
         ApproveOrderData.addApproveOrder(e);
         ApproveOrderData.addApproveOrderToMap(e, e.id);
       });
@@ -69,7 +70,7 @@ export class ApproveOrdersComponent implements OnInit {
 
   ngOnInit() {
     this.populateTheTable();
-    console.log(`1fffffffffffffffff${this.approvedOrdersInfoTable}`)
+    console.log(`laaaaaaaaaaaap1fffffffffffffffff${this.receivers}`)
   }
 
   handleViewOrderClick($event): void {

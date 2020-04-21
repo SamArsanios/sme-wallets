@@ -95,6 +95,7 @@ import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoi
 import { GetPaidComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/get-paid/get-paid.component';
 import { ViewSponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/view-sponsor-invoices/view-sponsor-invoices.component';
 import { ViewContactsComponent } from './view/buyer/invites/view-contacts/view-contacts.component';
+import { ViewSuppliersComponent } from './view/buyer/invites/view-suppliers/view-suppliers.component';
 
 
 @NgModule({
@@ -165,7 +166,8 @@ import { ViewContactsComponent } from './view/buyer/invites/view-contacts/view-c
     VewsApprovedInvoicesComponent,
     GetPaidComponent,
     ViewSponsorInvoicesComponent,
-    ViewContactsComponent
+    ViewContactsComponent,
+    ViewSuppliersComponent
 
     // PiechartComponent
   ],
