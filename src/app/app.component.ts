@@ -3,6 +3,7 @@ import { WebsocketService } from "./utils/websocket/websocket.service";
 import { HttpClient } from "@angular/common/http";
 import { HttpService } from "./utils/http/http-service";
 import { Order } from "./model/buyer/order/order-model";
+import { ObjectsUtil } from './utils/objects/objects';
 
 @Component({
   selector: "app-root",
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private websocketService: WebsocketService,
-    private httpService: HttpService<Order>
+    private httpService: HttpService<Order>,
+    private objectsUtil: ObjectsUtil<Order>
   ) {
     this.theNotice();
   }
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   test(result): void {
-    console.log(`rrrrrrrr: ${result.body}`);
+    var x = this.objectsUtil.dataObjectToArray(result.body)
+    console.log(`rrrrrrrr: ${x}`);
   }
 }

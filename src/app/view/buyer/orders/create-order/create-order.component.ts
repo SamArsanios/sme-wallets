@@ -76,19 +76,21 @@ export class CreateOrderComponent implements OnInit {
     this.dateCtrl = new FormControl("", [Validators.required]);
   } // end ngOninit()
 
+  
 
-  temporaryBuyer(): User {
+
+  buyer(): User {
+    var loggedIn =  JSON.parse(localStorage.getItem('loggedinUser'))
     const user = new User(
-      2,
-      "cobs399@gmail.com",
-      "Feb 13, 2020 6:00:59 AM",
-      "rec",
-      "+25624534534",
-      123,
-      "jacob okia ",
-      "buyer"
+      loggedIn[0].id,
+      loggedIn[0].email,
+      loggedIn[0].emailVerifiedAt,
+      loggedIn[0].password,
+      loggedIn[0].phoneNumber,
+      loggedIn[0].refUserId,
+      loggedIn[0].name,
+      loggedIn[0].userType
     );
-    // console.log("the buyer is ",localStorage.getItem('loggedinUser'))
 
 
     const emailVerifiedAtStr = "emailVerifiedAtStr";
@@ -109,7 +111,7 @@ export class CreateOrderComponent implements OnInit {
       1,
       "SME",
       "Feb 21, 2020 5:13:45 AM",
-      this.temporaryBuyer()
+      this.buyer()
     );
 
     wallet.timestamp = null;
@@ -161,7 +163,7 @@ export class CreateOrderComponent implements OnInit {
 
     order.wallet = this.temporaryWallet();
     order.supplier = userSupplier;
-    order.buyer = this.temporaryBuyer();
+    order.buyer = this.buyer();
     order.orderStatus = "pending";
 
     const newOrder = this.objectUtilOrder.objectToInstance(order, object);
@@ -169,6 +171,7 @@ export class CreateOrderComponent implements OnInit {
     console.log(`the order: ${JSON.stringify(newOrder, null, 2)} `);
 
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
+      
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
       setTimeout(() => {
