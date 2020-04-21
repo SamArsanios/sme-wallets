@@ -1,0 +1,126 @@
+<app-header></app-header>
+<app-buyernav></app-buyernav>
+<div class="container">  
+  <mat-tab-group #tabRef>
+    <mat-tab label="Invite Contacts">
+      <div class="container-fluid">
+        <mat-card>
+          <mat-card-title>Invite</mat-card-title>
+          <mat-card-content>
+            <form #form="ngForm">
+
+              <mat-form-field>
+
+                <mat-label class="label">Supplier email</mat-label>
+
+                <mat-select ngModel class="labelinfo" name="receiveremail" selectedEmail id="test-id"
+                  [(value)]="selectedEmail" (selectionChange)="someMethod($event.value)">
+
+                  <mat-option *ngFor="let reci of dred" value={{reci.email}}>
+
+                    {{reci.email}}
+
+                  </mat-option>
+
+                </mat-select>
+
+              </mat-form-field>
+
+
+              <mat-form-field>
+
+                <mat-label class="label">Supplier name</mat-label>
+
+                <mat-select ngModel class="labelinfo" name="receivername" ngModel id="test-id"
+                  (selectionChange)="selectName($event.value)" [(value)]="theCorrespondingName">
+
+                  <mat-option *ngFor="let reci of dred" value={{reci.name}}>
+
+                    {{reci.name}}
+                  </mat-option>
+
+                </mat-select>
+
+              </mat-form-field>
+              <br>
+              <br>
+              <br>
+              <mat-card-actions>
+                <button class="btn-block" mat-raised-button color="primary" (click)="Invitation(form)">
+                  Submit
+                </button>
+              </mat-card-actions>
+            </form>
+
+            <div *ngIf="inviteStatus" class="alert alert-success statusmessage">
+              <strong>Success!</strong> You have successfully invited ({{theCorrespondingName}}) as your supplier
+            </div>
+          </mat-card-content>{{selectedEmail}}
+          <!-- <mat-card-actions>
+            <button class="btn-block" mat-raised-button color="primary" (click) = "Invitation(form)">
+              Submit
+            </button>
+          </mat-card-actions> -->
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Second Tab -->
+    <!-- View All Suppliers -->
+    <mat-tab label="View Suppliers">
+      <app-view-suppliers></app-view-suppliers>
+
+    </mat-tab>
+
+    <!-- View All Contacts -->
+    <mat-tab label="View All Contacts">
+      <div class="container-fluid">
+        <mat-form-field class="searchBox">
+          <input (keyup)="applyContactsFilter($event.target.value)" matInput placeholder="Search" />
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <mat-table [dataSource]="invitedContactsDataSource" matSort>
+            <!-- Name Column -->
+            <ng-container matColumnDef="sellerName">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Seller Name</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{
+                element.sellerName
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="sellerEmail">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Seller Email</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{
+                element.sellerEmail
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Industry Type Column -->
+            <ng-container matColumnDef="industryType">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Industry Type</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{
+                element.industryType
+              }}</mat-cell>
+            </ng-container>
+
+            <!-- Sender Name Column -->
+            <ng-container matColumnDef="contactNumber">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Contact Number</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{
+                element.contactNumber
+              }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedInviteContactsColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedInviteContactsColumns"></mat-row>
+          </mat-table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

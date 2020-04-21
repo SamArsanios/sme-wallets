@@ -5,7 +5,7 @@ import { PaymentnoticeComponent } from "./view/buyer/paymentnotice/paymentnotice
 import { AllOrdersComponent } from "./view/buyer/orders/all-orders/all-orders.component";
 import { InvoicesComponent } from "./view/buyer/invoices/invoices.component";
 import { OrdersComponent } from "./view/buyer/orders/orders/orders.component";
-import { InviteContactsComponent } from "./view/buyer/invite-contacts/invite-contacts.component";
+import { InviteContactsComponent } from "./view/buyer/invites/invite-contacts/invite-contacts.component";
 import { VaultComponent } from "./view/buyer/vault/vault.component";
 import { PaymentInfoComponent } from "./view/buyer/payment-info/payment-info.component";
 import { SideAccountSettingsComponent } from "./view/buyer/side-account-settings/side-account-settings.component";
