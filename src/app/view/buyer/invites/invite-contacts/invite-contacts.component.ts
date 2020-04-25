@@ -50,7 +50,6 @@ export class InviteContactsComponent implements OnInit {
       this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
         if (aSupplier.userType === "supplier" && aSupplier.email === value) {
           this.theCorrespondingName = aSupplier.name;
-          console.log("teh vaaaaaaaaa is ", this.theCorrespondingName);
 
         }
       });
@@ -59,8 +58,6 @@ export class InviteContactsComponent implements OnInit {
   }
 
   selectName(value) {
-    console.log("teh vaaaaaaaaa is ", value);
-
 
     this.httpService.getRequest("/users/findAll").subscribe(e => {
       this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {

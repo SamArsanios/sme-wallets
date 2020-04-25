@@ -23,6 +23,8 @@ export class PopulateAllOrderTable {
 
 
   public  static populateTableOnInit(fromResponse: Order[]) {
+    
+    console.log("the un seeeen",fromResponse )
 
     return fromResponse.map(e => {
 

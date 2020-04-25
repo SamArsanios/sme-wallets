@@ -129,6 +129,8 @@ export class CreateOrderComponent implements OnInit {
     return wallet;
   }
 
+  
+
   onSubmit(form: NgForm) {
     const idOfSupplier = form.value.receivername;
 
@@ -172,13 +174,24 @@ export class CreateOrderComponent implements OnInit {
 
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
       
+ 
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
-      setTimeout(() => {
+      // setTimeout(() => {
       //  this.cancel() 
-      }, 2000);
-    });
+      // }, 2000);
+    })
+    if(this.OrderStatus= true){
+    this.FindAll()
+  }
+
   } // end onSubmit()
+
+  FindAll(){
+    this.httpService.getRequest("/orders/findAll").subscribe(e=>{
+      console.log("i have found all")
+    })
+  }
 
   showNotification(result: any) {
     console.log("result show to the suplier", result);
