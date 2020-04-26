@@ -48,7 +48,6 @@ export class ApproveOrdersComponent implements OnInit {
     this.websocketService.notify("/topic/supplierOrders/findAll", (message)=>{
       var x = JSON.parse(message.body)
       var y = JSON.parse(x.body)
-      console.log("keeeeep uuuuuuuuuuuup", y)
 
       this.objectsUtil.dataObjectToArray(y).map(theOder => {
         if (theOder.order.orderStatus === "accepted") {
@@ -90,7 +89,6 @@ export class ApproveOrdersComponent implements OnInit {
           ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
         }
       })
-console.log("the daaaaaaaaaaaaata recieved is", this.receivers)
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(this.receivers),
         this.approvedOrdersInfoTable,
@@ -115,7 +113,6 @@ console.log("the daaaaaaaaaaaaata recieved is", this.receivers)
 
   ngOnInit() {
     this.populateTheTable();
-    console.log(`laaaaaaaaaaaap1fffffffffffffffff${this.receivers}`)
   }
 
   handleViewOrderClick($event): void {
@@ -127,29 +124,7 @@ console.log("the daaaaaaaaaaaaata recieved is", this.receivers)
     });
   }
 
-  // handleViewOrderClick($event): void {
-    
-  //   const id = parseInt($event.target.closest("button").id);
-  //   const saveid = JSON.stringify(id);
-  //   this.identity = id;
-  //   this.router.navigate(["buyer/orders/view-all-approved-orders"]).then(e => {
-  //     console.log(`The Current ID is ${id}`);
-  //     localStorage.setItem("viewid", saveid);
-
-  //     console.log(
-  //       `the order to view again: ${JSON.stringify(
-  //         ApproveOrderData.getApproveOrderMap().get(id),
-  //         null,
-  //         2
-  //       )} `
-  //     );
-      
-  //     ApproveOrderData.setIdOfOrderToView(id);
-
-
-  //   });
-  // }
-
+ 
   public static returnId(): number {
     return this.identity;
   }
