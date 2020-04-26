@@ -9,6 +9,7 @@ import { IApproveOrder } from "../../payment-info/payment-info.component";
 import { PopulateApproveOrderTable } from "./approve.order.model.interface";
 import { ApproveOrderData } from "src/app/service/order/approve.order.data";
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+import { WebsocketService } from 'src/app/utils/websocket/websocket.service';
 
 @Component({
   selector: "app-approve-orders",
@@ -29,12 +30,51 @@ export class ApproveOrdersComponent implements OnInit {
   constructor(
     private httpService: HttpService<SupplierOrder>,
     private objectsUtil: ObjectsUtil<SupplierOrder>,
+    private websocketService: WebsocketService,
+
     private populateTable: PopulateTable<SupplierOrder, IApproveOrder>,
     private router: Router
-  ) {}
+  ) {this.theNotice()}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+
+  theNotice(): void {
+    this.websocketService.notify("/topic/supplierOrders/findAll", (message)=>{
+      var x = JSON.parse(message.body)
+      var y = JSON.parse(x.body)
+
+      this.objectsUtil.dataObjectToArray(y).map(theOder => {
+        if (theOder.order.orderStatus === "accepted") {
+          this.receivers.push(theOder);
+          ApproveOrderData.addApproveOrder(theOder)
+          ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
+        }
+      })
+
+      const result = this.populateTable.populateTable(
+        this.objectsUtil.dataObjectToArray(this.receivers),
+        this.approvedOrdersInfoTable,
+        this.approveOrdersInfoTableDataSource,
+        PopulateApproveOrderTable.populateTableOnInit
+      );
+
+      this.approveOrdersInfoTableDataSource = new MatTableDataSource<
+        IApproveOrder
+      >(result);
+
+      this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
+        console.log("teh reviiiii are", e)
+        ApproveOrderData.addApproveOrder(e);
+        ApproveOrderData.addApproveOrderToMap(e, e.id);
+      });
+    });
+
+    this.approveOrdersInfoTableDataSource.sort = this.sort;
+    this.approveOrdersInfoTableDataSource.paginator = this.paginator;
+
+  }
 
   private populateTheTable(): void {
     this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {

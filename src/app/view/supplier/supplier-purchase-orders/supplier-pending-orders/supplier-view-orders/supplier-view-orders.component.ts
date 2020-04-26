@@ -155,7 +155,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     wallet["timestampStr"] = buyer["emailVerifiedAtStr"];
     return wallet;
   }
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm, callback) {
     // get the order
     const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
       SupplierPendingOrderData.getIdOfOrderToView()
@@ -239,12 +239,22 @@ export class SupplierViewOrdersComponent implements OnInit {
         this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
       console.log(`the supplier Order is ${e.body, null, 2}`)
       this. invoiceStatus = true;
-    });
+      setTimeout(() => {
+        this.callback()
+        }, 1000);
+      })
+    
 
     this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
     });
-  }  
+  } 
+  
+  callback() {
+    this.httpService.getRequest("/supplierOrders/findAll").subscribe(e => {
+      console.log("this is meant to trigger a websocket")
+    })
+  }
 
   Decline() {
     // get the order

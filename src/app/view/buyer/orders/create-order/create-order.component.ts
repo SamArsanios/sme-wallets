@@ -192,7 +192,4 @@ export class CreateOrderComponent implements OnInit {
     }
   }
 
-  onOptionsSelected() {
-    console.log(`hhhhhhh`);
-  }
 }
