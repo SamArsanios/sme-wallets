@@ -243,7 +243,7 @@ export class SupplierViewOrdersComponent implements OnInit {
       this. invoiceStatus = true;
       setTimeout(() => {
         this.callback()
-        }, 1000);
+        }, 4000);
       })
     
 
@@ -251,7 +251,7 @@ export class SupplierViewOrdersComponent implements OnInit {
       console.log(`the updated Order is ${e.body, null, 2}`)
       setTimeout(() => {
         this.updateOrderWebSocketback()
-        }, 1000);
+        }, 3000);
       
     });
   } 
