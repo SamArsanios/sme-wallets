@@ -1,16 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, Validators, NgForm } from "@angular/forms";
-import { SupplierService } from "../../../../service/supplier/supplier.service";
-import { OrdersComponent } from "../orders/orders.component";
 import { List } from "src/app/utils/collections/list";
 import { User } from "src/app/shared/model/user/user-model";
-import { HtpsService } from "src/app/htps.service";
 import { HttpService } from "src/app/utils/http/http-service";
 import { ObjectsUtil } from "src/app/utils/objects/objects";
 import { Order } from "src/app/model/buyer/order/order-model";
 import { DateUtils } from "src/app/utils/date/date-utils";
-import { UserTransient } from "src/app/shared/model/user/user-model-transient";
-import { Mapp } from "../../../../utils/collections/map";
 import { SupplierData } from "../../../../service/supplier/supplier.data";
 import { Wallet } from "../../../../shared/model/wallet/wallet-model";
 import { WebsocketService } from "src/app/utils/websocket/websocket.service";
@@ -33,12 +28,11 @@ export class CreateOrderComponent implements OnInit {
     private objectUtil: ObjectsUtil<User>,
     private objectUtilOrder: ObjectsUtil<Order>,
     private websocket: WebsocketService,
-    // private location: Location,
-    
+
   ) {
 
-}
-  
+  }
+
 
   public supplierNames: List<User>;
   successPost: string;
@@ -54,7 +48,7 @@ export class CreateOrderComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("the buyer is ",localStorage.getItem('loggedinUser'))
+    console.log("the buyer is ", localStorage.getItem('loggedinUser'))
 
     this.httpService.getRequest("/users/findAll").subscribe(e => {
       this.objectUtil.dataObjectToArray(e.body).map(aSupplier => {
@@ -67,20 +61,17 @@ export class CreateOrderComponent implements OnInit {
 
 
           SupplierData.addASupplierToMap(aSupplier, aSupplier.id);
-        
+
         }
       });
     });
-    
+
 
     this.dateCtrl = new FormControl("", [Validators.required]);
   } // end ngOninit()
 
-  
-
-
   buyer(): User {
-    var loggedIn =  JSON.parse(localStorage.getItem('loggedinUser'))
+    var loggedIn = JSON.parse(localStorage.getItem('loggedinUser'))
     const user = new User(
       loggedIn[0].id,
       loggedIn[0].email,
@@ -129,9 +120,9 @@ export class CreateOrderComponent implements OnInit {
     return wallet;
   }
 
-  
 
-  onSubmit(form: NgForm) {
+
+  onSubmit(form: NgForm, callback) {
     const idOfSupplier = form.value.receivername;
 
     const supplierInfo = SupplierData.getMapOfIdToSupplier().get(
@@ -173,29 +164,30 @@ export class CreateOrderComponent implements OnInit {
     console.log(`the order: ${JSON.stringify(newOrder, null, 2)} `);
 
     this.httpService.postRequest("/orders/create", order).subscribe(e => {
-      
- 
+
+
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
-      // setTimeout(() => {
-      //  this.cancel() 
-      // }, 2000);
+      setTimeout(() => {
+      this.callback()
+      }, 1000);
     })
-    if(this.OrderStatus= true){
-    this.FindAll()
-  }
+ 
+   
+  
 
   } // end onSubmit()
 
-  FindAll(){
-    this.httpService.getRequest("/orders/findAll").subscribe(e=>{
+  callback() {
+    this.httpService.getRequest("/orders/findAll").subscribe(e => {
       console.log("i have found all")
     })
   }
 
+  
+
   showNotification(result: any) {
-    console.log("result show to the suplier", result);
-    if(result){
+    if (result) {
       this.OrderStatus = true
     }
   }
