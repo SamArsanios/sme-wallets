@@ -25,7 +25,7 @@ export class PopulateApproveOrderTable {
 
 
   public  static populateTableOnInit(fromResponse: SupplierOrder[]) {
-
+console.log("is there anything in the response", fromResponse)
     return fromResponse.map(e => {
 
       return  {

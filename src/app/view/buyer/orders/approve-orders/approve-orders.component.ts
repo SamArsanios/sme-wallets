@@ -34,7 +34,11 @@ export class ApproveOrdersComponent implements OnInit {
 
     private populateTable: PopulateTable<SupplierOrder, IApproveOrder>,
     private router: Router
-  ) {this.theNotice()}
+  )
+   {
+     this.populateTheTable()
+     this.theNotice()
+    }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -44,6 +48,7 @@ export class ApproveOrdersComponent implements OnInit {
     this.websocketService.notify("/topic/supplierOrders/findAll", (message)=>{
       var x = JSON.parse(message.body)
       var y = JSON.parse(x.body)
+      console.log("keeeeep uuuuuuuuuuuup", y)
 
       this.objectsUtil.dataObjectToArray(y).map(theOder => {
         if (theOder.order.orderStatus === "accepted") {
@@ -85,7 +90,7 @@ export class ApproveOrdersComponent implements OnInit {
           ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
         }
       })
-
+console.log("the daaaaaaaaaaaaata recieved is", this.receivers)
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(this.receivers),
         this.approvedOrdersInfoTable,

@@ -189,10 +189,11 @@ export class SupplierViewOrdersComponent implements OnInit {
     );
     supplierOrder.id = 0;
     supplierOrder.order = order;
-    console.log(`the orrrrrrrrder: ${JSON.stringify(order, null, 2)} `);
+    // console.log(`the orrrrrrrrder: ${JSON.stringify(order, null, 2)} `);
     supplierOrder.totalPrice = this.parseStringToNumber(
       this.totalBeforeTax.toString()
     );
+    supplierOrder.order.orderStatus = "accepted"
     supplierOrder.subTotal = this.parseStringToNumber(this.subTotal.toString());
     supplierOrder.finalTotal = this.parseStringToNumber(
       this.totalAfterTax.toString()
@@ -231,6 +232,7 @@ export class SupplierViewOrdersComponent implements OnInit {
       SupplierPendingOrderData.getIdOfOrderToView()
     );
     let supplierNewOrder = SupplierOrder.createInstance();
+    // supplierNewOrder.order.orderStatus = "accepted";
     let newOrder = Order.createInstance();
     OldOrder.orderStatus = "accepted";
     this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
@@ -247,8 +249,18 @@ export class SupplierViewOrdersComponent implements OnInit {
 
     this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
+      setTimeout(() => {
+        this.updateOrderWebSocketback()
+        }, 1000);
+      
     });
   } 
+
+  updateOrderWebSocketback(){
+    this.httpService.getRequest("/orders/findAll").subscribe(e => {
+        console.log("the order websocket has been updated")
+  })
+}
   
   callback() {
     this.httpService.getRequest("/supplierOrders/findAll").subscribe(e => {
