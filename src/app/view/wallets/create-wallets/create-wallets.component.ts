@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/utils/http/http-service';
   styleUrls: ['./create-wallets.component.css']
 })
 export class CreateWalletsComponent implements OnInit {
-
+  walletStatus = false;
 
   constructor(
     private httpService: HttpService<Wallet>,
@@ -42,7 +42,7 @@ export class CreateWalletsComponent implements OnInit {
 
     this.httpService.postRequest("/wallets/create", wallet).subscribe(e => {
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
-      // this.inviteStatus = true;
+      this.walletStatus = true;
       setTimeout(() => {
         //  this.cancel() 
       }, 2000);

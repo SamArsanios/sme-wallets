@@ -122,18 +122,7 @@ export class AllOrdersComponent implements OnInit {
 
   }
 
-  // handleViewOrderClick($event): void {
 
-  //   // tslint:disable-next-line:radix
-  //   const id = parseInt($event.target.closest('button').id);
-  //   console.log("teh id isssss", id)
-
-  //   this.router.navigate(['buyer/orders/view-allorders']).then(e => {
-  //     console.log(`the order to view again: ${JSON.stringify(AllOrderData.getAllAllOrderMap().get(id))} `);
-  //     AllOrderData.setIdOfOrderToView(id);
-  //   });
-
-  // }
 
   handleViewOrderClick($event): void {
     // tslint:disable-next-line:radix

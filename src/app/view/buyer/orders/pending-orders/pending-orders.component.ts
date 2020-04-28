@@ -11,6 +11,8 @@ import { PopulateTable } from "../../../../utils/tables/populate.table";
 import { PendingOrderData } from "../../../../service/order/pending.order.data";
 import { Router } from "@angular/router";
 import { WebsocketService } from "../../../../utils/websocket/websocket.service";
+import { SocketPendingOrderData } from 'src/app/service/order/socket-pending-order-data';
+import { PopulateSocketPendingOrderTable } from './socket.pending.model';
 
 @Component({
   selector: "app-pending-orders",
@@ -19,13 +21,17 @@ import { WebsocketService } from "../../../../utils/websocket/websocket.service"
 })
 export class PendingOrdersComponent implements OnInit {
   receivers: Array<Order> = new Array<Order>();
-  pendingOrdersInfoTable: IPendingOrder[] = [];
+  SocketPendingOrdersInfoTable: IPendingOrder[] = [];
+  pendingOrdersInfoTable:IPendingOrder[] = [];
   pendingOrdersInfoTableDataSource = new MatTableDataSource(
-    this.pendingOrdersInfoTable
+    this.pendingOrdersInfoTable);
+  socketPendingOrdersInfoTableDataSource = new MatTableDataSource(
+    this.SocketPendingOrdersInfoTable
   );
 
   displayedColumns: string[] = PopulatePendingOrderTable.displayedColumns;
-
+b = false;
+notice = [];
   constructor(
     private httpService: HttpService<Order>,
     private objectsUtil: ObjectsUtil<Order>,
@@ -42,50 +48,91 @@ export class PendingOrdersComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  theNotice(): void {
-    this.websocketService.notify("/topic/orders/findAll", (message)=>{
-      var x = JSON.parse(message.body)
-      var y = JSON.parse(x.body)
+  // theNotice(): void {
+  //   this.websocketService.notify("/topic/orders/findAll", (message)=>{
+  //     var x = JSON.parse(message.body)
+  //     var y = JSON.parse(x.body)
       
 
 
-        this.objectsUtil.dataObjectToArray(y).map(theOder => {
-          console.log(`the pending orders are ${JSON.stringify(theOder)}`)
+  //       this.objectsUtil.dataObjectToArray(y).map(theOder => {
+  //         console.log(`the pending orders are ${JSON.stringify(theOder)}`)
   
-          if (theOder.orderStatus === "pending") {
+  //         if (theOder.orderStatus === "pending") {
   
-            this.receivers.push(theOder);
-            PendingOrderData.addAPendingOrder(theOder);
-            PendingOrderData.addAPendingOrderToMap(theOder, theOder.id);
+  //           this.receivers.push(theOder);
+  //           PendingOrderData.addAPendingOrder(theOder);
+  //           PendingOrderData.addAPendingOrderToMap(theOder, theOder.id);
   
-          }
-        });
+  //         }
+  //       });
   
-        const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(this.receivers), this.pendingOrdersInfoTable,
-          this.pendingOrdersInfoTableDataSource, PopulatePendingOrderTable.populateTableOnInit);
+  //       const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(this.receivers), this.pendingOrdersInfoTable,
+  //         this.pendingOrdersInfoTableDataSource, PopulatePendingOrderTable.populateTableOnInit);
   
-        this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(result);
+  //       this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(result);
   
-        this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
+  //       this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
   
-          PendingOrderData.addAPendingOrder(e);
-          PendingOrderData.addAPendingOrderToMap(e, e.id);
+  //         PendingOrderData.addAPendingOrder(e);
+  //         PendingOrderData.addAPendingOrderToMap(e, e.id);
   
-        });
+  //       });
   
+  //     });
+  
+  //     this.pendingOrdersInfoTableDataSource.sort = this.sort;
+  //     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
+    
+    
+  //   // console.log("the value of fr", this.fr)
+
+
+  // }
+
+
+  public theNotice(): void {
+    this.websocketService.notify("/topic/orders/findAll", (message)=>{
+      this.b = true
+      this.notice.length = 0;
+      var x = JSON.parse(message.body)
+      var y = JSON.parse(x.body)
+      // this.g.push(y)
+      console.log("values yyyyyyyyyyyy", y)
+      this.objectsUtil.dataObjectToArray(y).map(theOder => {
+        if (theOder.orderStatus === "pending") {
+          this.notice.push(theOder);
+          SocketPendingOrderData.addAPendingOrder(theOder)
+          SocketPendingOrderData.addAPendingOrderToMap(theOder, theOder.id)
+        }
+      })
+      console.log("the daaaaaaaaaaaaata recieved is", this.notice)
+      const result = this.populateTable.populateTable(
+        this.objectsUtil.dataObjectToArray(this.notice),
+        this.SocketPendingOrdersInfoTable,
+        this.socketPendingOrdersInfoTableDataSource,
+        PopulateSocketPendingOrderTable.populateTableOnInit
+      );
+
+      this.socketPendingOrdersInfoTableDataSource = new MatTableDataSource<
+        IPendingOrder
+      >(result);
+
+      this.objectsUtil.dataObjectToArray(this.notice).forEach(e => {
+        console.log("teh reviiiii are", e)
+        SocketPendingOrderData.addAPendingOrder(e);
+        SocketPendingOrderData.addAPendingOrderToMap(e, e.id);
       });
-  
-      this.pendingOrdersInfoTableDataSource.sort = this.sort;
-      this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
-    
-    
-    // console.log("the value of fr", this.fr)
+    })
 
-
-  }
+    this.socketPendingOrdersInfoTableDataSource.sort = this.sort;
+    this.socketPendingOrdersInfoTableDataSource.paginator = this.paginator;
+this.notice.length = 0;
+}
   
   
   private populateTheTable(): void {
+    this.b = false;
 
     this.httpService.getRequest('/orders/findAll').subscribe(response => {
 

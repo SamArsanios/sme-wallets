@@ -22,9 +22,9 @@ export class ApproveOrdersComponent implements OnInit {
   identity: number;
   receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
   notice = this.receivers
-  c = false
-  k = false
-  g = []
+  // c = false
+  // k = false
+  // g = []
   b = false
   approvedOrdersInfoTable: IApproveOrder[] = [];
   socketApprovedOrdersInfoTable: IApproveOrder[] = [];
@@ -48,8 +48,7 @@ export class ApproveOrdersComponent implements OnInit {
     private router: Router
   )
    {
-    // this.dd()
-    // this.populateTheTable();
+
     this.theNotice()
      
     
@@ -60,33 +59,14 @@ export class ApproveOrdersComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
 
-  public static getUniqueArray(arr=[], compareProps=[]) {
-    let modifiedArray= [];
-    if(compareProps.length === 0 && arr.length > 0)
-     compareProps.push(...Object.keys(arr[0]));
-       arr.map(item=> {
-     if(modifiedArray.length === 0){
-      modifiedArray.push(item);
-     }else {
-      if(!modifiedArray.some(item2=> 
-      compareProps.every(eachProps=> item2[eachProps] === item[eachProps])
-    )){modifiedArray.push(item);}
-   }
-    });
-   return modifiedArray;
-   }
-
 
    public theNotice(): void {
-    //  this.b = true
     this.websocketService.notify("/topic/supplierOrders/findAll", (message)=>{
       this.b = true
       this.notice.length = 0;
-
-     
       var x = JSON.parse(message.body)
       var y = JSON.parse(x.body)
-      this.g.push(y)
+      // this.g.push(y)
       console.log("values yyyyyyyyyyyy", y)
       this.objectsUtil.dataObjectToArray(y).map(theOder => {
         if (theOder.order.orderStatus === "accepted") {
