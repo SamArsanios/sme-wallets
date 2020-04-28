@@ -32,6 +32,7 @@ socket.onmessage = this.Messages()
       stompClient.subscribe(subscriptionURL, notificationResult => {
 
         actionTaken(notificationResult);
+      
 
       });
 

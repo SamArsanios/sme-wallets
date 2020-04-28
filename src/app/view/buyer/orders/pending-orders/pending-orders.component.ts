@@ -46,6 +46,7 @@ export class PendingOrdersComponent implements OnInit {
     this.websocketService.notify("/topic/orders/findAll", (message)=>{
       var x = JSON.parse(message.body)
       var y = JSON.parse(x.body)
+      
 
 
         this.objectsUtil.dataObjectToArray(y).map(theOder => {

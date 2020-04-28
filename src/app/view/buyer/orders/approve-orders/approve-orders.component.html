@@ -1,56 +1,112 @@
 <div class="container">
-  <mat-form-field>
-    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search" />
-  </mat-form-field>
 
-  <div class="mat-elevation-z8">
-    <mat-table [dataSource]="approveOrdersInfoTableDataSource" matSort>
-      <!-- Order Number Column -->
-      <ng-container matColumnDef="orderNo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Order No</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.orderNo }}</mat-cell>
-      </ng-container>
+  <div *ngIf="b">
+    <mat-form-field>
+      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search" />
+    </mat-form-field>
 
-      <!-- Order Date Column -->
-      <ng-container matColumnDef="orderDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.orderDate }}</mat-cell>
-      </ng-container>
 
-      <!-- Order Due Date Column -->
-      <ng-container matColumnDef="orderDueDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Due Date</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="SocketapproveOrdersInfoTableDataSource" matSort>
+        <!-- Order Number Column -->
+        <ng-container matColumnDef="orderNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order No</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.orderNo }}</mat-cell>
+        </ng-container>
+
+        <!-- Order Date Column -->
+        <ng-container matColumnDef="orderDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.orderDate }}</mat-cell>
+        </ng-container>
+
+        <!-- Order Due Date Column -->
+        <ng-container matColumnDef="orderDueDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order Due Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{
           element.orderDueDate
         }}</mat-cell>
-      </ng-container>
+        </ng-container>
 
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <button class="btn-primary btn-sm" id="{{element.action}}"
-            (click)="handleViewOrderClick($event)"> Views</button>           </mat-cell>
-      </ng-container>
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
+              Views</button> </mat-cell>
+        </ng-container>
 
-      <!-- Order Status Column -->
-      <ng-container matColumnDef="orderStatus">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.orderStatus }}</mat-cell>
-      </ng-container>
+        <!-- Order Status Column -->
+        <ng-container matColumnDef="orderStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.orderStatus }}</mat-cell>
+        </ng-container>
 
-      <!-- Empty Column -->
-      <ng-container matColumnDef="empty">
-        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <button class="btn-primary btn-sm" id="{{element.action}}"
-            (click)="handleViewOrderClick($event)"> View</button>        </mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
+        <!-- Empty Column -->
+        <ng-container matColumnDef="empty">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
+              View</button> </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
-    </mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
   </div>
-</div>
+
+  <div *ngIf="!b">
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="approveOrdersInfoTableDataSource" matSort>
+        <!-- Order Number Column -->
+        <ng-container matColumnDef="orderNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order No</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.orderNo }}</mat-cell>
+        </ng-container>
+
+        <!-- Order Date Column -->
+        <ng-container matColumnDef="orderDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.orderDate }}</mat-cell>
+        </ng-container>
+
+        <!-- Order Due Date Column -->
+        <ng-container matColumnDef="orderDueDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order Due Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{
+          element.orderDueDate
+        }}</mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
+              Views</button> </mat-cell>
+        </ng-container>
+
+        <!-- Order Status Column -->
+        <ng-container matColumnDef="orderStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.orderStatus }}</mat-cell>
+        </ng-container>
+
+        <!-- Empty Column -->
+        <ng-container matColumnDef="empty">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button class="btn-primary btn-sm" id="{{element.action}}" (click)="handleViewOrderClick($event)">
+              View</button> </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>

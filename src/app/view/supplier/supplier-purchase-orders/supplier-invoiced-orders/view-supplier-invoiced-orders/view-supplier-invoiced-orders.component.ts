@@ -122,7 +122,7 @@ cancel() {
   }
 
 
-  raiseInvoice(form: NgForm) {
+  raiseInvoice(form: NgForm, updateInvoicesWebSocketback) {
 
 
     const supplierOrders = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(
@@ -195,8 +195,12 @@ cancel() {
     }
 
 
-    this.httpService.postRequest("/invoices/create", theInvoice).subscribe(e => {
-      console.log(`the supplier Order is ${e.body, null, 2}`)
+    this.httpService.postRequest("/invoices/create", theInvoice, ).subscribe(e => {
+      console.log(`the raised invoice  is ${e.body, null, 2}`)
+      setTimeout(() => {
+        this.updateInvoicesWebSocketback()
+        }, 6000);
+      
     });
 
 
@@ -208,9 +212,27 @@ cancel() {
     this.httpService.putRequest("/orders/update", theInvoice.order).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
       this.invoiceStatus = true;
+
+      setTimeout(() => {
+        this.updateSupplierOrderWebSocketback()
+        }, 3000);
     });
     
 
+  }
+
+
+  updateSupplierOrderWebSocketback(){
+    this.httpService.getRequest("/orders/findAll").subscribe(e => {
+      console.log("the order websocket has been updated")
+    })
+  }
+
+
+  updateInvoicesWebSocketback(){
+    this.httpService.getRequest("/invoices/findAll").subscribe(e => {
+      console.log("the Supplier order websocket has been updated")
+    })
   }
 }
 

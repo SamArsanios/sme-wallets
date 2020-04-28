@@ -172,12 +172,32 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
 
     this.httpService.putRequest("/orders/update", OldOrderorder).subscribe(e => {
       console.log(`the updated Order is ${JSON.stringify(e.body)}`)
+      setTimeout(() => {
+        this.updateOrderWebSocketback()
+        }, 2000);
     });
     this.approveStatus = true;
-    setTimeout(() => {
-      // this.router.navigate(['/buyer/orders']);
-    }, 2000);
+    // setTimeout(() => {
+    //   // this.router.navigate(['/buyer/orders']);
+    // }, 2000);
   }
+
+  updateOrderWebSocketback(){
+    this.httpService.getRequest("/orders/findAll").subscribe(e => {
+        console.log("the order websocket has been updated")
+
+        setTimeout(() => {
+          this.updateSupplierOrderWebSocketback()
+          }, 1000);
+  })
+}
+
+updateSupplierOrderWebSocketback(){
+  this.httpService.getRequest("/supplierOrders/findAll").subscribe(e => {
+    console.log("the Supplier order websocket has been updated")
+})
+}
+ 
 
   generatePdf() {
     const id = ApproveOrderData.getIdOfOrderToView();

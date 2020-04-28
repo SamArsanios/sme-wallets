@@ -1,0 +1,63 @@
+<form #form="ngForm" class="register" (ngSubmit)=onSubmit(form)>
+<h1>Login As an Administrator to create a new wallet</h1>
+<p>Before you create a wallet ensure you are registered as an adminstrator on the system</p>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- <div class="col-sm-6" id="bgimage">
+  
+        </div> -->
+  
+        <div class="col-sm-6">
+          <div class="majorcontent">
+            <div class="row">
+              <div class="title">
+                <p>Admin Sign In</p>
+              </div>
+              <hr class="detail">
+            </div>
+  
+            <div class="main">
+  
+  
+  
+              <div class="row">
+  
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Enter Your Email</mat-label>
+                  <input matInput placeholder="Enter Email" name="email" [(ngModel)]="email" required #emails="ngModel"
+                    [class.ld-error]="form.submitted && emails.invalid">
+                </mat-form-field>
+  
+                <div [hidden]="!form.submitted || emails.valid" class="alert alert-danger">
+                  Please Enter a valid email Address
+                </div>
+              </div>
+  
+              <div class="row">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Enter Your password</mat-label>
+                  <input matInput placeholder="password" name="password" type="password" [(ngModel)]=password required #emal="ngModel"
+                    [class.ld-error]="form.submitted && emal.invalid">
+                </mat-form-field>
+                
+                <div [hidden]="!form.submitted || emal.valid" class="alert alert-danger">
+                  Please Enter a valid password
+                </div>
+              </div>
+  
+  
+            
+  
+            <div class="row">
+              <input id="btnregister" class="registers" type="submit" value="Login"
+                class="btn btn-primary btn-block btn-lg" />
+            </div>
+            <div [hidden]="!form.submitted || wrongCredentials" class="alert alert-danger">
+                You cant login with invalid credentials
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  

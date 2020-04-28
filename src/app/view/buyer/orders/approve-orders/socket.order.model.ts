@@ -11,7 +11,7 @@ export interface IApproveOrder {
   }
 
 
-export class PopulateApproveOrderTable {
+export class SocketPopulateApproveOrderTable {
 
   public static displayedColumns: string[] = [
         "orderNo",
@@ -41,7 +41,7 @@ export class PopulateApproveOrderTable {
 
 
   public  static populateTableOnInit(fromResponse: SupplierOrder[]) {
-    var unduplicatedList = PopulateApproveOrderTable.getUniqueArray(fromResponse, [])
+    var unduplicatedList = SocketPopulateApproveOrderTable.getUniqueArray(fromResponse, [])
 
     console.log("these are teh awaited items", unduplicatedList)
 

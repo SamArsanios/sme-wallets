@@ -1,0 +1,54 @@
+.filler {
+    flex: 1 1 auto;
+ }
+ .gap {
+    margin-right: 2%;
+ }
+ 
+ .head{
+    height: auto;
+    background-color: blue;
+    color: white;
+ }
+ app-login{
+    display: none;
+ }
+ 
+ .head img{
+    padding-bottom: 3%;
+    padding-top: 3%;
+ }
+ .home{
+   margin-right: 2%;
+ }
+ mat-icon{
+   color: white;
+   margin-right: 10%;
+ }
+ .navbar-brand{
+ font-family: 'Eczar', serif;
+ font-weight: 200%;
+ color: rgb(145, 28, 28);
+ }
+ mdb-navbar{
+ position: fixed;
+ z-index: 2;
+ width: 100%;
+ margin-top: 0%;
+ }
+ a{
+    font-weight: 500;
+ }
+ .profilename{
+    color: crimson;
+ }
+ .active {
+    background-color: rgb(208, 208, 235);
+    color: white;
+  }
+ 
+ /* @media screen and (max-width: 800px) {
+    mdb-navbar{
+       display: none;
+    }
+  } */

@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { HttpService } from "./utils/http/http-service";
 import { Order } from "./model/buyer/order/order-model";
 import { ObjectsUtil } from './utils/objects/objects';
+import { SupplierOrder } from './model/supplier/order/SupplierOrder';
 
 @Component({
   selector: "app-root",
@@ -18,8 +19,9 @@ export class AppComponent implements OnInit {
 
 
   constructor(
-    // private websocketService: WebsocketService,
+    private websocketService: WebsocketService,
     private httpService: HttpService<Order>,
+    private httpServices: HttpService<SupplierOrder>,
     private objectsUtil: ObjectsUtil<Order>,
     private objectUtil: ObjectsUtil<any>,
   ) {
@@ -27,9 +29,25 @@ export class AppComponent implements OnInit {
     // this.ff()
   }
 
+  // theNotice(): void {
+
+
+
+
+  //   this.websocketService.notify("/topic/supplierOrders/findAll", (message)=>{
+  //     var x = JSON.parse(message.body)})
+  //   }
+
+  // kk(){
+  //   this.httpServices.getRequest("/supplierOrders/findAll").subscribe(response => {
+  //     console.log("this is the response before a websocket")
+  //   })
+
+  // }
 
 
   ngOnInit() {
+    // this.kk()
     // this.ff()
 
   }
