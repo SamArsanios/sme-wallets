@@ -4,7 +4,9 @@
 .gap {
    margin-right: 2%;
 }
-
+app-pending-orders{
+   display: none
+}
 .head{
    height: auto;
    background-color: blue;
@@ -12,6 +14,9 @@
 }
 app-login{
    display: none;
+}
+.matBadge{
+   color: red;
 }
 
 .head img{
@@ -24,6 +29,10 @@ app-login{
 mat-icon{
   color: white;
   margin-right: 10%;
+}
+.mat-badge-content {
+   background: rgb(247, 240, 240);
+   color: crimson;
 }
 .navbar-brand{
 font-family: 'Eczar', serif;
@@ -40,7 +49,7 @@ a{
    font-weight: 500;
 }
 .profilename{
-   color: crimson;
+   color: rgb(4, 4, 117);
 }
 .active {
    background-color: rgb(208, 208, 235);

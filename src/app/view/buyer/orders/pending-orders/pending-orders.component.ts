@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
 import { HttpService } from "../../../../utils/http/http-service";
 import { Order } from "../../../../model/buyer/order/order-model";
@@ -21,6 +21,15 @@ import { PopulateSocketPendingOrderTable } from './socket.pending.model';
 })
 export class PendingOrdersComponent implements OnInit {
   receivers: Array<Order> = new Array<Order>();
+  notificationNumber;
+
+  currentUser: string;
+  @Input() receivedParentMessage: string;
+  @Output() exampleOutput = new EventEmitter<string>()
+  exampleMethodChild(){
+    this.exampleOutput.emit(this.notificationNumber)
+  }
+
   SocketPendingOrdersInfoTable: IPendingOrder[] = [];
   pendingOrdersInfoTable:IPendingOrder[] = [];
   pendingOrdersInfoTableDataSource = new MatTableDataSource(
@@ -39,69 +48,26 @@ notice = [];
     private router: Router,
     private websocketService: WebsocketService,
 
-    // private webSocketService: WebsocketService
   ) {
-    // this.populateTheTable();
     this.theNotice()
   }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  // theNotice(): void {
-  //   this.websocketService.notify("/topic/orders/findAll", (message)=>{
-  //     var x = JSON.parse(message.body)
-  //     var y = JSON.parse(x.body)
-      
-
-
-  //       this.objectsUtil.dataObjectToArray(y).map(theOder => {
-  //         console.log(`the pending orders are ${JSON.stringify(theOder)}`)
   
-  //         if (theOder.orderStatus === "pending") {
-  
-  //           this.receivers.push(theOder);
-  //           PendingOrderData.addAPendingOrder(theOder);
-  //           PendingOrderData.addAPendingOrderToMap(theOder, theOder.id);
-  
-  //         }
-  //       });
-  
-  //       const result = this.populateTable.populateTable(this.objectsUtil.dataObjectToArray(this.receivers), this.pendingOrdersInfoTable,
-  //         this.pendingOrdersInfoTableDataSource, PopulatePendingOrderTable.populateTableOnInit);
-  
-  //       this.pendingOrdersInfoTableDataSource = new MatTableDataSource<IPendingOrder>(result);
-  
-  //       this.objectsUtil.dataObjectToArray(this.receivers).forEach(e => {
-  
-  //         PendingOrderData.addAPendingOrder(e);
-  //         PendingOrderData.addAPendingOrderToMap(e, e.id);
-  
-  //       });
-  
-  //     });
-  
-  //     this.pendingOrdersInfoTableDataSource.sort = this.sort;
-  //     this.pendingOrdersInfoTableDataSource.paginator = this.paginator;
-    
-    
-  //   // console.log("the value of fr", this.fr)
-
-
-  // }
-
-
   public theNotice(): void {
     this.websocketService.notify("/topic/orders/findAll", (message)=>{
       this.b = true
       this.notice.length = 0;
       var x = JSON.parse(message.body)
       var y = JSON.parse(x.body)
-      // this.g.push(y)
       console.log("values yyyyyyyyyyyy", y)
       this.objectsUtil.dataObjectToArray(y).map(theOder => {
         if (theOder.orderStatus === "pending") {
           this.notice.push(theOder);
+          this.notificationNumber = this.notice.length
+          this.exampleMethodChild()
           SocketPendingOrderData.addAPendingOrder(theOder)
           SocketPendingOrderData.addAPendingOrderToMap(theOder, theOder.id)
         }
@@ -142,6 +108,8 @@ this.notice.length = 0;
         if (theOder.orderStatus === "pending") {
 
           this.receivers.push(theOder);
+          this.notificationNumber = this.receivers.length
+          this.exampleMethodChild()
           PendingOrderData.addAPendingOrder(theOder);
           PendingOrderData.addAPendingOrderToMap(theOder, theOder.id);
 
@@ -170,6 +138,7 @@ this.notice.length = 0;
 
   ngOnInit() {
     this.populateTheTable();
+  
   }
 
   handleViewOrderClick($event): void {

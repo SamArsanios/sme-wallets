@@ -122,8 +122,8 @@
                                 <mat-select class="labelinfo" name="wallet" [(ngModel)]=wallet required #wal="ngModel"
                                     [class.ld-error]="form.submitted && wal.invalid">
 
-                                    <mat-option *ngFor="let wallet of wallets" value={{wallets}}>
-                                        {{wallet}}
+                                    <mat-option *ngFor="let wallet of walets" value={{walets}}>
+                                        {{wallet.name}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
