@@ -1,0 +1,46 @@
+<app-wallet-header></app-wallet-header>
+<app-walletsnav></app-walletsnav>
+
+
+<form #form="ngForm" class="wallet" (ngSubmit)=onSubmit(form)>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"></div>
+
+            <div class="col-sm-6">
+                <div class="majorcontent">
+                    <div class="row">
+                        <div class="title">
+                            <p>Create a new wallet</p>
+                        </div>
+                        <hr class="detail">
+                    </div>
+
+                    <div class="main">
+                        <div class="row">
+
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Enter Wallet Name</mat-label>
+                                <input matInput placeholder="Enter wallet name" name="wallet" [(ngModel)]="wallet"
+                                    required #wallets="ngModel" [class.ld-error]="form.submitted && wallet.invalid">
+                            </mat-form-field>
+
+                            <!-- <div [hidden]="!wallet.valid" class="alert alert-danger">
+                                You have not Entered a wallet
+                            </div> -->
+                        </div>
+                        <div class="row">
+                                <div *ngIf="walletStatus" class="alert alert-success statusmessage">
+                                        <strong>Success!</strong> The wallet has been successfully created
+                                      </div>
+
+                            <input id="btnregister" class="registers" type="submit" value="Submit"
+                                class="btn btn-primary btn-block btn-lg" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3"></div>
+        </div>

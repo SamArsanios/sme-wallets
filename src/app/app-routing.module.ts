@@ -43,6 +43,9 @@ import { ApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/
 import { VewsApprovedInvoicesComponent } from './view/buyer/vault/approved-invoices/vews-approved-invoices/vews-approved-invoices.component';
 import { GetPaidComponent } from './view/supplier/supplier-vault/supplier-approved-invoices/get-paid/get-paid.component';
 import { ViewSponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/view-sponsor-invoices/view-sponsor-invoices.component';
+import { WalletsComponent } from './view/wallets/wallets.component';
+import { CreateWalletsComponent } from './view/wallets/create-wallets/create-wallets.component';
+import { ViewWalletsComponent } from './view/wallets/view-wallets/view-wallets.component';
 
 
 const routes: Routes = [
@@ -184,7 +187,9 @@ component: ViewRaisedInvoicesComponent
     component: SponsorVaultSponsorshipComponent
   },
   { path: "home", component: HomeComponent },
-
+  { path: "home/wallets", component: WalletsComponent },
+  { path: "admin/create-wallet", component: CreateWalletsComponent },
+  { path: "admin/view-wallet", component: ViewWalletsComponent },
   { path: "sponsor/account-settings", component: SponsorSettingsComponent }
   // {path: "buyer/accountsettings/#personalInfo",
   // component: SponsorSettingsComponent

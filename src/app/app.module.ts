@@ -96,6 +96,11 @@ import { GetPaidComponent } from './view/supplier/supplier-vault/supplier-approv
 import { ViewSponsorInvoicesComponent } from './view/sponsor/sponsor-invoices/view-sponsor-invoices/view-sponsor-invoices.component';
 import { ViewContactsComponent } from './view/buyer/invites/view-contacts/view-contacts.component';
 import { ViewSuppliersComponent } from './view/buyer/invites/view-suppliers/view-suppliers.component';
+import { WalletsComponent } from './view/wallets/wallets.component';
+import { CreateWalletsComponent } from './view/wallets/create-wallets/create-wallets.component';
+import { WalletsnavComponent } from './shared/walletsnav/walletsnav.component';
+import { WalletHeaderComponent } from './shared/header/wallet-header/wallet-header.component';
+import { ViewWalletsComponent } from './view/wallets/view-wallets/view-wallets.component';
 
 
 @NgModule({
@@ -167,7 +172,12 @@ import { ViewSuppliersComponent } from './view/buyer/invites/view-suppliers/view
     GetPaidComponent,
     ViewSponsorInvoicesComponent,
     ViewContactsComponent,
-    ViewSuppliersComponent
+    ViewSuppliersComponent,
+    WalletsComponent,
+    CreateWalletsComponent,
+    WalletsnavComponent,
+    WalletHeaderComponent,
+    ViewWalletsComponent
 
     // PiechartComponent
   ],

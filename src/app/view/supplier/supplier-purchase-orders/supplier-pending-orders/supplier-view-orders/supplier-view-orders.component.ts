@@ -155,7 +155,7 @@ export class SupplierViewOrdersComponent implements OnInit {
     wallet["timestampStr"] = buyer["emailVerifiedAtStr"];
     return wallet;
   }
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm, callback) {
     // get the order
     const order = SupplierPendingOrderData.getSupplierPendingOrderMap().get(
       SupplierPendingOrderData.getIdOfOrderToView()
@@ -189,10 +189,11 @@ export class SupplierViewOrdersComponent implements OnInit {
     );
     supplierOrder.id = 0;
     supplierOrder.order = order;
-    console.log(`the orrrrrrrrder: ${JSON.stringify(order, null, 2)} `);
+    // console.log(`the orrrrrrrrder: ${JSON.stringify(order, null, 2)} `);
     supplierOrder.totalPrice = this.parseStringToNumber(
       this.totalBeforeTax.toString()
     );
+    supplierOrder.order.orderStatus = "accepted"
     supplierOrder.subTotal = this.parseStringToNumber(this.subTotal.toString());
     supplierOrder.finalTotal = this.parseStringToNumber(
       this.totalAfterTax.toString()
@@ -231,6 +232,7 @@ export class SupplierViewOrdersComponent implements OnInit {
       SupplierPendingOrderData.getIdOfOrderToView()
     );
     let supplierNewOrder = SupplierOrder.createInstance();
+    // supplierNewOrder.order.orderStatus = "accepted";
     let newOrder = Order.createInstance();
     OldOrder.orderStatus = "accepted";
     this.objectUtilOrder.objectToInstance(newOrder, OldOrder); 
@@ -239,12 +241,32 @@ export class SupplierViewOrdersComponent implements OnInit {
         this.httpService.postRequest("/supplierOrders/create", supplierOrder).subscribe(e => {
       console.log(`the supplier Order is ${e.body, null, 2}`)
       this. invoiceStatus = true;
-    });
+      setTimeout(() => {
+        this.callback()
+        }, 4000);
+      })
+    
 
     this.httpService.putRequest("/orders/update", OldOrder).subscribe(e => {
       console.log(`the updated Order is ${e.body, null, 2}`)
+      setTimeout(() => {
+        this.updateOrderWebSocketback()
+        }, 3000);
+      
     });
-  }  
+  } 
+
+  updateOrderWebSocketback(){
+    this.httpService.getRequest("/orders/findAll").subscribe(e => {
+        console.log("the order websocket has been updated")
+  })
+}
+  
+  callback() {
+    this.httpService.getRequest("/supplierOrders/findAll").subscribe(e => {
+      console.log("this is meant to trigger a websocket")
+    })
+  }
 
   Decline() {
     // get the order

@@ -9,6 +9,9 @@ import { IApproveOrder } from "../../payment-info/payment-info.component";
 import { PopulateApproveOrderTable } from "./approve.order.model.interface";
 import { ApproveOrderData } from "src/app/service/order/approve.order.data";
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
+import { WebsocketService } from 'src/app/utils/websocket/websocket.service';
+import { SocketApproveOrderData } from 'src/app/service/order/socketApprove.data';
+import { SocketPopulateApproveOrderTable } from './socket.order.model';
 
 @Component({
   selector: "app-approve-orders",
@@ -18,7 +21,17 @@ import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 export class ApproveOrdersComponent implements OnInit {
   identity: number;
   receivers: Array<SupplierOrder> = new Array<SupplierOrder>();
+  notice = this.receivers
+  // c = false
+  // k = false
+  // g = []
+  b = false
   approvedOrdersInfoTable: IApproveOrder[] = [];
+  socketApprovedOrdersInfoTable: IApproveOrder[] = [];
+
+  SocketapproveOrdersInfoTableDataSource = new MatTableDataSource(
+    this.socketApprovedOrdersInfoTable
+  );
   approveOrdersInfoTableDataSource = new MatTableDataSource(
     this.approvedOrdersInfoTable
   );
@@ -29,14 +42,66 @@ export class ApproveOrdersComponent implements OnInit {
   constructor(
     private httpService: HttpService<SupplierOrder>,
     private objectsUtil: ObjectsUtil<SupplierOrder>,
+    private websocketService: WebsocketService,
+
     private populateTable: PopulateTable<SupplierOrder, IApproveOrder>,
     private router: Router
-  ) {}
+  )
+   {
+
+    this.theNotice()
+     
+    
+     
+    }
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  private populateTheTable(): void {
+
+
+   public theNotice(): void {
+    this.websocketService.notify("/topic/supplierOrders/findAll", (message)=>{
+      this.b = true
+      this.notice.length = 0;
+      var x = JSON.parse(message.body)
+      var y = JSON.parse(x.body)
+      // this.g.push(y)
+      console.log("values yyyyyyyyyyyy", y)
+      this.objectsUtil.dataObjectToArray(y).map(theOder => {
+        if (theOder.order.orderStatus === "accepted") {
+          this.notice.push(theOder);
+          SocketApproveOrderData.addApproveOrder(theOder)
+          SocketApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
+        }
+      })
+      console.log("the daaaaaaaaaaaaata recieved is", this.notice)
+      const result = this.populateTable.populateTable(
+        this.objectsUtil.dataObjectToArray(this.notice),
+        this.socketApprovedOrdersInfoTable,
+        this.SocketapproveOrdersInfoTableDataSource,
+        SocketPopulateApproveOrderTable.populateTableOnInit
+      );
+
+      this.SocketapproveOrdersInfoTableDataSource = new MatTableDataSource<
+        IApproveOrder
+      >(result);
+
+      this.objectsUtil.dataObjectToArray(this.notice).forEach(e => {
+        console.log("teh reviiiii are", e)
+        SocketApproveOrderData.addApproveOrder(e);
+        SocketApproveOrderData.addApproveOrderToMap(e, e.id);
+      });
+    })
+
+    this.SocketapproveOrdersInfoTableDataSource.sort = this.sort;
+    this.SocketapproveOrdersInfoTableDataSource.paginator = this.paginator;
+this.notice.length = 0;
+}
+
+  public populateTheTable(): void {
+
+    this.b = false;
     this.httpService.getRequest("/supplierOrders/findAll").subscribe(response => {
       this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
         if (theOder.order.orderStatus === "accepted") {
@@ -45,7 +110,6 @@ export class ApproveOrdersComponent implements OnInit {
           ApproveOrderData.addApproveOrderToMap(theOder, theOder.id)
         }
       })
-
       const result = this.populateTable.populateTable(
         this.objectsUtil.dataObjectToArray(this.receivers),
         this.approvedOrdersInfoTable,
@@ -66,11 +130,15 @@ export class ApproveOrdersComponent implements OnInit {
 
     this.approveOrdersInfoTableDataSource.sort = this.sort;
     this.approveOrdersInfoTableDataSource.paginator = this.paginator;
+    // this.theNotice = function(){};
+
   }
 
+
   ngOnInit() {
+
     this.populateTheTable();
-    console.log(`laaaaaaaaaaaap1fffffffffffffffff${this.receivers}`)
+  
   }
 
   handleViewOrderClick($event): void {
@@ -81,29 +149,6 @@ export class ApproveOrdersComponent implements OnInit {
       ApproveOrderData.setIdOfOrderToView(id);
     });
   }
-
-  // handleViewOrderClick($event): void {
-    
-  //   const id = parseInt($event.target.closest("button").id);
-  //   const saveid = JSON.stringify(id);
-  //   this.identity = id;
-  //   this.router.navigate(["buyer/orders/view-all-approved-orders"]).then(e => {
-  //     console.log(`The Current ID is ${id}`);
-  //     localStorage.setItem("viewid", saveid);
-
-  //     console.log(
-  //       `the order to view again: ${JSON.stringify(
-  //         ApproveOrderData.getApproveOrderMap().get(id),
-  //         null,
-  //         2
-  //       )} `
-  //     );
-      
-  //     ApproveOrderData.setIdOfOrderToView(id);
-
-
-  //   });
-  // }
 
   public static returnId(): number {
     return this.identity;

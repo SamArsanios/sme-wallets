@@ -1,5 +1,5 @@
 
-<!--Navbar-->
+<app-pending-orders (exampleOutput) = exampleMethodParent($event)></app-pending-orders>
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark cyan" [containerInside]="false">
 
   <!-- Navbar brand -->
@@ -19,7 +19,7 @@
       <li class="nav-item">
         <a class="nav-link waves-light" mdbWavesEffect>
           <!-- <mdb-icon fas icon="notifications"></mdb-icon> Notifications -->
-            <span matBadge="4" matBadgeOverlap="false">Notifications</span>
+          <span matBadge={{exampleParent}} matBadgeOverlap="false">Notifications</span>
         </a>
       </li>
 

@@ -1,0 +1,44 @@
+
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark cyan" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="https://m1.smewallets.com/home/images/logo.png" alt=""
+          title=""></a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a routerLink="/home" routerLinkActive="active" class="nav-link waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="home"></mdb-icon> Home<span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect>
+            <!-- <mdb-icon fas icon="notifications"></mdb-icon> Notifications -->
+              <span matBadge="4" matBadgeOverlap="false">Notifications</span>
+          </a>
+        </li>
+  
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light profilename" mdbWavesEffect>
+            <mdb-icon fas icon="user"></mdb-icon> <span class = "profilename">{{currentUser}}</span>
+             <span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+          </div>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->

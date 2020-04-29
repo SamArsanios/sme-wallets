@@ -9,6 +9,7 @@ import { DateUtils } from 'src/app/utils/date/date-utils'
 import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 import { Registration } from 'src/app/shared/model/user/Registration';
 import { Router } from '@angular/router';
+import { Wallet } from 'src/app/shared/model/wallet/wallet-model';
 
 @Component({
   selector: 'app-register',
@@ -18,10 +19,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registrationStatus = false;
   repassi = true;
-
+  walets = [];
   firstname: null;
-  wallets = ["SME", "AGRIC", "Test1", "Admin", "test_wallet", "ret", "test",
-    "test_new", "OGAS Wallet", "test", "asd", "ert", "demo"]
+  
   industries = ["Manufacturing", " Oil and Gas", "Hospitality",
     "Security Services", "Motor Garage", "Business Consulting",
     "Government Dept", "Telecom", "Mining", "Roofing Industry", "Travel Industry",
@@ -40,6 +40,8 @@ export class RegisterComponent implements OnInit {
   constructor(private httpServicee: HttpService<User>,
     private objectUtils: ObjectsUtil<User>,
     private httpRegister: HttpService<Registration>,
+    private httpService: HttpService<Wallet>,
+    private objectUtil: ObjectsUtil<Wallet>,
     private router: Router) {
 
 
@@ -106,6 +108,22 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.httpService.getRequest("/wallets/findAll").subscribe(e => {
+      this.objectUtil.dataObjectToArray(e.body).map(aWallet => {
+       
+          this.walets.push(aWallet);
+
+
+        //   SupplierData.addASupplier(aSupplier);
+        //   console.log("all suppliers are heeeeeeeeeeeey ", SupplierData.getAllSuppliers())
+
+
+        //   SupplierData.addASupplierToMap(aSupplier, aSupplier.id);
+
+        // }
+      });
+    });
   }
 
 }

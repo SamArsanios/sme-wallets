@@ -1,0 +1,55 @@
+ <app-wallet-header></app-wallet-header>
+<app-walletsnav></app-walletsnav>
+<div>ssssssssssssssss</div>
+<div class="container">
+
+    <mat-form-field>
+  
+      <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Search" />
+  
+  
+  
+    </mat-form-field>
+  
+    <div class="mat-elevation-z8">
+  
+      <mat-table [dataSource]="allOrdersInfoTableDataSource" matSort>
+        <!-- Order Number Column -->
+ 
+        <ng-container matColumnDef="WalletNo">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Wallet No.</mat-header-cell>
+  
+          <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+  
+        </ng-container>
+  
+        <!-- Order Date Column -->
+        <ng-container matColumnDef="WalletName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Wallet Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.name}}</mat-cell>
+        </ng-container>
+  
+        <!-- Order Due Date Column -->
+        <ng-container matColumnDef="Admin">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Admin</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{
+            element.admin
+          }}</mat-cell>
+        </ng-container>
+  
+        <!-- Sender Name Column -->
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.email }}</mat-cell>
+        </ng-container>
+  
+ 
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>

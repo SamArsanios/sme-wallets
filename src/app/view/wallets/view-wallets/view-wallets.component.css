@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+  }
+  
+  mat-header-cell {
+    background-color: rebeccapurple;
+    color: beige;
+    font-size: 16px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .mat-form-field {
+    margin-left: 870px;
+  }
+
+  app-walletsnav{
+      margin-bottom: 20%;
+  }
+
+  .container{
+      margin-top: 5%;
+  }
+
+
+  

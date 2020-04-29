@@ -13,11 +13,14 @@ export class WebsocketService {
    connect() {
 
     const socket = new SockJS(HTTPBase.getBaseURLWebSocket());
-
+socket.onmessage = this.Messages()
     const stompClient = Stomp.over(socket);
 
     return stompClient;
 
+  }
+  Messages(){
+    
   }
 
   public notify(subscriptionURL: string, actionTaken): void {
@@ -29,6 +32,7 @@ export class WebsocketService {
       stompClient.subscribe(subscriptionURL, notificationResult => {
 
         actionTaken(notificationResult);
+      
 
       });
 
