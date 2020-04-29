@@ -10,7 +10,7 @@ import { UserTransient } from 'src/app/shared/model/user/user-model-transient';
 import { Registration } from 'src/app/shared/model/user/Registration';
 import { Router } from '@angular/router';
 import { Wallet } from 'src/app/shared/model/wallet/wallet-model';
-
+Registration
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -47,11 +47,7 @@ export class RegisterComponent implements OnInit {
 
   }
   onSubmit(form: NgForm, repass: string) {
-    
-    // if(form.valid){
-    //   window.location.href = '/buyer/buyerdashboard';
 
-    // }
    
     console.log(form.value)
 
