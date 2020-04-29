@@ -15,15 +15,16 @@ export class HeaderComponent implements OnInit {
   exampleMethodParent($event){
     this.exampleParent = $event
   }
-  // deal = "i love you Jesus"
   currentUser: string;
-  // @Input() receivedParentMessage: string;
-  // @Output() exampleOutput = new EventEmitter<string>()
-  // exampleMethodChild(){
-  //   this.exampleOutput.emit(this.deal)
-  // }
 
   constructor() { }
+  
+
+  Logout(){
+    localStorage.removeItem("loggedinUser");
+    this.currentUser = "";
+
+  }
 
   ngOnInit() {
     let currentLoggedin = localStorage.getItem('loggedinUser')

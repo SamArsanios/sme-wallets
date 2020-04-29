@@ -1,7 +1,4 @@
-/* 
-  .majorcontent{
-    margin: 10%;
-  } */
+
   .title {
     margin-top: 20%;
     min-width: 100%;
@@ -42,45 +39,11 @@
   .mat-radio-button{
     margin-left: 3%;
   }
-  
-  .mat-form-field{
-    /* width:50%; */
-    /* margin-left: 20%; */
-  
-  
-  /* } 
-  .label{
-    max-width: 100%;
-    margin-bottom: 5px;
-    /* font-weight: 700; */   
-  } */
-  
-  /* 
-    */
+
   .phone{
     margin-top: 3%;
     margin-left: 3%;
   }
-  
-  /* .recapture-image{
-    padding-left: 22%;
-    margin-bottom: 4%;
-  
-  } */
-  /* .main{
-    margin-top: 5%;
-    margin-left: 10%;
-    text-align: center;
-    margin-bottom: 43%;
-   
-  } */
-  
-  /* .main input{
-    width: 50%;
-    margin-left: 20%;
-  
-  
-  } */
 
   mat-form-field{
     width: 100%;
