@@ -21,7 +21,7 @@ static generatePdf(order: any) {
             {
             // text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
 
-              text: `INVOICE NO :  ${order.ids}\n ORDER NO :  ${order.order.id} \n ORDER DUE DATE : \n\n\n`,
+              text: `INVOICE NO :  ${order.ids}\n ORDER NO :  ${order.order.id} \n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
               alignment: "right",
               margin: [0, 30, 0, 0],
               fontSize: 12
@@ -128,7 +128,7 @@ static generatePdf(order: any) {
                     },
  
                     {
-                      text: `${order.totalPrice}`,
+                      text: `${order.finalTotal}`,
                       style: "tableContent"
                     } // to be popoulated from db
                   ]

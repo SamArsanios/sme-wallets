@@ -69,13 +69,14 @@ public data;
           this.subTotal = theOder.subTotal;
           this.tax = theOder.taxRate;
           this.totalAfterTax = theOder.finalTotal;
+          this.totalBeforeTax = theOder.subTotal;
         }
       });
     })
 
 
 
-    if ( order !== undefined && order != null ) {
+    if ( order != undefined && order != null ) {
       this.date = order.order.timestamp;
       this.orderNumber = order.order.id;
       this.buyerName = order.order.buyer.name;
@@ -144,6 +145,7 @@ public data;
           if (theOder.order.id === invoices.order.id) {
             this.data = theOder
             this.data["ids"] = invoices.id
+            this.totalBeforeTax = theOder.subTotal
             // InvoicePDF.generatePdf(this.data);
 
             console.log("the generated supplierOrder of the invoice is", this.data)
