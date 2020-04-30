@@ -1,7 +1,7 @@
 <form #form="ngForm" class="createorder" (ngSubmit)=onSubmit(form)>
 
   <div class="container">
-  
+
 
     <div class="row">
 
@@ -13,7 +13,7 @@
 
           <mat-label>Industry Type</mat-label>
 
-          <mat-select name="industryType" ngModel>
+          <mat-select name="industryTypes" ngModel>
 
             <mat-option>None</mat-option>
 
@@ -168,11 +168,12 @@
         </mat-form-field>
         <!-- end delivery terms -->
 
-        <input [ngxTimepicker]="picker" />
+        <i class="fal fa-alarm-clock"></i>
+        <input [ngxTimepicker]="picker" placeholder="click here to set date" name="newDate" ngModel readonly />
 
         <ngx-material-timepicker #picker></ngx-material-timepicker>
 
-        <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24" readonly />
+        <!-- <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24"  name= "newDate" ngModel readonly /> -->
         <ngx-material-timepicker #fullTime></ngx-material-timepicker>
 
       </div>
@@ -239,5 +240,7 @@
   <div *ngIf="OrderStatus" class="alert alert-success statusmessage">
     <strong>Success!</strong> Your order has been successfully sent to the supplier
   </div>
-  <button class="btn-primary btn-sm" type="submit" >Save Order</button>
+  <button class="btn-primary btn-sm" type="submit">Save Order</button>
 </form>
+
+{{form.value | json}}

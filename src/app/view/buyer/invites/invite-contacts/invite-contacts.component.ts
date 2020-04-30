@@ -42,6 +42,8 @@ export class InviteContactsComponent implements OnInit {
   ) {
 
   }
+
+
   someMethod(value) {
     console.log("teh vaaaaaaaaa is ", value);
 

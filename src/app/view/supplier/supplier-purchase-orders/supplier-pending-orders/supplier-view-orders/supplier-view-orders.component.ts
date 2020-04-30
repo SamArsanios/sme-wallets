@@ -88,7 +88,7 @@ export class SupplierViewOrdersComponent implements OnInit {
   }
   onKeyPrice(event: any) {
     this.price = event.target.value;
-    this.subTotal = this.price;
+    // this.subTotal = this.price;
     this.totalAfterTax = this.price;
     this.calculateTotalBeforeTaxAndShiping();
     this.calculateTotalAfterTax();
@@ -106,6 +106,7 @@ export class SupplierViewOrdersComponent implements OnInit {
   calculateTotalBeforeTaxAndShiping(): void {
     this.totalBeforeTax =
       this.pasreNumber(this.quantity) * this.pasreNumber(this.price);
+      this.subTotal =   this.totalBeforeTax
   }
   calculateTotalAfterTax(): void {
     // find out if tax = 0
