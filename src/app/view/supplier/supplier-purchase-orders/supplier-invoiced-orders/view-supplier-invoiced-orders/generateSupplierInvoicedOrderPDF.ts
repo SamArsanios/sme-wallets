@@ -152,7 +152,7 @@ export class GenerateSupplierInvoicedOrderPDF {
                     },
 
                     {
-                      text: `${order.totalPrice}`,
+                      text: `${order.finalTotal}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]

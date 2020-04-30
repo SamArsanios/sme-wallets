@@ -75,6 +75,7 @@ export class GetPaidComponent implements OnInit {
           this.subTotal = theOder.subTotal;
           this.tax = theOder.taxRate;
           this.totalAfterTax = theOder.finalTotal;
+          this.totalBeforeTax = theOder.subTotal;
         }
       });
     })

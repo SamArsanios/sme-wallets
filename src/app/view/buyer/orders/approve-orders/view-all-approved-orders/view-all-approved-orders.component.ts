@@ -73,6 +73,7 @@ export class ViewAllApprovedOrdersComponent implements OnInit {
     const order = ApproveOrderData.getApproveOrderMap().get(ApproveOrderData.getIdOfOrderToView());
 
     if (order !== undefined && order != null) {
+      console.log("the order i want ot manupulate is", order)
 
       this.buyerName = order.order.buyer.name;
       this.buyerPhone = order.order.buyer.phoneNumber;

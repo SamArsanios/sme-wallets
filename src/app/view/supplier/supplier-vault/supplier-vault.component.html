@@ -3,12 +3,7 @@
 <div class="container-fluid">
   <mat-tab-group #tabRef>
     <!-- First Tab -->
-    <!-- View Declined Invoices -->
-    <mat-tab label="Declined Invoices">
-      <div class="container">
-        <app-supplier-approved-invoices> </app-supplier-approved-invoices>
-      </div>
-    </mat-tab>
+
 
     <!-- Second Tab -->
     <!-- View Approved Invoices-->
@@ -17,6 +12,14 @@
         <app-supplier-approved-invoices></app-supplier-approved-invoices>
       </div>
     </mat-tab>
+
+
+        <!-- View Declined Invoices -->
+        <mat-tab label="Declined Invoices">
+          <div class="container">
+            <app-supplier-declined-invoices></app-supplier-declined-invoices>
+          </div>
+        </mat-tab>
 
     <!-- Third Tab -->
     <!-- View Financed Invoices-->

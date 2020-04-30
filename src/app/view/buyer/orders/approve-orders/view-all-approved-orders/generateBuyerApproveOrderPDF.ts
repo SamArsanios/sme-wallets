@@ -153,7 +153,7 @@ export class GenerateBUyerApproveOrderPDF {
                     },
 
                     {
-                      text: `${order.totalPrice}`,
+                      text: `${order.finalTotal}`,
                       style: `tableContent`
                     } // to be popoulated from db
                   ]

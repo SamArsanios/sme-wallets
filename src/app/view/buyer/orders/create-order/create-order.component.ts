@@ -124,6 +124,41 @@ export class CreateOrderComponent implements OnInit {
 
   onSubmit(form: NgForm, callback) {
     const idOfSupplier = form.value.receivername;
+    var timePeriod = form.value.timePeriod
+    var deliveryTime = form.value.newDate
+
+    var deliveryTime = form.value.newDate
+    var days = parseInt(timePeriod)
+    console.log(days)
+
+    var delTime = deliveryTime.replace(":", ",");
+
+    var stri = delTime.substring(0, delTime.length - 6);
+    var hour = parseInt(stri)
+
+    // if(hour>12){
+    //   hour = hour+12
+    // }
+    var hours = hour
+
+    console.log(hours)
+    var mins = deliveryTime.substring(2, deliveryTime.length - 3);
+    var minutes = parseInt(mins)
+
+
+    var orderDue = new Date()
+
+    orderDue.setDate(orderDue.getDate() + days)
+    orderDue.setHours(hours)
+    orderDue.setMinutes(minutes)
+    var orderDuef = orderDue.toString()
+
+    var orderdues = orderDuef.substring(3, orderDuef.length - 28);
+
+    console.log(orderdues)
+
+    // var orderDueDay =
+    //   console.log("the order due date is ", form.value.date)
 
     const supplierInfo = SupplierData.getMapOfIdToSupplier().get(
       Number(idOfSupplier)
@@ -158,6 +193,7 @@ export class CreateOrderComponent implements OnInit {
     order.supplier = userSupplier;
     order.buyer = this.buyer();
     order.orderStatus = "pending";
+    order.orderDueDate = orderdues;
 
     const newOrder = this.objectUtilOrder.objectToInstance(order, object);
 
@@ -169,12 +205,12 @@ export class CreateOrderComponent implements OnInit {
       console.log(`the result ${JSON.stringify(e, null, 2)} `);
       this.OrderStatus = true;
       setTimeout(() => {
-      this.callback()
+        this.callback()
       }, 1000);
     })
- 
-   
-  
+
+
+
 
   } // end onSubmit()
 
@@ -184,7 +220,15 @@ export class CreateOrderComponent implements OnInit {
     })
   }
 
-  
+  someMethod(value) {
+    console.log(value)
+  }
+
+  timePeriod(form: NgForm) {
+    console.log(form.value)
+  }
+
+
 
   showNotification(result: any) {
     if (result) {
