@@ -1,11 +1,12 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
+import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class GenerateApprovedInvoicesPDF {
-  static generatePdf(order: Invoice) {
+  static generatePdf(order: SupplierOrder) {
     const documentDefinition = {
       content: [
         {

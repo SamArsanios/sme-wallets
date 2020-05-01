@@ -158,7 +158,8 @@ export class ViewApproveInvoicesComponent implements OnInit {
 
         this.objectsUtil.dataObjectToArray(response.body).map(theOder => {
           if (theOder.order.id === invoices.order.id) {
-            this.data = theOder
+            this.data = theOder;
+            this.data.id = invoices.id;
 
             console.log("the generated supplierOrder of the invoice is", theOder)
             

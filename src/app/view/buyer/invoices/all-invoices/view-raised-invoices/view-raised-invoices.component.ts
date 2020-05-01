@@ -85,6 +85,7 @@ export class ViewRaisedInvoicesComponent implements OnInit {
           this.subTotal = theOder.subTotal;
           this.tax = theOder.taxRate;
           this.totalAfterTax = theOder.finalTotal;
+          this.totalBeforeTax = theOder.subTotal
         }
       });
     })
@@ -148,9 +149,10 @@ export class ViewRaisedInvoicesComponent implements OnInit {
           if (theOder.order.id === invoices.order.id) {
             // theOder.id = invoices.id
             this.data = theOder
-            this.data["ids"] = invoices.id
+            this.data.id = invoices.id
+            // this.data["ids"] = invoices.id
 
-            console.log("the generated supplierOrder of the invoice is", this.data)
+            console.log("the generated supplierOrder of the invoice that i want to send is", this.data)
             
           }
         });
