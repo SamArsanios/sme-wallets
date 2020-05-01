@@ -69,7 +69,7 @@ export class ViewApprovedInvoiceComponent implements OnInit {
 
   private populateOrderView(): void {
     const order = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView());
-    if (order.invoiceStatus =="approved") {
+    if (order.invoiceStatus == "approved") {
       console.log("the order is aproved therefore the get  paid button should be there")
     }
 
@@ -285,12 +285,27 @@ export class ViewApprovedInvoiceComponent implements OnInit {
   }
 
   generatePdf() {
+    const invoices = SupplierApprovedOrdersData.getApproveOrderMap().get(SupplierApprovedOrdersData.getIdOfOrderToView())
+
     const id = SupplierApprovedOrdersData.getIdOfOrderToView();
     const orderToViewPdf = SupplierApprovedOrdersData.getApproveOrderMap().get(id);
-
+    console.log("the data i want to view", orderToViewPdf)
     console.log(orderToViewPdf);
 
-    GenerateApprovedInvoicesPDF.generatePdf(orderToViewPdf);
+    this.httpService.getRequest('/supplierOrders/findAll').subscribe(response => {
+
+      this.objectUtil.dataObjectToArray(response.body).map(theOder => {
+        if (theOder.order.id === invoices.order.id) {
+          this.data = theOder
+          this.data.id = invoices.id
+
+          console.log("the generated supplierOrder of the invoice is", theOder)
+          
+        }
+      });
+    })
+
+    GenerateApprovedInvoicesPDF.generatePdf(this.data);
   }
 
 }

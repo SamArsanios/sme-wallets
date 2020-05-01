@@ -22,7 +22,7 @@ static generatePdf(order: any) {
             {
             // text: `ORDER NO - ${order.id}\n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
 
-              text: `INVOICE NO :  ${order.id}\n ORDER NO :  ${order.order.id} \n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
+              text: `INVOICEs NO :  ${order.id}\n ORDER NO :  ${order.order.id} \n ORDER DUE DATE :${order.order.orderDueDate} \n\n\n`,
               alignment: "right",
               margin: [0, 30, 0, 0],
               fontSize: 12
