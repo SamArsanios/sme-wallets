@@ -204,7 +204,7 @@ updateSupplierOrderWebSocketback(){
     const id = ApproveOrderData.getIdOfOrderToView();
     const orderToViewPdf = ApproveOrderData.getApproveOrderMap().get(id);
 
-    console.log(orderToViewPdf);
+    console.log("teh order iiiii wanna view", orderToViewPdf);
 
     GenerateBUyerApproveOrderPDF.generatePdf(orderToViewPdf);
   }

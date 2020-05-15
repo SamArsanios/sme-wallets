@@ -123,7 +123,8 @@ export class GetPaidComponent implements OnInit {
       this.objectUtil.dataObjectToArray(response.body).map(theOder => {
         if (theOder.order.id === invoices.order.id) {
           this.data = theOder
-          return this.data
+          this.data.id = theOder.id
+          // return this.data
 
         }
       });
