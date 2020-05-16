@@ -57,7 +57,7 @@ export class CreateOrderComponent implements OnInit {
 
 
           SupplierData.addASupplier(aSupplier);
-          console.log("all suppliers are heeeeeeeeeeeey ", SupplierData.getAllSuppliers())
+          console.log("all suppliers here", SupplierData.getAllSuppliers())
 
 
           SupplierData.addASupplierToMap(aSupplier, aSupplier.id);
