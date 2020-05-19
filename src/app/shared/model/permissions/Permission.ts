@@ -1,7 +1,7 @@
 import { PermissionTransient } from './permissions-model-transient';
 
 /**
- * @author Daniel Comboni
+ * @author Samson
  * 
  * a model / entity class Permission.
  */
