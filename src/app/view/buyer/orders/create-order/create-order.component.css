@@ -8,16 +8,15 @@ mat-form-field {
 .statusmessage{
   margin-bottom: 2%;
   margin-top: 2%;
-
   text-align: center;
   font-weight: 500;
-  /* position: fixed; */
+ 
 }
 form{
   margin-bottom: 5%;
 }
  @media screen and (max-width: 800px) {
   .container{
-    /* font-size: 200%; */
+   
   }
   } 
