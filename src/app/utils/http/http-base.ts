@@ -12,7 +12,7 @@ export class HTTPBase {
     // https://jsonplaceholder.typicode.com/posts
     // http://dummy.restapiexample.com
     // http://corrda.herokuapp.com/api/smewallets
-    return `http://localhost:8081/api/smewallets`.concat(
+    return `http://corrda.herokuapp.com/api/smewallets`.concat(
       concatenatedUrl
     );
   }
