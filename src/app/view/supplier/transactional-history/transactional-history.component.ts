@@ -1,20 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-transactional-history',
-//   templateUrl: './transactional-history.component.html',
-//   styleUrls: ['./transactional-history.component.css']
-// })
-// export class TransactionalHistoryComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatTableDataSource, MatSort, MatPaginator } from "@angular/material";
 export interface IAllOrders {
