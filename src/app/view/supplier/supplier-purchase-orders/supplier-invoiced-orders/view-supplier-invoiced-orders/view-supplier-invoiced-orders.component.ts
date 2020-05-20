@@ -60,7 +60,7 @@ export class ViewSupplierInvoicedOrdersComponent implements OnInit {
   private populateOrderView(): void {
 
     const order = SupplierInvoicedOrderData.getSupplierInvoicedOrderMap().get(SupplierInvoicedOrderData.getIdOfOrderToView());
-    console.log("the orddddddddddder", order)
+    console.log("the order", order)
 
     if ( order !== undefined && order != null ) {
       // this.date = order.order.timestamp;
