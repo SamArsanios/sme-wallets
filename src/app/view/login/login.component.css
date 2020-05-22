@@ -55,11 +55,9 @@ hr{
 .label{
   max-width: 100%;
   margin-bottom: 5px;
-  /* font-weight: 700; */   
 }
 
-/* 
-  */
+
 .phone{
   margin-top: 3%;
   margin-left: 3%;
@@ -75,14 +73,11 @@ hr{
   margin-left: 10%;
   text-align: center;
   margin-bottom: 43%;
- 
 }
 
 .main input{
   width: 50%;
   margin-left: 20%;
-
-
 }
 
 
