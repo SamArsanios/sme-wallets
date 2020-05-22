@@ -2,9 +2,7 @@
   padding-top: 230px;
 }
 mat-tab-group {
-  /* position: absolute; */
   width: 100%;
-  /* background-color: blueviolet; */
   /* position: absolute;
     left: 50%;
     transform: translateX(-50%);
