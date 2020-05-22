@@ -19,13 +19,9 @@ a{
  }
 
  .nav{
-    
    position: absolute;
    left: 50%;
-   transform: translateX(-50%);
-   
-   
-
+   transform: translateX(-50%);  
 }
 .hok{
    background-color: blueviolet;
@@ -45,8 +41,7 @@ a{
 .container{
    margin-top: 10%;
 }
-.row{
-}
+
 .currentOrders, .invoices, .totalorders, .invited-contacts{
    background-color: blue;
    color: white;
