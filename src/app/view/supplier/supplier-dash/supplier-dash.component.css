@@ -1,12 +1,8 @@
 
- .nav{
-    
+ .nav{ 
    position: absolute;
    left: 50%;
    transform: translateX(-50%);
-   
-   
-
 }
 .container{
    margin-top: 10%;
@@ -18,8 +14,6 @@
    border-radius: 5%;
    text-align: center;
    height: 100%;
-
-
 }
 .mat-title{
    margin-top: 20%;
@@ -39,6 +33,6 @@
 
 @media screen and (max-width: 800px) {
    .container-fluid{
-     /* font-size: 200%; */
+    
    }
    } 
