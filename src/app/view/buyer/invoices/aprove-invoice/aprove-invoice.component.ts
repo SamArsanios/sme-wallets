@@ -1,19 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-aprove-invoice',
-//   templateUrl: './aprove-invoice.component.html',
-//   styleUrls: ['./aprove-invoice.component.css']
-// })
-// export class AproveInvoiceComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { HttpService } from '../../../../utils/http/http-service';
