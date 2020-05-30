@@ -45,8 +45,7 @@ a{
 .container{
    margin-top: 10%;
 }
-.row{
-}
+
 .currentOrders, .invoices, .totalorders, .invited-contacts{
    background-color: blue;
    color: white;
