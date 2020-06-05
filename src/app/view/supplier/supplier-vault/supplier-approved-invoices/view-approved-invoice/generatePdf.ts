@@ -1,7 +1,7 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
+//code to generate pdf file for purchase order
 export class PurchaseOrderPDF {
   generatePdf() {
     const documentDefinition = {
