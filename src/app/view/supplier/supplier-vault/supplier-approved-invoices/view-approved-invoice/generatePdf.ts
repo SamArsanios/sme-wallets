@@ -69,7 +69,7 @@ export class PurchaseOrderPDF {
             ]
           }
         },
-
+//Second table
         {
           style: "table2",
           table: {
@@ -101,7 +101,7 @@ export class PurchaseOrderPDF {
             {
               text: ""
             },
-
+//third table
             {
               style: "table3",
               table: {
