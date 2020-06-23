@@ -3,7 +3,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import { Invoice } from 'src/app/model/buyer/invoices/invoice-model';
 // import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
+//
 export class GenerateRaisedInvoicePDF {
   static generatePdf(order: Invoice) {
     const documentDefinition = {
