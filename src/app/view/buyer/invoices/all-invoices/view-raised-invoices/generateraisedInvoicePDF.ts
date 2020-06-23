@@ -181,7 +181,7 @@ export class GenerateRaisedInvoicePDF {
           ]
         }
       ],
-      // Styles for the Pdf Document Begins Here
+      // Style for the Pdf Document Begins Here
       styles: {
         header: {
           fontSize: 20,
