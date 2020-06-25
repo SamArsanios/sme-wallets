@@ -205,6 +205,7 @@ export class GenerateRaisedInvoicePDF {
         columnGap: 50
       }
     };
+    //method call to open pdf in new tab
     pdfMake.createPdf(documentDefinition).open();
   }
 }
