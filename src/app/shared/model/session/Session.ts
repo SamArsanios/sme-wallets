@@ -24,6 +24,7 @@ export class Session {
                 this.userAgent = $userAgent;
                 this.payload = $payload;
                 this.timestamp = $timestamp;
+                
         }
 
         static createInstance(): Session{
