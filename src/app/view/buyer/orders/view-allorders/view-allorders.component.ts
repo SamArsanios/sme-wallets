@@ -34,7 +34,7 @@ export class ViewAllordersComponent implements OnInit {
   tax: number;
   shipping: number;
   totalAfterTax: number;
-  totalAfterTaxv: number;
+  
 
   constructor(private location: Location) {
 
