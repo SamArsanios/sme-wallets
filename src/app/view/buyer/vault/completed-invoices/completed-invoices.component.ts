@@ -26,7 +26,7 @@ const ELEMENT_DATA: ICompletedInvoices[] = [
     invoiceStatus: "Approved"
   },
   {
-    invoiceNo: "INV_30",
+    invoiceNo: "INV_31",
     invoiceDate: "11/12/2017",
     receiverName: "Junior",
     invoiceTotal: 242025,

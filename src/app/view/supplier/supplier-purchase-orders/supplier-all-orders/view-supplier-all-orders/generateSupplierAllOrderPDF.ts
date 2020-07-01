@@ -3,6 +3,7 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import { SupplierOrder } from 'src/app/model/supplier/order/SupplierOrder';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
+//Pdf Generator
 export class GenerateSupplierAllOrderPDF {
   static generatePdf(order: SupplierOrder) {
     const documentDefinition = {
