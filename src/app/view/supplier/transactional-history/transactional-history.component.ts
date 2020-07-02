@@ -83,14 +83,14 @@ const ELEMENT_DATA: IAllOrders[] = [
     TotalBalance: "18500",
     Date: "1 - 1 - 2012"
   },
-  // {
-  //   sNo: "ORD-10",
-  //   Description: "coffee sprays",
-  //   Debits: "500",
-  //   Credits: "17000",
-  //   TotalBalance: "18500",
-  //   Date: "1 - 1 - 2012"
-  // }
+  {
+    sNo: "ORD-10",
+    Description: "coffee sprays",
+    Debits: "500",
+    Credits: "17000",
+    TotalBalance: "18500",
+    Date: "1 - 1 - 2012"
+  }
 ];
 @Component({
   selector: 'app-transactional-history',
