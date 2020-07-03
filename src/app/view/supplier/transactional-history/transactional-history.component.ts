@@ -115,7 +115,7 @@ export class TransactionalHistoryComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    
   }
 
   logData(row) {
