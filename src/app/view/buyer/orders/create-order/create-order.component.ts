@@ -172,6 +172,6 @@ export class CreateOrderComponent implements OnInit {
   }
 
   onOptionsSelected() {
-    console.log(`hhhhhhh`);
+    console.log(`the selected option`);
   }
 }
