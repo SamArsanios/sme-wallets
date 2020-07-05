@@ -111,6 +111,6 @@ export class InviteContactsComponent implements OnInit {
   }
   //contacts filter
   applyContactsFilter(filterValue: string) {
-    this.invitedContactsDataSource.filter = filterValue.trim().toLowerCase();
+    this.invitedContactsDataSource.filter = filterValue.trim().toUpperCase();
   }
 }
