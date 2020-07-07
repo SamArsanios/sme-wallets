@@ -23,10 +23,10 @@ export class PopulateTable<T, I> {
     return fromResponse.map(e => {
   
       return  {
-        orderNo: e.id,
-        orderDate: e.timestamp,
-        orderDueDate: e.id,
-        orderStatus: e.id
+        // orderNo: e.id,
+        // orderDate: e.timestamp,
+        // orderDueDate: e.id,
+        // orderStatus: e.id
       };
   
     });
