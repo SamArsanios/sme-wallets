@@ -13,10 +13,10 @@ export class HtpsService {
 
   constructor(private http: HttpClient) { }
 
-  // getUsers(): Observable<User>{
-  //   return this.http.get<User>(this.productUrl).pipe(tap(data=>
-  //     console.log(`all staff ${JSON.stringify(data)}`)));
-  // }
+  getUsers(): Observable<User>{
+    return this.http.get<User>(this.productUrl).pipe(tap(data=>
+      console.log(`all staff ${JSON.stringify(data)}`)));
+  }
   profile = {};
   getUser() {
     return this.http.get(`app/buyers.json`);

@@ -7,7 +7,7 @@ export interface IAllOrders {
   Credits: string;
   TotalBalance: string;
   Date: any;
-  action: any;
+  // action: any;
 }
 
 const ELEMENT_DATA: IAllOrders[] = [
