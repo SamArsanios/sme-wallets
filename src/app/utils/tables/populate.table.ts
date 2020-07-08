@@ -26,7 +26,7 @@ export class PopulateTable<T, I> {
         // orderNo: e.id,
         // orderDate: e.timestamp,
         // orderDueDate: e.id,
-        orderStatus: e.id
+        // orderStatus: e.id
       };
   
     });
