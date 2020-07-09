@@ -11,7 +11,7 @@ export class PopulateTable<T, I> {
 
   public  populateTable(arrayOfClassObjects: T[], infoTable: I[], dataSource: MatTableDataSource<I>, arrayMapIteration): I[] {
 
-    infoTable = this.populateTableOnInit(values);
+    // infoTable = this.populateTableOnInit(values);
     infoTable = arrayMapIteration(arrayOfClassObjects);
 
     return infoTable;
