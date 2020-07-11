@@ -19,9 +19,8 @@ mat-card {
   font-size: 120%;
 }
 
-#personalInfo {
-}
-app-header {
+
+/* app-header {
     position: fixed;
     width: 100%;
     margin-bottom: 10%;
@@ -32,4 +31,4 @@ app-buyernav {
     margin-bottom: 0%;
 } */
 /* <app-header></app-header>
-<app-buyernav></app-buyernav>
+<app-buyernav></app-buyernav> */
