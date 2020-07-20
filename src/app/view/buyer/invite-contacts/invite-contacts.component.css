@@ -31,8 +31,6 @@ mat-header-cell {
 }
 .container {
   padding-top: 15%;
-  
-   /* margin-top: 7%; */
 }
 
 .searchBox {
@@ -42,7 +40,5 @@ mat-header-cell {
 @media screen and (max-width: 989px) {
   .container {
     padding-top: 35%;
-    
-     /* margin-top: 7%; */
   }
 }
