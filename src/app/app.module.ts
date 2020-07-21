@@ -17,10 +17,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/header/header.component';
-import { MaterialModule } from './shared/modules/material/material.module';
+
 import { BuyersDashboardComponent } from './shared/buyers-dashboard/buyers-dashboard.component';
 import { PaymentnoticeComponent } from './view/buyer/paymentnotice/paymentnotice.component';
 import { BuyernavComponent } from './shared/buyernav/buyernav.component';
+import { MaterialModule } from './shared/modules/material/material.module';
 import { PaymentInfoComponent } from './view/buyer/payment-info/payment-info.component';
 import { AllOrdersComponent } from './view/buyer/orders/all-orders/all-orders.component';
 import { InvoicesComponent } from './view/buyer/invoices/invoices.component';
